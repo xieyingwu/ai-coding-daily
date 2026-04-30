@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年4月22日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 32px 20px 60px;
+    }
+    .container { max-width: 780px; margin: 0 auto; }
+    .page-header { margin-bottom: 28px; }
+    .page-header .date-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(0,212,170,0.15));
+      border: 1px solid rgba(108,99,255,0.35);
+      color: #a5b4fc;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .page-header h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+    .page-header h1 span { color: #6c63ff; }
+    .page-header .meta { color: #6b7280; font-size: 13px; }
+
+    .summary-bar {
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-size: 13px;
+      color: #8b90b0;
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+    .summary-bar strong { color: #e8eaf6; }
+
+    .news-list { display: flex; flex-direction: column; gap: 14px; }
+    .news-card {
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      border-radius: 14px;
+      padding: 18px 20px;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .news-card:hover { border-color: #6c63ff; transform: translateY(-1px); }
+    .news-card.top { border-color: rgba(108,99,255,0.4); background: linear-gradient(135deg, #1a1d27, #1e1f30); }
+    .card-meta {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 8px; flex-wrap: wrap;
+    }
+    .num-badge {
+      width: 22px; height: 22px; border-radius: 6px;
+      background: rgba(108,99,255,0.2);
+      border: 1px solid rgba(108,99,255,0.3);
+      color: #a5b4fc; font-size: 11px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .num-badge.hot { background: rgba(239,68,68,0.15); border-color: rgba(239,68,68,0.3); color: #f87171; }
+    .tag {
+      font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 5px;
+    }
+    .tag-purple { background: rgba(139,92,246,0.15); color: #c4b5fd; }
+    .tag-green  { background: rgba(74,222,128,0.1); color: #4ade80; }
+    .tag-amber  { background: rgba(251,191,36,0.1); color: #fbbf24; }
+    .tag-cyan   { background: rgba(34,211,238,0.1); color: #22d3ee; }
+    .tag-red    { background: rgba(248,113,113,0.1); color: #f87171; }
+    .tag-blue   { background: rgba(96,165,250,0.1); color: #60a5fa; }
+    .news-title { font-size: 15px; font-weight: 600; color: #eef0fb; margin-bottom: 7px; line-height: 1.5; }
+    .news-body { font-size: 13px; color: #8b90b0; line-height: 1.75; }
+    .news-body .hl { color: #a5b4fc; font-weight: 500; }
+    .news-footer {
+      margin-top: 10px; padding-top: 8px;
+      border-top: 1px solid rgba(42,45,58,0.8);
+      font-size: 11px; color: #4a4e6a;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px;
+    }
+    .news-footer a { color: #6c63ff; text-decoration: none; }
+    .news-footer a:hover { text-decoration: underline; }
+
+    .section-label {
+      font-size: 11px; font-weight: 700; color: #4a4e6a;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin: 28px 0 12px;
+    }
+
+    .back-row { margin-top: 40px; text-align: center; }
+    .back-home {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      color: #8b90b0; text-decoration: none; font-size: 13px;
+      padding: 10px 20px; border-radius: 10px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .back-home:hover { border-color: #6c63ff; color: #a5b4fc; }
+    .page-footer { margin-top: 20px; text-align: center; font-size: 11px; color: #2e3148; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="page-header">
+    <div class="date-badge">📅 2026年4月22日 · 星期三</div>
+    <h1>AI 编程热点 <span>Daily</span></h1>
+    <p class="meta">今日 7 条精选 · Kimi K2.6 开源 · 谷歌 AI 编码军备竞赛 · Codex Chronicle 记忆图谱</p>
+  </div>
+
+  <div class="summary-bar">
+    <strong>📌 今日关键词：</strong>
+    Kimi K2.6 代码能力对标 GPT-5.4 / 谷歌布林亲自督战追赶 Anthropic 编码 / Codex Chronicle 屏幕读取记忆 /
+    CLAUDE.md 本周霸榜 GitHub 第一 61,600 星 / 腾讯 QClaw 5 天出海 99%AI 写代码 /
+    Cursor × SpaceX 算力突破 / Cursor 崩溃率下降 80%
+  </div>
+
+  <div class="section-label">🔥 今日头条</div>
+  <div class="news-list">
+
+    <!-- 1 -->
+    <div class="news-card top">
+      <div class="card-meta">
+        <div class="num-badge hot">①</div>
+        <span class="tag tag-amber">🔥 头条</span>
+        <span class="tag tag-green">开源</span>
+        <span class="tag tag-purple">月之暗面</span>
+      </div>
+      <div class="news-title">Kimi K2.6 正式发布并开源——代码能力对标 GPT-5.4，支持 300 个子 Agent 并行，一句话生成全栈产品</div>
+      <div class="news-body">
+        月之暗面于 4 月 21 日发布并开源旗舰模型 <span class="hl">Kimi K2.6</span>，在博士级"终极人类考试（HLE）"中以 <span class="hl">54.0%</span> 得分位居第一，Agent 深度检索 DeepSearchQA 达 <span class="hl">92.5%</span>，大幅领先 GPT-5.4 和 Gemini。
+        代码能力较 K2.5 提升 20%，支持连续编码 13 小时、最多 <span class="hl">300 个子 Agent 并行协作</span>——零开发经验用户可一句话生成全栈产品。即日起可通过 kimi.com、Kimi API 及 Kimi Code 编程助手免费使用。
+      </div>
+      <div class="news-footer">
+        <span>来源：IT之家 / 搜狐科技 · 2026-04-21</span>
+        <a href="https://finance.sina.com.cn/tech/roll/2026-04-21/doc-inhvfqcn6994853.shtml" target="_blank">查看报道 →</a>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="news-card">
+      <div class="card-meta">
+        <div class="num-badge">②</div>
+        <span class="tag tag-red">⚡ 行业信号</span>
+        <span class="tag tag-blue">Google</span>
+      </div>
+      <div class="news-title">谷歌布林亲自督战——组建 AI 编码"突击队"追赶 Anthropic，承认 Gemini 编码落后约 50%</div>
+      <div class="news-body">
+        据 The Information 报道，Google DeepMind 已组建由工程师 <span class="hl">Sebastian Borgeaud</span> 领导的精英小组，核心任务是"从零编写代码自动化"。谢尔盖·布林在内部备忘录中要求员工"果断转向"，强制使用 Agent 完成复杂多步骤任务。
+        目前 <span class="hl">Anthropic 近 100% 代码由 AI 生成</span>，而 Google 仅约 50%，差距清晰可见。此举标志着 AI 编码能力已成为大厂顶层竞争核心指标。
+      </div>
+      <div class="news-footer">
+        <span>来源：腾讯新闻 / 新浪科技 · 2026-04-21</span>
+        <a href="https://finance.sina.com.cn/tech/digi/2026-04-21/doc-inhvfume6267860.shtml" target="_blank">查看报道 →</a>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="news-card">
+      <div class="card-meta">
+        <div class="num-badge">③</div>
+        <span class="tag tag-cyan">✨ 新功能</span>
+        <span class="tag tag-purple">OpenAI</span>
+      </div>
+      <div class="news-title">OpenAI Codex 上线 Chronicle——屏幕读取生成个人记忆图谱，告别重复说明项目背景</div>
+      <div class="news-body">
+        4 月 21 日，OpenAI 为 Codex 推出研究预览功能 <span class="hl">Chronicle</span>。它通过智能屏幕录制，自动记录用户使用的工具、当前任务和项目上下文，生成可复用的<span class="hl">个人记忆图谱</span>。
+        此后每次与 Codex 对话，无需再从头解释项目背景——它已经"记住"了你的工作方式。目前仅 <span class="hl">Pro 订阅用户</span>可用，是 AI 编程助手从"无状态"走向"有记忆"的重要一步。
+      </div>
+      <div class="news-footer">
+        <span>来源：搜狐科技 / AITNT · 2026-04-21</span>
+        <a href="https://www.sohu.com/a/1012234184_121956424" target="_blank">查看报道 →</a>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="news-card">
+      <div class="card-meta">
+        <div class="num-badge">④</div>
+        <span class="tag tag-amber">🌟 开发者热榜</span>
+        <span class="tag tag-green">GitHub 第一</span>
+      </div>
+      <div class="news-title">一个 CLAUDE.md 本周霸榜 GitHub 第一——蒸馏自 Karpathy，61,600 星，让 AI Agent 乖乖守规矩</div>
+      <div class="news-body">
+        开发者 Jiayuan Zhang 基于 Andrej Karpathy 的 AI 编程观察，推出了一份纯文本配置文件 <span class="hl">CLAUDE.md</span>。本周新增 <span class="hl">44,465 颗星</span>，总星数突破 <span class="hl">61,600</span>，登顶 GitHub 全站热榜第一。
+        它的作用是：在你的项目根目录放一份 CLAUDE.md，就能规范 Claude Code 等 AI 编程 Agent 的行为——不乱改文件、不越权操作、按你的规则办事。这份"AI 紧箍咒"的爆红，折射出开发者对 <span class="hl">Agent 行为可控性</span>的强烈需求。
+      </div>
+      <div class="news-footer">
+        <span>来源：36kr / AITNT · 2026-04-22</span>
+        <a href="https://m.36kr.com/p/3774954488349441" target="_blank">查看报道 →</a>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="news-card">
+      <div class="card-meta">
+        <div class="num-badge">⑤</div>
+        <span class="tag tag-cyan">🚀 出海</span>
+        <span class="tag tag-purple">腾讯</span>
+      </div>
+      <div class="news-title">腾讯 QClaw 海外版正式开启内测——仅用 5 天完成开发，约 99% 代码由 QClaw 自写，"龙虾之父"点赞</div>
+      <div class="news-body">
+        4 月 20 日，腾讯 QClaw 宣布海外版开启内测，主打<span class="hl">零门槛、免部署、下载即用</span>，基于国内版 80+ 项功能迭代完成。
+        最亮眼的是开发本身：整个海外版仅用 <span class="hl">5 天</span>完成，约 <span class="hl">99% 代码由 QClaw 自身编写</span>——这既是产品宣传，也是一次最强的实战 demo。OpenClaw（"龙虾之父"）创始人 Peter Steinberger 公开转发感谢，并表示将联合把优化回馈开源社区。内测期间每日赠送 4000 万海外顶尖模型 token。
+      </div>
+      <div class="news-footer">
+        <span>来源：新浪财经 / 腾讯新闻 · 2026-04-21</span>
+        <a href="https://finance.sina.com.cn/stock/t/2026-04-21/doc-inhvfqcn6994853.shtml" target="_blank">查看报道 →</a>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="news-card">
+      <div class="card-meta">
+        <div class="num-badge">⑥</div>
+        <span class="tag tag-green">⚡ Cursor 动态</span>
+        <span class="tag tag-blue">算力突破</span>
+      </div>
+      <div class="news-title">Cursor × SpaceX 合作推进模型训练——利用 xAI Colossus 基础设施，Composer 2 以更低成本达前沿性能</div>
+      <div class="news-body">
+        Cursor 官方博客披露，团队将借助 <span class="hl">xAI 的 Colossus 超算基础设施</span>突破算力瓶颈，加速下一代模型训练。
+        Composer 系列迭代路线：Composer（首个 Agent 编程模型）→ Composer 1.5（强化学习规模扩大 <span class="hl">20 多倍</span>）→ Composer 2（加入持续预训练，以<span class="hl">其他模型一小部分成本</span>达到前沿级性能）。此次合作意味着 Cursor 在自研模型路线上持续押注，不只是 API 调用的套壳工具。
+      </div>
+      <div class="news-footer">
+        <span>来源：Cursor 官方博客 · 2026-04-21</span>
+        <a href="https://cursor.com/cn/blog/spacex-model-training" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="news-card">
+      <div class="card-meta">
+        <div class="num-badge">⑦</div>
+        <span class="tag tag-green">🔧 工程实践</span>
+        <span class="tag tag-purple">稳定性</span>
+      </div>
+      <div class="news-title">Cursor 工程团队发布崩溃治理报告——OOM 率下降 80%，揭秘双重调试策略与 Bugbot 规则防回归</div>
+      <div class="news-body">
+        Cursor 工程师 Andrew Chan &amp; Kevin Nguyen 发布深度博文，披露自 2026 年 2 月以来的稳定性提升成果：<span class="hl">每会话 OOM（内存耗尽）崩溃率下降 80%</span>，每请求 OOM 率下降 73%。
+        核心方法：采用"<span class="hl">自上而下</span>（功能开关 A/B + 大消息熔断）"和"<span class="hl">自下而上</span>（CDP 堆分析 + 用户堆快照）"双重策略，分别针对急性 OOM 和缓慢累积型 OOM 施策，并为每类 OOM 制定 Bugbot 规则防止回归。
+      </div>
+      <div class="news-footer">
+        <span>来源：Cursor 官方博客 · 2026-04-21</span>
+        <a href="https://cursor.com/cn/blog/app-stability" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+  </div><!-- /news-list -->
+
+  <div class="back-row">
+    <a href="/" class="back-home">← 返回首页</a>
+  </div>
+
+  <div class="page-footer">AI 编程热点日报 · 自动生成 · 2026-04-22 08:15</div>
+</div>
+</body>
+</html>

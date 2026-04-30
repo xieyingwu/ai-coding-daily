@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点新闻 · 2026年4月10日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #2a2d3e;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(0,212,170,0.15);
+      color: #00d4aa;
+      border: 1px solid rgba(0,212,170,0.3);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+    .logo { font-size: 52px; margin-bottom: 12px; }
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    h1 span { color: #6c63ff; }
+    .meta {
+      color: #8b90b0;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .meta-dot { color: #2a2d3e; }
+    .news-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    .news-card {
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      border-radius: 14px;
+      padding: 22px 24px;
+      transition: border-color 0.2s;
+    }
+    .news-card:hover { border-color: #6c63ff; }
+    .news-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .num {
+      background: linear-gradient(135deg, #6c63ff, #a78bfa);
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .news-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #eef0fb;
+      line-height: 1.5;
+    }
+    .news-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      margin-left: 42px;
+    }
+    .tag {
+      background: rgba(108,99,255,0.12);
+      border: 1px solid rgba(108,99,255,0.25);
+      color: #a78bfa;
+      font-size: 11px;
+      padding: 2px 10px;
+      border-radius: 10px;
+    }
+    .tag.green {
+      background: rgba(0,212,170,0.1);
+      border-color: rgba(0,212,170,0.25);
+      color: #00d4aa;
+    }
+    .tag.orange {
+      background: rgba(255,165,0,0.1);
+      border-color: rgba(255,165,0,0.25);
+      color: #ffb84d;
+    }
+    .news-body {
+      font-size: 14px;
+      color: #9ca3c4;
+      line-height: 1.75;
+      margin-left: 42px;
+    }
+    .news-body strong { color: #c7cadf; }
+    .news-source {
+      margin-left: 42px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: #4a4e6a;
+    }
+    .news-source a {
+      color: #5c5f80;
+      text-decoration: none;
+    }
+    .news-source a:hover { color: #6c63ff; }
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #6c63ff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .summary-box {
+      background: linear-gradient(135deg, #1a1d27, #1c1f2e);
+      border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin-bottom: 40px;
+    }
+    .summary-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #a78bfa;
+      margin-bottom: 12px;
+    }
+    .summary-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .summary-list li {
+      font-size: 13px;
+      color: #8b90b0;
+      padding-left: 18px;
+      position: relative;
+    }
+    .summary-list li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: #6c63ff;
+    }
+    .footer {
+      text-align: center;
+      padding-top: 28px;
+      border-top: 1px solid #2a2d3e;
+      font-size: 12px;
+      color: #4a4e6a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      color: #8b90b0;
+      text-decoration: none;
+      padding: 7px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .back-btn:hover { border-color: #6c63ff; color: #6c63ff; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="badge">🆕 TODAY'S DIGEST</div>
+      <div class="logo">🤖</div>
+      <h1>AI 编程 <span>热点新闻</span></h1>
+      <div class="meta">
+        <span>📅 2026年4月10日</span>
+        <span class="meta-dot">·</span>
+        <span>星期五</span>
+        <span class="meta-dot">·</span>
+        <span>共 6 条热点</span>
+        <span class="meta-dot">·</span>
+        <span>08:15 自动生成</span>
+      </div>
+    </div>
+
+    <div class="section-title">今日精选 · 6 条热点</div>
+    <div class="news-list">
+
+      <!-- 第1条 -->
+      <div class="news-card">
+        <div class="news-header">
+          <div class="num">1</div>
+          <div class="news-title">GPT-6 官方定档 4 月 14 日发布：Symphony 架构、200 万 Token 上下文，性能较 GPT-5.4 暴涨 40%</div>
+        </div>
+        <div class="news-tags">
+          <span class="tag">OpenAI</span>
+          <span class="tag green">模型发布</span>
+          <span class="tag orange">重磅预告</span>
+        </div>
+        <div class="news-body">
+          OpenAI 官方正式确认，内部代号"Spud（土豆）"的下一代大模型 <strong>GPT-6</strong> 将于 <strong>2026年4月14日全球同步发布</strong>，预训练已于 3 月 17 日完成，历时约 18 个月研发。GPT-6 采用全新 <strong>Symphony（交响乐）架构</strong>，实现原生多模态统一，上下文窗口从百万 Token 扩至 <strong>200 万 Token</strong>，约可处理两部《三体》的文字量。在代码、推理、Agent 任务上较 GPT-5.4 <strong>性能提升约 40%</strong>，参数规模达 5–6 万亿（MoE 架构，实际激活约 10%），API 定价与 GPT-5.4 持平，主打高性价比。发布后将把 ChatGPT、Codex 编程工具、Atlas 浏览器整合为统一超级应用。
+        </div>
+        <div class="news-source">来源：<a href="https://news.qq.com/rain/a/20260409A021OB00" target="_blank">腾讯新闻</a> · <a href="https://www.tmtpost.com/7944200.html" target="_blank">钛媒体</a></div>
+      </div>
+
+      <!-- 第2条 -->
+      <div class="news-card">
+        <div class="news-header">
+          <div class="num">2</div>
+          <div class="news-title">Meta 与 CoreWeave 签署 210 亿美元 AI 算力协议：史上最大云计算单笔订单，覆盖至 2032 年</div>
+        </div>
+        <div class="news-tags">
+          <span class="tag">Meta</span>
+          <span class="tag">CoreWeave</span>
+          <span class="tag orange">算力投资</span>
+        </div>
+        <div class="news-body">
+          Meta Platforms 宣布与 AI 算力云服务商 <strong>CoreWeave</strong> 签署扩展协议，额度高达 <strong>210 亿美元</strong>，将 Meta 在 CoreWeave 上的总承诺增至约 350 亿美元，供给期延至 <strong>2032 年底</strong>。该协议将为 Meta 的 AI 推理工作负载提供超大规模 GPU 云算力，覆盖 Llama 系列开源模型部署、AI 编程工具及 Meta AI 助手运营所需资源。CoreWeave 于今年 3 月成功 IPO，此次签单是其上市后拿到的最大单笔订单，彰显 AI 基础设施投资需求持续飙升。
+        </div>
+        <div class="news-source">来源：<a href="https://www.siliconvalley.com/2026/04/09/coreweave-meta-21-billion-deal-ai-computing/" target="_blank">Silicon Valley</a> · Reuters</div>
+      </div>
+
+      <!-- 第3条 -->
+      <div class="news-card">
+        <div class="news-header">
+          <div class="num">3</div>
+          <div class="news-title">OpenAI 调整 Codex 订阅体系：推出 Pro $100 新档位，AI 编程工具降门槛冲量</div>
+        </div>
+        <div class="news-tags">
+          <span class="tag">OpenAI</span>
+          <span class="tag green">产品更新</span>
+          <span class="tag">Codex</span>
+        </div>
+        <div class="news-body">
+          OpenAI 今日调整其代码生成模型 <strong>Codex</strong> 的订阅体系，推出 <strong>Pro 档位（$100/月）</strong>，使 Codex 具备更完整的 Agent 代码执行能力，并降低企业团队订阅门槛。新的订阅层级将 Codex 的 API 调用配额、上下文容量和自主 Agent 任务并发数同步提升，目标是将 OpenAI 的 AI 编程服务推向更广泛的中小型开发团队。此次调整配合 GPT-6 发布节奏，被业界解读为 OpenAI 重新整合 AI 编程工具生态的战略举措。
+        </div>
+        <div class="news-source">来源：<a href="https://news.daheiai.com/realtime.php?file=quick_2026-04-10_0403" target="_blank">大黑AI速报</a> · OpenAI 官方</div>
+      </div>
+
+      <!-- 第4条 -->
+      <div class="news-card">
+        <div class="news-header">
+          <div class="num">4</div>
+          <div class="news-title">扣子（Coze）2.5 发布：为 AI 智能体构建功能丰富的虚拟世界，零代码搭建复杂 Agent 应用</div>
+        </div>
+        <div class="news-tags">
+          <span class="tag">扣子 Coze</span>
+          <span class="tag green">平台发布</span>
+          <span class="tag orange">AI智能体</span>
+        </div>
+        <div class="news-body">
+          字节跳动旗下 AI 应用开发平台 <strong>扣子（Coze）</strong> 今日发布 <strong>2.5 版本</strong>，为 AI 智能体构建了更完整的"虚拟世界"——包含持久记忆、多模态感知、跨 Agent 协作和插件市场体系的全新基础设施。开发者无需深厚编程背景即可搭建具备工具调用、多轮对话和异步任务执行能力的复杂 Agent 应用。该版本还引入了可视化 Agent 编排界面，将 AI 编程的操作门槛进一步拉低，进一步巩固扣子作为国内主流 AI 应用开发平台的地位。
+        </div>
+        <div class="news-source">来源：<a href="https://news.daheiai.com/" target="_blank">大黑AI速报</a> · 扣子官方</div>
+      </div>
+
+      <!-- 第5条 -->
+      <div class="news-card">
+        <div class="news-header">
+          <div class="num">5</div>
+          <div class="news-title">Anthropic Claude Mythos 锁定 50 家顶级合作伙伴：网安能力过强拒绝公开发布，开源格局因此逆转</div>
+        </div>
+        <div class="news-tags">
+          <span class="tag">Anthropic</span>
+          <span class="tag orange">安全限制</span>
+          <span class="tag">Claude Mythos</span>
+        </div>
+        <div class="news-body">
+          Anthropic 最新旗舰模型 <strong>Claude Mythos</strong> 通过内部代号"Project Glasswing"向约 <strong>50 家关键基础设施合作伙伴</strong>（含 AWS、Apple、微软、Google）限量开放，理由是该模型在网络安全漏洞检测方面能力"过于危险"，可扫描整个操作系统内核发现高危漏洞。与此同时，智谱 AI 的 <strong>GLM-5.1（754B MoE，MIT 许可）</strong> 完全开源，在 SWE-bench Pro 上超越 GPT-5.4 和 Claude Opus 4.6，形成"闭源收紧、开源反超"的戏剧性格局反转，预示前沿模型发布策略进入新阶段。
+        </div>
+        <div class="news-source">来源：<a href="https://whatllm.org/blog/new-ai-models-april-2026" target="_blank">WhatLLM.org</a> · Anthropic 官方</div>
+      </div>
+
+      <!-- 第6条 -->
+      <div class="news-card">
+        <div class="news-header">
+          <div class="num">6</div>
+          <div class="news-title">微软开源 MarkItDown 通用文档转换工具 + Gemini Ultra 2 发布 4K 视频合成能力，开发者工具生态再扩张</div>
+        </div>
+        <div class="news-tags">
+          <span class="tag">微软</span>
+          <span class="tag">Google</span>
+          <span class="tag green">开发工具</span>
+          <span class="tag green">开源</span>
+        </div>
+        <div class="news-body">
+          微软正式开源 <strong>MarkItDown</strong>——一款通用文档格式转换工具，支持 PDF、Word、PPT、HTML、图像等多种格式一键转换为 Markdown，极大简化 AI 编程工作流中的文档预处理步骤，GitHub 上线后迅速引发开发者社区热议。与此同时，Google <strong>Gemini Ultra 2</strong> 发布了新的视频合成功能，支持单次 prompt 生成最高 2 分钟 4K 视频，并展示了与 AI 代码生成的深度集成能力，为多模态 AI 编程工具的应用场景打开新想象空间。
+        </div>
+        <div class="news-source">来源：<a href="https://news.daheiai.com/" target="_blank">大黑AI速报</a> · <a href="https://aidailyshot.com/blog/google-gemini-ultra-2-ai-video-generation-2026" target="_blank">AI Daily Shot</a></div>
+      </div>
+
+    </div>
+
+    <!-- 今日速览 -->
+    <div class="summary-box">
+      <div class="summary-title">📋 今日速览</div>
+      <ul class="summary-list">
+        <li>GPT-6 定档 4 月 14 日：Symphony 架构 + 200 万 Token，代码推理性能较 GPT-5.4 提升 40%</li>
+        <li>Meta 与 CoreWeave 签署 210 亿美元 AI 算力协议，史上最大云计算单笔订单覆盖至 2032 年</li>
+        <li>OpenAI 调整 Codex 订阅体系，推出 Pro $100 档位，配合 GPT-6 整合 AI 编程生态</li>
+        <li>扣子（Coze）2.5 发布：零代码构建复杂 AI Agent，虚拟世界式新基础设施上线</li>
+        <li>Anthropic Claude Mythos 限定 50 家合伙人访问，开源 GLM-5.1 反超闭源模型引发格局逆转</li>
+        <li>微软开源 MarkItDown 文档转换工具 + Gemini Ultra 2 发布 4K 视频合成，开发工具生态持续扩张</li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      <a href="/" class="back-btn">← 返回首页</a>
+      <span>AI 编程热点早报 · 每日 08:15 自动生成</span>
+      <span>2026年4月10日 · 星期五</span>
+    </div>
+  </div>
+</body>
+</html>

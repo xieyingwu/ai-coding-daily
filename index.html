@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点新闻</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .logo {
+      font-size: 64px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    h1 span { color: #6c63ff; }
+    .subtitle {
+      color: #8b90b0;
+      font-size: 15px;
+      margin-bottom: 36px;
+    }
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .card {
+      display: block;
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      border-radius: 14px;
+      padding: 16px 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, transform 0.2s;
+      text-align: left;
+    }
+    .card:hover {
+      border-color: #6c63ff;
+      transform: translateY(-2px);
+    }
+    .card-date {
+      font-size: 12px;
+      color: #6c63ff;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #eef0fb;
+    }
+    .card-desc {
+      font-size: 13px;
+      color: #8b90b0;
+      margin-top: 4px;
+    }
+    .latest {
+      border-color: rgba(108,99,255,0.4);
+      background: linear-gradient(135deg, #1a1d27, #1e1f30);
+    }
+    .latest .card-date { color: #00d4aa; }
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #4a4e6a;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">🤖</div>
+    <h1>AI 编程 <span>热点新闻</span></h1>
+    <p class="subtitle">每日 08:15 自动生成 · 覆盖全球AI编程工具动态</p>
+
+    <div class="cards">
+
+      <a class="card latest" href="/cursor-tips/" style="border-color: rgba(34,211,238,0.4); background: linear-gradient(135deg, #1a1d27, #0f1e27);">
+        <div class="card-date" style="color: #22d3ee;">📖 持续更新 · Cursor 每日技巧手册</div>
+        <div class="card-title">⌨️ Cursor 使用技巧专栏</div>
+        <div class="card-desc">每日从官方博客精选实用技巧 · 新手到进阶 · 边用边学</div>
+      </a>
+
+      <a class="card latest" href="/2026-04-30/">
+        <div class="card-date">🆕 最新 · 2026年4月30日 · Anthropic年化营收300亿超越OpenAI & Copilot/Claude同步涨价 & OpenAI开源Symphony Agent管理系统</div>
+        <div class="card-title">AI 编程热点 · 企业端AI收入逆转 · Token计费时代到来 · 3-5个Agent人类监督上限</div>
+        <div class="card-desc">共 7 条热点：Anthropic年化营收超OpenAI达300亿美元 / Copilot 6月Token计费+Claude Code Opus额外收费 / OpenAI工程师开源Symphony一人管3-5个Agent / DeepSeek V4上线识图（灰度）/ 英伟达Nemotron 3 Nano Omni全模态9倍吞吐量 / Claude打通Adobe等8大创意软件 / Kimi K2.6设计超Claude Design价格便宜7倍</div>
+      </a>
+
+      <a class="card latest" href="/2026-04-29/">
+        <div class="card-date">📅 2026年4月29日 · 工信部「AI+软件」专项行动 & Copilot Token计费 & Claude 9秒删库警报</div>
+        <div class="card-title">AI 编程热点 · 智能编程上升国家战略 · AI工具定价大洗牌 · GPT-5.5提示词范式转变</div>
+        <div class="card-desc">共 7 条热点：工信部「AI+软件」国家专项行动启动 / Copilot 6月起全面Token按量计费 / Claude Agent 9秒删生产库引安全警报 / GPT-5.5 Terminal-Bench 82.7% / xAI Grok Build正式发布 / 英伟达Nemotron 3 Nano多模态轻量模型 / 「模数共振」工业AI行动全面启动</div>
+      </a>
+
+      <a class="card latest" href="/2026-04-28/">
+        <div class="card-date">🆕 最新 · 2026年4月28日 · 谷歌75%代码AI生成 & OpenAI 7×24自主智能体 & Grok 4集成Cursor</div>
+        <div class="card-title">AI 编程热点 · 效率6倍提升 · Workspace Agents自主运行 · DeepSeek转向昇腾芯片</div>
+        <div class="card-desc">共 7 条热点：谷歌75%代码由AI生成（比1年前效率提升6倍）/ OpenAI Workspace Agents 7×24小时自主工作 / Anthropic定价风波当日撤回 / Grok 4集成Cursor超越o3 / DeepSeek V4全面转向华为昇腾950PR / Google I/O 2026预告Gemini 4 / 马斯克600亿收购Cursor的真实逻辑</div>
+      </a>
+
+      <a class="card latest" href="/2026-04-27/">
+        <div class="card-date">🆕 最新 · 2026年4月27日 · 谷歌400亿投Anthropic & Claude超越ChatGPT & Cursor v3.2多任务并行</div>
+        <div class="card-title">AI 编程热点 · Workspace Agents上线 · DeepSeek-V4英伟达加速 · AI融资占VC总量50%</div>
+        <div class="card-desc">共 7 条热点：谷歌400亿美元战略押注Anthropic / Claude超ChatGPT成美国下载第一 / OpenAI Workspace Agents发布 / DeepSeek-V4英伟达Blackwell24h适配 / Cursor v3.2多任务+工作树+多根工作区 / Cursor×SpaceX合作推进模型训练 / AI融资占全球VC市场50%</div>
+      </a>
+
+      <a class="card latest" href="/2026-04-26/">
+        <div class="card-date">🆕 最新 · 2026年4月26日 · SpaceX 600亿锁定Cursor & Grok 4集成Cursor & Claude Opus 4.7发布</div>
+        <div class="card-title">AI 编程热点 · SpaceX AI编程豪赌 · Cursor 3.1 画布+多智能体平铺 · Anthropic IPO筹备600亿</div>
+        <div class="card-desc">共 7 条热点：SpaceX 600亿收购权锁定Cursor / Claude Opus 4.7编码代理全面提升 / Grok 4集成Cursor超越o3 / Cursor ARR破20亿+英伟达拟参投 / Cursor 3.1画布与平铺上线 / Anthropic 600亿IPO筹备 / 全球AI投资370亿美元</div>
+      </a>
+
+      <a class="card" href="/2026-04-25/">
+        <div class="card-date">📅 2026年4月25日 · GPT-5.5重夺榜首 & DeepSeek V4开源1M上下文 & Claude Code超级审查上线</div>
+        <div class="card-title">AI 编程热点 · OpenAI SWE-Bench Pro 58.6% · DeepSeek V4 Anthropic协议兼容 · Qwen3.6-27B 4分钟写游戏</div>
+        <div class="card-desc">共 7 条热点：GPT-5.5发布重夺AI综合榜首 / DeepSeek V4开源1.6T+百万Token / Claude Code /ultrareview多Agent审查 / 阿里Qwen3.6-27B家用显卡可跑 / 四大工具2026横评 / OpenClaw 5周危机 / 4月AI编程月度盘点</div>
+      </a>
+
+      <a class="card latest" href="/2026-04-24/">
+        <div class="card-date">🆕 最新 · 2026年4月24日 · SpaceX Colossus超算加速Cursor & 应用崩溃率降80% & 英伟达Nemotron开源7.5倍提速</div>
+        <div class="card-title">AI 编程热点 · SpaceX确认600亿收购期权 · Cursor工程稳定性突破 · AI芯片涨价30%</div>
+        <div class="card-desc">共 7 条热点：SpaceX确认Cursor期权×600亿 / NAB遗留系统迁移3倍速深度复盘 / Cursor崩溃率降80%工程实践 / 英伟达Nemotron 3 Super开源 / HBM3e再涨30% / 国安部揭秘AI投毒黑产 / Claude Code vs Cursor终极横评</div>
+      </a>
+
+
+        <div class="card-date">🆕 最新 · 2026年4月23日 · SpaceX 600亿锁定Cursor & 谷歌布林督战追赶Anthropic & Kimi K2.6接入Claude Code</div>
+        <div class="card-title">AI 编程热点 · 马斯克AI编程豪赌 · 布林亲自组队攻坚 · NAB 6000人全面上线Cursor</div>
+        <div class="card-desc">共 7 条热点：SpaceX 600亿收购选项 / 谷歌布林突击队 / Kimi K2.6开源可接入Claude Code / Anthropic试探性取消Pro版Claude Code / NAB案例遗留系统迁移3倍速 / 福布斯AI 50强 / video-use开源剪视频</div>
+      </a>
+
+      <a class="card latest" href="/2026-04-22/">
+        <div class="card-date">🆕 最新 · 2026年4月22日 · Kimi K2.6开源 & 谷歌布林督战AI编码 & Codex Chronicle记忆图谱</div>
+        <div class="card-title">AI 编程热点 · Kimi对标GPT-5.4 · 谷歌追赶Anthropic · CLAUDE.md霸榜GitHub第一</div>
+        <div class="card-desc">共 7 条热点：Kimi K2.6开源300子Agent / 谷歌布林组突击队追赶Anthropic / Codex Chronicle屏幕记忆 / CLAUDE.md 61600星 / 腾讯QClaw出海5天99%AI写代码 / Cursor×SpaceX算力突破 / Cursor崩溃率降80%</div>
+      </a>
+
+      <a class="card latest" href="/2026-04-21/">
+        <div class="card-date">🆕 最新 · 2026年4月21日 · Anthropic Vibe Coding 22000行一天 & GitButler 1700万A轮 & 蚂蚁意图编程</div>
+        <div class="card-title">AI 编程热点 · 两周工作1天完成 · Agent版本控制融资 · 国产意图编程上线</div>
+        <div class="card-desc">共 7 条热点：Anthropic负责人22000行实战 / Claude Code 100万Token上下文技巧 / GitButler a16z 1700万 / 蚂蚁Wish Coding 2分钟出App / AtomCode国产开源 / Claude Code国内终极教程 / M5Paper墨水屏监控Agent</div>
+      </a>
+
+      <a class="card latest" href="/2026-04-20/">
+        <div class="card-date">🆕 最新 · 2026年4月20日 · Cursor融资20亿估值500亿 & Claude Code安全压测81%误放行 & OpenAI Agents SDK开源</div>
+        <div class="card-title">AI 编程热点 · Cursor史上最大融资 · Claude Computer Use登陆Windows · MCP突破9700万</div>
+        <div class="card-desc">共 7 条热点：Cursor 20亿融资英伟达跟投 / Claude Code Auto Mode 81%误放行 / OpenAI Agents SDK开源 / Claude Computer Use登陆Windows / DeepGEMM高性能内核 / MCP 9700万里程碑 / 《动手学大模型》v0.1.0</div>
+      </a>
+
+      <a class="card latest" href="/2026-04-19/">
+        <div class="card-date">🆕 最新 · 2026年4月19日 · 斯坦福AI报告中美差距2.7% & Claude Design上线 & AWS Kiro开放测试</div>
+        <div class="card-title">AI 编程热点 · 斯坦福AI报告 · Claude Design设计工具 · Opus 4.7实测提速30%</div>
+        <div class="card-desc">共 7 条热点：斯坦福报告中美差距2.7% / Claude Design对话驱动原型 / Opus 4.7视觉98.5% / AWS Kiro规格驱动IDE / Cursor研究任务量增44% / Gemini CLI免费黑马 / MCP STDIO标准普及</div>
+      </a>
+
+      <a class="card latest" href="/2026-04-18/">
+        <div class="card-date">🆕 最新 · 2026年4月18日 · Codex多智能体111插件 & Claude降智涨价 & Canvas画布上线</div>
+        <div class="card-title">AI 编程热点 · Codex桌面控制升级 · Claude性能下滑 · GitHub多模型Agent中心</div>
+        <div class="card-desc">共 7 条热点：Codex多智能体+111插件 / Claude降智实锤变相涨价 / GitHub Claude&Codex模型选择 / 官方Codex MCP插件 / Cursor Canvas画布 / Codex PM消亡论 / CLI工具SWE-bench终极横评</div>
+      </a>
+
+      <a class="card latest" href="/2026-04-17/">
+        <div class="card-date">🆕 最新 · 2026年4月17日 · Claude Opus 4.7发布 & OpenAI Codex超级应用 & Qwen3.6开源</div>
+        <div class="card-title">AI 编程热点 · Claude Opus 4.7 SWE-bench Pro 64.3% · Codex 90+插件 · Qwen3.6智能体编程</div>
+        <div class="card-desc">共 7 条热点：Claude Opus 4.7视觉准确率98.5% / Codex桌面控制 / Qwen3.6开源 / Claude Code Routines / Cursor杰文斯效应研究 / MaxHermes自主进化 / Windsurf 2.0云代理</div>
+      </a>
+
+      <a class="card latest" href="/2026-04-16/">
+        <div class="card-date">🆕 最新 · 2026年4月16日 · 智谱GLM-5.1超越Claude Opus & Llama 4评测争议</div>
+        <div class="card-title">AI 编程热点 · 智谱GLM-5.1编程8小时 & OpenClaw 31万Stars & AI编程智能体四大架构</div>
+        <div class="card-desc">共 7 条热点：GLM-5.1超越Opus4.6 / OpenClaw CVE修复 / Claude Code 28%领跑 / Llama 4争议 / 四大编程架构 / KTransformers单卡跑109B / 浙大AI纠错</div>
+      </a>
+
+      <a class="card latest" href="/2026-04-15/">
+        <div class="card-date">🆕 最新 · 2026年4月15日 · Cursor套壳争议 & 微软龙虾计划 & Claude降智</div>
+        <div class="card-title">AI 编程热点 · Cursor 套壳 Claude Code · 微软 OpenClaw · Claude 降智 64 倍费用</div>
+        <div class="card-desc">共 7 条热点：Cursor逆向套壳 / 微软龙虾计划 / Claude Opus降智 / OpenAI AGI白皮书 / Engramme记忆模型 / 明日新程Harness / MiniMax假开源</div>
+      </a>
+
+      <a class="card" href="/2026-04-14/">
+        <div class="card-date">📅 2026年4月14日 · GPT-6正式发布 & ChatGPT超级应用 & Stargate UK暂停</div>
+        <div class="card-title">AI 编程热点 · GPT-6 200万Token · ChatGPT 8520亿估值 · Claude Code 1M上下文</div>
+        <div class="card-desc">共 7 条热点：GPT-6 Spud发布 / ChatGPT超级应用 / Stargate UK暂停 / 十部门AI伦理审查 / Agent持久记忆 / DeepSeek V4 / Claude Code更新</div>
+      </a>
+
+      <a class="card" href="/2026-04-13/">
+        <div class="card-date">📅 2026年4月13日 · GPT-6明日发布 & DeepSeek V4灰测 & Cursor Marketplace 30+插件</div>
+        <div class="card-title">AI 编程热点 · GPT-6 Symphony架构 · DeepSeek V4 SWE-bench 83.7% · Agent持久记忆时代</div>
+        <div class="card-desc">共 7 条热点：GPT-6 200万Token / DeepSeek V4国产芯片适配 / Cursor 30+插件 / Berkeley基准漏洞 / Archon开源 / 通义千问10亿下载 / AI Agent持久记忆</div>
+      </a>
+
+      <a class="card" href="/2026-04-12/">
+        <div class="card-date">📅 2026年4月12日 · Claude Computer Use登陆Windows & Gemma 4开源 & 三强格局</div>
+        <div class="card-title">AI 编程热点 · Claude操控Windows · Gemma 4编程基准80% · 三足鼎立新数据</div>
+        <div class="card-desc">共 7 条热点：Claude Computer Use / Gemma 4 31B / Claude Code 28%领跑 / Cursor 3 Glass界面 / Microsoft MAI三件套 / Bugbot自我进化 / Anthropic收紧第三方</div>
+      </a>
+
+      <a class="card" href="/2026-04-11/">
+        <div class="card-date">📅 2026年4月11日 · GPT-6定档4/14 & JetBrains调研 & Q1融资纪录</div>
+        <div class="card-title">AI 编程热点 · GPT-6 Symphony架构 · Claude Code 6倍增长 · 2970亿融资</div>
+        <div class="card-desc">共 7 条热点：GPT-6 200万Token / Claude Code 18%工作使用率 / Q1融资2970亿 / Cursor Warp Decode / 自托管智能体 / OpenAI高管动荡</div>
+      </a>
+
+      <a class="card" href="/2026-04-10/">
+        <div class="card-date">🆕 最新 · 2026年4月10日 · GPT-6定档4/14 & CoreWeave 210亿 & Codex Pro新档位</div>
+        <div class="card-title">AI 编程热点 · GPT-6 Symphony架构 · Meta算力豪赌 · 扣子2.5发布</div>
+        <div class="card-desc">共 6 条热点：GPT-6 200万Token / Meta+CoreWeave / Codex Pro $100 / 扣子2.5 / Claude Mythos封锁 / MarkItDown开源</div>
+      </a>
+
+      <a class="card" href="/2026-04-09/">
+        <div class="card-date">📅 2026年4月9日 · Meta Muse Spark & Gemini Notebooks & AI自主研发加速</div>
+        <div class="card-title">AI 编程热点 · Meta超级智能实验室首发 · 供应链法律战 · Agent时代全面到来</div>
+        <div class="card-desc">共 6 条热点：Muse Spark / Gemini Notebooks / Anthropic法律战 / OpenAI IPO散户 / Cursor&amp;Claude Code横评</div>
+      </a>
+
+      <a class="card" href="/2026-04-08/">
+        <div class="card-date">📅 2026年4月8日 · Mythos 93.9% & GLM-5.1 开源 & LiteRT-LM 边缘推理</div>
+        <div class="card-title">AI 编程热点 · 下一代模型曝光 · 国产开源反攻 · 边缘 AI 编程</div>
+        <div class="card-desc">共 6 条热点：Mythos Preview / GLM-5.1 754B / LiteRT-LM / GitNexus / Eric Boyd 加入 Anthropic</div>
+      </a>
+
+      <a class="card" href="/2026-04-07/">
+        <div class="card-date">📅 2026年4月7日 · Anthropic 300亿营收 & AI代码安全 & Meta开源新模型</div>
+        <div class="card-title">AI 编程热点 · 算力扩张 · 代码安全 · 国产AI多箭齐发</div>
+        <div class="card-desc">共 6 条热点：Anthropic ARR 300亿 / AI代码安全危机 / Meta Llama 4 / Gemma 4 / 国产AI</div>
+      </a>
+
+      <a class="card" href="/2026-04-06/">
+        <div class="card-date">📅 2026年4月6日</div>
+        <div class="card-title">Claude Code三强格局 & Claude 4.5 & Kiro安全重置</div>
+        <div class="card-desc">共 6 条热点：Claude Code 46% / Claude 4.5 / Kiro 安全 / AgentKit 2.0 / Codex CLI</div>
+      </a>
+
+      <a class="card" href="/2026-04-05/">
+        <div class="card-date">📅 2026年4月5日</div>
+        <div class="card-title">Vercel Agent & Cursor 3.0 & Apple SSD</div>
+        <div class="card-desc">共 6 条热点：Vercel Agent / Apple SSD / Cursor 3.0 / 多智能体框架</div>
+      </a>
+
+      <a class="card" href="/2026-04-04/">
+        <div class="card-date">📅 2026年4月4日</div>
+        <div class="card-title">JetBrains调研 & Anthropic动态</div>
+        <div class="card-desc">共 6 条热点：调研报告 / 政策变更 / 模型发布 / 安全研究</div>
+      </a>
+
+      <a class="card" href="/2026-04-03/">
+        <div class="card-date">📅 2026年4月3日</div>
+        <div class="card-title">Harness 专题 · AI DevOps 全链路</div>
+        <div class="card-desc">共 5 条热点</div>
+      </a>
+
+      <a class="card" href="/2026-04-02/">
+        <div class="card-date">📅 2026年4月2日</div>
+        <div class="card-title">Claw Code 开源框架 · Claude Code 调研</div>
+        <div class="card-desc">共 8 条热点</div>
+      </a>
+
+      <a class="card" href="/2026-04-01/">
+        <div class="card-date">📅 2026年4月1日</div>
+        <div class="card-title">Claude Code 源码泄露 · OpenAI 1220亿融资</div>
+        <div class="card-desc">共 7 条热点</div>
+      </a>
+
+    </div>
+
+    <div class="footer">由 WorkBuddy AI 自动整理 · 仅供学习参考</div>
+  </div>
+</body>
+</html>

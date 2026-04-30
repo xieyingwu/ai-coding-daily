@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年4月23日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px 60px;
+    }
+    .container { max-width: 780px; margin: 0 auto; }
+    .header { text-align: center; margin-bottom: 36px; }
+    .header .date-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(0,212,170,0.15));
+      border: 1px solid rgba(108,99,255,0.4);
+      color: #a5b4fc;
+      font-size: 13px; font-weight: 600;
+      padding: 5px 16px; border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .header h1 { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .header h1 span { color: #6c63ff; }
+    .header .subtitle { font-size: 14px; color: #8b90b0; }
+    .section-title {
+      font-size: 13px; font-weight: 700; color: #6c63ff;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      margin-bottom: 14px; padding-bottom: 8px;
+      border-bottom: 1px solid #2a2d3e;
+    }
+    .news-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+    .news-card {
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      border-radius: 14px;
+      padding: 18px 20px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .news-card:hover { border-color: #6c63ff; transform: translateY(-1px); }
+    .news-card.top1 { border-color: rgba(251,191,36,0.35); background: linear-gradient(135deg, #1a1d27, #1f1e2a); }
+    .news-card-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+    .news-index {
+      width: 26px; height: 26px; border-radius: 8px;
+      background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: #a5b4fc; flex-shrink: 0;
+    }
+    .news-index.gold { background: rgba(251,191,36,0.15); border-color: rgba(251,191,36,0.35); color: #fbbf24; }
+    .news-title { font-size: 15px; font-weight: 600; color: #eef0fb; line-height: 1.5; }
+    .news-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+    .tag {
+      font-size: 11px; font-weight: 500;
+      padding: 2px 9px; border-radius: 6px;
+      background: #2a2d3e; color: #818cf8;
+    }
+    .tag.hot { background: rgba(248,113,113,0.1); color: #f87171; }
+    .tag.new { background: rgba(74,222,128,0.1); color: #4ade80; }
+    .tag.trend { background: rgba(34,211,238,0.1); color: #22d3ee; }
+    .tag.fund { background: rgba(251,191,36,0.1); color: #fbbf24; }
+    .news-body { font-size: 13.5px; color: #9ca3b4; line-height: 1.75; }
+    .news-body .hl { color: #a5b4fc; font-weight: 500; }
+    .news-body .hl-green { color: #4ade80; font-weight: 500; }
+    .news-body .hl-amber { color: #fbbf24; font-weight: 500; }
+    .news-footer {
+      margin-top: 10px; padding-top: 8px;
+      border-top: 1px solid #2a2d3e;
+      font-size: 12px; color: #5a5f7a;
+    }
+    .summary-box {
+      background: linear-gradient(135deg, #1a1d27, #1e1f30);
+      border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 14px; padding: 20px 22px;
+      margin-bottom: 30px;
+    }
+    .summary-box h3 { font-size: 15px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; }
+    .summary-box ul { padding-left: 18px; }
+    .summary-box li { font-size: 13.5px; color: #8b90b0; line-height: 1.7; margin-bottom: 4px; }
+    .summary-box li strong { color: #e8eaf6; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      color: #8b90b0; text-decoration: none; font-size: 14px;
+      padding: 10px 20px; border-radius: 10px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .back-link:hover { border-color: #6c63ff; color: #a5b4fc; }
+    .footer { text-align: center; margin-top: 40px; font-size: 12px; color: #3a3d52; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="date-badge">📅 2026年4月23日 · 星期四</div>
+    <h1>AI 编程 <span>热点新闻</span></h1>
+    <p class="subtitle">每日 08:15 自动生成 · 覆盖全球 AI 编程工具动态</p>
+  </div>
+
+  <div class="section-title">📰 今日 7 条热点</div>
+
+  <div class="news-list">
+
+    <!-- 1 -->
+    <div class="news-card top1">
+      <div class="news-card-header">
+        <div class="news-index gold">1</div>
+        <div class="news-title">SpaceX 600亿美元锁定 Cursor——马斯克豪赌 AI 编程，Cursor IPO前夜迎战略并购</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag hot">🔥 头条</span>
+        <span class="tag fund">资本大战</span>
+        <span class="tag">Cursor</span>
+        <span class="tag">SpaceX</span>
+      </div>
+      <div class="news-body">
+        SpaceX 正式宣布与 AI 编程工具 Cursor 达成协议，获得今年晚些时候以 <span class="hl-amber">600亿美元</span> 全资收购 Cursor 的选择权；若不行权，则向 Cursor 支付 <span class="hl-amber">100亿美元</span> 合作费。双方将结合 SpaceX 超算算力与 Cursor 的产品渠道，共同打造"全球最有用的模型"。此举被业界解读为马斯克在 <span class="hl">SpaceX 即将 IPO 前</span> 为资本市场构建 AI 叙事的关键落子，也是继上月 Cursor 拟融资20亿美元估值500亿后，行业估值再度暴涨的信号。
+      </div>
+      <div class="news-footer">来源：每日经济新闻 / 澎湃新闻 · 2026-04-22</div>
+    </div>
+
+    <!-- 2 -->
+    <div class="news-card">
+      <div class="news-card-header">
+        <div class="news-index">2</div>
+        <div class="news-title">谷歌布林亲自督战：成立精英 Gemini 编程攻坚队，追赶 Anthropic 54% 市占</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag trend">竞争格局</span>
+        <span class="tag">Google Gemini</span>
+        <span class="tag">Claude Code</span>
+      </div>
+      <div class="news-body">
+        据 The Information 内部备忘录，谷歌联合创始人 <span class="hl">谢尔盖·布林</span> 警告 Gemini 在"代理式自动编程"能力上落后于 Anthropic Claude，并亲自组建突击队加速攻关。目前 <span class="hl">Anthropic Claude Code 占 AI 编程市场 54% 份额</span>，年化收入达 140亿美元；而谷歌内部 AI 代码生成率仅50%。攻坚队核心任务：攻克从零编写软件等复杂长周期编程挑战，令 Gemini 成为真正的"主要开发者"。
+      </div>
+      <div class="news-footer">来源：IT之家 / 凤凰科技 · 2026-04-21</div>
+    </div>
+
+    <!-- 3 -->
+    <div class="news-card">
+      <div class="news-card-header">
+        <div class="news-index">3</div>
+        <div class="news-title">Kimi K2.6 开源上线 Claude Code——月之暗面旗舰代码模型可直接接入 Cursor 工作流</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag new">国产开源</span>
+        <span class="tag">Kimi K2.6</span>
+        <span class="tag">Claude Code</span>
+      </div>
+      <div class="news-body">
+        月之暗面正式发布并开源 <span class="hl">Kimi K2.6</span>，代码能力、长程任务执行和 Multi-Agent 协作全面升级：可不间断编码 <span class="hl-green">13小时</span>，编写/修改超 <span class="hl-green">4000行代码</span>，内部代码评测基准较上代 K2.5 提升约 20%，LMArena 开源榜全球第一。更重磅的是，官方推出配置教程，开发者可直接在 <span class="hl">Claude Code 中配置 Kimi K2.6</span> 作为后端模型，享受国产顶级代码模型能力。
+      </div>
+      <div class="news-footer">来源：腾讯新闻 / 站长之家 · 2026-04-21</div>
+    </div>
+
+    <!-- 4 -->
+    <div class="news-card">
+      <div class="news-card-header">
+        <div class="news-index">4</div>
+        <div class="news-title">Anthropic 短暂移除 Pro 用户 Claude Code 权限——AI 编程代理收费模式重构信号</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag hot">行业警示</span>
+        <span class="tag">Claude Code</span>
+        <span class="tag">定价策略</span>
+      </div>
+      <div class="news-body">
+        2026年4月22日，Anthropic 短暂将 Claude Code 从 <span class="hl">Pro 套餐权益中移除</span>，官方称系覆盖 2% 新专业用户的小范围测试，数小时后页面回滚。但这一举动已向市场释放明确信号：<span class="hl-amber">高消耗 AI 编程代理可能转向更高档位或按量计费</span>。结合 Anthropic 近期加速盈利化动作，开发者需关注 AI 编程工具订阅成本的潜在上涨风险。
+      </div>
+      <div class="news-footer">来源：AITNT 全球AI日报 · 2026-04-22</div>
+    </div>
+
+    <!-- 5 -->
+    <div class="news-card">
+      <div class="news-card-header">
+        <div class="news-index">5</div>
+        <div class="news-title">Cursor 大客户案例发布：NAB 银行 6000 名员工全面上线，遗留系统迁移速度提升 3 倍</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag new">官方案例</span>
+        <span class="tag trend">企业应用</span>
+        <span class="tag">Cursor</span>
+      </div>
+      <div class="news-body">
+        Cursor 官方博客今日发布 <span class="hl">National Australia Bank（NAB）</span> 客户案例：6000 名员工使用 Cursor，目标扩展至 10000+ 人（含 PM、设计师、管理层）。三大亮点：①将 Silverlight/.NET 单体应用迁移至 Java 微服务，速度提升 <span class="hl-green">3倍</span>；②核心银行 Assembly 大型机代码自动解析，省去"绿屏界面"人工翻译；③3周而非4个月完成全新支付 App，提速 <span class="hl-green">5-8倍</span>。NAB 还自建了 <span class="hl">NAB CEL 上下文工程库</span>，将 Cursor rules/skills/hooks 集中化管理。
+      </div>
+      <div class="news-footer">来源：cursor.com/cn/blog/nab · 2026-04-23</div>
+    </div>
+
+    <!-- 6 -->
+    <div class="news-card">
+      <div class="news-card-header">
+        <div class="news-index">6</div>
+        <div class="news-title">福布斯 2026 AI 50强榜单发布：OpenAI、Anthropic 领衔，累计融资 2426 亿美元</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag fund">行业格局</span>
+        <span class="tag">福布斯</span>
+        <span class="tag">AI生态</span>
+      </div>
+      <div class="news-body">
+        福布斯发布第八届 <span class="hl">AI 50强</span> 榜单，OpenAI、Anthropic 两家 AI 巨头累计融资 <span class="hl-amber">2426亿美元</span>（约合 1.66 万亿人民币），占全部 50 强总融资额的主要部分。本届 20 家新上榜公司，AI 编程工具相关企业持续高频出现。这一数据侧面印证了资本对 AI 编程赛道的极度集中押注。
+      </div>
+      <div class="news-footer">来源：IT之家 / MSN · 2026-04-21</div>
+    </div>
+
+    <!-- 7 -->
+    <div class="news-card">
+      <div class="news-card-header">
+        <div class="news-index">7</div>
+        <div class="news-title">browser-use 开源 video-use：Claude Code 免费剪视频，去口癖+字幕+调色全自动</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag new">开源工具</span>
+        <span class="tag">Claude Code</span>
+        <span class="tag">自动化</span>
+      </div>
+      <div class="news-body">
+        browser-use 团队于 4月22日开源免费的 Claude Code 视频剪辑技能 <span class="hl">video-use</span>，可自动完成去口癖、添加字幕、调色等全流程视频剪辑，自带自检功能保障输出质量。这是继 browser-use 网页自动化之后，该团队将 AI Agent 能力延伸至视频内容生产的新尝试，已登上 GitHub Trending。对于技术博主、教程制作者具有极大实用价值。
+      </div>
+      <div class="news-footer">来源：AITNT 全球AI日报 · 2026-04-22</div>
+    </div>
+
+  </div>
+
+  <!-- 今日摘要 -->
+  <div class="summary-box">
+    <h3>📌 今日核心趋势</h3>
+    <ul>
+      <li><strong>资本格局：</strong>SpaceX 600亿美元收购选择权锁定 Cursor，AI 编程赛道估值天花板再被抬高</li>
+      <li><strong>市场竞争：</strong>Anthropic 54% 市占压力下，谷歌布林亲自下场，AI 编程"三国杀"白热化</li>
+      <li><strong>国产崛起：</strong>Kimi K2.6 开源可接入 Claude Code，国产模型进入全球 AI 编程主流工作流</li>
+      <li><strong>企业采用：</strong>NAB 案例标志 AI 编程工具从"开发者玩具"正式进入大型企业核心系统迁移</li>
+      <li><strong>定价风险：</strong>Anthropic 试探性移除 Pro 版 Claude Code 权限，AI 编程成本上行压力需关注</li>
+    </ul>
+  </div>
+
+  <div style="text-align:center;">
+    <a class="back-link" href="/">← 返回首页</a>
+  </div>
+
+  <div class="footer">
+    <p>AI 编程热点新闻 · 每日 08:15 自动生成 · 2026年4月23日</p>
+  </div>
+
+</div>
+</body>
+</html>

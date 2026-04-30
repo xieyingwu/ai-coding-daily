@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 编程热点 · 2026年4月15日</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card-bg: #1a1d27;
+      --card-hover: #21253a;
+      --border: #2a2d3a;
+      --text: #e2e8f0;
+      --text-muted: #8892a4;
+      --accent: #6366f1;
+      --accent-glow: rgba(99,102,241,0.15);
+      --green: #4ade80;
+      --amber: #fbbf24;
+      --red: #f87171;
+      --cyan: #22d3ee;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 32px 20px 60px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .header { margin-bottom: 32px; }
+    .header-top {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px; margin-bottom: 12px;
+    }
+    .header-left { display: flex; align-items: center; gap: 14px; }
+    .header-icon { font-size: 40px; }
+    .header-text h1 { font-size: 22px; font-weight: 700; color: #fff; }
+    .header-text .meta { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+    .date-badge {
+      background: linear-gradient(135deg, rgba(248,113,113,0.2), rgba(251,191,36,0.2));
+      border: 1px solid rgba(248,113,113,0.35);
+      color: #fca5a5; font-size: 13px; font-weight: 700;
+      padding: 6px 16px; border-radius: 20px;
+    }
+
+    .summary-bar {
+      background: var(--card-bg); border: 1px solid rgba(99,102,241,0.3);
+      border-radius: 12px; padding: 14px 18px;
+      display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+    }
+    .sum-item { font-size: 13px; color: var(--text-muted); }
+    .sum-item strong { color: #a5b4fc; }
+    .divider-dot { color: #3a3d52; }
+
+    .section-title {
+      font-size: 13px; font-weight: 700; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.06em;
+      margin: 28px 0 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-title::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    .news-list { display: flex; flex-direction: column; gap: 12px; }
+    .news-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 14px; padding: 18px 20px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .news-card:hover { border-color: var(--accent); background: var(--card-hover); }
+    .news-card.hot { border-color: rgba(251,191,36,0.3); }
+    .news-card.top { border-color: rgba(248,113,113,0.3); }
+
+    .news-top {
+      display: flex; align-items: flex-start; gap: 12px; margin-bottom: 8px;
+    }
+    .news-num {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: var(--accent-glow); border: 1px solid rgba(99,102,241,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: #a5b4fc; flex-shrink: 0;
+    }
+    .news-card.top .news-num { background: rgba(248,113,113,0.12); border-color: rgba(248,113,113,0.3); color: var(--red); }
+    .news-card.hot .news-num { background: rgba(251,191,36,0.12); border-color: rgba(251,191,36,0.3); color: var(--amber); }
+
+    .news-title { font-size: 15px; font-weight: 600; color: #fff; line-height: 1.5; }
+    .news-title a { color: #fff; text-decoration: none; }
+    .news-title a:hover { color: #a5b4fc; }
+
+    .news-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; margin-top: 8px; }
+    .tag {
+      background: var(--tag-bg, #2a2d3a); color: var(--tag-text, #818cf8);
+      font-size: 11px; font-weight: 500;
+      padding: 3px 9px; border-radius: 6px;
+    }
+    .tag.green { background: rgba(74,222,128,0.1); color: var(--green); }
+    .tag.amber { background: rgba(251,191,36,0.1); color: var(--amber); }
+    .tag.red { background: rgba(248,113,113,0.1); color: var(--red); }
+    .tag.cyan { background: rgba(34,211,238,0.1); color: var(--cyan); }
+
+    .news-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+    .back-home {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--card-bg); border: 1px solid var(--border);
+      color: var(--text-muted); text-decoration: none; font-size: 14px;
+      padding: 10px 20px; border-radius: 10px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .back-home:hover { border-color: var(--accent); color: #a5b4fc; }
+
+    .footer { margin-top: 40px; text-align: center; font-size: 12px; color: #3a3d52; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="header-top">
+      <div class="header-left">
+        <div class="header-icon">🤖</div>
+        <div class="header-text">
+          <h1>AI 编程热点 · 2026年4月15日</h1>
+          <div class="meta">每日 08:15 自动生成 · 覆盖全球 AI 编程工具动态</div>
+        </div>
+      </div>
+      <div class="date-badge">💥 Cursor 套壳争议</div>
+    </div>
+    <div class="summary-bar">
+      <span class="sum-item">共 <strong>7</strong> 条热点</span>
+      <span class="divider-dot">·</span>
+      <span class="sum-item">Cursor 套壳风波</span>
+      <span class="divider-dot">·</span>
+      <span class="sum-item">微软龙虾计划</span>
+      <span class="divider-dot">·</span>
+      <span class="sum-item">Claude 降智争议</span>
+      <span class="divider-dot">·</span>
+      <span class="sum-item">Engram 记忆模型</span>
+    </div>
+  </div>
+
+  <div class="section-title">📰 今日热点</div>
+  <div class="news-list">
+
+    <div class="news-card top">
+      <div class="news-top">
+        <div class="news-num">1</div>
+        <div class="news-title"><a href="https://www.chooseai.net/news/3307/" target="_blank">💥 Cursor 3.0 被深度逆向：实锤套壳 Claude Code，字符串替换伪装自研？500亿估值面临信任危机</a></div>
+      </div>
+      <div class="news-tags">
+        <span class="tag red">🔥 头条</span>
+        <span class="tag">Cursor</span>
+        <span class="tag">Claude Code</span>
+        <span class="tag">逆向分析</span>
+        <span class="tag amber">争议</span>
+      </div>
+      <div class="news-desc">AI 编程工具 Cursor 3.0 遭开发者深度逆向分析，核心结论令人震惊：Cursor 安装包中直接内置了 Anthropic 官方的 Claude Code Agent 开发工具，通过简单的字符串替换将 "Claude" 改为 "Cursor" 伪装自研。逆向分析显示，其所谓"自研 Agent""自主产权 AI 大脑"本质上是对 Claude Code 的套壳封装。Cursor 官方回应称相关方案仅为占比不到 1% 的 A/B 测试，但开发者社区并不买账——这是 Cursor 在继 Composer 2 被指套壳 Kimi K2.5 之后的第二次套壳争议。500 亿美元估值面临前所未有的信任危机。</div>
+    </div>
+
+    <div class="news-card top">
+      <div class="news-top">
+        <div class="news-num">2</div>
+        <div class="news-title"><a href="https://news.qq.com/rain/a/20260415A03DV400" target="_blank">🦞 微软「龙虾计划」曝光：纳德拉紧急拉 12 人精锐，重组 Copilot 对标 Claude Code，6月 Build 大会亮相</a></div>
+      </div>
+      <div class="news-tags">
+        <span class="tag red">🔥 头条</span>
+        <span class="tag">微软</span>
+        <span class="tag">Copilot</span>
+        <span class="tag">OpenClaw</span>
+        <span class="tag">Agent</span>
+      </div>
+      <div class="news-desc">微软 CEO 纳德拉秘密重组 Copilot 工程团队，组建 12 人精锐小组开发代号「龙虾」(OpenClaw) 的开源 AI Agent 框架，计划在 6 月 Build 大会上正式亮相。该框架将直接对标 Anthropic 的 Claude Code 和 OpenAI 的 Codex，目标是夺回被 Claude 蚕食的 AI 办公市场份额。消息人士称，微软对当前 Copilot 在编程领域的竞争力感到焦虑——Claude Code 已占据约 4% 的 GitHub 公共提交量，且增长迅猛。OpenClaw 将主打开源生态，允许企业自托管部署。</div>
+    </div>
+
+    <div class="news-card hot">
+      <div class="news-top">
+        <div class="news-num">3</div>
+        <div class="news-title"><a href="https://aitntnews.com/ainews/zh-CN" target="_blank">⚠️ Claude Opus 4.6 被曝「降智」：默认推理深度降 67%，用户 Token 消耗暴涨 64 倍，大量用户投诉</a></div>
+      </div>
+      <div class="news-tags">
+        <span class="tag amber">⚡ 争议</span>
+        <span class="tag">Claude</span>
+        <span class="tag">Anthropic</span>
+        <span class="tag">降智</span>
+        <span class="tag red">成本</span>
+      </div>
+      <div class="news-desc">Anthropic 旗下 Claude Opus 4.6 被大量用户反馈体验明显变差。原因在于 Anthropic 调整了默认推理深度为"中等"并缩短了提示词缓存时长，导致模型思考深度降低约 67%。与此同时，由于缓存命中率下降，用户 Token 消耗暴涨约 64 倍——使用效果变差但费用飙升，引发开发者社区强烈不满。对 AI 编程的影响：依赖 Claude Code 和 Claude API 的开发者面临效率下降和成本上升的双重打击，部分用户已开始转向 DeepSeek V4 或等待 GPT-6 适配。</div>
+    </div>
+
+    <div class="news-card hot">
+      <div class="news-top">
+        <div class="news-num">4</div>
+        <div class="news-title"><a href="https://aitntnews.com/ainews/zh-CN" target="_blank">🌐 OpenAI 发布 AGI 时代产业政策白皮书：提出公共财富基金、四天工作制等方案</a></div>
+      </div>
+      <div class="news-tags">
+        <span class="tag">OpenAI</span>
+        <span class="tag">AGI</span>
+        <span class="tag">政策白皮书</span>
+        <span class="tag green">社会影响</span>
+      </div>
+      <div class="news-desc">OpenAI 于 4 月 14 日发布 13 页 AGI 时代产业政策白皮书，坦诚承认 AI 收益可能集中于少数企业，提出多项社会调节方案：公共财富基金（将 AI 收益分配给全民）、四天工作制（因 AGI 替代大量劳动）、全民基本收入试点等。白皮书同时建议各国政府建立 AI 安全监管框架，并呼吁国际协作防止 AI 军备竞赛。这是 OpenAI 首次以官方身份就 AGI 的社会经济影响进行系统性的政策建议，预示着 AI 行业正从"技术竞争"转向"社会影响应对"的新阶段。</div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">5</div>
+        <div class="news-title"><a href="https://aitntnews.com/ainews/zh-CN" target="_blank">🧠 哈佛 AI 实验室 Engramme 融资 1 亿美元：做「记忆模型」，让 AI 自动记住你的数字生活</a></div>
+      </div>
+      <div class="news-tags">
+        <span class="tag cyan">💡 趋势</span>
+        <span class="tag">Engramme</span>
+        <span class="tag">记忆模型</span>
+        <span class="tag">哈佛</span>
+        <span class="tag">融资</span>
+      </div>
+      <div class="news-desc">从哈佛大学独立出来的 AI 实验室 Engramme 正洽谈约 1 亿美元融资，估值最高或达 10 亿美元。其核心研发方向是「大型记忆模型」——让 AI 无需用户提示即可自动调取个人数字生活的相关信息（邮件、文档、聊天记录等）。这与当前 Claude Code 的 CLAUDE.md 手动配置记忆、Copilot 的 Agentic Memory 形成互补——Engramme 想做的是 AI 记忆的「操作系统级」方案。对 AI 编程的潜在影响：未来编程 Agent 可能具备"记住你所有项目历史"的能力，大幅减少重复沟通成本。</div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">6</div>
+        <div class="news-title"><a href="https://aitntnews.com/ainews/zh-CN" target="_blank">💰 李开复、陆奇重仓 Harness 智能体公司「明日新程」，4 个月两轮融资，资金可撑 3-5 年</a></div>
+      </div>
+      <div class="news-tags">
+        <span class="tag">Harness</span>
+        <span class="tag">Agent 基座</span>
+        <span class="tag">融资</span>
+        <span class="tag">李开复</span>
+        <span class="tag green">国产</span>
+      </div>
+      <div class="news-desc">微软小冰创始团队负责人李笛创办的 AI 初创公司「明日新程」成立仅 4 个月已连续完成两轮融资，投资方包括李开复的创新工场和陆奇的奇绩创坛。公司核心布局 Harness 技术——可提升多智能体协作稳定性的基座方案，正与上海交大的 Harness 综述研究形成产学研联动。Harness 被视为 Agent 时代的"统管一切"的基座架构，可管理记忆、技能和协议三大核心能力。对 AI 编程的影响：更稳定的 Agent 协作框架意味着多 Agent 并行编程（如 Cursor 3 的并行 Agent）将更可靠。</div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">7</div>
+        <div class="news-title"><a href="https://aitntnews.com/ainews/zh-CN" target="_blank">🔧 MiniMax M2.7 修改开源授权限制商用引发争议，AI 开源信任危机加剧</a></div>
+      </div>
+      <div class="news-tags">
+        <span class="tag">MiniMax</span>
+        <span class="tag">开源</span>
+        <span class="tag">M2.7</span>
+        <span class="tag amber">争议</span>
+        <span class="tag">授权</span>
+      </div>
+      <div class="news-desc">MiniMax 近期变更旗下 M2.7 大模型的开源授权条款：限制商业使用需获得书面授权、商用需标注来源，但仍保留 Modified MIT 标识。这一「挂羊头卖狗肉」的做法引发开发者社区强烈抗议，被称为"假开源"。在 Cursor 套壳争议之后，AI 领域的开源信任问题再度升温。对开发者的影响：使用国产开源模型进行编程辅助时需仔细审查授权条款，避免法律风险。这也促使更多开发者转向真正开放的模型如 DeepSeek V4 或 Google 的 Gemma 4（Apache 2.0 许可）。</div>
+    </div>
+
+  </div>
+
+  <div class="section-title">📌 编辑观察</div>
+  <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; margin-bottom: 28px;">
+    <p style="font-size: 14px; color: var(--text-muted); line-height: 1.8;">
+      <strong style="color: #fff;">AI 编程工具信任风暴日。</strong> 今天可能是 2026 年 AI 编程领域最魔幻的一天——Cursor 被实锤套壳 Claude Code、Claude Opus 4.6 悄悄降智导致费用暴涨、MiniMax 假开源被骂上热搜。三大工具同日翻车，开发者社区炸了。与此同时，微软「龙虾计划」曝光，纳德拉亲自动手重组 Copilot 团队，意图用开源框架 OpenClaw 对标 Claude Code——6 月 Build 大会有好戏看。OpenAI 的 AGI 政策白皮书则提醒我们：在技术竞争之外，AI 的社会影响已不可忽视。对开发者的建议：保持工具选择的灵活性，不要绑定单一平台——Cursor、Claude Code、Codex CLI 都有各自的风险和机遇。
+    </p>
+  </div>
+
+  <a class="back-home" href="/">← 返回首页</a>
+
+  <div class="footer">由 WorkBuddy AI 自动整理 · 仅供学习参考</div>
+</div>
+</body>
+</html>

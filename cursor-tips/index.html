@@ -1,0 +1,2294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursor 每日技巧 · AI 编程提升手册</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card-bg: #1a1d27;
+      --card-hover: #21253a;
+      --border: #2a2d3a;
+      --text: #e2e8f0;
+      --text-muted: #8892a4;
+      --accent: #6366f1;
+      --accent-glow: rgba(99,102,241,0.15);
+      --tag-bg: #2a2d3a;
+      --tag-text: #818cf8;
+      --green: #4ade80;
+      --amber: #fbbf24;
+      --red: #f87171;
+      --cyan: #22d3ee;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 32px 20px 60px;
+    }
+    .container { max-width: 820px; margin: 0 auto; }
+
+    .header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 12px; flex-wrap: wrap; gap: 12px;
+    }
+    .header-left { display: flex; align-items: center; gap: 14px; }
+    .header-icon { font-size: 38px; }
+    .header-text h1 { font-size: 24px; font-weight: 700; color: #fff; }
+    .header-text .meta { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+    .badge {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: #fff; font-size: 12px; font-weight: 600;
+      padding: 4px 14px; border-radius: 20px;
+    }
+
+    .desc-bar {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 14px 18px; margin-bottom: 28px;
+      font-size: 14px; color: var(--text-muted); line-height: 1.7;
+    }
+    .desc-bar strong { color: var(--text); }
+
+    .day-entry { margin-bottom: 40px; }
+    .day-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 16px;
+    }
+    .day-tag {
+      background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2));
+      border: 1px solid rgba(99,102,241,0.35);
+      color: #a5b4fc; font-size: 12px; font-weight: 700;
+      padding: 4px 12px; border-radius: 8px;
+      white-space: nowrap;
+    }
+    .day-title { font-size: 17px; font-weight: 700; color: #fff; }
+    .day-divider { flex: 1; height: 1px; background: var(--border); }
+
+    .tips-grid { display: flex; flex-direction: column; gap: 14px; }
+    .tip-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 14px; padding: 20px 22px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .tip-card:hover { border-color: var(--accent); background: var(--card-hover); }
+    .tip-card.featured { border-color: rgba(251,191,36,0.3); }
+
+    .tip-top { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+    .tip-icon {
+      width: 32px; height: 32px; border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+      background: var(--accent-glow); border: 1px solid rgba(99,102,241,0.25);
+    }
+    .tip-title { font-size: 15px; font-weight: 600; color: #fff; line-height: 1.45; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .tag {
+      background: var(--tag-bg); color: var(--tag-text);
+      font-size: 11px; font-weight: 500;
+      padding: 3px 9px; border-radius: 6px;
+    }
+    .tag.green { background: rgba(74,222,128,0.1); color: var(--green); }
+    .tag.amber { background: rgba(251,191,36,0.1); color: var(--amber); }
+    .tag.red { background: rgba(248,113,113,0.1); color: var(--red); }
+    .tag.cyan { background: rgba(34,211,238,0.1); color: var(--cyan); }
+
+    .tip-body { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
+    .tip-body p { margin-bottom: 8px; }
+    .tip-body ul { padding-left: 18px; }
+    .tip-body li { margin-bottom: 5px; }
+    .tip-body .hl { color: #a5b4fc; font-weight: 500; }
+    .tip-body .code {
+      background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.2);
+      color: #c4b5fd; font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 12px; padding: 2px 7px; border-radius: 5px;
+    }
+
+    .tip-footer {
+      margin-top: 12px; padding-top: 10px;
+      border-top: 1px solid rgba(42,45,58,0.8);
+      font-size: 12px; color: #5a5f7a;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+    }
+    .tip-footer a { color: #6366f1; text-decoration: none; }
+    .tip-footer a:hover { text-decoration: underline; }
+
+    .back-home {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--card-bg); border: 1px solid var(--border);
+      color: var(--text-muted); text-decoration: none; font-size: 14px;
+      padding: 10px 20px; border-radius: 10px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .back-home:hover { border-color: var(--accent); color: #a5b4fc; }
+    .site-footer { margin-top: 40px; text-align: center; font-size: 12px; color: #3a3d52; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <div class="header-icon">⌨️</div>
+      <div class="header-text">
+        <h1>Cursor 每日技巧</h1>
+        <div class="meta">📖 来源：cursor.com/cn/blog · 每日更新 · 帮你真正用好 AI 编程</div>
+      </div>
+    </div>
+    <div class="badge">持续更新中</div>
+  </div>
+
+  <div class="desc-bar">
+    <strong>这是什么？</strong> 每天从 Cursor 官方博客精选 1-3 个<strong>实用技巧或使用场景</strong>，用大白话讲清楚——你能学到什么、怎么用、什么时候用。从新手到进阶，边用边学。
+  </div>
+
+  <!-- ========== 2026-04-30 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月30日</span>
+      <span class="day-title">Cursor SDK 程序化智能体 · 稳定性双轨法 · 用「监督预算」管理 AI 团队</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <!-- 技巧1: Cursor SDK -->
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🔧</div>
+          <div class="tip-title">Cursor SDK：写代码来「驾驶」Cursor，把重复性任务变成自动化脚本</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">🆕 官方最新</span>
+          <span class="tag green">自动化</span>
+          <span class="tag">程序化控制</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          Cursor 官方 4 月 29 日发布 <span class="hl">Cursor SDK</span>——一套让你用代码程序化控制 Cursor 的工具库。你可以写脚本，让脚本自动驱动 Cursor 完成一系列编程任务，就像写自动化测试一样写「自动化编程」。
+          </p>
+          <p><strong>怎么用？</strong></p>
+          <ul>
+            <li>通过 SDK API 启动 Cursor Agent、传入任务描述、接收完成结果</li>
+            <li>把重复性批量任务封装为脚本（批量生成单测、批量重构命名）</li>
+            <li>串联多个 Agent 任务，构建完整的自动化开发管线</li>
+          </ul>
+          <p><strong>适合什么场景？</strong><br>
+          想在 CI 里自动让 Cursor 审查代码；有大量 Java→Kotlin 批量迁移需求；想把 Cursor 能力集成进团队工具链。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：<a href="https://cursor.com/cn/blog" target="_blank">Cursor 官方博客</a> · 2026-04-29</span>
+          <span>适合：团队 / 自动化开发流程</span>
+        </div>
+      </div>
+
+      <!-- 技巧2: 稳定性双轨法 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🛡️</div>
+          <div class="tip-title">「双轨稳定法」：三个操作让 Cursor Agent 任务崩溃率从 40% 降到 10%</div>
+        </div>
+        <div class="tags">
+          <span class="tag cyan">官方研究</span>
+          <span class="tag green">稳定性</span>
+          <span class="tag">最佳实践</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          Cursor 官方《保持 Cursor 应用稳定》研究总结了让 Agent 任务成功率大幅提升的方法——核心是保持一条可随时回退的稳定主线路。
+          </p>
+          <p><strong>3 个核心操作：</strong></p>
+          <ul>
+            <li><strong>小步提交</strong>：让 AI 每完成一个小功能就 git commit，不要一次性改一大堆</li>
+            <li><strong>明确边界</strong>：用 <span class="code">.cursorignore</span> 或在 prompt 里告诉 Cursor「这些文件不要动」</li>
+            <li><strong>测试优先</strong>：先让 Cursor 写测试再写实现，测试挂了就是退出信号</li>
+          </ul>
+          <p><strong>效果：</strong> 实践者反馈按照这套方法，崩溃率可从 40% 降到 10% 以内。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：<a href="https://cursor.com/cn/blog" target="_blank">保持 Cursor 应用稳定</a> · 2026-04-21</span>
+          <span>适合：所有用户 / 长任务开发</span>
+        </div>
+      </div>
+
+      <!-- 技巧3: 监督预算 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">📊</div>
+          <div class="tip-title">「监督预算」原则：同时管 3 个 Agent，比管 10 个效率更高——OpenAI 研究 × Cursor 实践</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Agent 管理</span>
+          <span class="tag green">工作流</span>
+          <span class="tag amber">效率提升</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          OpenAI 工程师研究：人类对 coding agent 的有效监督上限约为 <span class="hl">3-5 个</span>，超过后质量显著下滑。在 Cursor 里主动控制并发 Agent 数量，反而总体效率更高。
+          </p>
+          <p><strong>怎么用？</strong></p>
+          <ul>
+            <li>同时跑的 Agent 任务最多 3 个，其他排队，避免注意力分散</li>
+            <li>启动每个 Agent 时在 prompt 里要求「完成后输出 50 字结果摘要」，便于快速验收</li>
+            <li>把复杂大任务拆成 3 个独立小任务，而不是把所有细节塞进一个超长 prompt</li>
+          </ul>
+          <p><strong>为什么有效？</strong><br>
+          超过 5 个 Agent 后，切换上下文花的时间比 Agent 帮你省的时间还多。少而精 > 多而乱。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：OpenAI Symphony 研究 × Cursor 多任务实践 · 2026-04-30</span>
+          <span>适合：团队协作 / 多任务开发</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-29 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月29日</span>
+      <span class="day-title">v3.2 多任务并行革命 · /multitask 异步子 Agent · 工作树多分支并行 · 多根跨仓工作区</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <!-- 技巧1: /multitask 多任务处理 -->
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🚀</div>
+          <div class="tip-title">Cursor v3.2 新功能：/multitask 让 AI 同时处理多个任务，彻底告别排队等待</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">🆕 v3.2 新功能</span>
+          <span class="tag green">效率倍增</span>
+          <span class="tag">多任务并行</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          Cursor v3.2 推出了 <span class="code">/multitask</span> 命令，输入后 Cursor 会启动多个<span class="hl">异步子智能体</span>同时处理你的请求，而不是把任务排队一个个来。就好比你从「一人干活」升级为「指挥一个 AI 开发小组」。
+          </p>
+          <p><strong>怎么用？</strong></p>
+          <ul>
+            <li>在对话框输入 <span class="code">/multitask</span> + 你的任务描述</li>
+            <li>Cursor 会自动把大任务拆成小块，分配给多个子 Agent 并行完成</li>
+            <li>队列里有消息也没关系——可以直接对排队中的消息执行多任务，不用等当前任务跑完</li>
+          </ul>
+          <p><strong>适合什么场景？</strong><br>
+          需要同时做多个独立功能（如：「给用户模块加验证 + 给订单模块加缓存 + 更新 API 文档」）；有大量相似重复性工作（批量重构、批量测试生成）；希望在 AI 处理任务时自己不用干等。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：<a href="https://cursor.com/changelog/04-24-26" target="_blank">Cursor v3.2 更新日志</a> · 2026-04-24</span>
+          <span>适合：所有用户 / 多任务开发</span>
+        </div>
+      </div>
+
+      <!-- 技巧2: 工作树 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🌿</div>
+          <div class="tip-title">工作树（Worktrees）：在多个 Git 分支上同时推进任务，一键切换查看结果</div>
+        </div>
+        <div class="tags">
+          <span class="tag cyan">🆕 v3.2 新功能</span>
+          <span class="tag">多分支并行</span>
+          <span class="tag green">Git 工作流</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          v3.2 在智能体窗口新增了改进版「工作树」功能。你可以让 AI 在不同 Git 分支上<span class="hl">后台隔离运行任务</span>，互不干扰。不用再「完成功能A才能开始功能B」。
+          </p>
+          <p><strong>怎么用？</strong><br>
+          在智能体窗口点击工作树选项，选择目标分支，Cursor 会在后台独立运行该分支的任务。想查看进度，一键将任意分支切到前台即可。
+          </p>
+          <p><strong>适合什么场景？</strong><br>
+          并行开发多个特性分支；对同一需求尝试不同实现方案（A/B方案同步推进，最后比较选优）；在主分支做紧急修复的同时，不中断功能开发分支。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：<a href="https://cursor.com/docs/configuration/worktrees" target="_blank">Cursor 工作树文档</a> · 2026-04-24</span>
+          <span>适合：全栈开发 / 多特性并行</span>
+        </div>
+      </div>
+
+      <!-- 技巧3: 多根工作区 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">📂</div>
+          <div class="tip-title">多根工作区：一次对话同时修改前端、后端、共享库——跨仓库再也不用来回切换</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">🆕 v3.2 新功能</span>
+          <span class="tag">跨仓库</span>
+          <span class="tag cyan">全栈开发</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          单个 Agent 会话现在可以将目标设置为由<span class="hl">多个文件夹组成的可复用工作区</span>。比如你可以把「前端仓库 + 后端仓库 + 共享库」一起加进来，Cursor 就能在一次对话中跨仓库修改代码。
+          </p>
+          <p><strong>怎么用？</strong><br>
+          在智能体窗口设置多根工作区，将多个项目文件夹添加进去保存为工作区配置。下次打开直接复用，不用每次重新指定仓库路径。
+          </p>
+          <p><strong>适合什么场景？</strong><br>
+          微服务架构（服务A + 服务B + 公共模块同步改）；全栈项目（React前端 + Node后端同时更新接口）；Monorepo 拆分后需要跨包修改的场景。修改 API 时，前后端对齐一步搞定。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：<a href="https://cursor.com/changelog/04-24-26" target="_blank">Cursor v3.2 多根工作区</a> · 2026-04-24</span>
+          <span>适合：全栈 / 微服务 / 多仓架构</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-28 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月28日</span>
+      <span class="day-title">NAB 模型灵活选择策略 · 双轨调试稳定性法 · 杰文斯效应升级版</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <!-- 技巧1: 模型灵活选择 -->
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🎯</div>
+          <div class="tip-title">NAB 实战经验：根据任务复杂度灵活切换模型，每月可节省数万元 API 费用</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">💡 企业实战</span>
+          <span class="tag green">成本优化</span>
+          <span class="tag">模型选择</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          澳大利亚国家银行 NAB 有6000名工程师，他们总结出一套"按任务选模型"的原则——不是所有任务都要用最贵的模型，<span class="hl">用对模型比用好模型更重要</span>。
+          </p>
+          <p><strong>怎么分？</strong></p>
+          <ul>
+            <li><strong>简单任务</strong>（UI改动、变量命名、注释生成）→ 用便宜模型，如 <span class="code">claude-haiku</span> 或 <span class="code">gpt-4o-mini</span></li>
+            <li><strong>中等任务</strong>（功能开发、API对接、Bug修复）→ 用标准模型，如 <span class="code">claude-sonnet</span></li>
+            <li><strong>复杂任务</strong>（架构设计、跨系统迁移、安全审查）→ 用思考模型，如 <span class="code">claude-opus</span> 或 <span class="code">o3</span></li>
+          </ul>
+          <p><strong>在 Cursor 怎么切换？</strong><br>
+          聊天面板右侧有模型选择下拉框，每次对话开始前切换即可。Agent 模式下也可以为不同任务节点指定不同模型。</p>
+          <p><strong>适合什么场景？</strong><br>
+          团队账单管理、多任务并行时的资源分配、代码库超大时的上下文优化。NAB 工程师每天处理数百个AI请求，靠这个策略将API成本控制在合理范围内。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：<a href="https://cursor.com/cn/blog/nab" target="_blank">NAB借助Cursor加速遗留系统迁移</a> · 2026-04-23</span>
+          <span>适合：团队管理员 / 高频用户</span>
+        </div>
+      </div>
+
+      <!-- 技巧2: 双轨调试 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🔧</div>
+          <div class="tip-title">双轨调试法：先让 AI 写测试，再让 AI 修 Bug——Cursor 应用崩溃率降低 80%</div>
+        </div>
+        <div class="tags">
+          <span class="tag cyan">🔬 工程实践</span>
+          <span class="tag green">稳定性提升</span>
+          <span class="tag">Debug</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          Cursor 官方工程团队公开了他们自己用于保持应用稳定性的一套方法论——他们把 Cursor 的崩溃率降低了 <span class="hl">80%</span>，用的正是"双轨调试"：
+          </p>
+          <p><strong>具体步骤：</strong></p>
+          <ul>
+            <li><strong>轨道1：先写测试</strong> — 告诉 Cursor Agent："先帮我写这个函数的测试用例，覆盖正常、边界、异常三种情况"</li>
+            <li><strong>轨道2：再修Bug</strong> — 有了测试后，告诉 Cursor："现在让测试通过"，它修的代码有了约束，不会乱改其他地方</li>
+          </ul>
+          <p><strong>为什么有效？</strong><br>
+          AI 直接修 Bug 时容易"治好了这里、坏了那里"。先有测试，就相当于给 AI 画了边界——修改的代码必须让所有测试都通过，降低了引入新问题的概率。</p>
+          <p><strong>适合什么场景？</strong><br>
+          遗留代码维护、功能迭代频繁的模块、团队协作时的代码质量保障。特别适合不敢轻易修改的"年久失修"代码库。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：<a href="https://cursor.com/cn/blog/app-stability" target="_blank">保持 Cursor 应用稳定</a> · 2026-04-21</span>
+          <span>适合：中高级开发者</span>
+        </div>
+      </div>
+
+      <!-- 技巧3: 杰文斯效应升级 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">📈</div>
+          <div class="tip-title">杰文斯效应实战：模型越强，给它越难的任务——别用 AI 做你原来就会做的事</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">💭 思维方式</span>
+          <span class="tag">效率升级</span>
+          <span class="tag cyan">研究报告</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          Cursor 官方研究发现，用了更强的 AI 模型后，工程师并没有"减少工作"，反而开始做<span class="hl">更复杂、更有雄心的项目</span>——这就是杰文斯效应：效率提升了，总需求反而更大。
+          </p>
+          <p><strong>数据说话：</strong></p>
+          <ul>
+            <li>技术文档产出量 <span class="hl">+62%</span>（工程师用 AI 维护更详细的架构文档）</li>
+            <li>架构设计任务 <span class="hl">+52%</span>（原来懒得做的系统设计，现在 AI 帮完成）</li>
+            <li>代码审查深度 <span class="hl">+51%</span>（用 AI 做更细致的 review，而不是走过场）</li>
+          </ul>
+          <p><strong>怎么用这个思路？</strong><br>
+          每次你发现自己"用 AI 做了一件以前做不了/懒得做的事"，说明你用对了。反之，只用 AI 加速原来就会做的简单任务，是在浪费 AI 的能力上限。
+          </p>
+          <p><strong>实操建议：</strong><br>
+          今天试试把一件"以前觉得太复杂没时间做"的事交给 Cursor Agent——比如完整的接口文档、架构图注释、跨模块的重构计划。
+          </p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：<a href="https://cursor.com/cn/blog/better-models-ambitious-work" target="_blank">更强的AI模型推动更具雄心的工作</a> · 2026-04-15</span>
+          <span>适合：所有开发者</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- ========== /2026-04-28 ========== -->
+
+  <!-- ========== 2026-04-27 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月27日</span>
+      <span class="day-title">多任务并行开发 · 工作树隔离分支 · Cursor v3.2 三大新能力实战指南</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <!-- 技巧1: 多任务并行 -->
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">⚡</div>
+          <div class="tip-title">多任务并行（Multitasking）：让 AI 同时干几件事，效率直接翻倍</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">🌟 v3.2 新功能</span>
+          <span class="tag green">效率提升</span>
+          <span class="tag">AI Agent</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          以前用 Cursor 的 Agent，同一时间只能跑一个任务——你让它修 Bug，它在跑，你只能干等着。<br>
+          v3.2 带来了<span class="hl">多任务并行</span>：现在可以同时开启多个独立 Agent 任务，每个任务在自己的"泳道"里跑，互不干扰。
+          </p>
+          <p><strong>怎么用？</strong></p>
+          <ul>
+            <li>在聊天面板点击 <span class="code">+ New Task</span>，会新开一个 Agent 对话（右侧出现任务列表）</li>
+            <li>每个任务可以独立提 Prompt，比如任务A"修登录BUG"，任务B"写单元测试"</li>
+            <li>两个任务同时跑，你可以随时切换查看进度，也可以同步盯着两个</li>
+          </ul>
+          <p><strong>适合什么场景？</strong></p>
+          <ul>
+            <li>🔧 同时处理多个不相关的 Bug 修复</li>
+            <li>📝 一边让 AI 写代码，一边让另一个 AI 写对应的文档</li>
+            <li>🧪 一个任务重构功能，另一个任务同步生成测试用例</li>
+          </ul>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor v3.2 更新日志 · 2026-04-24</span>
+          <a href="https://cursor.com/cn/blog" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <!-- 技巧2: 工作树 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🌿</div>
+          <div class="tip-title">工作树（Worktrees）：不同 Git 分支的代码改动，从此互不污染</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">🌟 v3.2 新功能</span>
+          <span class="tag cyan">Git 集成</span>
+          <span class="tag">多分支</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          以前你在 Cursor 里开 Agent 改代码，它是直接改你当前 checkout 的分支。如果你在 main 上工作，Agent 改了一堆文件，你突然要去看另一个分支，会很乱。<br>
+          <span class="hl">工作树（Worktrees）</span> 让每个 Agent 任务在独立的 Git 工作树里运行，不同分支的修改物理隔离，切换分支时干干净净。
+          </p>
+          <p><strong>怎么用？</strong></p>
+          <ul>
+            <li>开启新 Agent 任务时，可以选择"在新工作树中运行"</li>
+            <li>Cursor 会自动帮你创建并切换到对应的 Git worktree 目录</li>
+            <li>任务完成后，可以直接在 Cursor 里 merge 回主分支</li>
+          </ul>
+          <p><strong>适合什么场景？</strong></p>
+          <ul>
+            <li>同时处理 feature 分支和 hotfix 分支，不互相影响</li>
+            <li>让 AI 在"沙盒分支"上大胆实验，不担心弄乱主代码</li>
+            <li>Code Review 时对比不同分支的 AI 改动</li>
+          </ul>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor v3.2 更新日志 · 2026-04-24</span>
+          <a href="https://cursor.com/cn/blog" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <!-- 技巧3: 多根工作区 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🗂️</div>
+          <div class="tip-title">多根工作区（Multi-root Workspaces）：前后端同时开，不用来回切窗口</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">🌟 v3.2 新功能</span>
+          <span class="tag green">多项目</span>
+          <span class="tag">全栈开发</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          过去 Cursor（其实是 VS Code 底层）支持多根工作区，但 AI 功能对多根工作区的支持一直很弱——Agent 只会认一个根目录。<br>
+          v3.2 正式打通了 <span class="hl">Multi-root Workspaces</span> 支持，AI 现在可以感知并操作所有根目录下的代码。
+          </p>
+          <p><strong>怎么用？</strong></p>
+          <ul>
+            <li>在 Cursor 中 <span class="code">File → Add Folder to Workspace</span>，添加多个项目根目录</li>
+            <li>保存为 <span class="code">.code-workspace</span> 文件，下次直接打开</li>
+            <li>在 Agent 对话中可以跨根目录引用文件，比如"帮我在 backend/ 里加接口，然后在 frontend/ 里调用它"</li>
+          </ul>
+          <p><strong>适合什么场景？</strong></p>
+          <ul>
+            <li>🏗️ 前后端分离项目（如 React + FastAPI），一次性全部打开</li>
+            <li>📦 微服务架构，多个服务同时开发联调</li>
+            <li>🔗 Monorepo 内多个子包同时改动时，AI 理解整体上下文更准确</li>
+          </ul>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor v3.2 更新日志 · 2026-04-24</span>
+          <a href="https://cursor.com/cn/blog" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-26 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月26日</span>
+      <span class="day-title">画布功能让 AI 输出可视化 + 多智能体平铺并行工作 + SpaceX 算力加持 Cursor 新时代</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <!-- 技巧1：画布功能 -->
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🎨</div>
+          <div class="tip-title">Cursor 画布（Canvas）：让 AI 帮你生成可以点击、可以操作的界面</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">🆕 Cursor 3.1</span>
+          <span class="tag cyan">可视化</span>
+          <span class="tag">画布</span>
+          <span class="tag green">新手友好</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">这个功能是什么？</span><br>
+          以前你让 Cursor 分析一组数据，它只能回一大段文字或 Markdown 表格，你还得自己去理解。现在有了画布功能，AI 可以直接给你生成一个真实的、可以交互的界面——比如数据仪表盘、代码审查面板、架构图，你可以点击、筛选、探索，就像用一个真实 App 一样。</p>
+          <p><span class="hl">怎么用？</span></p>
+          <ul>
+            <li>在对话框里跟 Agent 说「帮我把这个 CSV 数据做成一个可交互的图表」或「给我生成一个 PR 代码审查界面」</li>
+            <li>Agent 会在侧边栏弹出画布区域，直接渲染出可视化界面</li>
+            <li>内置组件包括：<span class="code">表格</span>、<span class="code">柱状图</span>、<span class="code">流程图</span>、<span class="code">diff 视图</span>等，无需额外配置</li>
+            <li>想扩展更多能力？在 Marketplace 搜索「Docs Canvas」技能，可以自动生成交互式架构图</li>
+          </ul>
+          <p><span class="hl">适合什么场景？</span><br>
+          ① 想快速了解一个复杂 PR 里改了什么，让 AI 生成可视化代码审查界面；② 有一堆日志或监控数据想看趋势，让 AI 做成仪表盘；③ 给团队做汇报时，让 AI 生成交互式架构图，比截图更专业。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客 · 在画布中与智能体创建的可视化内容交互</span>
+          <a href="https://cursor.com/cn/blog/canvas" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <!-- 技巧2：多智能体平铺 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">⚡</div>
+          <div class="tip-title">多智能体平铺布局：像管理多个工程师一样，让 8 个 Agent 同时干活</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">Cursor 3.1</span>
+          <span class="tag">多 Agent</span>
+          <span class="tag cyan">效率神器</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">这个功能是什么？</span><br>
+          Cursor 3.1 新增了平铺布局（Tiled Layout），你可以把编辑器界面拆成多个窗格，每个窗格跑一个独立的 AI Agent。想象一下：左边的 Agent 在写后端 API，右边的 Agent 在写前端组件，中间的 Agent 在跑测试——三件事同时进行，不用你来回切换。</p>
+          <p><span class="hl">怎么用？</span></p>
+          <ul>
+            <li>在 Cursor 3.1 界面中，点击智能体窗口工具栏的「平铺布局」图标，或通过菜单 <span class="code">View → Tiled Layout</span> 开启</li>
+            <li>拖拽 Agent 到不同窗格，每个窗格独立运行，互不干扰</li>
+            <li>最多同时运行 <span class="code">8 个</span> Agent</li>
+            <li>布局配置会跨会话保存，下次打开自动恢复</li>
+            <li>配合「分支启动」，可以先指定分支再启动 Agent，避免代码冲突</li>
+          </ul>
+          <p><span class="hl">适合什么场景？</span><br>
+          ① 全栈开发时前后端并行推进；② 同时调试多个模块，不用频繁切换上下文；③ 想对比不同 Agent 对同一问题的解决方案，选最好的那个。一句话：把 Cursor 当成你的 AI 团队来管，而不只是一个助手。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 3.1 版本更新 · ChooseAI</span>
+          <a href="https://www.chooseai.net/news/3344/" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <!-- 技巧3：SpaceX算力加持 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🚀</div>
+          <div class="tip-title">SpaceX 算力加持 Cursor：更强的模型意味着你可以布置更有雄心的任务</div>
+        </div>
+        <div class="tags">
+          <span class="tag">SpaceX × Cursor</span>
+          <span class="tag amber">背景知识</span>
+          <span class="tag green">使用策略</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">这个功能是什么？</span><br>
+          SpaceX 与 Cursor 达成深度合作，将把旗下 Colossus 超算的算力接入 Cursor 模型训练和推理。简单说：Cursor 背后的模型会越来越强，响应更快、理解更准、能处理更复杂的任务。Cursor 官方研究显示：<span class="hl">模型越强，用户布置的任务就越有雄心，两者形成正向飞轮。</span></p>
+          <p><span class="hl">现在你可以怎么做？</span></p>
+          <ul>
+            <li>别再只让 Cursor 「改一个函数」——试着让它「重构整个模块」</li>
+            <li>可以把长期任务分解成子任务，交给不同 Agent 并行完成（配合平铺布局）</li>
+            <li>对于大型代码库，让 Agent 先「通读项目结构」再开始修改，效果远比直接下命令好</li>
+            <li>遇到报错，让 Agent 「从根本原因出发，给出完整修复方案并解释为什么」，而不只是「帮我修这行错误」</li>
+          </ul>
+          <p><span class="hl">适合什么场景？</span><br>
+          适合所有开发者——模型能力提升后，你的「提问天花板」才是瓶颈，多练习拆解复杂需求，让 Agent 真正替你完成完整的工作单元，而不只是打个补丁。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客 · 更强的 AI 模型推动更具雄心的工作</span>
+          <a href="https://cursor.com/cn/blog" target="_blank">查看官方博客 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-25 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月25日</span>
+      <span class="day-title">模型越强越要先适应 + Ask Mode 逆向遗留代码 + 杰文斯效应：用 AI 越多收益越大</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">📐</div>
+          <div class="tip-title">新模型来了别急着挑战难题——Cursor 研究揭示"4-6 周适应期"规律，先从简单任务开始</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">今日精选</span>
+          <span class="tag cyan">使用策略</span>
+          <span class="tag green">研究洞察</span>
+          <span class="tag">进阶技巧</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么：</strong> Cursor 联合芝加哥大学布斯商学院做了一项追踪研究，分析了 500 家企业在新模型（Opus 4.5、GPT-5.2）发布后的真实使用行为变化，发现了一个规律性的"<span class="hl">适应期效应</span>"。</p>
+          <p><strong>核心发现（讲人话版）：</strong></p>
+          <ul>
+            <li><strong>前 4-6 周：</strong>新模型发布后，大多数开发者只是用它做更多原本就做的事情（低复杂度任务增长 22%）。</li>
+            <li><strong>4-6 周后：</strong>才开始把复杂任务（架构设计、跨系统重构）交给它，<span class="hl">高复杂度任务增长高达 68%</span>。</li>
+            <li><strong>杰文斯效应：</strong>AI 效率提升反而推动使用量增加——研究期间每人每周平均消息数增长了 <span class="hl">44%</span>，用得越多，收益越大。</li>
+          </ul>
+          <p><strong>你可以怎么用：</strong></p>
+          <ul>
+            <li>刚换新模型时，<span class="hl">不要第一周就扔给它最难的任务</span>，先用日常任务熟悉它的行为模式和边界</li>
+            <li>4 周后逐步升级任务难度——此时你对模型已建立"直觉"，成功率会高很多</li>
+            <li>增加而不是减少 AI 使用频次——"够用就好"的心态会让你在竞争中落后</li>
+          </ul>
+          <p><strong>适合什么场景：</strong> 每次有新模型（GPT-5.5、DeepSeek V4、Claude 新版）发布时，都可以用这个节奏规划自己的"上手路径"，避免"试了一下没用"就放弃的陷阱。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客 · 2026-04-15</span>
+          <a href="https://cursor.com/cn/blog/better-models-ambitious-work" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🔍</div>
+          <div class="tip-title">遗留代码读不懂？先用 Ask Mode 让 AI 画出业务逻辑地图，1 周顶 2 个月</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Ask Mode</span>
+          <span class="tag amber">遗留系统</span>
+          <span class="tag cyan">实战技巧</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么：</strong> NAB 澳大利亚国民银行（6000 名工程师）在使用 Cursor 迁移遗留系统时，总结出一套可复用的流程。核心是：<span class="hl">读代码要先用 Ask Mode，别上来就让 AI 写代码</span>。</p>
+          <p><strong>具体操作步骤：</strong></p>
+          <ul>
+            <li><strong>第一步 Ask Mode（读懂逻辑）：</strong>把老代码文件拖进 Cursor，在 Ask Mode 中问："帮我梳理这段代码实现了哪些业务逻辑，画出流程图"——哪怕是 <span class="code">Assembly</span> 或 <span class="code">COBOL</span> 这种古老语言，AI 也能读懂</li>
+            <li><strong>第二步 Plan Mode（生成标准产物）：</strong>切换到 Plan Mode，让 AI 根据梳理出的逻辑，生成用户故事（User Stories）和 API 规格说明，直接符合团队规范</li>
+            <li><strong>第三步 Composer（落地代码）：</strong>以规格说明为输入，用 Composer（配合 Opus 等高级模型）逐步生成新系统代码</li>
+          </ul>
+          <p><strong>NAB 的成果：</strong> 原本需要 <span class="hl">4 个月</span>的遗留系统迁移前期分析，压缩到 <span class="hl">3 周</span>内完成，且 AI 生成的业务逻辑描述比人工逆向工程还准确。</p>
+          <p><strong>适合什么场景：</strong> 接手前任留下的老项目、维护公司遗留系统、理解没有文档的第三方代码——不再需要苦读代码，AI 帮你"翻译"。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客 · 2026-04-23</span>
+          <a href="https://cursor.com/cn/blog/nab" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">📊</div>
+          <div class="tip-title">模型更强，别只用来"写代码"——文档+62%、架构+52%、代码审查+51%，这才是真正的提效方向</div>
+        </div>
+        <div class="tags">
+          <span class="tag">效率提升</span>
+          <span class="tag green">角色转型</span>
+          <span class="tag">工作方式</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>数据说了什么：</strong> Cursor 研究发现，模型能力越强，增长最快的任务类型反而<span class="hl">不是写代码本身</span>，而是：</p>
+          <ul>
+            <li>📝 <strong>文档写作</strong>：<span class="hl">+62%</span>（注释、README、API 文档）</li>
+            <li>🏛️ <strong>架构设计</strong>：<span class="hl">+52%</span>（系统设计、模块拆分讨论）</li>
+            <li>🔍 <strong>代码审查</strong>：<span class="hl">+51%</span>（让 AI 帮你审 PR）</li>
+            <li>📚 <strong>学习新技术</strong>：<span class="hl">+50%</span>（让 AI 边讲边演示）</li>
+          </ul>
+          <p><strong>你的行动建议：</strong></p>
+          <ul>
+            <li>写完代码不要直接提交——让 Cursor <span class="code">Review 这段代码，从安全、性能、可读性三个角度分析</span></li>
+            <li>开始新功能前——先让 Cursor <span class="code">帮我设计这个功能的模块拆分方案</span>，再动手写</li>
+            <li>不写注释？让 AI 帮你全补上——一条命令全文档化</li>
+          </ul>
+          <p><strong>核心思维转变：</strong> 把"用 AI 写代码"升级为"用 AI 管理工程质量"，你的价值在于<span class="hl">设计决策和标准把控</span>，AI 负责执行。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客 · 2026-04-15</span>
+          <a href="https://cursor.com/cn/blog/better-models-ambitious-work" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-24 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月24日</span>
+      <span class="day-title">Cursor 应用零崩溃工程实践 + SpaceX 超算加速模型训练 + 企业部署"AI 行为统一管控"</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🛡️</div>
+          <div class="tip-title">Cursor 内存崩溃率降 80%，你可以学的稳定性思路：先测量，再修复，不乱猜</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">今日精选</span>
+          <span class="tag cyan">稳定性</span>
+          <span class="tag">工程实践</span>
+          <span class="tag green">实用技巧</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这个功能 / 技巧是什么：</strong> Cursor 官方发布技术报告，宣布应用 OOM（内存耗尽）崩溃率已下降 <span class="hl">80%</span>。他们是怎么做到的？答案是：<span class="hl">用数据驱动的方式定位，而不是靠猜</span>。这套思路你也可以搬到自己项目里。</p>
+          <p><strong>Cursor 的具体做法（可复用的方法论）：</strong></p>
+          <ul>
+            <li><strong>双轨调试法：</strong>
+              <ul>
+                <li>自上而下：把崩溃指标和 <span class="code">Feature Flag</span> 关联，用 A/B 实验精确定位是哪个功能引入了问题</li>
+                <li>自下而上：用 <span class="code">Chrome DevTools Protocol (CDP)</span> 持续监测内存溢出，崩溃发生后几分钟内自动更新仪表盘</li>
+              </ul>
+            </li>
+            <li><strong>急性 OOM vs 慢性 OOM 分开治：</strong> 急性（突然崩溃）加熔断器分块处理；慢性（慢慢积累）找并清理长生命周期对象中的残留引用</li>
+            <li><strong>进程隔离：</strong> 让扩展运行在独立进程——崩溃只影响扩展，不影响编辑器主进程（就像 Chrome 每个标签页独立崩溃一样）</li>
+            <li><strong>自动化修复：</strong> 每天自动分析崩溃堆栈，直接创建高置信度修复 PR，<span class="hl">用 Agent 帮自己修 Bug</span></li>
+          </ul>
+          <p><strong>你可以怎么用：</strong> 在自己的项目里，养成"用数据定位问题"的习惯：<span class="code">console.memory</span> 监测内存、浏览器 Performance 面板录制堆快照、用功能开关隔离新功能影响——比"感觉哪里有问题就改哪里"效率高 10 倍。</p>
+          <p><strong>适合什么场景：</strong> Web 应用开发（尤其是长时间运行的 SPA）、Electron 桌面应用、任何复杂前端项目的性能优化——以及日后使用 Cursor 遇到崩溃时，知道怎么向官方反馈有价值的信息。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客 · 2026-04-21</span>
+          <a href="https://cursor.com/cn/blog/app-stability" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🚀</div>
+          <div class="tip-title">Cursor × SpaceX Colossus 超算：这意味着什么？为什么你的代码补全会越来越聪明</div>
+        </div>
+        <div class="tags">
+          <span class="tag">模型训练</span>
+          <span class="tag amber">大事件</span>
+          <span class="tag">Composer</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这件事是什么：</strong> Cursor 官方宣布将利用 SpaceX 旗下 xAI 的 <span class="hl">Colossus 超算基础设施</span> 进行 Composer 模型训练。Colossus 是目前全球最大的 AI 训练集群之一（10 万+ H100 GPU），这直接打破了 Cursor 此前受制于算力的瓶颈。</p>
+          <p><strong>对你有什么影响（讲人话版本）：</strong></p>
+          <ul>
+            <li>Composer 模型的训练规模可以更大——<span class="hl">代码生成能力会继续跳跃式提升</span></li>
+            <li>Cursor 已经做到：Composer 1.5 把 RL 训练规模扩大 20 倍，Composer 2 加持续预训练以"极低成本达到前沿水平"；有了超算加持，下一步的能力提升将更大</li>
+            <li>对开发者而言：越难的任务、越复杂的重构，越能感受到模型智能度的提升</li>
+          </ul>
+          <p><strong>使用建议：</strong> 现在是 <span class="hl">给 Cursor 挑战"硬任务"的好时机</span>——试着把你以前觉得 AI 搞不定的工作（比如跨多文件架构重构、复杂算法优化、遗留代码迁移）交给 Composer，你会发现能力边界正在持续外扩。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客 · 2026-04-21</span>
+          <a href="https://cursor.com/cn/blog/spacex-model-training" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🏢</div>
+          <div class="tip-title">团队如何统一 AI 编程风格？学 NAB 银行的"AI 行为管控三件套"：rules + skills + hooks</div>
+        </div>
+        <div class="tags">
+          <span class="tag green">团队协作</span>
+          <span class="tag">上下文工程</span>
+          <span class="tag">企业级</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>痛点是什么：</strong> 团队里每个人的 Cursor 生成风格不一样——有人用 async/await，有人用 Promise；有人写注释，有人不写；AI 天天"犯同样的错误"。这让代码审查变成一场噩梦。</p>
+          <p><strong>NAB 的解法（可直接复制）：</strong> 构建一个 <span class="hl">Context Engineering Library（CEL，上下文工程库）</span>，把团队规范编码进 Cursor 的配置文件，Git 管理，人人共享：</p>
+          <ul>
+            <li><span class="code">.cursor/rules/</span> — 项目规范：命名规则、代码风格、禁止操作（如"不许直接 DELETE 数据库，必须软删除"）</li>
+            <li><span class="code">.cursor/skills/</span> — 可复用 Agent 模板：如"生成单元测试"、"写 API 文档"、"分析安全漏洞"——你定义好，全员可直接调用</li>
+            <li><span class="code">.cursor/hooks/</span> — 前/后置动作：如"每次生成代码后自动跑 ESLint"、"提交前自动写 commit message"</li>
+          </ul>
+          <p><strong>快速上手：</strong> 从最小可行版本开始——在项目根目录建 <span class="code">.cursor/rules/coding-standards.md</span>，写 5-10 条最重要的规范，提交到 Git，团队所有人立刻共享。效果立竿见影：<span class="hl">你的 AI 和队友的 AI，会按同一套规范工作</span>。</p>
+          <p><strong>适合什么场景：</strong> 2 人以上协作项目、有明确代码规范的团队、需要 AI 遵守特定安全或业务约束的企业项目。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客 · 2026-04-23</span>
+          <a href="https://cursor.com/cn/blog/nab" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-23 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月23日</span>
+      <span class="day-title">规格驱动 Agent 开发 + Cursor 企业级上下文工程 + Ask Mode 逆向工程遗留代码</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🏦</div>
+          <div class="tip-title">NAB 银行的秘密武器：用 Cursor 的 rules + skills + hooks 搭一套"团队共享 AI 大脑"</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">今日精选</span>
+          <span class="tag green">官方案例</span>
+          <span class="tag">上下文工程</span>
+          <span class="tag">企业级</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这个功能是什么：</strong> Cursor 今日发布 National Australia Bank（NAB）6000 名员工使用 Cursor 的案例。NAB 没有让每个工程师单独摸索，而是构建了一套叫做 <span class="hl">NAB CEL（Context Engineering Library）</span> 的内部上下文工程库——把公司的编码规范、架构决策、Agent 行为边界都用 Cursor 原生的 <span class="hl">rules、skills、hooks</span> 编码进去，让每个人的 AI 都按同一套规则工作。</p>
+          <p><strong>怎么用（复制这个思路到你的项目）：</strong></p>
+          <ul>
+            <li><span class="code">.cursor/rules/</span> 目录：写你的项目规范，例如"只用 TypeScript，函数超 50 行必须拆分，提交前必须跑 test"</li>
+            <li><span class="code">.cursor/skills/</span> 目录：沉淀可复用的 Agent 技能模板，例如"写单元测试"、"分析遗留代码"、"生成 API 文档"</li>
+            <li><span class="code">.cursor/hooks/</span> 目录：定义 Agent 前/后置动作，例如"代码提交前自动跑 lint"</li>
+            <li>多人项目：把这些文件提交到 Git，<span class="hl">团队所有人共享一套 AI 行为规范</span>，告别"你的 AI 和我的 AI 写法完全不一样"</li>
+          </ul>
+          <p><strong>适合什么场景：</strong> <span class="hl">团队协作</span>（10 人以上的工程团队）、<span class="hl">遗留系统迁移</span>（统一翻译/重构规则）、以及任何你希望 AI 行为可预期、可复用的项目。NAB 用这套方法把一个 6 个月的迁移项目压缩到 2 个月。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客 · 2026-04-23</span>
+          <a href="https://cursor.com/cn/blog/nab" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🔍</div>
+          <div class="tip-title">用 Cursor 的 Ask Mode 读懂"天书"代码——COBOL、Assembly 遗留系统的破解姿势</div>
+        </div>
+        <div class="tags">
+          <span class="tag">遗留代码</span>
+          <span class="tag cyan">Ask Mode</span>
+          <span class="tag">代码理解</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这个功能是什么：</strong> NAB 案例里有个细节：他们用 Cursor 的 <span class="hl">Ask Mode</span> 直接读取 Assembly 大型机代码，自动生成流程图和业务摘要——这件事对人类工程师来说需要数月，AI 几分钟搞定。这个技巧对任何面对老旧代码库的人都极其实用。</p>
+          <p><strong>怎么用：</strong></p>
+          <ul>
+            <li>切换到 Ask Mode（不会修改代码，只回答问题）</li>
+            <li>直接把你看不懂的代码文件拖进来，提问：<span class="code">"这段代码的业务逻辑是什么？帮我画出流程图"</span></li>
+            <li>进一步问：<span class="code">"这个函数的输入输出是什么？有哪些隐含的业务规则？"</span></li>
+            <li>拿到理解后，再切换到 Plan Mode 规划迁移方案，最后用 Composer 执行</li>
+          </ul>
+          <p><strong>适合什么场景：</strong> 接手别人留下的"屎山代码"、维护老项目、或者作为新人快速理解复杂代码库——<span class="hl">先读懂，再动手</span>，避免盲目改代码引入新 Bug。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客 · 2026-04-23</span>
+          <a href="https://cursor.com/cn/blog/nab" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">⚡</div>
+          <div class="tip-title">4周变3天：用 Cursor 做"规格先行"开发——先让 AI 帮你写需求，再让 AI 写代码</div>
+        </div>
+        <div class="tags">
+          <span class="tag green">效率神器</span>
+          <span class="tag">Plan Mode</span>
+          <span class="tag">Composer</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这个功能是什么：</strong> NAB 案例最惊艳的数据是：一个原计划 <span class="hl-amber">4个月</span> 的支付 App 项目，用 Cursor 只花了 <span class="hl-amber">3周</span>。秘诀在于"规格先行"流程：先用 Cursor 把需求和 API 规格文档写清楚，再交给 Composer 子 Agent 并行执行。</p>
+          <p><strong>怎么复制这个流程：</strong></p>
+          <ul>
+            <li><strong>第一步（理解）：</strong> 用 Ask Mode 跟 Cursor 对话，逐步细化需求：<span class="code">"这个功能需要哪些 API 接口？分几个阶段实现？"</span></li>
+            <li><strong>第二步（规划）：</strong> 切换到 Plan Mode，让 Cursor 生成详细的实施计划和 API 规格说明，你来审核</li>
+            <li><strong>第三步（执行）：</strong> 确认规格后，切换到 Composer，启动<span class="hl">多个子 Agent 并行</span>分别负责前端、后端、测试</li>
+            <li>关键原则：<span class="hl">在 AI 写代码前花 20% 时间写清楚规格，能节省后面 80% 的返工时间</span></li>
+          </ul>
+          <p><strong>适合什么场景：</strong> 任何要从零开始的新功能或新项目——尤其是你对某个技术栈（比如 Kotlin、Swift）不太熟悉时，用这套流程让 Cursor 帮你"先想清楚，再干活"。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客 · 2026-04-23</span>
+          <a href="https://cursor.com/cn/blog/nab" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-22 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月22日</span>
+      <span class="day-title">CLAUDE.md 规范 Agent + Cursor 应用稳定性技巧 + 自研模型低成本达前沿</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">📄</div>
+          <div class="tip-title">在项目根目录放一个 CLAUDE.md——让 AI Agent 乖乖按你的规则办事</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">今日精选</span>
+          <span class="tag green">本周 GitHub 第一</span>
+          <span class="tag">Agent 行为控制</span>
+          <span class="tag">CLAUDE.md</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这个功能是什么：</strong> 本周一份名为 <span class="hl">CLAUDE.md</span> 的配置文件在 GitHub 爆到 <span class="hl">61,600 颗星</span>，本周单周新增 44,465 星，登顶全站热榜第一。它的原理很简单：在项目根目录放一个 CLAUDE.md，就能规范 Claude Code 或其他 AI Agent 的行为——不乱改文件、不越权操作、按你的规则写代码。</p>
+          <p><strong>怎么用：</strong></p>
+          <ul>
+            <li>在你的项目根目录创建 <span class="code">CLAUDE.md</span> 文件</li>
+            <li>在里面写规则，比如：<span class="code">"不要修改 tests/ 目录下的文件"</span>、<span class="code">"提交前必须跑 lint"</span>、<span class="code">"只用 TypeScript，不用 any"</span></li>
+            <li>每次用 Cursor 或 Claude Code 开始对话，AI 会自动读取这份文件作为约束</li>
+            <li>也可以按照 Karpathy 的建议格式：分"项目说明"、"开发规范"、"禁止事项"三块来写</li>
+          </ul>
+          <p><strong>适合什么场景：</strong> <span class="hl">多人协作项目</span>（让团队所有人的 AI 行为一致）、<span class="hl">生产级代码库</span>（防止 Agent 乱改关键路径）、或者你就是被 AI 反复踩过雷，想把"不要这么做"的规则固定下来的开发者。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：GitHub / 36kr · 2026-04-22</span>
+          <a href="https://m.36kr.com/p/3774954488349441" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🛡️</div>
+          <div class="tip-title">Cursor 崩溃了？主动提交堆快照帮团队更快修好你的 Bug</div>
+        </div>
+        <div class="tags">
+          <span class="tag">稳定性</span>
+          <span class="tag cyan">用户可参与</span>
+          <span class="tag">OOM 内存</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这个功能是什么：</strong> Cursor 工程团队发布了崩溃治理工程报告，其中提到：当 Cursor 检测到内存使用过高时，会弹出提示让用户<span class="hl">自愿捕获堆快照（Heap Snapshot）</span>并上传。这不是收集隐私——快照只包含内存结构数据，帮助工程师定位"是哪个功能在吃内存"。</p>
+          <p><strong>怎么用：</strong></p>
+          <ul>
+            <li>当 Cursor 出现卡顿或提示内存占用高时，如果弹出堆快照请求，可以选择提交</li>
+            <li>如果想主动分析：打开 <span class="code">DevTools（Cmd+Shift+I）→ Memory → Take Heap Snapshot</span>，可以自己看是哪个模块在占内存</li>
+            <li>当你用了很多子 Agent 或长会话后出现卡顿，及时重启一个新窗口能有效释放内存</li>
+          </ul>
+          <p><strong>适合什么场景：</strong> <span class="hl">长时间使用 Cursor</span> 的开发者——尤其是同时开多个子 Agent 任务、或者单次会话超过 2 小时的情况下，主动监控内存能避免在关键时刻崩溃丢失进度。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客 · 2026-04-21</span>
+          <a href="https://cursor.com/cn/blog/app-stability" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🚀</div>
+          <div class="tip-title">Cursor 自研模型 Composer 2：低成本达前沿性能——理解"它到底用的是什么模型"</div>
+        </div>
+        <div class="tags">
+          <span class="tag">模型选择</span>
+          <span class="tag amber">原理揭秘</span>
+          <span class="tag">Composer 2</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这个功能是什么：</strong> 很多人以为 Cursor 只是 Claude/GPT 的套壳，但 Cursor 官方公布了自研模型 <span class="hl">Composer 系列</span>的进化路线：Composer 1.5 强化学习规模扩大 20 倍，Composer 2 加入持续预训练，以"其他模型一小部分的成本"达到前沿级性能。</p>
+          <p><strong>这对你意味着什么：</strong></p>
+          <ul>
+            <li>在 Cursor 的模型选择里，<span class="code">cursor-fast</span> / <span class="code">cursor-small</span> 等选项调用的是 Cursor 自研模型，<span class="hl">成本更低、速度更快</span></li>
+            <li>对于日常代码补全、简单重构等场景，优先选自研模型可以节省配额</li>
+            <li>Cursor × SpaceX xAI Colossus 合作意味着下一版 Composer 算力会大幅提升，值得期待</li>
+          </ul>
+          <p><strong>适合什么场景：</strong> <span class="hl">用量大的开发者</span>——了解模型背后的差异，能帮你在不同任务上做出更好的模型选择，兼顾质量和配额效率。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客 · 2026-04-21</span>
+          <a href="https://cursor.com/cn/blog/spacex-model-training" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-21 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月21日</span>
+      <span class="day-title">Canvas 画布可视化 + 百万 Token 上下文管理 + Agent 并行开发工作流</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🎨</div>
+          <div class="tip-title">Cursor Canvas：让 AI 直接给你画出来，别再盯着一堆文字看了</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">今日精选</span>
+          <span class="tag green">Cursor 3.1 新功能</span>
+          <span class="tag">Canvas 画布</span>
+          <span class="tag">可视化</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这个功能是什么：</strong> Cursor Canvas 让智能体不再只是输出文字——它可以直接生成<span class="hl">可交互的可视化界面</span>，比如数据仪表盘、PR 代码审查面板、实验进度看板等。</p>
+          <p><strong>怎么用：</strong></p>
+          <ul>
+            <li>在智能体对话（Agent Panel）里，直接用自然语言描述你想看的内容，比如：<span class="code">"帮我把这 30 个接口的响应时间做成折线图仪表盘"</span></li>
+            <li>AI 会生成一个基于 React 的交互式画布，可以点击、筛选、探索——不是截图，是真的可以操作的界面</li>
+            <li>如果想固定某类画布的生成方式，可以在 Cursor 技能市场（Skills）里找 <span class="code">Docs Canvas</span> 等现成技能直接用</li>
+          </ul>
+          <p><strong>适合什么场景：</strong> <span class="hl">数据密集型任务</span>——比如查看一次 PR 的所有改动、分析 eval 失败的分布规律、实时监控 Agent 跑实验的进度。之前这些都靠 Markdown 表格硬看，现在可以真正"看见"了。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：cursor.com/cn/blog · 2026-04-15</span>
+          <a href="https://cursor.com/cn/blog/canvas" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🧹</div>
+          <div class="tip-title">百万 Token 上下文怎么用不翻车？学会「上下文卫生」三板斧</div>
+        </div>
+        <div class="tags">
+          <span class="tag cyan">今日实用</span>
+          <span class="tag">上下文管理</span>
+          <span class="tag">Claude Code</span>
+          <span class="tag">避坑指南</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这个功能是什么：</strong> Claude Code 和 Cursor 都支持超大上下文窗口，但上下文越长不一定越好——前面说过的"废话"会污染后面的输出，这叫<span class="hl">上下文腐化</span>。</p>
+          <p><strong>三招保持上下文干净：</strong></p>
+          <ul>
+            <li><span class="hl">回溯而非纠错</span>：AI 走错了方向，别在后面加一堆"不不不你理解错了"——直接<strong>删掉出错那轮对话</strong>，重新提问。这样比纠错干净 10 倍。</li>
+            <li><span class="hl">定期压缩上下文</span>：每隔几轮，让 AI 自己总结一下当前任务状态（<span class="code">"总结一下我们目前做了什么，下一步是什么"</span>），然后开新对话带着这份总结继续。</li>
+            <li><span class="hl">子任务独立开窗口</span>：大任务拆成小任务，每个小任务开一个干净的新对话。不要把所有东西堆在一个无限长的上下文里。</li>
+          </ul>
+          <p><strong>适合什么场景：</strong> 任何需要长对话的复杂任务，尤其是重构、架构设计、多轮迭代开发。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Claude Code 工程师 Thariq Shihipar · 2026-04-21</span>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">⚡</div>
+          <div class="tip-title">Anthropic 实战：多 Agent 并行开发，把两周工作量压到 1 天</div>
+        </div>
+        <div class="tags">
+          <span class="tag">生产实战</span>
+          <span class="tag green">效率神技</span>
+          <span class="tag">Agent 并行</span>
+          <span class="tag">Vibe Coding</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这个功能是什么：</strong> 不是 Cursor 单一功能，而是一套<span class="hl">多 Agent 并行工作流</span>——把大任务拆分，让多个 AI 同时干，效率碾压单线程开发。</p>
+          <p><strong>怎么用（Anthropic 内部方法）：</strong></p>
+          <ul>
+            <li>把一个大功能拆成 <strong>互不依赖的子任务</strong>（接口开发、测试、文档各自独立）</li>
+            <li>每个子任务开一个独立的 Claude Code / Cursor 对话窗口，同时启动</li>
+            <li>人扮演"技术负责人"角色：设定清晰验收标准，等各 Agent 跑完后做集成和冲突解决</li>
+            <li>不要让 Agent 互相依赖或实时协调——<span class="hl">隔离执行 + 人工集成</span>是最稳定的并行方式</li>
+          </ul>
+          <p><strong>适合什么场景：</strong> 有明确拆分点的中大型功能开发。如果你能把任务分成 3 个以上独立子块，这个方法能带来 <span class="hl">3-5 倍的时间压缩</span>。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Anthropic 编程智能体负责人 Erik Schluntz · 2026-04-21</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-20 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月20日</span>
+      <span class="day-title">杰文斯效应实验报告 + 任务升维策略 + 500亿融资背后的用法信号</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">📈</div>
+          <div class="tip-title">Cursor 官方研究证实：你用 AI 做的事越复杂，效率提升越大——「先做熟，再做难」才是正确姿势</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">今日精选</span>
+          <span class="tag green">官方研究</span>
+          <span class="tag">杰文斯效应</span>
+          <span class="tag">使用策略</span>
+        </div>
+        <div class="tip-body">
+          <p>Cursor 联合芝加哥大学对 500 家公司、历时 8 个月的研究揭示了一个反直觉规律：<span class="hl">越好的模型不会让人用得少，反而用得更多、更复杂</span>。这就是「杰文斯效应」在 AI 编程中的体现。</p>
+          <p><strong>研究关键数据（你应该知道）：</strong></p>
+          <ul>
+            <li>开发者 AI 使用量增长了 <span class="hl">44%</span>，但不是线性增长——复杂任务消息量增长 <span class="hl">68%</span>，简单任务只增长 22%</li>
+            <li>大多数人先用新模型做「更多一样的事」，<span class="hl">4-6 周后才开始挑战更复杂的任务</span></li>
+            <li>增长最快的任务类型：文档（+62%）、架构（+52%）、代码审查（+51%），不是写代码本身</li>
+          </ul>
+          <p><strong>对你的实际建议：</strong> 如果你用 Cursor 的主要场景还停留在「补全代码」，说明你还处于第一阶段。尝试让它帮你<span class="hl">做架构设计、写技术文档、做代码审查</span>——这些才是能产生复利的用法，也是未来 AI 编程的核心战场。</p>
+          <p><strong>适合什么场景：</strong> 所有希望从「AI 辅助」升级到「AI 协作」的开发者。当你感觉 Cursor 只是个「聪明的自动补全」时，就是时候升维了。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客 - 更强的AI模型推动更具雄心的工作（2026-04-15）</span>
+          <a href="https://cursor.com/cn/blog/better-models-ambitious-work" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">📝</div>
+          <div class="tip-title">用 Cursor 写「活的技术文档」：让 AI 在每次代码改动后自动同步更新 README 和 API 文档</div>
+        </div>
+        <div class="tags">
+          <span class="tag cyan">实用技巧</span>
+          <span class="tag">文档自动化</span>
+          <span class="tag">效率提升</span>
+        </div>
+        <div class="tip-body">
+          <p>研究发现文档类任务增长了 62%，是增长最快的类别。原因很简单：AI 写的代码越多，人工维护文档就越跟不上。<span class="hl">让 Cursor 直接帮你维护文档</span>才是正解。</p>
+          <p><strong>具体做法（三步）：</strong></p>
+          <ul>
+            <li><strong>第一步</strong>：在 <span class="code">.cursorrules</span> 文件里加一条规则：「每次修改函数或接口，必须同步更新对应的注释和 README」</li>
+            <li><strong>第二步</strong>：让 Cursor Agent 在完成功能后，自动执行「生成/更新 API 文档」的任务，不需要手动触发</li>
+            <li><strong>第三步</strong>：让 AI 给文档写「使用示例代码」——这比干巴巴的说明更有价值，而且 AI 写得比你快 10 倍</li>
+          </ul>
+          <p><strong>适合什么场景：</strong> <span class="hl">开源项目、团队协作、对外 API 服务</span>。让文档跟代码同步更新，彻底告别「代码更新了但文档还是半年前版本」的尴尬。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 研究报告（文档类任务增长 +62%）</span>
+          <a href="https://cursor.com/cn/blog/better-models-ambitious-work" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🏗️</div>
+          <div class="tip-title">把「架构决策」交给 Cursor：让 AI 帮你做技术选型、设计系统边界、输出 ADR 文档</div>
+        </div>
+        <div class="tags">
+          <span class="tag">架构设计</span>
+          <span class="tag">进阶用法</span>
+          <span class="tag amber">高价值</span>
+        </div>
+        <div class="tip-body">
+          <p>架构类任务增长了 52%，但很多开发者还不知道怎么让 AI 真正参与架构决策，而不只是「帮我画个流程图」。</p>
+          <p><strong>有效的提问方式：</strong></p>
+          <ul>
+            <li>「我们要实现 XX 功能，当前技术栈是 YY，请分析三种架构方案的利弊，给出推荐理由」</li>
+            <li>「分析现有代码，找出哪些地方违反了单一职责原则，提出重构建议」</li>
+            <li>「按照 ADR（架构决策记录）模板，帮我记录刚才我们讨论的这个技术决定」</li>
+          </ul>
+          <p><span class="hl">ADR（Architecture Decision Record）</span>是记录「为什么这样设计」的文档，6 个月后你自己也会感谢自己今天让 AI 记了下来。</p>
+          <p><strong>适合什么场景：</strong> 新项目起步、重构规划、技术债清理、向团队汇报技术决策。把 Cursor 当成「随叫随到的高级架构师顾问」。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 研究报告（架构类任务增长 +52%）</span>
+          <a href="https://cursor.com/cn/blog/better-models-ambitious-work" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-19 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月19日</span>
+      <span class="day-title">画布交互数据看板 + AI 任务分级策略 + Opus 4.7 高清识图实战</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🖼️</div>
+          <div class="tip-title">Cursor Canvas 进阶：让 AI 在画布上创建可交互的数据仪表盘，而不只是生成图片</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">今日精选</span>
+          <span class="tag green">Cursor 3.1</span>
+          <span class="tag">Canvas</span>
+          <span class="tag">可视化</span>
+        </div>
+        <div class="tip-body">
+          <p>很多人以为 Cursor Canvas 只是把文字变成图表——实际上它能创建<span class="hl">可交互的持久化看板</span>，一直挂在 Agent 窗口里，让你实时追踪项目进展。</p>
+          <p><strong>怎么用（三步走）：</strong></p>
+          <ul>
+            <li><strong>第一步</strong>：接入数据源 MCP（如 Sentry、Datadog、GitHub Issues），告诉 AI「把过去一周的报错用画布展示，按模块分组」</li>
+            <li><strong>第二步</strong>：让 AI 在画布上添加「快速操作按钮」——点击即触发修复建议或跳转源码</li>
+            <li><strong>第三步</strong>：长期项目中，让 AI 每次执行后自动更新画布状态，替代人工写进度汇报</li>
+          </ul>
+          <p><strong>适合什么场景：</strong> <span class="hl">生产环境监控、Sprint 任务追踪、多人协作汇报</span>。特别适合需要定期向团队同步进展的开发者——让 AI 帮你维护一个实时看板，省去写周报的时间。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客 - Canvas 交互（2026-04-15）</span>
+          <a href="https://cursor.com/cn/blog/canvas" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🎯</div>
+          <div class="tip-title">AI 任务分级策略：用「任务难度矩阵」决定该交给 AI 多少，别浪费 AI 性能</div>
+        </div>
+        <div class="tags">
+          <span class="tag cyan">研究洞察</span>
+          <span class="tag">工作方式</span>
+          <span class="tag">效率提升</span>
+        </div>
+        <div class="tip-body">
+          <p>斯坦福 2026 AI 报告 + Cursor 研究同时指向一个趋势：<span class="hl">用 AI 越多、做的越复杂，效果越好</span>。但很多人用法反了——把简单任务交给 AI，复杂任务还是自己做。</p>
+          <p><strong>推荐的任务分级方法：</strong></p>
+          <ul>
+            <li>🟢 <strong>L1 简单任务</strong>（增删改查、格式转换）→ 直接让 AI 做，不必反复确认</li>
+            <li>🟡 <strong>L2 中等任务</strong>（重构、API 集成、测试补全）→ AI 起草 + 自己审查</li>
+            <li>🔴 <strong>L3 复杂任务</strong>（架构设计、性能优化、系统安全）→ <span class="hl">重点投入，让 AI 做 80%，自己聚焦 20% 核心决策</span></li>
+          </ul>
+          <p><strong>关键心态转变：</strong> 以前「这个太复杂了，AI 做不好」→ 现在「这个越复杂越值得让 AI 试，Opus 4.7 SWE-bench 64.3% 不是摆设」。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 研究 + 斯坦福 2026 AI 报告</span>
+          <a href="https://cursor.com/cn/blog/better-models-ambitious-work" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">📸</div>
+          <div class="tip-title">Opus 4.7 高清识图实战：整张 1080p 截图丢进去，AI 能看懂所有细节</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Claude Opus 4.7</span>
+          <span class="tag green">新功能</span>
+          <span class="tag">图像识别</span>
+        </div>
+        <div class="tip-body">
+          <p>Opus 4.7 视觉准确率升至 <span class="hl">98.5%</span>，实测可以不压缩、不裁剪地处理完整截图。以下是三个最实用的场景：</p>
+          <ul>
+            <li><strong>场景一 · UI 还原</strong>：截一整张 Figma 稿 → 丢进 Cursor → 说「还原成 React + Tailwind」，AI 能识别所有文字、颜色、间距</li>
+            <li><strong>场景二 · Bug 截图定位</strong>：把浏览器报错截图（包含 Network、Console 全页面）直接发给 AI，不用手动粘贴错误文字</li>
+            <li><strong>场景三 · 架构图分析</strong>：把手画的系统架构草图拍照上传，让 AI 生成对应的代码骨架或 Mermaid 图</li>
+          </ul>
+          <p><strong>注意：</strong> 在 Cursor 中使用时，确保 Model 选择 <span class="hl">claude-opus-4-7</span>，旧版 Opus 4.6 视觉能力差距明显。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Anthropic Opus 4.7 官方公告 + 开发者实测</span>
+          <a href="https://www.anthropic.com/news/claude-opus-4-7" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-18 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月18日</span>
+      <span class="day-title">Canvas 画布可视化 + AI 越强用越多 + Claude/Codex 黄金组合工作流</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🎨</div>
+          <div class="tip-title">Cursor Canvas 画布：让 AI 用表格和图表来汇报，不用再看大段文字</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">今日精选</span>
+          <span class="tag green">Cursor 3.1</span>
+          <span class="tag">新功能</span>
+          <span class="tag">可视化</span>
+        </div>
+        <div class="tip-body">
+          <p>Cursor 3.1 新出了 <span class="hl">Canvas（画布）</span>功能——以前 AI 给你分析结果，都是一大堆 Markdown 文字，现在它可以直接渲染成可交互的表格、图表、框体。</p>
+          <p><strong>怎么用：</strong></p>
+          <ul>
+            <li>在 Agent 窗口里让 AI 分析多个文件/日志，直接说「用画布展示结果」</li>
+            <li>接入 Sentry 或 Datadog MCP 后，让 AI 在画布中呈现错误聚类图</li>
+            <li>做 PR 代码审查时，让 AI 把改动按模块归类，用画布高亮最需要关注的部分</li>
+            <li>跑 eval 实验时，让 AI 实时可视化进度和失败原因分布</li>
+          </ul>
+          <p><strong>适合什么场景：</strong> 需要消化大量数据的任务——<span class="hl">生产故障排查、代码审查、实验分析</span>。不再需要自己阅读 AI 输出的 500 行文字，直接看图表即可。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客 - Canvas</span>
+          <a href="https://cursor.com/cn/blog/canvas" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">📈</div>
+          <div class="tip-title">AI 越好，你用它的频率反而更高——Cursor 研究给你的任务规划建议</div>
+        </div>
+        <div class="tags">
+          <span class="tag cyan">研究洞察</span>
+          <span class="tag">工作方式</span>
+          <span class="tag">效率提升</span>
+        </div>
+        <div class="tip-body">
+          <p>Cursor 联合芝加哥大学研究 500 家公司发现：模型越强，用量不降反升 <span class="hl">+44%</span>，高复杂任务增长 <span class="hl">+68%</span>（这叫"杰文斯效应"）。</p>
+          <p><strong>对你任务规划的实际建议：</strong></p>
+          <ul>
+            <li>不要只用 AI 做「能不能做」的任务，要主动把「本来不会做」的也交给它试试</li>
+            <li>增长最快的任务类型：文档 +62%、架构 +52%、代码审查 +51%——这些是值得投入的方向</li>
+            <li>给 AI 留出「4-6 周适应期」——换了更强的模型，先用一两周做熟悉的任务，再逐渐挑战更复杂需求</li>
+            <li>UI/样式任务增长最低 +15%，相对来说这类任务 AI 优势已饱和</li>
+          </ul>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客 - Better Models Ambitious Work</span>
+          <a href="https://cursor.com/cn/blog/better-models-ambitious-work" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🔗</div>
+          <div class="tip-title">Claude Code + Codex MCP 黄金组合：白嫖 GPT-4o 做对抗性代码审查</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Claude Code</span>
+          <span class="tag green">免费</span>
+          <span class="tag">代码审查</span>
+          <span class="tag">插件</span>
+        </div>
+        <div class="tip-body">
+          <p>OpenAI 发布了官方 Codex MCP 插件，<span class="hl">免费 ChatGPT 账号</span>即可用，3 条命令安装搞定。</p>
+          <p><strong>推荐的黄金工作流：</strong></p>
+          <ul>
+            <li><strong>Claude Code → 规划 + 初始构建：</strong>让 Claude 负责理解需求、拆分任务、写第一版代码</li>
+            <li><strong>Codex → 执行 + 挑刺审查：</strong>让 Codex 扮演"挑刺者"，质疑实现、发现边缘情况</li>
+            <li>实测中 Codex 发现了 Claude Code 自己审查完全没找到的 2 个 bug</li>
+          </ul>
+          <p><strong>适合什么场景：</strong> 重要功能上线前做最终审查，<span class="hl">当自己没时间人工 review 时，让两个 AI 互相挑刺</span>。安装命令：<span class="code">npx -y @anthropic-ai/codex-mcp</span></p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：腾讯云开发者社区 · OpenAI 官方插件</span>
+          <a href="https://cloud.tencent.com/developer/article/2654895" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-17 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月17日</span>
+      <span class="day-title">Claude Opus 4.7 × Cursor：更强视觉识图 + 杰文斯效应研究 + Routines 自动化</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">👁️</div>
+          <div class="tip-title">用 Opus 4.7 的超清图像识别做 UI 对照开发：设计稿直接扔进去，不用裁剪</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">今日精选</span>
+          <span class="tag green">新功能</span>
+          <span class="tag">图像识别</span>
+          <span class="tag">设计还原</span>
+        </div>
+        <div class="tip-body">
+          <p>Claude Opus 4.7 这次视觉能力是质变：图像分辨率提升至前代 <span class="hl">3 倍以上</span>，视觉准确率从 54.5% 飙到 <span class="hl">98.5%</span>。这对 Cursor 用户意味着什么？</p>
+          <p><strong>怎么用：</strong></p>
+          <ul>
+            <li>直接把整张 Figma 设计稿截图（甚至 1080p 终端截图）丢进 Cursor 对话框</li>
+            <li>告诉 AI：「按照这张设计稿还原成 React 组件」，不需要提前裁剪或压缩</li>
+            <li>复杂的架构图、数据库关系图也能直接分析，AI 能读懂细节文字</li>
+          </ul>
+          <p><strong>适合什么场景：</strong> 前端还原设计稿、看截图找 bug、分析技术架构文档图、财报图表数据提取。<span class="hl">以前截图模糊识别错误的场景，现在可以大胆试了。</span></p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Anthropic Opus 4.7 官方公告</span>
+          <a href="https://www.anthropic.com/news/claude-opus-4-7" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">📊</div>
+          <div class="tip-title">杰文斯效应：AI 越好你反而会用得越多——Cursor 研究数据告诉你该怎么规划任务</div>
+        </div>
+        <div class="tags">
+          <span class="tag cyan">研究洞察</span>
+          <span class="tag">工作方式</span>
+          <span class="tag">效率</span>
+        </div>
+        <div class="tip-body">
+          <p>Cursor 联合芝加哥大学研究 500 家公司发现：模型越强，开发者用 AI 的频率 <span class="hl">不降反升（+44%）</span>，尤其高难度任务增长 68%。</p>
+          <p><strong>对你的实际意义：</strong></p>
+          <ul>
+            <li><span class="hl">不要把 AI 只当「完成现有任务」的工具</span>——更好的模型来了，要主动去挑战以前觉得「太难」的任务</li>
+            <li>有 4-6 周适应期：先用新模型完成熟悉的事，再逐步尝试架构设计、全局代码重构等大任务</li>
+            <li>文档、架构设计、代码审查这类「管理类」工作增速最快（50-62%），说明 AI 正在改变开发者的工作重心</li>
+          </ul>
+          <p><strong>建议：</strong> 下次打开 Cursor，不要只是「帮我改这个函数」，试试「帮我设计这个模块的整体架构」。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor × 芝加哥大学布斯商学院联合研究</span>
+          <a href="https://cursor.com/cn/blog/better-models-ambitious-work" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">⏰</div>
+          <div class="tip-title">Claude Code Routines：设置好触发条件，AI 帮你 7×24 自动干活</div>
+        </div>
+        <div class="tags">
+          <span class="tag green">自动化</span>
+          <span class="tag">Claude Code</span>
+          <span class="tag">效率</span>
+        </div>
+        <div class="tip-body">
+          <p>虽然这是 Claude Code 的功能，但和 Cursor 的工作流互补性很强。<span class="hl">Routines 让你配置好任务后，关掉电脑 AI 也在跑。</span></p>
+          <p><strong>三种触发方式：</strong></p>
+          <ul>
+            <li><span class="hl">定时触发</span>：每天凌晨自动拉取新 issue 并尝试修复，早起就看到 PR</li>
+            <li><span class="hl">GitHub Webhook</span>：有人提 PR 自动触发 Code Review，有人提 issue 自动分类打标签</li>
+            <li><span class="hl">API 触发</span>：监控系统报警时自动触发诊断和修复流程</li>
+          </ul>
+          <p><strong>配合 Cursor 的玩法：</strong> 用 Claude Code Routines 跑自动化任务（测试、lint、文档生成），用 Cursor 做交互式开发，两者分工明确。<span class="hl">Pro 用户每天 5 次，Max 用户每天 15 次。</span></p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Anthropic Claude Code 更新公告</span>
+          <a href="https://www.anthropic.com/news/claude-code-update" target="_blank">查看原文 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-16 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月16日</span>
+      <span class="day-title">画布可视化交互 + 多智能体 GPU 加速 + Bugbot 自我进化</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🎨</div>
+          <div class="tip-title">Cursor Agent 画布可视化：让 AI 生成的图表、流程图「活」起来</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">今日精选</span>
+          <span class="tag green">新功能</span>
+          <span class="tag">画布</span>
+          <span class="tag">可视化</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">这个功能是什么？</span> Cursor Agent 现在可以在画布（Canvas）中创建可视化内容——图表、流程图、架构图、思维导图等。你不需要等 AI 输出文字再自己画，而是直接让 Agent 把内容「可视化」出来。</p>
+          <p><span class="hl">怎么用？</span></p>
+          <ul>
+            <li>在 Composer 或 Chat 中，让 Agent 画一个「系统架构图」或「用户流程图」</li>
+            <li>Agent 会自动在画布中生成可视化内容</li>
+            <li>你可以直接在画布上点击元素提问：「这个模块的输入输出是什么？」</li>
+            <li>拖拽调整布局、添加注释，Agent 会同步理解你的修改</li>
+          </ul>
+          <p><span class="hl">适合什么场景？</span></p>
+          <ul>
+            <li>向非技术人员解释技术方案——用图比用文字更直观</li>
+            <li>梳理复杂业务逻辑——画出来比想清楚更容易</li>
+            <li>审核 AI 生成的架构设计——直接指出问题，不用再脑补</li>
+          </ul>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：<a href="https://cursor.com/cn/blog" target="_blank">在画布中与智能体创建的可视化内容交互</a> · 2026-04-15</span>
+          <span>⭐ 适合：所有 Cursor 用户</span>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">⚡</div>
+          <div class="tip-title">多智能体协作将 GPU kernel 提速 38%：这对你的日常使用意味着什么？</div>
+        </div>
+        <div class="tags">
+          <span class="tag cyan">技术研究</span>
+          <span class="tag">GPU 加速</span>
+          <span class="tag">性能</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">发现了什么？</span> Cursor 研究团队（Wilson, Sahil, Yuan & Edward）发现，通过让多个 AI Agent 协作来优化 GPU 代码调度策略，比单个 Agent 或人类手动优化效果更好，最终实现 <strong>38% 的性能提升</strong>。</p>
+          <p><span class="hl">大白话解释：</span> 想象一个厨房，单个厨师只能一道一道地炒菜；多个厨师合理分工后，可以同时炒多道菜，还能协调谁先做前菜、谁后做主菜。GPU 运算也是同理——多智能体协作能更好地「排班」，减少等待时间。</p>
+          <p><span class="hl">对你的影响：</span> 这项研究最终会应用到 Cursor 的云端推理服务中。你使用 Composer 或 Agent 时，响应会越来越快，特别是复杂任务（代码重构、大批量修改）会明显感觉到提速。</p>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：<a href="https://cursor.com/cn/blog" target="_blank">多智能体系统将 GPU kernel 提速 38%</a> · 2026-04-14</span>
+          <span>⭐ 适合：对 AI 底层技术感兴趣的开发者</span>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🐛</div>
+          <div class="tip-title">Bugbot 自我学习进阶：从「通用规则」到「懂你的项目」</div>
+        </div>
+        <div class="tags">
+          <span class="tag green">Bugbot</span>
+          <span class="tag">持续学习</span>
+          <span class="tag">团队协作</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">升级了什么？</span> Bugbot 现在不只是按通用规则扫描代码，而是会记住你项目的「个性」——哪些是你关心的、哪些是误报、你的编码风格是什么。</p>
+          <p><span class="hl">学习方式：</span></p>
+          <ul>
+            <li>你对 Bugbot 的建议「点踩」→ 它学会这类提示对你没用</li>
+            <li>你在 PR 里说「Bugbot 漏了 XXX」→ 它下次主动检测</li>
+            <li>你认可一个发现 → 它知道这类问题要继续重点关注</li>
+          </ul>
+          <p><span class="hl">怎么配置？</span> 在 <span class="code">.cursor/rules/</span> 目录放自定义规则，或者直接在 Cursor 设置 → Bugbot → 「启用规则学习」。</p>
+          <p><span class="hl">适合什么场景？</span> 团队有特定编码规范、中大型项目、想减少 Code Review 重复工作。</p>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：<a href="https://cursor.com/cn/blog" target="_blank">Bugbot 现在可通过学习规则自我改进</a> · 2026-04-08</span>
+          <span>⭐ 适合：有规范要求的团队 / 中大型项目</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-15 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月15日</span>
+      <span class="day-title">Cursor v3.1 平铺布局 + Bugbot MCP 支持 + 多智能体加速 GPU kernel</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🪟</div>
+          <div class="tip-title">Cursor v3.1 更新：智能体窗口平铺布局 + 升级版语音输入，多 Agent 协作体验再提升</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">今日精选</span>
+          <span class="tag green">新版本</span>
+          <span class="tag">v3.1</span>
+          <span class="tag">平铺布局</span>
+          <span class="tag">语音输入</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">发生了什么？</span> Cursor 于 4 月 13 日发布 v3.1 更新，带来两项重要改进：智能体窗口的平铺布局和升级版语音输入功能。</p>
+          <p><span class="hl">平铺布局是什么？</span> 以前多 Agent 窗口是堆叠的标签页模式，切换不方便。现在支持平铺（Tile）模式——多个 Agent 窗口同时铺开在屏幕上，像分屏一样一目了然，每个 Agent 的进度都能实时看到。</p>
+          <p><span class="hl">怎么用？</span></p>
+          <ul>
+            <li>更新 Cursor 到 <span class="code">v3.1</span>（Settings → Check for Updates）</li>
+            <li>打开 Agent 窗口（<span class="code">Cmd+Shift+P</span> → Agents Window）</li>
+            <li>点击窗口顶部的「平铺模式」按钮，即可切换为并排布局</li>
+            <li>语音输入在 Composer 面板中点击麦克风图标即可使用，支持中英文混合</li>
+          </ul>
+          <p><span class="hl">适合什么场景？</span> 多 Agent 并行任务（一个写功能、一个写测试、一个跑检查）时，平铺布局让你不用频繁切换标签，效率更高。</p>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：Cursor 更新日志 v3.1 · 2026-04-13</span>
+          <span>⭐ 适合：所有 Cursor 3 用户</span>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🐛</div>
+          <div class="tip-title">Bugbot 新增 MCP 支持：让 Bugbot 调用你的外部工具做更深入的安全检查</div>
+        </div>
+        <div class="tags">
+          <span class="tag green">新功能</span>
+          <span class="tag">Bugbot</span>
+          <span class="tag">MCP</span>
+          <span class="tag">安全审查</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">这个功能是什么？</span> Bugbot 现在支持 MCP（Model Context Protocol）协议，可以连接你配置的外部工具（如安全扫描器、依赖检查服务、CI/CD 系统），在 PR 审查时获取更丰富的上下文信息。</p>
+          <p><span class="hl">怎么用？</span></p>
+          <ul>
+            <li>在 <span class="code">.cursor/mcp.json</span> 中配置你要连接的 MCP 服务</li>
+            <li>Bugbot 在审查 PR 时会自动调用这些服务获取额外信息</li>
+            <li>例如：连接 Snyk 做依赖漏洞检查、连接 SonarQube 做代码质量分析</li>
+          </ul>
+          <p><span class="hl">适合什么场景？</span> 团队有成熟的安全扫描或代码质量工具链，想让 Bugbot 审查更全面、减少误报漏报。</p>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：Cursor 更新日志 v3.1 · Bugbot MCP · 2026-04-13</span>
+          <span>⭐ 适合：企业安全团队 / DevOps</span>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">⚡</div>
+          <div class="tip-title">Cursor 研究突破：多智能体系统将 GPU kernel 性能提升 38%</div>
+        </div>
+        <div class="tags">
+          <span class="tag cyan">技术研究</span>
+          <span class="tag">GPU 加速</span>
+          <span class="tag">多智能体</span>
+          <span class="tag">性能</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">发现了什么？</span> Cursor 研究团队（Wilson, Sahil, Yuan & Edward）发表论文称，通过多智能体协作方式优化 GPU kernel 调度，实现了 38% 的性能提升。</p>
+          <p><span class="hl">大白话解释：</span> GPU 运算就像厨房做菜——一个厨师（单智能体）只能一道一道地炒，多个厨师（多智能体）合理分工后可以同时炒多道菜。Cursor 团队让多个 AI Agent 协作来优化 GPU 代码的调度策略，比单个 Agent 或人类手动优化效果更好。</p>
+          <p><span class="hl">对你的影响：</span> 这项研究最终会惠及 Cursor 的云端推理服务——Composer 和 Agent 的响应速度会越来越快，你在使用 Cursor 时会感受到更流畅的体验。</p>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：<a href="https://cursor.com/blog" target="_blank">多智能体系统将 GPU kernel 提速 38%</a> · Cursor 官方博客 · 2026-04-14</span>
+          <span>⭐ 适合：对 AI 底层技术感兴趣的开发者</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-14 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月14日</span>
+      <span class="day-title">GPT-6 时代来临 · Cursor Composer 最佳实践 · 让 Agent 处理长周期任务</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🚀</div>
+          <div class="tip-title">GPT-6 发布了！Cursor 用户最该关注什么？—— 更长的上下文 = 更强的 Agent 能力</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">今日精选</span>
+          <span class="tag red">GPT-6</span>
+          <span class="tag">200万 Token</span>
+          <span class="tag">Cursor</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">发生了什么？</span> OpenAI 今天正式发布了 GPT-6（代号 Spud），最大亮点是 <strong>200 万 Token 上下文窗口</strong>——是上一代的 8 倍，性能提升约 40%。</p>
+          <p><span class="hl">这对 Cursor 用户意味着什么？</span></p>
+          <ul>
+            <li>更大的上下文 → Composer 可以一次性「看懂」整个大型项目，不再需要你手动指定哪些文件</li>
+            <li>更强的推理能力 → Agent 在复杂重构任务中做出更准确的决策，出错率降低</li>
+            <li>原生多模态 → 截图、设计稿直接丢给 Cursor，它能理解图片内容并生成代码</li>
+          </ul>
+          <p><span class="hl">你现在可以怎么做？</span></p>
+          <ul>
+            <li>等待 Cursor 官方适配 GPT-6 模型（通常会在发布后数天内推出更新）</li>
+            <li>更新 Cursor 到最新版本，确保能第一时间使用新模型</li>
+            <li>尝试给 Composer 更大胆的任务——比如「把整个项目从 REST 迁移到 GraphQL」，以前不敢试的，现在可以了</li>
+          </ul>
+          <p><span class="hl">适合什么场景？</span> 大型代码库重构、全栈功能开发、需要理解大量上下文的复杂任务。</p>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：OpenAI 官方 · GPT-6 发布公告 · 2026-04-14</span>
+          <span>⭐ 适合：所有 Cursor 用户</span>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🎯</div>
+          <div class="tip-title">实操技巧：如何用 Composer 处理「需要好几天」的长周期任务？—— 把大任务拆成小步骤，让 AI 自己管理进度</div>
+        </div>
+        <div class="tags">
+          <span class="tag green">实操技巧</span>
+          <span class="tag">Composer</span>
+          <span class="tag">任务拆解</span>
+          <span class="tag">效率提升</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">痛点：</span> 很多新手用 Cursor 时，给 Composer 一个很大的任务（比如「重写整个后端 API」），结果 AI 跑到一半就跑偏了，或者改了后面忘了前面。</p>
+          <p><span class="hl">正确做法：</span></p>
+          <ul>
+            <li><strong>第一步：先让 Composer 做分析</strong>——「先别写代码，帮我分析这个项目需要改哪些文件，列出清单」</li>
+            <li><strong>第二步：确认计划</strong>——审查 AI 列出的清单，补充遗漏的，删除不需要的</li>
+            <li><strong>第三步：按模块分批执行</strong>——「先改用户模块的 API，改完告诉我」</li>
+            <li><strong>第四步：逐模块验收</strong>——每改完一个模块，手动跑测试确认没问题，再让它改下一个</li>
+          </ul>
+          <p><span class="hl">关键原则：</span> 你是项目经理，AI 是执行者。<span class="hl">不要把整个项目一次性扔给 AI</span>，而是按模块逐步推进，每步验收。</p>
+          <p><span class="hl">搭配 GPT-6 更强：</span> 200 万 Token 上下文意味着 Composer 现在能记住整个项目的全貌，拆步执行时不会「忘了前面的约定」。</p>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：Cursor 实践社区 · 2026-04-14</span>
+          <span>⭐ 适合：需要做中大型任务的新手到中级用户</span>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">⚡</div>
+          <div class="tip-title">快速对比：GPT-6 来了，Cursor 该选什么模型？—— Composer 2 / claude-sonnet / gpt-4o 怎么选</div>
+        </div>
+        <div class="tags">
+          <span class="tag cyan">选型指南</span>
+          <span class="tag">模型选择</span>
+          <span class="tag">性价比</span>
+        </div>
+        <div class="tip-body">
+          <p>随着 GPT-6 发布，Cursor 里可选的模型更多了。日常怎么选？这里有个简单决策：</p>
+          <ul>
+            <li><strong>日常小改动</strong>（加个按钮、改个文案）→ <span class="hl">快速版 Composer</span>，响应最快，够用了</li>
+            <li><strong>中等任务</strong>（写新功能、重构模块）→ <span class="hl">Composer 2 标准版</span>，平衡速度和质量</li>
+            <li><strong>复杂任务</strong>（全栈开发、跨文件重构）→ <span class="hl">GPT-6（等适配后）</span>，上下文最长、推理最强</li>
+            <li><strong>代码审查 + 规范检查</strong>→ <span class="hl">claude-sonnet</span>，在细微错误检测上表现最好</li>
+          </ul>
+          <p><span class="hl">省钱技巧：</span> 日常对话和简单问答用快速版，只在遇到真正复杂的任务时切换到高级模型。你的用量会省很多。</p>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：社区经验总结 · 2026-04-14</span>
+          <span>⭐ 适合：所有 Cursor 用户</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-13 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月13日</span>
+      <span class="day-title">Cursor 极速代码搜索 + Marketplace 插件系统 + 用自然语言查 Datadog 日志</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">⚡</div>
+          <div class="tip-title">Cursor 为什么搜代码这么快？—— 「稀疏 N-gram 索引」让大仓库秒级搜索，Agent 效率翻倍</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">今日精选</span>
+          <span class="tag cyan">底层技术</span>
+          <span class="tag">搜索加速</span>
+          <span class="tag">大型项目</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">这个功能是什么？</span> 你有没有发现 Cursor 在大型代码仓库里搜东西特别快？这背后是 Cursor 自研的「快速正则搜索」技术——它给你的代码库建立了一个专门的文本索引，而不是像普通 <span class="code">grep</span> 那样一个文件一个文件地扫。</p>
+          <p><span class="hl">对比有多大？</span></p>
+          <ul>
+            <li>普通 ripgrep 在 Chromium 这样的大仓库里搜索一次需要 <strong>30-60 秒</strong></li>
+            <li>Cursor 的索引技术让同样的搜索接近 <strong>0 秒</strong>（即时响应）</li>
+            <li>这对 AI Agent 影响巨大——Agent 调 bug 时需要反复搜代码，节省几十秒等于效率翻倍</li>
+          </ul>
+          <p><span class="hl">技术原理（大白话版）：</span> 传统搜索是「每次都翻所有文件」，Cursor 是「先建好目录，搜的时候查目录」。它用「稀疏 N-grams」算法——从代码里提取随机长度的字符片段，建立倒排索引，查询时只需找到候选文件再精确匹配，大幅减少 I/O 开销。</p>
+          <p><span class="hl">怎么用？</span></p>
+          <ul>
+            <li>这个功能是<strong>自动开启</strong>的，你不需要任何配置</li>
+            <li>Cursor 启动时会自动为当前仓库建立索引，索引完成后搜索就变快了</li>
+            <li>在 Composer/Chat 中让 Agent 搜索代码时，它会自动使用这个快速索引</li>
+            <li>索引基于 Git 状态管理，你每次 commit 后索引会增量更新，而不是重新全量索引</li>
+          </ul>
+          <p><span class="hl">适合什么场景？</span></p>
+          <ul>
+            <li>大型 monorepo（几百万行代码的项目）</li>
+            <li>让 Agent 做重构任务——它需要找所有调用某个函数的地方</li>
+            <li>调试复杂 bug——Agent 需要追踪跨文件的数据流</li>
+          </ul>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：<a href="https://cursor.com/cn/blog/fast-regex-search" target="_blank">快速正则搜索：为 agent 工具构建文本索引</a> · Cursor 官方博客</span>
+          <span>⭐ 适合：使用大型仓库 / 高频 Agent 工作流</span>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🔌</div>
+          <div class="tip-title">Cursor Marketplace 插件系统 —— 让 AI Agent 直接连接 Jira、Datadog、GitLab，彻底打通工作流</div>
+        </div>
+        <div class="tags">
+          <span class="tag green">新功能</span>
+          <span class="tag">Marketplace</span>
+          <span class="tag">企业工具</span>
+          <span class="tag">AI Agent</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">这个功能是什么？</span> Cursor 的「插件」不是普通 IDE 插件——它是让 AI Agent 能直接「调用外部工具」的能力包。比如你说「帮我看一下昨晚的 Datadog 错误日志」，Agent 真的可以帮你查，而不是叫你自己去 Datadog 看。</p>
+          <p><span class="hl">怎么用？</span></p>
+          <ul>
+            <li>打开 <a href="https://cursor.com/marketplace" target="_blank" style="color:#6366f1">cursor.com/marketplace</a> 浏览可用插件</li>
+            <li>点击安装，插件会自动在 Cursor 里激活</li>
+            <li>在 Composer 里直接用自然语言描述需求，Agent 会自动调用相关插件工具</li>
+            <li>企业管理员可以在「团队 Marketplace」里统一管理和分发私有插件</li>
+          </ul>
+          <p><span class="hl">最实用的插件推荐：</span></p>
+          <ul>
+            <li><strong>Datadog</strong>：「帮我查一下 prod 环境过去一小时的 5xx 错误」直接出结果</li>
+            <li><strong>Atlassian（Jira）</strong>：「把这个需求文档转成 Jira 任务列表」一键完成</li>
+            <li><strong>GitLab</strong>：让 Agent 直接处理 MR Review 和 Pipeline 失败分析</li>
+          </ul>
+          <p><span class="hl">适合什么场景？</span></p>
+          <ul>
+            <li>使用多种 SaaS 工具的研发团队</li>
+            <li>想让 AI Agent 完成从「写代码」到「部署运维」的完整闭环</li>
+            <li>不想频繁在多个工具之间切换的开发者</li>
+          </ul>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：<a href="https://cursor.com/cn/blog/new-plugins" target="_blank">超过 30 个新插件加入 Cursor Marketplace</a> · Cursor 官方博客</span>
+          <span>⭐ 适合：企业研发团队 / 多工具用户</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-12 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月12日</span>
+      <span class="day-title">Bugbot 自我进化 + Cursor 3 多 Agent 并行 + CLAUDE.md 记忆层配置</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🐛</div>
+          <div class="tip-title">Bugbot 学会「自我改进」—— 让 AI 记住你项目的代码规范，越用越聪明</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">今日精选</span>
+          <span class="tag green">新功能</span>
+          <span class="tag">代码审查</span>
+          <span class="tag">团队协作</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">这个功能是什么？</span> Cursor 的 Bugbot 现在可以通过学习你的代码库规则来持续自我改进。以前它只按通用规则扫描，现在会记住你项目特有的规范，下次审查时自动应用，越用越准。</p>
+          <p><span class="hl">怎么用？</span></p>
+          <ul>
+            <li>在项目根目录创建 <span class="code">.cursor/rules/</span> 目录，写入自定义规则（如命名规范、错误处理风格）</li>
+            <li>提交代码时 Bugbot 会自动扫描，并将违规记录入库</li>
+            <li>Bugbot 会主动学习哪些问题「对你重要」，逐步减少误报</li>
+            <li>在 Cursor 设置 → Bugbot → 「启用规则学习」打开此功能</li>
+          </ul>
+          <p><span class="hl">适合什么场景？</span></p>
+          <ul>
+            <li>团队有固定编码规范（比如 ESLint 规则之外的业务规约）</li>
+            <li>想减少手动 Code Review 的重复性工作</li>
+            <li>生产环境可靠性要求高的项目（PlanetScale 团队用它保障生产稳定）</li>
+          </ul>
+          <p><span class="hl">效果数据：</span> Salesforce 团队使用 Bugbot 后代码质量提升，开发速度提升超 30%。</p>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：<a href="https://cursor.com/cn/blog" target="_blank">Bugbot 现在可通过学习规则自我改进</a> · 2026-04-08</span>
+          <span>⭐ 适合：有规范要求的团队 / 中大型项目</span>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🤝</div>
+          <div class="tip-title">Cursor 3 多 Agent 并行协作 —— 让多个 AI 同时干不同的活，像真正的开发团队</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Cursor 3</span>
+          <span class="tag cyan">多 Agent</span>
+          <span class="tag">效率提升</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">这是什么？</span> Cursor 3 的「多 Agent 并行协作」功能，允许你同时启动多个 AI 智能体分别处理不同任务，就像一个小团队各司其职。</p>
+          <p><span class="hl">怎么用？</span></p>
+          <ul>
+            <li>打开 Cursor 3，在 Composer 面板中点击「+ 新建 Agent」</li>
+            <li>可以同时开启多个 Agent：Agent A 负责写功能，Agent B 同步写测试</li>
+            <li>每个 Agent 可以看到其他 Agent 的进度，避免冲突</li>
+            <li>完成后一键合并所有修改，Cursor 自动处理代码冲突</li>
+          </ul>
+          <p><span class="hl">适合场景：</span></p>
+          <ul>
+            <li>前后端并行开发（一个 Agent 写 API，一个写 UI）</li>
+            <li>大型重构任务（按模块拆分给不同 Agent 分头执行）</li>
+            <li>开发 + 测试同步进行，大幅缩短交付周期</li>
+          </ul>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：<a href="https://cursor.com/cn/blog" target="_blank">认识全新的 Cursor (Cursor 3)</a> · 2026-04-02</span>
+          <span>⭐ 适合：有并行任务需求的中级以上开发者</span>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🧠</div>
+          <div class="tip-title">用 CLAUDE.md 给 Cursor 装上「长期记忆」—— 让 AI 永远记得你的项目</div>
+        </div>
+        <div class="tags">
+          <span class="tag">CLAUDE.md</span>
+          <span class="tag">记忆层</span>
+          <span class="tag green">新手必学</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">痛点：</span> 每次打开新对话，Cursor 都不记得你的项目是什么、用什么技术栈、有什么约定，每次都要重新解释一遍，很烦。</p>
+          <p><span class="hl">解决方案：CLAUDE.md 配置文件</span></p>
+          <ul>
+            <li>在项目根目录创建 <span class="code">CLAUDE.md</span> 文件</li>
+            <li>写入项目基本信息：技术栈、目录结构、关键约定</li>
+            <li>写入你的编码偏好：不要用什么 API、变量命名风格、错误处理方式</li>
+            <li>Cursor 每次对话都会自动读取这个文件作为上下文</li>
+          </ul>
+          <p><span class="hl">示例内容：</span></p>
+          <ul>
+            <li><span class="code"># Project: 电商后台系统（Node.js + TypeScript + PostgreSQL）</span></li>
+            <li><span class="code">## 约定：所有 API 返回使用 {code, data, message} 结构</span></li>
+            <li><span class="code">## 禁止：不要使用 any 类型，不要用 console.log 调试</span></li>
+          </ul>
+          <p><span class="hl">灵感来源：</span> Andrej Karpathy 开源的 CLAUDE.md 配置模板，GitHub 搜索 「forrestchang CLAUDE.md」即可找到。</p>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：GitHub 社区 / AIToolly · 2026-04-10</span>
+          <span>⭐ 适合：所有 Cursor 用户，特别是新手</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-11 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月11日</span>
+      <span class="day-title">自托管云端智能体 + Warp Decode 技术 + 安全智能体</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🔒</div>
+          <div class="tip-title">自托管云端智能体：让 Cursor 在你自己的服务器里跑，代码不出内网</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">今日精选</span>
+          <span class="tag">企业安全</span>
+          <span class="tag">私有化</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">这个功能是什么？</span> 企业版 Cursor 现在支持把云端智能体部署在你自己的服务器/私有云里，代码库、构建产物、工具执行完全不会离开你的网络环境。</p>
+          <p><span class="hl">适合什么场景？</span></p>
+          <ul>
+            <li>公司有严格的代码安全合规要求（金融、医疗、政府）</li>
+            <li>需要访问内部私有网络资源（内部 API、私有依赖库）</li>
+            <li>不想把核心代码上传到第三方云端</li>
+          </ul>
+          <p><span class="hl">怎么用？</span></p>
+          <ul>
+            <li>在 <span class="code">cursor.com/dashboard/cloud-agents</span> 启用"自托管智能体"</li>
+            <li>下载 Worker 程序部署到你的服务器（支持 K8s Helm chart 或独立部署）</li>
+            <li>Worker 通过 HTTPS 主动连接 Cursor 云端，无需开放入站端口</li>
+            <li>智能体运行时，所有计算在你本地完成，Cursor 只接收操作日志</li>
+          </ul>
+          <p><span class="hl">已启用企业：</span>Brex、Money Forward（近 1000 名工程师）、Notion 等。</p>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：<a href="https://cursor.com/cn/blog/self-hosted-cloud-agents" target="_blank">在您自己的基础设施中运行云端智能体</a> · 2026-03-25</span>
+          <span>⭐ 适合：企业开发团队 / 有合规要求的组织</span>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">⚡</div>
+          <div class="tip-title">Warp Decode：Cursor 自研的 GPU 推理加速黑科技</div>
+        </div>
+        <div class="tags">
+          <span class="tag">技术深度</span>
+          <span class="tag">性能优化</span>
+          <span class="tag">MoE</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">这是什么？</span> Cursor 团队为 Blackwell GPU（如 B200）开发的 MoE 模型推理加速技术，吞吐量提升 <span class="hl">84%</span>。</p>
+          <p><span class="hl">为什么需要这个？</span> 传统的 MoE 推理是"以专家为中心"组织计算，每次都要经过填充→分发→计算→归约→整理 5 个步骤，大量时间花在数据搬运上。</p>
+          <p><span class="hl">Warp Decode 的革新：</span></p>
+          <ul>
+            <li><strong>改为"以输出为中心"</strong>：每个 GPU Warp（32 线程组）只负责生成一个输出值</li>
+            <li><strong>消除中间缓冲区</strong>：不需要激活收集缓冲区和专家输出缓冲区，节省 32KB/token 的显存传输</li>
+            <li><strong>寄存器计算</strong>：所有计算在寄存器完成，不频繁访问全局内存</li>
+            <li><strong>Warp 独立调度</strong>：硬件可任意顺序调度 Warp，自动隐藏内存延迟</li>
+          </ul>
+          <p><span class="hl">对你有什么影响？</span> 这项技术已用于加速 Cursor Composer 模型，你在使用 Composer 时会感受到更快的响应速度。</p>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：<a href="https://cursor.com/cn/blog/warp-decode" target="_blank">用 warp decode 实现更好的 MoE 模型推理</a> · 2026-04-06</span>
+          <span>⭐ 适合：想了解 AI 底层技术的开发者</span>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🛡️</div>
+          <div class="tip-title">Cursor 安全智能体：用 AI 自动保护代码库安全</div>
+        </div>
+        <div class="tags">
+          <span class="tag">安全</span>
+          <span class="tag">自动化</span>
+          <span class="tag">最佳实践</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">Cursor 怎么用 AI 保护自己的代码？</span> Cursor 团队分享了他们用"安全智能体"自动审查代码、发现漏洞、修复依赖的经验。</p>
+          <p><span class="hl">四大安全自动化工具：</span></p>
+          <ul>
+            <li><strong>Agentic Security Review</strong>：PR 自动安全审查，发现问题直接评论或阻断合并</li>
+            <li><strong>Vuln Hunter</strong>：扫描现有代码库漏洞，用 Slack @Cursor 直接生成修复 PR</li>
+            <li><strong>Anybump</strong>：自动检测有漏洞的依赖，运行可达性分析，测试通过后自动创建升级 PR</li>
+            <li><strong>Invariant Sentinel</strong>：每日监控代码库，验证安全合规属性，偏离时自动告警</li>
+          </ul>
+          <p><span class="hl">关键设计：</span> 使用 MCP 工具连接安全数据，用 Gemini Flash 2.5 做语义去重，确保同样的漏洞不会被重复报告。</p>
+          <p><span class="hl">成效：</span> 两个月内运行于数千个 PR，阻止数百个问题进入生产环境。</p>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：<a href="https://cursor.com/cn/blog/security-agents" target="_blank">用自治智能体保护我们的代码库</a> · 2026-03-16</span>
+          <span>⭐ 适合：关注代码安全的团队 / DevSecOps 实践者</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-10 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月10日</span>
+      <span class="day-title">Bugbot 会越用越聪明</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🤖</div>
+          <div class="tip-title">Bugbot：会自我学习的 AI 代码审查员，PR 合并前帮你抓 Bug</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">今日精选</span>
+          <span class="tag">代码审查</span>
+          <span class="tag cyan">自动化</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">Bugbot 是什么？</span> 它会自动扫描你每一个 PR，找出潜在 Bug，解决率高达 <span class="hl">78%</span>——远高于 GitHub Copilot（46%）和 CodeRabbit（48%）。</p>
+          <p><span class="hl">它如何学习？</span> 每次你对它的建议"点踩"、或者留下评论说"这不对"，Bugbot 就会把你的意见记录成一条"学习规则"，下次不再犯同样的错。</p>
+          <ul>
+            <li>👍 认可一个 Bug 发现 → 它知道这类问题以后要继续检测</li>
+            <li>👎 否定一个误报 → 它知道这类提示对你没用，不再打扰</li>
+            <li>💬 在 PR 里写"Bugbot 漏了一个 XXX 问题" → 它下次会主动检测</li>
+          </ul>
+          <p>目前已有 <span class="hl">11 万+ 仓库</span> 启用，生成了超过 <span class="hl">4.4 万条</span> 学习规则。</p>
+          <p><span class="hl">怎么用？</span> 进入 <span class="code">cursor.com/dashboard/bugbot/repository-rules</span> 开启，然后正常提交 PR，Bugbot 会自动出现在 Review 里。</p>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：<a href="https://cursor.com/cn/blog/bugbot-learning" target="_blank">Bugbot 现在可通过学习规则自我改进</a> · 2026-04-08</span>
+          <span>⭐ 适合：所有使用 Git 工作流的开发者</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-09（补充） ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月09日</span>
+      <span class="day-title">认识全新的 Cursor 3：以智能体为核心的工作台</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🪟</div>
+          <div class="tip-title">Cursor 3 核心变化：不再是 VS Code 分叉，而是专为 AI Agent 重建的新工作台</div>
+        </div>
+        <div class="tags">
+          <span class="tag green">新版本</span>
+          <span class="tag">Cursor 3</span>
+          <span class="tag">工作流</span>
+        </div>
+        <div class="tip-body">
+          <p><span class="hl">最大变化：</span> Cursor 3 从底层重建，专为"多个 AI 智能体同时工作"而设计。</p>
+          <ul>
+            <li><strong>以前：</strong> 你打开 Cursor → 打一条指令 → 等 AI 回复 → 再打下一条</li>
+            <li><strong>现在：</strong> 你可以同时启动 5 个智能体，分别处理 5 个不同任务，就像有 5 个实习生同时干活</li>
+          </ul>
+          <p><span class="hl">本地 + 云端无缝切换：</span></p>
+          <ul>
+            <li>合上笔记本盖子，云端智能体继续跑，不会中断</li>
+            <li>需要本地调试时，一键从云端拉回本地继续编辑</li>
+          </ul>
+          <p><span class="hl">如何打开新界面？</span> 按 <span class="code">Cmd+Shift+P</span>，输入 <span class="code">Agents Window</span>，回车即可进入新的多智能体管理视图。</p>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：<a href="https://cursor.com/cn/blog/cursor-3" target="_blank">认识全新的 Cursor</a> · 2026-04-02</span>
+          <span>⭐ 适合：想提升并行工作效率的开发者</span>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🔄</div>
+          <div class="tip-title">实战场景：什么时候把任务"扔给云端"，什么时候留在本地？</div>
+        </div>
+        <div class="tags">
+          <span class="tag">使用场景</span>
+          <span class="tag cyan">最佳实践</span>
+        </div>
+        <div class="tip-body">
+          <p>很多开发者用 Cursor 时纠结：到底什么任务交给 AI，什么任务自己来？这里有个简单判断框架：</p>
+          <ul>
+            <li>✅ <span class="hl">交给云端 Agent：</span> 大规模重构、写单元测试、生成文档、爬数据、批量改代码风格</li>
+            <li>✅ <span class="hl">留在本地：</span> 需要实时预览的 UI 调整、需要你拍板的架构决策、敏感代码不想上传</li>
+            <li>✅ <span class="hl">本地→云端：</span> 任务提出需求后，交给云端跑，你去开会，回来看结果</li>
+          </ul>
+          <p>核心原则：<span class="hl">你负责定义问题 + 审查结果，AI 负责执行过程</span>。</p>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：<a href="https://cursor.com/cn/blog/cursor-3" target="_blank">认识全新的 Cursor</a> · 2026-04-02</span>
+          <span>⭐ 适合：Cursor 新手 / 想提升使用深度的开发者</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== 2026-04-08 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">04月08日</span>
+      <span class="day-title">Composer 2：处理复杂长任务的核心引擎</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">⚙️</div>
+          <div class="tip-title">Composer 2：专为"多步骤、跨文件、需要上百次操作"的复杂任务训练</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Composer 2</span>
+          <span class="tag amber">性能提升</span>
+          <span class="tag">复杂任务</span>
+        </div>
+        <div class="tip-body">
+          <p>Cursor 自研的 Composer 2 模型是专门针对编程场景训练的，不是通用 GPT，它更懂代码。</p>
+          <p><span class="hl">什么叫「长周期任务」？</span> 比如：</p>
+          <ul>
+            <li>把整个项目从 JavaScript 迁移到 TypeScript</li>
+            <li>给 50 个接口统一加上权限校验</li>
+            <li>根据设计稿把一堆组件全部重写</li>
+          </ul>
+          <p>这些任务需要 AI 记住很多上下文、做出几百次操作，Composer 2 在这类场景中得分 <span class="hl">比上一代高 39%</span>。</p>
+          <p><span class="hl">版本选择建议：</span></p>
+          <ul>
+            <li>快速版（默认）：速度快，日常用</li>
+            <li>标准版：节省用量，不赶时间时用</li>
+          </ul>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：<a href="https://cursor.com/cn/blog/composer-2" target="_blank">推出 Composer 2</a> · 2026-03-19</span>
+          <span>⭐ 适合：做中大型项目重构 / 批量代码改造的开发者</span>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">💡</div>
+          <div class="tip-title">新手最该学的思维转变：从"让 AI 帮我写代码"到"我来审查 AI 的代码"</div>
+        </div>
+        <div class="tags">
+          <span class="tag green">思维方式</span>
+          <span class="tag">入门必读</span>
+        </div>
+        <div class="tip-body">
+          <p>Cursor 官方数据显示，最有效率的开发者工作方式发生了根本性转变：</p>
+          <ul>
+            <li><span class="hl">旧方式：</span> 自己写代码 → 遇到问题 → 问 AI</li>
+            <li><span class="hl">新方式：</span> 描述要做什么 → Agent 写代码 → 你来审查和反馈</li>
+          </ul>
+          <p>关键不是"会不会用 Cursor"，而是<span class="hl">学会怎么描述问题</span>。描述越清楚，AI 生成的代码质量越高。</p>
+          <p>一个好的提示应该包含：目标 + 约束条件 + 预期输出格式。比如：<span class="hl">"用 TypeScript 写一个分页工具函数，入参是数组和页码，返回当前页数据，需要有边界检查"</span>，比"写个分页函数"效果好 10 倍。</p>
+        </div>
+        <div class="tip-footer">
+          <span>📌 来源：<a href="https://cursor.com/cn/blog/third-era" target="_blank">AI 软件开发的第三个时代</a> · 2026-02-26</span>
+          <span>⭐ 适合：刚开始用 Cursor 的开发者</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Back -->
+  <a class="back-home" href="/">← 返回首页</a>
+
+  <div class="site-footer">
+    由 WorkBuddy AI 每日整理自 cursor.com/cn/blog · 仅供学习参考
+  </div>
+
+</div>
+</body>
+</html>

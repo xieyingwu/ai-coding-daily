@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI编程热点 · 2026.04.03 · Harness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card-bg: #1a1d27;
+      --card-hover: #21253a;
+      --border: #2a2d3a;
+      --text: #e2e8f0;
+      --text-muted: #8892a4;
+      --accent: #6366f1;
+      --accent-glow: rgba(99, 102, 241, 0.15);
+      --tag-bg: #2a2d3a;
+      --tag-text: #818cf8;
+      --red: #f87171;
+      --green: #4ade80;
+      --amber: #fbbf24;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 0 16px 60px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+    .header {
+      padding: 48px 0 32px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--accent-glow);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(99,102,241,0.3);
+      margin-bottom: 16px;
+    }
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .header .meta {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .tag-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin: 24px 0 40px;
+    }
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .news-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 16px;
+      transition: all 0.2s;
+      cursor: default;
+    }
+    .news-item:hover {
+      background: var(--card-hover);
+      border-color: rgba(99,102,241,0.3);
+      transform: translateY(-2px);
+    }
+    .news-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .news-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: #f1f5f9;
+      line-height: 1.4;
+    }
+    .news-tag {
+      flex-shrink: 0;
+      background: rgba(99,102,241,0.15);
+      color: #818cf8;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .news-tag.hot { background: rgba(248,113,113,0.15); color: #f87171; }
+    .news-tag.report { background: rgba(251,191,36,0.15); color: #fbbf24; }
+    .news-tag.biz { background: rgba(74,222,128,0.15); color: #4ade80; }
+    .news-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .news-desc strong { color: #94a3b8; }
+    .news-highlights {
+      background: rgba(255,255,255,0.03);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+    .news-highlights li {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.8;
+      list-style: none;
+      padding-left: 16px;
+      position: relative;
+    }
+    .news-highlights li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 11px;
+      top: 4px;
+    }
+    .news-source {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .news-source a {
+      color: #818cf8;
+      text-decoration: none;
+    }
+    .news-source a:hover { text-decoration: underline; }
+    .back-link {
+      display: block;
+      text-align: center;
+      margin: 48px 0 24px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .back-link:hover { color: var(--text); }
+    .footer-stats {
+      text-align: center;
+      margin: 40px 0;
+      padding: 20px;
+      background: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .footer-stats .num {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .footer-stats .label {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="badge">HARNESS × AI</div>
+      <h1>AI 编程热点 · Harness 专题</h1>
+      <div class="meta">📅 2026年4月3日 &nbsp;·&nbsp; 🕘 08:15 &nbsp;·&nbsp; 📰 5 条热点</div>
+      <div class="tag-bar">
+        <span class="tag"># AI软件交付</span>
+        <span class="tag"># DevOps</span>
+        <span class="tag"># CI/CD</span>
+        <span class="tag"># AI Agent</span>
+        <span class="tag"># 安全扫描</span>
+      </div>
+    </div>
+
+    <!-- 热点1 -->
+    <div class="news-item">
+      <div class="news-header">
+        <div class="news-title">Harness 3月发布55项新功能：解决"AI速度悖论"</div>
+        <span class="news-tag hot">🔥 头条</span>
+      </div>
+      <div class="news-desc">
+        Harness 于4月2日发布官方博客，回顾3月份在 AI 软件交付领域的密集更新。核心主题为<strong>解决"AI速度悖论"</strong>——即 AI 加速了代码编写，但测试、安全扫描、部署等下游流程成为新瓶颈。31天内交付55项功能，涵盖 AI 助手增强、安全扫描、部署优化等多个维度。
+      </div>
+      <div class="news-highlights">
+        <li><strong>Harness MCP v2（早期预览）</strong>：下一代 MCP 服务器，提供10个统一工具，支持119+资源类型的 CRUD 和执行，26个内置提示模板</li>
+        <li><strong>AI Skills for IDE</strong>：GitHub 开源技能库，让 Claude Code、Cursor 等 AI 编程助手直接操作 Harness 资源</li>
+        <li><strong>GitOps AI 故障排除</strong>：AI 自动检测 GitOps 配置错误、缺失依赖、连接问题，并提供修复建议</li>
+        <li><strong>AI 聊天 OPA 策略强制</strong>：AI 生成 Harness 资源时，实时检查 Open Policy Agent 合规性</li>
+        <li><strong>AI 生态系统防火墙（Beta）</strong>：自动发现 AI 资产（模型、API、MCP服务器），检测提示注入和模型滥用</li>
+      </div>
+      <div class="news-source">来源：<a href="https://www.harness.io/blog/shipped-in-march-2026" target="_blank">Harness 官方博客</a> &nbsp;·&nbsp; 发布于 2026年4月2日</div>
+    </div>
+
+    <!-- 热点2 -->
+    <div class="news-item">
+      <div class="news-header">
+        <div class="news-title">Harness DevOps 2026报告：AI加速开发，DevOps成熟度却跟不上</div>
+        <span class="news-tag report">📊 报告</span>
+      </div>
+      <div class="news-desc">
+        Harness 联合 Coleman Parkes 发布<strong>《DevOps 现代化报告2026》</strong>，覆盖美国、英国、法国、德国、印度700名工程师。报告揭示"AI速度悖论"：AI工具让45%的重度用户实现每日部署，但69%报告 AI 生成代码的部署问题增加，平均事故恢复时间达7.6小时。73%工程领导者认为团队缺乏标准化流水线，"黄金路径"稀缺。
+      </div>
+      <div class="news-highlights">
+        <li><strong>AI重度用户</strong>：45%实现每日或更频繁部署，但69%报告部署问题增加</li>
+        <li><strong>事故恢复时间</strong>：AI重度用户平均7.6小时，偶尔用户6.3小时</li>
+        <li><strong>手动工作增加</strong>：47%重度用户表示代码后手动工作更成问题</li>
+        <li><strong>倦怠问题</strong>：96%重度用户每月多次晚上/周末处理发布工作</li>
+        <li><strong>时间浪费</strong>：工程师平均36%时间花在重复性手动任务上</li>
+        <li><strong>建议</strong>：标准化交付流水线、自动化质量/安全检查、实施功能标志/自动回滚等安全机制</li>
+      </div>
+      <div class="news-source">来源：<a href="https://www.prnewswire.com/news-releases/harness-report-reveals-ai-coding-accelerates-development-devops-maturity-in-2026-isnt-keeping-pace-302710937.html" target="_blank">PR Newswire</a> &nbsp;·&nbsp; 发布于 2026年3月11日</div>
+    </div>
+
+    <!-- 热点3 -->
+    <div class="news-item">
+      <div class="news-header">
+        <div class="news-title">Harness 入选《财富》2026"美国最具创新力公司"榜单</div>
+        <span class="news-tag biz">🏆 荣誉</span>
+      </div>
+      <div class="news-desc">
+        Harness 于3月25日宣布入选<strong>《财富》2026年美国最具创新力公司榜单</strong>（Fortune's 2026 America's Most Innovative Companies）。评选理由为：将 AI 引入代码之后的全链路环节——构建、测试、部署、发布——解决企业软件交付中最关键的瓶颈问题。此次入选标志着 Harness 在 AI 原生软件交付领域的创新地位获得主流商业媒体认可。
+      </div>
+      <div class="news-source">来源：<a href="https://www.harness.io/press-and-news/harness-named-to-fortunes-2026-americas-most-innovative-companies-list" target="_blank">Harness Press</a> &nbsp;·&nbsp; 发布于 2026年3月25日</div>
+    </div>
+
+    <!-- 热点4 -->
+    <div class="news-item">
+      <div class="news-header">
+        <div class="news-title">Wipro 与 Harness 达成战略合作，加速企业级 AI 原生软件交付</div>
+        <span class="news-tag biz">🤝 合作</span>
+      </div>
+      <div class="news-desc">
+        3月17日，IT 服务巨头<strong>Wipro</strong>与 Harness 宣布战略合作，将 Harness AI 软件交付平台与 Wipro 的 WEGA 平台深度集成，帮助全球企业客户实现 AI 原生软件开发与自动化发布。Harness 平台提供交付智能、自动化和治理能力，覆盖代码之后的全生命周期：构建、测试、部署、发布和运维。
+      </div>
+      <div class="news-source">来源：<a href="https://www.wipro.com/newsroom/press-releases/2026/wipro-and-harness-announce-strategic-collaboration-to-accelerate-ai-native-software-delivery-for-global-enterprises/" target="_blank">Wipro 官网</a> &nbsp;·&nbsp; 发布于 2026年3月17日</div>
+    </div>
+
+    <!-- 热点5 -->
+    <div class="news-item">
+      <div class="news-header">
+        <div class="news-title">Harness 融资2.4亿美元，估值55亿美元，专注 AI DevOps 赛道</div>
+        <span class="news-tag biz">💰 融资</span>
+      </div>
+      <div class="news-desc">
+        Harness 于2025年12月完成<strong>2.4亿美元 E 轮融资</strong>，由高盛领投（2亿美元），IVP、Menlo Ventures、Unusual Ventures 跟投（4000万美元），融资后估值达<strong>55亿美元</strong>。公司由连续创业者 Jyoti Bansal 于2017年创立，预计2025年 ARR（年度经常性收入）超过2.5亿美元。本轮融资主要用于加速 AI 软件交付平台的研发与市场拓展。
+      </div>
+      <div class="news-source">来源：<a href="https://ai.zhiding.cn/2025/1212/3175172.shtml" target="_blank">至顶网</a> &nbsp;·&nbsp; 发布于 2025年12月12日</div>
+    </div>
+
+    <div class="footer-stats">
+      <div class="num">5</div>
+      <div class="label">条热点 &nbsp;·&nbsp; 涵盖产品、报告、合作、融资 &nbsp;·&nbsp; 2026年4月3日</div>
+    </div>
+
+    <a class="back-link" href="/">← 返回新闻首页</a>
+  </div>
+</body>
+</html>

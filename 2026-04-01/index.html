@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026.04.01</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card: #1a1d27;
+      --card2: #1e2130;
+      --border: #2a2d3e;
+      --accent: #6c63ff;
+      --accent2: #00d4aa;
+      --accent3: #ff6b6b;
+      --accent4: #ffd166;
+      --text: #e8eaf6;
+      --text-muted: #8b90b0;
+      --tag-bg: rgba(108,99,255,0.15);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: linear-gradient(135deg, #1a1040 0%, #0f1117 60%);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 20px 22px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: 50%; transform: translateX(-50%);
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(108,99,255,0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .header-badge {
+      display: inline-block;
+      background: var(--tag-bg);
+      border: 1px solid rgba(108,99,255,0.4);
+      color: #a89ef5;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+    .header h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .header h1 span { color: var(--accent); }
+    .header .subtitle {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    .header .date-line {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+    .header .date-line span {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ── Summary Bar ── */
+    .summary-bar {
+      margin: 20px 16px;
+      background: linear-gradient(135deg, rgba(108,99,255,0.12), rgba(0,212,170,0.08));
+      border: 1px solid rgba(108,99,255,0.25);
+      border-radius: 14px;
+      padding: 16px 18px;
+    }
+    .summary-bar p {
+      font-size: 13.5px;
+      line-height: 1.7;
+      color: #c5c8e0;
+    }
+    .summary-bar strong { color: var(--accent2); }
+
+    /* ── Cards ── */
+    .cards {
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:active { transform: scale(0.98); }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px 16px 12px;
+    }
+    .card-num {
+      flex-shrink: 0;
+      width: 32px; height: 32px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.45;
+      color: #eef0fb;
+      flex: 1;
+    }
+
+    .card-body {
+      padding: 0 16px 14px;
+    }
+    .card-body p {
+      font-size: 13.5px;
+      line-height: 1.75;
+      color: #9da3c0;
+    }
+    .card-body p strong {
+      color: #dde0f5;
+      font-weight: 600;
+    }
+
+    .card-footer {
+      padding: 10px 16px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+    }
+    .tag {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    .read-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 5px 12px;
+      background: rgba(108,99,255,0.1);
+      border: 1px solid rgba(108,99,255,0.25);
+      border-radius: 20px;
+      transition: background 0.2s;
+    }
+    .read-link:active { background: rgba(108,99,255,0.25); }
+    .read-link svg { width: 12px; height: 12px; }
+
+    /* Color themes per card */
+    .c1 .card-num { background: rgba(255,107,107,0.15); color: #ff6b6b; }
+    .c1 .tag { background: rgba(255,107,107,0.12); color: #ff6b6b; border: 1px solid rgba(255,107,107,0.2); }
+    .c2 .card-num { background: rgba(108,99,255,0.15); color: #a89ef5; }
+    .c2 .tag { background: rgba(108,99,255,0.1); color: #a89ef5; border: 1px solid rgba(108,99,255,0.2); }
+    .c3 .card-num { background: rgba(255,209,102,0.15); color: #ffd166; }
+    .c3 .tag { background: rgba(255,209,102,0.1); color: #ffd166; border: 1px solid rgba(255,209,102,0.2); }
+    .c4 .card-num { background: rgba(0,212,170,0.15); color: #00d4aa; }
+    .c4 .tag { background: rgba(0,212,170,0.1); color: #00d4aa; border: 1px solid rgba(0,212,170,0.2); }
+    .c5 .card-num { background: rgba(79,195,247,0.15); color: #4fc3f7; }
+    .c5 .tag { background: rgba(79,195,247,0.1); color: #4fc3f7; border: 1px solid rgba(79,195,247,0.2); }
+    .c6 .card-num { background: rgba(255,152,0,0.15); color: #ffa040; }
+    .c6 .tag { background: rgba(255,152,0,0.1); color: #ffa040; border: 1px solid rgba(255,152,0,0.2); }
+    .c7 .card-num { background: rgba(129,199,132,0.15); color: #81c784; }
+    .c7 .tag { background: rgba(129,199,132,0.1); color: #81c784; border: 1px solid rgba(129,199,132,0.2); }
+
+    /* ── Hot badge ── */
+    .hot-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #ff6b6b;
+      background: rgba(255,107,107,0.1);
+      border: 1px solid rgba(255,107,107,0.2);
+      padding: 2px 7px;
+      border-radius: 10px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin: 28px 16px 0;
+      text-align: center;
+    }
+    .footer-card {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 16px;
+    }
+    .footer-card .icon { font-size: 28px; margin-bottom: 8px; }
+    .footer-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .footer-card p strong { color: var(--text); }
+    .footer-bottom {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #4a4e6a;
+    }
+
+    /* ── Divider label ── */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 20px 16px 12px;
+    }
+    .section-label span {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+    .section-label::before,
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<div class="header">
+  <div class="header-badge">🤖 AI 编程 · 每日简报</div>
+  <h1>今日 <span>AI 编程</span> 热点</h1>
+  <p class="subtitle">7 条精选资讯，带你掌握前沿动态</p>
+  <div class="date-line">
+    <span>📅 2026年4月1日</span>
+    <span>⏱ 更新于 19:00</span>
+  </div>
+</div>
+
+<!-- ── Summary Bar ── -->
+<div class="summary-bar">
+  <p>📌 <strong>今日一句话总结：</strong>Claude Code 51万行源码意外泄露成最大"意外礼物"，OpenAI 豪募 <strong>1220 亿美元</strong>押注编程 Agent，AI 编程工具军备竞赛正以前所未有的速度加剧。</p>
+</div>
+
+<!-- ── Section Label ── -->
+<div class="section-label"><span>🔥 今日精选 · 共 7 条</span></div>
+
+<!-- ── Cards ── -->
+<div class="cards">
+
+  <!-- Card 1 -->
+  <div class="card c1">
+    <div class="card-header">
+      <div class="card-num">1</div>
+      <div class="card-title">
+        Claude Code 50万行源码「意外开源」<span class="hot-badge">🔥 热</span><br/>隐藏功能大曝光
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Anthropic 在向 npm 发布 Claude Code <strong>v2.1.88</strong> 时，因构建配置疏忽未删除 <strong>.map 文件</strong>，导致约 <strong>1900 个源文件、51.2 万行 TypeScript 源码</strong>被公开。泄露代码中藏有两个未发布功能：<strong>BUDDY</strong>（终端赛博宠物，原计划愚人节彩蛋）和 <strong>KAIROS</strong>（具备跨会话永久记忆、夜间"做梦"整理记忆的自主 Agent）。X 平台相关帖子数小时内浏览量突破 <strong>1200 万</strong>。</p>
+    </div>
+    <div class="card-footer">
+      <span class="tag">源码泄露</span>
+      <a class="read-link" href="https://www.ifanr.com/1660552" target="_blank">
+        阅读原文
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card c2">
+    <div class="card-header">
+      <div class="card-num">2</div>
+      <div class="card-title">Claude Code 源码「换壳」反杀<br/>全网 6 万人疯狂 Fork，封杀失败</div>
+    </div>
+    <div class="card-body">
+      <p>Anthropic 通过 <strong>DMCA 投诉</strong>要求 GitHub 下架源码，但开发者 Sigrid Jin 已在凌晨 4 点借助 AI 工具将代码全量重写为 <strong>Python</strong>，随后再用 <strong>Rust</strong> 重构，完成"净室设计"绕过版权限制。Karpathy 等业内大佬深度解析源码，认为 Claude Code 的核心优势在于工程优化：实时仓库上下文加载、激进 <strong>Prompt 缓存</strong>、上下文压缩、子 Agent 并行等六大技术。</p>
+    </div>
+    <div class="card-footer">
+      <span class="tag">开发者动态</span>
+      <a class="read-link" href="https://www.36kr.com/p/3747613304193796" target="_blank">
+        阅读原文
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card c3">
+    <div class="card-header">
+      <div class="card-num">3</div>
+      <div class="card-title">
+        OpenAI 完成史上最大融资<span class="hot-badge">💰 巨</span><br/>1220 亿美元，估值逼近万亿
+      </div>
+    </div>
+    <div class="card-body">
+      <p>OpenAI 于 3 月 31 日宣布完成 <strong>1220 亿美元</strong>私募融资，融资后估值达 <strong>8520 亿美元</strong>，成为人类商业史上规模最大的单轮私募。亚马逊（500亿）、英伟达（300亿）、软银（300亿）联合参与。值得关注的是，<strong>Codex 已升级为独立编程 Agent</strong>，周活跃用户超 200 万，月增速 70%；同时关停烧钱严重的 Sora，战略聚焦代码生成与企业服务。</p>
+    </div>
+    <div class="card-footer">
+      <span class="tag">融资动态</span>
+      <a class="read-link" href="https://www.ifanr.com/1660522" target="_blank">
+        阅读原文
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card c4">
+    <div class="card-header">
+      <div class="card-num">4</div>
+      <div class="card-title">Hugging Face 正式发布 TRL v1.0<br/>大模型后训练迈入「生产级」时代</div>
+    </div>
+    <div class="card-body">
+      <p>Hugging Face 发布 <strong>TRL v1.0</strong>，标志着该库从研究型工具正式升级为可用于生产环境的稳定框架。本次发布统一了 <strong>SFT、奖励建模、DPO、GRPO</strong> 等训练工作流，新增 CLI 工具，支持 LoRA/QLoRA、<strong>Unsloth 加速</strong>（训练速度提升 2 倍，显存节省 70%）等高效训练技术，对开发者微调编程专用模型具有重要意义。</p>
+    </div>
+    <div class="card-footer">
+      <span class="tag">开源框架</span>
+      <a class="read-link" href="https://www.marktechpost.com/2026/04/01/hugging-face-releases-trl-v1-0-a-unified-post-training-stack-for-sft-reward-modeling-dpo-and-grpo-workflows/" target="_blank">
+        阅读原文
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="card c5">
+    <div class="card-header">
+      <div class="card-num">5</div>
+      <div class="card-title">云端 IDE 平台 Coder 完成 9000 万美元 C 轮融资<br/>KKR 领投</div>
+    </div>
+    <div class="card-body">
+      <p>帮助开发者在本地与云端之间无缝构建和运行代码的 <strong>Coder</strong> 公司，完成由 <strong>KKR 领投的 9000 万美元 C 轮融资</strong>（2024 年曾融资 3500 万美元）。Coder 致力于为团队提供统一一致的云开发环境，与 GitHub Codespaces、GitPod 形成竞争。随着 AI 编程工具对云端算力依赖加深，此赛道持续获得资本青睐。</p>
+    </div>
+    <div class="card-footer">
+      <span class="tag">融资动态</span>
+      <a class="read-link" href="https://llm-stats.com/ai-news" target="_blank">
+        阅读原文
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="card c6">
+    <div class="card-header">
+      <div class="card-num">6</div>
+      <div class="card-title">Cursor 年营收突破 20 亿美元<br/>AI 编程 IDE 市场格局全面重塑</div>
+    </div>
+    <div class="card-body">
+      <p>AI 代码编辑器 <strong>Cursor 年营收已突破 20 亿美元</strong>，Claude Code 在 SWE-bench 编程评分刷新至 <strong>80.8%</strong>。同时 Google 带着自研 AI 编程工具 <strong>Antigravity</strong> 入局，Amazon 亦加速布局。2026 年 AI 编程 IDE 赛道已从两三家膨胀至 <strong>7 个以上</strong>主要竞争者，进入全面混战阶段。</p>
+    </div>
+    <div class="card-footer">
+      <span class="tag">市场动态</span>
+      <a class="read-link" href="https://www.aieii.com/posts/2026-03-20-ai-coding-agents-showdown/" target="_blank">
+        阅读原文
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="card c7">
+    <div class="card-header">
+      <div class="card-num">7</div>
+      <div class="card-title">阿里 + 上海 AI 实验室发布<br/>AI 智能体安全白皮书《守己利他》</div>
+    </div>
+    <div class="card-body">
+      <p>阿里巴巴联合上海 AI 实验室发布《<strong>守己利他</strong>》AI 白皮书，聚焦 AI 编程 Agent 的安全框架，提出"<strong>守己、利他、合作</strong>"三大原则，推动 AI 从"能说"走向"能干"，并保障其在执行代码任务、操作工具等过程中的可信性与安全性。这是国内首个专门面向 AI 智能体行为规范的系统性方案。</p>
+    </div>
+    <div class="card-footer">
+      <span class="tag">AI 安全</span>
+      <a class="read-link" href="http://finance.sina.com.cn/roll/2026-04-01/doc-inhsynau2709666.shtml" target="_blank">
+        阅读原文
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── Footer ── -->
+<div class="footer">
+  <div class="footer-card">
+    <div class="icon">🤖</div>
+    <p>由 <strong>AI 助手</strong> 自动整理<br/>来源：爱范儿 · 36氪 · MarkTechPost · 新浪财经 · LLM Stats</p>
+  </div>
+  <p class="footer-bottom">© 2026 · AI 编程热点简报 · 仅供学习参考</p>
+</div>
+
+</body>
+</html>

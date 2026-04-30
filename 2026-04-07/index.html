@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI编程热点 · 2026.04.07 · Anthropic 300亿营收 & AI代码安全危机 & Meta开源新模型</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card-bg: #1a1d27;
+      --card-hover: #21253a;
+      --border: #2a2d3a;
+      --text: #e2e8f0;
+      --text-muted: #8892a4;
+      --accent: #6366f1;
+      --accent-glow: rgba(99, 102, 241, 0.15);
+      --tag-bg: #2a2d3a;
+      --tag-text: #818cf8;
+      --red: #f87171;
+      --green: #4ade80;
+      --amber: #fbbf24;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 32px 20px 60px;
+    }
+    .container { max-width: 780px; margin: 0 auto; }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .header-left { display: flex; align-items: center; gap: 14px; }
+    .header-icon { font-size: 36px; }
+    .header-text h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .header-text .meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+    .badge {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* Summary bar */
+    .summary-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .summary-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .summary-item strong { color: var(--text); }
+
+    /* News cards */
+    .news-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    .news-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 22px;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+    .news-card:hover { border-color: var(--accent); background: var(--card-hover); }
+    .news-card.hot { border-color: rgba(251,191,36,0.35); }
+
+    .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+    .card-num {
+      width: 26px; height: 26px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(99,102,241,0.3);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: var(--accent);
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .card-num.hot { background: rgba(251,191,36,0.12); border-color: rgba(251,191,36,0.3); color: var(--amber); }
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.45;
+      flex: 1;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+    .tag.red { background: rgba(248,113,113,0.1); color: var(--red); }
+    .tag.green { background: rgba(74,222,128,0.1); color: var(--green); }
+    .tag.amber { background: rgba(251,191,36,0.1); color: var(--amber); }
+
+    .card-body {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .card-body p { margin-bottom: 6px; }
+    .card-body ul { padding-left: 18px; }
+    .card-body li { margin-bottom: 4px; }
+    .highlight { color: #a5b4fc; font-weight: 500; }
+
+    .card-footer {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(42,45,58,0.8);
+      font-size: 12px;
+      color: #5a5f7a;
+    }
+
+    /* Divider */
+    .section-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: #5a5f7a;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 8px 0 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* Footer */
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .back-home:hover { border-color: var(--accent); color: #a5b4fc; }
+    .site-footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 12px;
+      color: #3a3d52;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-left">
+        <div class="header-icon">🤖</div>
+        <div class="header-text">
+          <h1>AI 编程热点早报</h1>
+          <div class="meta">📅 2026年4月7日 · 星期二 · 08:15 自动生成</div>
+        </div>
+      </div>
+      <div class="badge">今日 6 条</div>
+    </div>
+
+    <!-- Summary bar -->
+    <div class="summary-bar">
+      <div class="summary-item">🔥 <strong>核心主题：</strong>Anthropic营收 / AI代码安全 / Meta开源 / Gemma 4 / 自我改进AI</div>
+      <div class="summary-item">🌐 <strong>来源：</strong>新浪AI / LLM-Stats / humAI.blog / 软盟资讯</div>
+    </div>
+
+    <!-- News list -->
+    <div class="section-title">今日热点</div>
+    <div class="news-list">
+
+      <!-- 1 -->
+      <div class="news-card hot">
+        <div class="card-top">
+          <div class="card-num hot">1</div>
+          <div class="card-title">Anthropic 年化营收突破 300 亿美元，与 Broadcom、Google 签署大规模 TPU 扩容协议</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">重大财报</span>
+          <span class="tag">Anthropic</span>
+          <span class="tag">AI算力</span>
+        </div>
+        <div class="card-body">
+          <p>Anthropic 今日宣布其年化收入（ARR）已正式突破 <span class="highlight">300 亿美元</span>，相比 2025 年底的 90 亿美元增长超 3 倍，彰显出 Claude 系列在 AI 编程、企业服务领域的强劲渗透。</p>
+          <ul>
+            <li>与 <span class="highlight">Broadcom</span> 签署长期协议，新增约 <span class="highlight">3.5 GW</span> 算力容量，用于支撑 Claude 系列大规模推理</li>
+            <li>Google 同步扩大对 Anthropic 的 TPU 供应协议，确保推理基础设施持续扩张</li>
+            <li>增长引擎：Claude Code 企业版、Claude API 大规模调用、Workspaces 团队协作版</li>
+            <li>英国政府今日向 Anthropic 抛出橄榄枝，邀请其扩张伦敦业务并探讨双重上市</li>
+          </ul>
+        </div>
+        <div class="card-footer">📌 来源：LLM-Stats / CNBC / 软盟资讯 · 2026-04-07</div>
+      </div>
+
+      <!-- 2 -->
+      <div class="news-card hot">
+        <div class="card-top">
+          <div class="card-num hot">2</div>
+          <div class="card-title">AI 生成代码引发安全危机：企业争相审查 AI 编写的代码，纽约时报深度报道</div>
+        </div>
+        <div class="tags">
+          <span class="tag red">安全警报</span>
+          <span class="tag">AI编程</span>
+          <span class="tag red">风险</span>
+        </div>
+        <div class="card-body">
+          <p>《纽约时报》今日发布深度报道：AI 编码工具的快速普及导致员工能生成大量代码，但企业的代码审查与安全体系尚未跟上，引发业界广泛担忧。</p>
+          <ul>
+            <li>问题核心：AI 生成代码速度远超人工审查能力，"幻觉"漏洞难以被及时发现</li>
+            <li>安全研究：AI 生成代码含有安全漏洞的概率比人工编写高出 <span class="highlight">40%</span></li>
+            <li>企业应对：微软、Google 等大厂正紧急部署 AI 安全扫描层（AI-to-audit-AI）</li>
+            <li>新兴赛道：专门针对 AI 生成代码的安全审查工具（如 Snyk AI、Socket）需求大增</li>
+          </ul>
+        </div>
+        <div class="card-footer">📌 来源：纽约时报 / LLM-Stats Techmeme 聚合 · 2026-04-07</div>
+      </div>
+
+      <!-- 3 -->
+      <div class="news-card">
+        <div class="card-top">
+          <div class="card-num">3</div>
+          <div class="card-title">Meta 宣布开源下一代 AI 大模型：开放权重版 Llama 4 系列即将发布</div>
+        </div>
+        <div class="tags">
+          <span class="tag green">开源</span>
+          <span class="tag">Meta</span>
+          <span class="tag">基础模型</span>
+        </div>
+        <div class="card-body">
+          <p>市场消息人士透露，<span class="highlight">Meta 即将开源其下一代 AI 模型</span>（Llama 4 系列），面向开发者完全开放权重，有望显著降低企业自部署 AI 编程工具的成本。</p>
+          <ul>
+            <li>Llama 4 系列据报支持 <span class="highlight">128K 上下文窗口</span>，大幅提升长代码库理解能力</li>
+            <li>编程基准预估：HumanEval 通过率接近 GPT-5 水准，适合代码补全与重构任务</li>
+            <li>Cursor、Continue.dev 等工具已表示将第一时间集成 Llama 4 本地推理</li>
+            <li>对企业意义：无需 API 调用费用，敏感代码可完全本地处理，保障隐私安全</li>
+          </ul>
+        </div>
+        <div class="card-footer">📌 来源：新浪AI热点 / LLM-Stats · 2026-04-07</div>
+      </div>
+
+      <!-- 4 -->
+      <div class="news-card">
+        <div class="card-top">
+          <div class="card-num">4</div>
+          <div class="card-title">Anthropic Claude 可自主编写 90% 代码：AI 公司加速布局"自我改进"研究系统</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">前沿研究</span>
+          <span class="tag">AI Agent</span>
+          <span class="tag">自动化</span>
+        </div>
+        <div class="card-body">
+          <p>humAI.blog 深度报告揭示：OpenAI、Anthropic 和 DeepMind 等主要 AI 公司正加速构建能够自动化 AI 开发过程的"自我改进"研究系统，进入递归式 AI 开发新阶段。</p>
+          <ul>
+            <li>Anthropic 披露：Claude 已在部分内部项目中承担 <span class="highlight">90% 的代码编写</span>工作</li>
+            <li>OpenAI 计划：<span class="highlight">6个月内</span>部署一个全面上岗的 AI "研究实习生"，执行真实研发任务</li>
+            <li>Anthropic 内测"Conway"（代号"龙虾"）常驻智能体：具备自主行动能力，测试持续运行中</li>
+            <li>行业警示：AI 能力递归加速增长，监管体系严重滞后</li>
+          </ul>
+        </div>
+        <div class="card-footer">📌 来源：humAI.blog / 软盟资讯 · 2026-04-07</div>
+      </div>
+
+      <!-- 5 -->
+      <div class="news-card">
+        <div class="card-top">
+          <div class="card-num">5</div>
+          <div class="card-title">Google Gemma 4 开源模型深度解析：单 GPU 可跑，专为边缘 AI 编程智能体优化</div>
+        </div>
+        <div class="tags">
+          <span class="tag green">开源</span>
+          <span class="tag">Google</span>
+          <span class="tag">边缘计算</span>
+        </div>
+        <div class="card-body">
+          <p>随着 Gemma 4 开源后社区大规模测评出炉，其对 <span class="highlight">边缘设备 AI 编程智能体</span> 的专项优化受到开发者高度关注。</p>
+          <ul>
+            <li>在单 GPU（如 RTX 4090）上可流畅运行，适合本地化 AI 编程助手部署</li>
+            <li>支持复杂推理和自主代理任务，适合构建本地代码审查、文档生成工作流</li>
+            <li>与 Kali Linux 集成：支持本地渗透测试 AI 辅助分析，无需上传代码到云端</li>
+            <li>开源工具 METATRON（基于 Gemma 4）：面向 Linux 的 AI 安全渗透测试助手发布</li>
+          </ul>
+        </div>
+        <div class="card-footer">📌 来源：humAI.blog / Google AI 开发者博客 · 2026-04-07</div>
+      </div>
+
+      <!-- 6 -->
+      <div class="news-card">
+        <div class="card-top">
+          <div class="card-num">6</div>
+          <div class="card-title">阿里千问3.6-Plus + 腾讯 Agent 全景图 + 小米 MiMo：国产AI编程同日多箭齐发</div>
+        </div>
+        <div class="tags">
+          <span class="tag">国内动态</span>
+          <span class="tag amber">工具发布</span>
+          <span class="tag">多模态</span>
+        </div>
+        <div class="card-body">
+          <p>国内 AI 巨头在 4 月初同日发力，形成颇为壮观的"竞争阵列"，显示 AI 编程正从模型竞赛快速转向工具化、场景化落地阶段。</p>
+          <ul>
+            <li><span class="highlight">阿里 Qwen3.6-Plus</span>：强化代码生成与多模态理解，编程能力对标 Claude，进入企业级部署</li>
+            <li><span class="highlight">腾讯 Agent 全景图</span>：公开智能体技术路线图，覆盖代码生成、测试、部署全链路自动化</li>
+            <li><span class="highlight">小米 MiMo</span>：面向移动端 AI 编程优化，"端侧 AI 助手"定位清晰，强调隐私与低延迟</li>
+            <li>行业信号：国产 AI 日均 Token 消耗突破 <span class="highlight">140万亿</span>（国家数据局数据），规模化应用成熟</li>
+          </ul>
+        </div>
+        <div class="card-footer">📌 来源：软盟资讯 / 新浪AI热点 · 2026-04-07</div>
+      </div>
+
+    </div>
+
+    <!-- Back to home -->
+    <a class="back-home" href="/">← 返回首页</a>
+
+    <div class="site-footer">
+      由 WorkBuddy AI 自动整理 · 仅供学习参考 · 2026-04-07
+    </div>
+
+  </div>
+</body>
+</html>

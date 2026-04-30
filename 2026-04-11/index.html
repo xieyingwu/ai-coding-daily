@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 编程热点 · 2026年4月11日</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card-bg: #1a1d27;
+      --card-hover: #21253a;
+      --border: #2a2d3a;
+      --text: #e2e8f0;
+      --text-muted: #8892a4;
+      --accent: #6366f1;
+      --accent-glow: rgba(99,102,241,0.15);
+      --green: #4ade80;
+      --amber: #fbbf24;
+      --red: #f87171;
+      --cyan: #22d3ee;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 32px 20px 60px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .header-icon { font-size: 48px; margin-bottom: 12px; }
+    h1 { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .date { font-size: 14px; color: var(--text-muted); }
+    .date span { color: var(--accent); font-weight: 600; }
+
+    .news-grid { display: flex; flex-direction: column; gap: 16px; }
+    .news-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 24px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .news-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .news-card.hot { border-color: rgba(251,191,36,0.3); }
+
+    .news-top { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+    .news-num {
+      width: 28px; height: 28px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; flex-shrink: 0;
+      background: var(--accent-glow); border: 1px solid rgba(99,102,241,0.25);
+      color: #a5b4fc;
+    }
+    .news-num.hot { background: rgba(251,191,36,0.15); border-color: rgba(251,191,36,0.3); color: var(--amber); }
+    .news-title { font-size: 16px; font-weight: 600; color: #fff; line-height: 1.5; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .tag {
+      background: rgba(99,102,241,0.1); color: #818cf8;
+      font-size: 11px; font-weight: 500;
+      padding: 3px 10px; border-radius: 6px;
+    }
+    .tag.green { background: rgba(74,222,128,0.1); color: var(--green); }
+    .tag.amber { background: rgba(251,191,36,0.1); color: var(--amber); }
+    .tag.red { background: rgba(248,113,113,0.1); color: var(--red); }
+    .tag.cyan { background: rgba(34,211,238,0.1); color: var(--cyan); }
+
+    .news-body { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+    .news-body p { margin-bottom: 10px; }
+    .news-body ul { padding-left: 20px; margin-bottom: 10px; }
+    .news-body li { margin-bottom: 6px; }
+    .news-body .hl { color: #a5b4fc; font-weight: 500; }
+    .news-body .code {
+      background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.2);
+      color: #c4b5fd; font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 12px; padding: 2px 7px; border-radius: 5px;
+    }
+
+    .news-footer {
+      margin-top: 14px; padding-top: 12px;
+      border-top: 1px solid rgba(42,45,58,0.8);
+      font-size: 12px; color: #5a5f7a;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    }
+    .news-footer a { color: #6366f1; text-decoration: none; }
+    .news-footer a:hover { text-decoration: underline; }
+
+    .back-home {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--card-bg); border: 1px solid var(--border);
+      color: var(--text-muted); text-decoration: none; font-size: 14px;
+      padding: 12px 24px; border-radius: 10px; margin-top: 36px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .back-home:hover { border-color: var(--accent); color: #a5b4fc; }
+    .site-footer { margin-top: 40px; text-align: center; font-size: 12px; color: #3a3d52; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="header-icon">🤖</div>
+    <h1>AI 编程热点新闻</h1>
+    <p class="date"><span>2026年4月11日</span> · 星期六</p>
+  </div>
+
+  <div class="news-grid">
+
+    <!-- 热点1 -->
+    <div class="news-card hot">
+      <div class="news-top">
+        <div class="news-num hot">1</div>
+        <div class="news-title">GPT-6 定档 4 月 14 日发布：Symphony 架构 + 200 万 Token 上下文</div>
+      </div>
+      <div class="tags">
+        <span class="tag amber">🔥 重磅</span>
+        <span class="tag">OpenAI</span>
+        <span class="tag">GPT-6</span>
+        <span class="tag">AGI</span>
+      </div>
+      <div class="news-body">
+        <p>OpenAI 官方正式确认，代号为 <span class="hl">"Spud（土豆）"</span> 的新一代大模型 GPT-6 将于 <span class="hl">2026 年 4 月 14 日</span> 全球同步发布。预训练已于 3 月 17 日完成，研发周期长达 18 个月。</p>
+        <p><span class="hl">核心亮点：</span></p>
+        <ul>
+          <li><strong>性能暴涨 40%</strong>：代码、推理、智能体任务全面超越 GPT-5.4</li>
+          <li><strong>200 万 Token 上下文</strong>：相当于 150 万字，可一次性处理两部《三体》</li>
+          <li><strong>Symphony（交响乐）架构</strong>：原生多模态统一，文本/图像/音频/视频纳入同一向量空间</li>
+          <li><strong>双系统推理</strong>：System-1（快思考）+ System-2（慢思考）逻辑校验</li>
+          <li><strong>定价持平</strong>：输入 2.5 美元/百万 Token，输出 12 美元/百万 Token</li>
+        </ul>
+        <p>为集中资源开发 GPT-6，OpenAI 已砍掉 Sora 视频生成业务，终止与迪士尼 10 亿美元合作，产品部门更名为"AGI 部署部"。</p>
+      </div>
+      <div class="news-footer">
+        <span>📌 来源：<a href="https://news.qq.com/rain/a/20260409A021OB00" target="_blank">腾讯新闻</a>、<a href="https://www.tmtpost.com/7944200.html" target="_blank">钛媒体</a></span>
+        <span>🏷️ 大模型发布</span>
+      </div>
+    </div>
+
+    <!-- 热点2 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">2</div>
+        <div class="news-title">JetBrains 发布重磅调研：Claude Code 工作使用率达 18%，6 倍增长</div>
+      </div>
+      <div class="tags">
+        <span class="tag green">📊 调研</span>
+        <span class="tag">Claude Code</span>
+        <span class="tag">AI 编程工具</span>
+      </div>
+      <div class="news-body">
+        <p>JetBrains Research 发布 2026 年 4 月 AI 编程工具调研报告，样本覆盖 <span class="hl">10,000+ 全球专业开发者</span>。核心发现：</p>
+        <ul>
+          <li><strong>90%</strong> 开发者定期在工作中使用 AI 工具</li>
+          <li><strong>74%</strong> 已采用专门的 AI 开发工具</li>
+          <li><strong>Claude Code</strong>：工作使用率 18%，<span class="hl">6 倍增长</span>，用户满意度 91%，NPS 达 54</li>
+          <li><strong>GitHub Copilot</strong>：工作使用率 29%，但增长停滞</li>
+          <li><strong>Cursor</strong>：工作使用率 18%，增长放缓</li>
+          <li><strong>ChatGPT</strong>：工作使用率 28%，仍很受欢迎</li>
+        </ul>
+        <p>报告结论：<span class="hl">"产品卓越胜过平台锁定"</span>——开发者愿意为明显更好的性能放弃生态系统绑定。</p>
+      </div>
+      <div class="news-footer">
+        <span>📌 来源：<a href="https://blog.jetbrains.com/research/2026/04/which-ai-coding-tools-do-developers-actually-use-at-work/" target="_blank">JetBrains Research</a></span>
+        <span>🏷️ 行业调研</span>
+      </div>
+    </div>
+
+    <!-- 热点3 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">3</div>
+        <div class="news-title">2026 Q1 全球 AI 融资创纪录：2970 亿美元，AI 占 80%</div>
+      </div>
+      <div class="tags">
+        <span class="tag cyan">💰 融资</span>
+        <span class="tag">创投</span>
+        <span class="tag">AI 产业</span>
+      </div>
+      <div class="news-body">
+        <p>Crunchbase 数据显示，2026 年第一季度全球创业公司融资总额达 <span class="hl">2970 亿美元</span>，打破历史纪录，是 2025 年 Q1（1180 亿）的 <span class="hl">2.5 倍</span>。</p>
+        <p><span class="hl">关键数据：</span></p>
+        <ul>
+          <li>AI 公司融资 <strong>2390 亿美元</strong>，占总融资额 <strong>80%</strong></li>
+          <li>OpenAI 单轮融资 <strong>1220 亿美元</strong>（人类商业史最大单轮私募）</li>
+          <li>主要投资方：亚马逊 500 亿、英伟达 300 亿、软银 300 亿、微软 260 亿</li>
+        </ul>
+        <p>资本正在以前所未有的速度涌入 AI 领域，算力竞争成为核心战场。</p>
+      </div>
+      <div class="news-footer">
+        <span>📌 来源：<a href="https://news.crunchbase.com/venture/record-breaking-funding-ai-global-q1-2026/" target="_blank">Crunchbase</a>、<a href="https://techcrunch.com/2026/04/01/startup-funding-shatters-all-records-in-q1/" target="_blank">TechCrunch</a></span>
+        <span>🏷️ 投融资</span>
+      </div>
+    </div>
+
+    <!-- 热点4 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">4</div>
+        <div class="news-title">TokenCalculator 发布 4 月 AI IDE/CLI 工具排名：Claude Code 领跑</div>
+      </div>
+      <div class="tags">
+        <span class="tag">工具排名</span>
+        <span class="tag">Claude Code</span>
+        <span class="tag">Codex</span>
+        <span class="tag">Cursor</span>
+      </div>
+      <div class="news-body">
+        <p>TokenCalculator 发布 2026 年 4 月最佳 AI IDE 和 CLI 工具排名，Claude Code 稳居第一。</p>
+        <p><span class="hl">排名概览：</span></p>
+        <ul>
+          <li><strong>🥇 Claude Code</strong>：CLI 代理编码无冕之王，复杂多文件任务、测试生成最优</li>
+          <li><strong>🥈 OpenAI Codex</strong>：快速追赶，后台代理功能突破，沙盒执行成熟</li>
+          <li><strong>🥉 Cursor</strong>：最佳交互式 IDE 体验，多模型支持，Composer 代理模式</li>
+          <li><strong>4. GitHub Copilot</strong>：企业级安全选择，Workspace 已改进</li>
+          <li><strong>5. Google Antigravity</strong>：令人失望，更新稀疏，社区冷清</li>
+          <li><strong>6. Windsurf</strong>：收购后整合混乱，产品停滞不前</li>
+        </ul>
+        <p>报告预测：如果趋势持续，Codex 有望在 2026 年中追平 Claude Code。</p>
+      </div>
+      <div class="news-footer">
+        <span>📌 来源：<a href="https://tokencalculator.com/blog/best-ai-ide-cli-tools-april-2026-claude-code-wins" target="_blank">TokenCalculator</a></span>
+        <span>🏷️ 工具对比</span>
+      </div>
+    </div>
+
+    <!-- 热点5 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">5</div>
+        <div class="news-title">Cursor 发布 Warp Decode 技术：MoE 模型推理性能提升 84%</div>
+      </div>
+      <div class="tags">
+        <span class="tag">Cursor</span>
+        <span class="tag">技术突破</span>
+        <span class="tag">MoE</span>
+        <span class="tag">GPU 优化</span>
+      </div>
+      <div class="news-body">
+        <p>Cursor 团队发布 <span class="hl">Warp Decode</span> 技术，专为 Blackwell GPU（如 B200）小批量解码场景优化混合专家模型（MoE）推理。</p>
+        <p><span class="hl">核心创新：</span></p>
+        <ul>
+          <li><strong>性能提升 84%</strong>：在 NVIDIA B200 上推理吞吐量提升 1.84 倍</li>
+          <li><strong>精度提升 1.4 倍</strong>：输出与 FP32 参考值接近度提升</li>
+          <li><strong>消除冗余步骤</strong>：省去填充、分发、归约等 5 个数据整理阶段</li>
+          <li><strong>寄存器计算</strong>：所有计算在寄存器完成，无需频繁访问全局内存</li>
+          <li><strong>Warp 独立性</strong>：每个 Warp 完全独立，硬件可任意调度，延迟隐藏极佳</li>
+        </ul>
+        <p>该技术已用于加速 Cursor Composer 模型的研究与训练流程。</p>
+      </div>
+      <div class="news-footer">
+        <span>📌 来源：<a href="https://cursor.com/cn/blog/warp-decode" target="_blank">Cursor 官方博客</a></span>
+        <span>🏷️ 技术深度</span>
+      </div>
+    </div>
+
+    <!-- 热点6 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">6</div>
+        <div class="news-title">Cursor 推出自托管云端智能体：代码永不离开你的网络</div>
+      </div>
+      <div class="tags">
+        <span class="tag green">🚀 新产品</span>
+        <span class="tag">企业安全</span>
+        <span class="tag">私有化部署</span>
+      </div>
+      <div class="news-body">
+        <p>Cursor 正式发布<span class="hl">自托管云端智能体</span>功能，允许企业在自有基础设施中运行 AI 智能体，代码和工具执行完全留在内部网络。</p>
+        <p><span class="hl">核心特性：</span></p>
+        <ul>
+          <li><strong>隔离虚拟机</strong>：每个智能体运行在独立 VM，配备终端、浏览器和完整桌面环境</li>
+          <li><strong>代码安全</strong>：代码库、工具执行、构建产物永不离开用户环境</li>
+          <li><strong>访问内部资源</strong>：可访问缓存、依赖项和内部网络端点</li>
+          <li><strong>无需开放端口</strong>：Worker 通过 HTTPS 主动连接 Cursor 云端，无需防火墙配置</li>
+          <li><strong>K8s 支持</strong>：提供 Helm chart 和 Kubernetes operator，自动扩缩容</li>
+        </ul>
+        <p>已有 Brex、Money Forward、Notion 等企业客户启用该功能。</p>
+      </div>
+      <div class="news-footer">
+        <span>📌 来源：<a href="https://cursor.com/cn/blog/self-hosted-cloud-agents" target="_blank">Cursor 官方博客</a></span>
+        <span>🏷️ 企业功能</span>
+      </div>
+    </div>
+
+    <!-- 热点7 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">7</div>
+        <div class="news-title">OpenAI 高管动荡：COO 被调离、应用 CEO 病假、CMO 离职</div>
+      </div>
+      <div class="tags">
+        <span class="tag red">⚠️ 人事变动</span>
+        <span class="tag">OpenAI</span>
+        <span class="tag">公司治理</span>
+      </div>
+      <div class="news-body">
+        <p>4 月 4 日，OpenAI 披露三项人事调整，震动市场：</p>
+        <ul>
+          <li><strong>COO</strong>：被调离岗位</li>
+          <li><strong>应用业务 CEO</strong>：进入数周病假</li>
+          <li><strong>CMO</strong>：因癌症治疗离职</li>
+        </ul>
+        <p>三位核心高管同一天调整，在任何科技巨头中都极为罕见。与此同时，CEO 奥特曼与 CFO 在 IPO 时间表上存在分歧：奥特曼希望最快 2026 年 Q4 上市，而 CFO 萨拉·弗莱尔明确认为尚不具备条件。</p>
+        <p>OpenAI 目前估值 <span class="hl">8520 亿美元</span>，年化营收约 200 亿美元，但年烧钱速度高达 <span class="hl">570 亿美元</span>，亏损持续扩大。</p>
+      </div>
+      <div class="news-footer">
+        <span>📌 来源：<a href="https://www.tmtpost.com/7944200.html" target="_blank">钛媒体</a></span>
+        <span>🏷️ 公司动态</span>
+      </div>
+    </div>
+
+  </div>
+
+  <a class="back-home" href="/">← 返回首页</a>
+
+  <div class="site-footer">
+    由 WorkBuddy AI 自动整理 · 仅供学习参考<br>
+    新闻链接：https://genuine-sawine-b4c0cb.netlify.app/2026-04-11/
+  </div>
+
+</div>
+</body>
+</html>

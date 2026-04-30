@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年4月18日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px 60px;
+    }
+    .container { max-width: 760px; margin: 0 auto; }
+    .header { margin-bottom: 32px; }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: #6c63ff; text-decoration: none; font-size: 14px;
+      margin-bottom: 20px; opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .back-btn:hover { opacity: 1; }
+    .date-badge {
+      display: inline-block;
+      background: rgba(108,99,255,0.15);
+      border: 1px solid rgba(108,99,255,0.3);
+      color: #a5b4fc;
+      font-size: 13px; font-weight: 600;
+      padding: 4px 14px; border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 26px; font-weight: 700; color: #fff;
+      line-height: 1.3; margin-bottom: 8px;
+    }
+    h1 span { color: #6c63ff; }
+    .subtitle { color: #6b7280; font-size: 14px; }
+    .summary-bar {
+      background: linear-gradient(135deg, #1a1d27, #1a2035);
+      border: 1px solid rgba(108,99,255,0.25);
+      border-radius: 14px; padding: 16px 20px;
+      margin-bottom: 28px; font-size: 14px;
+      color: #a5b4fc; line-height: 1.7;
+    }
+    .news-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    .news-card {
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      border-radius: 14px;
+      padding: 20px 22px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .news-card:hover { border-color: #6c63ff; transform: translateY(-2px); }
+    .news-card.top { border-color: rgba(251,191,36,0.35); background: linear-gradient(135deg, #1a1d27, #1e1a10); }
+    .card-meta {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 8px; flex-wrap: wrap;
+    }
+    .tag {
+      font-size: 11px; font-weight: 600; padding: 2px 10px;
+      border-radius: 6px;
+    }
+    .tag-hot { background: rgba(251,191,36,0.15); color: #fbbf24; }
+    .tag-new { background: rgba(108,99,255,0.15); color: #a5b4fc; }
+    .tag-tool { background: rgba(74,222,128,0.12); color: #4ade80; }
+    .tag-model { background: rgba(34,211,238,0.12); color: #22d3ee; }
+    .tag-biz { background: rgba(248,113,113,0.12); color: #f87171; }
+    .tag-china { background: rgba(250,128,64,0.15); color: #fb923c; }
+    .news-title {
+      font-size: 16px; font-weight: 700; color: #fff;
+      margin-bottom: 8px; line-height: 1.4;
+    }
+    .news-body { font-size: 14px; color: #8b90b0; line-height: 1.75; }
+    .news-body .hl { color: #a5b4fc; font-weight: 500; }
+    .news-body strong { color: #d1d5db; }
+    .news-source {
+      margin-top: 12px; padding-top: 10px;
+      border-top: 1px solid #2a2d3e;
+      font-size: 12px; color: #4a4e6a;
+    }
+    .footer-nav {
+      text-align: center; padding: 28px 0;
+      border-top: 1px solid #2a2d3e;
+    }
+    .footer-nav a {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      color: #8b90b0; text-decoration: none; font-size: 14px;
+      padding: 10px 24px; border-radius: 10px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .footer-nav a:hover { border-color: #6c63ff; color: #a5b4fc; }
+    .site-footer { text-align: center; margin-top: 20px; font-size: 12px; color: #3a3d52; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <a class="back-btn" href="/">← 返回首页</a>
+      <div class="date-badge">📅 2026年4月18日 · 周六</div>
+      <h1>AI 编程热点 · <span>周末特刊</span></h1>
+      <p class="subtitle">每日 08:15 自动生成 · 共 7 条热点 · 来源：TechCrunch / AITNT / Cursor Blog</p>
+    </div>
+
+    <div class="summary-bar">
+      🔥 今日重点：<strong>Codex 升级多智能体工作流 + 桌面控制 111 个插件</strong>；Claude 官方确认降智 + 变相涨价；GitHub 上线 Claude & Codex Agent 模型选择；OpenAI Codex MCP 官方插件让 Claude Code 白嫖 GPT-4o；Cursor 画布 Canvas 功能正式上线；Codex 产品负责人称 20 人团队无需 PM；Claude Code CLI 工具终极横评出炉。
+    </div>
+
+    <div class="news-list">
+
+      <!-- 新闻1 -->
+      <div class="news-card top">
+        <div class="card-meta">
+          <span class="tag tag-hot">🔥 今日头条</span>
+          <span class="tag tag-tool">OpenAI Codex</span>
+        </div>
+        <div class="news-title">Codex 重磅升级：多智能体并行工作流 + 桌面控制 + 111 个插件，正面狙击 Claude Code</div>
+        <div class="news-body">
+          OpenAI 对 Codex 进行了近年来最大规模的更新，意在直接挑战 Anthropic 的 Claude Code。核心升级：① <span class="hl">多智能体并行工作流</span>——可同时部署多个专业 AI 同步完成编写、调试、测试；② <span class="hl">持久化记忆</span>——跨会话保留上下文和用户偏好；③ <span class="hl">桌面应用控制</span>——可在后台操控 macOS 应用、运行测试，不打扰主流程；④ 新增 <span class="hl">111 个插件</span>（含 JIRA、CircleCI、GitLab Issues、Microsoft Suite、Neon by Databricks）；⑤ 集成 GPT-image-1.5，支持同时生成图像与代码。此次更新后，Codex 的定位从"编程辅助"正式升格为"自主开发 Agent"。
+        </div>
+        <div class="news-source">来源：TechCrunch · The Tech Portal（2026-04-16/17）</div>
+      </div>
+
+      <!-- 新闻2 -->
+      <div class="news-card">
+        <div class="card-meta">
+          <span class="tag tag-model">Claude</span>
+          <span class="tag tag-hot">重要</span>
+        </div>
+        <div class="news-title">Claude 降智实锤 + 变相涨价：Opus 准确率大幅下滑，重度用户成本最高涨 2 倍</div>
+        <div class="news-body">
+          多名开发者和测评机构实测验证：<span class="hl">Claude Opus 性能明显下滑</span>，准确率大幅降低，排名跌出前十。与此同时，Anthropic 悄悄调整企业计费规则，<strong>重度用户成本最高上涨约 2 倍</strong>。目前 Opus 4.7 尚未正式发布，此次"降智+涨价"组合被开发者社区广泛讨论，部分团队已开始评估切换到 GPT-5.4 或 Codex。Anthropic 暂未公开回应。
+        </div>
+        <div class="news-source">来源：AITNT 全球 AI 新闻（2026-04-18）</div>
+      </div>
+
+      <!-- 新闻3 -->
+      <div class="news-card">
+        <div class="card-meta">
+          <span class="tag tag-tool">GitHub</span>
+          <span class="tag tag-new">新功能</span>
+        </div>
+        <div class="news-title">GitHub 上线 Claude & Codex Agent 模型选择：可在 github.com 直接切换 AI 编程助手</div>
+        <div class="news-body">
+          GitHub 宣布，<span class="hl">Claude 和 Codex 第三方 coding agent</span> 现在支持在 github.com 上进行模型选择，与 Copilot 云端 Agent 的操作体验完全一致。用户只需在发起任务时选择模型，即可无缝切换 Claude、GPT-4o、Codex 等不同 AI 来处理 Issue、PR、代码审查。这一更新意味着 GitHub 正式将平台打造为多 AI Agent 协作中心。
+        </div>
+        <div class="news-source">来源：GitHub Blog Changelog（2026-04-14）</div>
+      </div>
+
+      <!-- 新闻4 -->
+      <div class="news-card">
+        <div class="card-meta">
+          <span class="tag tag-tool">Claude Code</span>
+          <span class="tag tag-new">插件</span>
+        </div>
+        <div class="news-title">OpenAI 发布官方 Codex MCP 插件：Claude Code 用户三条命令白嫖 GPT-4o</div>
+        <div class="news-body">
+          OpenAI 发布官方 <span class="hl">Codex MCP 插件</span>，支持使用免费 ChatGPT 账号，在 Claude Code 中直接调用 GPT-4o。推荐工作流：<strong>Claude 负责规划 + 初始构建，Codex 负责执行 + 代码审查</strong>，让两个模型的弱点被对方强项弥补。实测中发现 Claude Code 自审漏掉的 2 个 bug（玩家卡关 + 数据回滚）被 Codex 的"对抗性审查"揪出。安装只需 3 条命令，组合使用性价比极高。
+        </div>
+        <div class="news-source">来源：腾讯云开发者社区（2026-04-14）</div>
+      </div>
+
+      <!-- 新闻5 -->
+      <div class="news-card">
+        <div class="card-meta">
+          <span class="tag tag-tool">Cursor</span>
+          <span class="tag tag-new">新功能</span>
+        </div>
+        <div class="news-title">Cursor Canvas 画布正式上线：AI Agent 可视化呈现信息，告别大段文字</div>
+        <div class="news-body">
+          Cursor 3.1 推出 <span class="hl">Canvas（画布）</span>功能，Agent 现在可将复杂信息以可视化方式呈现——包括表格、框体、示意图和图表，无需再阅读大段 Markdown 文本。典型使用场景：① Datadog/Sentry 事件响应仪表盘；② PR 代码审查界面，逻辑归类 + 突出重点；③ Eval 分析——自动对失败项聚类并呈现失败模式。画布是 Agent 窗口中的持久化产物，与终端、浏览器、源代码控制并列，是 Cursor 提升"信息带宽"的重要一步。
+        </div>
+        <div class="news-source">来源：Cursor 官方博客（2026-04-15）</div>
+      </div>
+
+      <!-- 新闻6 -->
+      <div class="news-card">
+        <div class="card-meta">
+          <span class="tag tag-biz">行业洞察</span>
+          <span class="tag tag-tool">OpenAI Codex</span>
+        </div>
+        <div class="news-title">Codex 产品负责人：20 人以下团队招 PM 是危险动作，AI 时代职业边界消失</div>
+        <div class="news-body">
+          OpenAI Codex 产品负责人在播客中透露：其团队只制定 <span class="hl">8 周内短期规划和 1 年以上长期规划</span>，中期规划已无意义。他明确指出，借助 Codex，开发者可实现"思考即实现"的超快编程模式，<strong>20 人以下初创团队招传统 PM 反而存在风险</strong>——AI 正在让职业边界变得模糊，技术、产品、测试的界限加速消失。这一判断在开发者社区引发广泛热议。
+        </div>
+        <div class="news-source">来源：AITNT 全球 AI 新闻（2026-04-18）</div>
+      </div>
+
+      <!-- 新闻7 -->
+      <div class="news-card">
+        <div class="card-meta">
+          <span class="tag tag-tool">横评</span>
+          <span class="tag tag-new">报告</span>
+        </div>
+        <div class="news-title">2026 CLI AI 编程工具终极横评：Claude Code 以 SWE-bench 80.9% 领跑，SKILL.md 成跨工具标准</div>
+        <div class="news-body">
+          最新横评覆盖 Claude Code、Cursor CLI、Gemini CLI（<span class="hl">免费开源</span>）、Codex CLI、Copilot CLI 五款工具。核心数据：Claude Code SWE-bench 80.9%，Codex CLI 77.3%，Gemini CLI 完全免费成性价比之王。重大行业信号：<strong>SKILL.md 标准已成为跨工具通用规范</strong>，可在五款工具间无缝迁移技能配置，预示着 AI 编程工具生态正走向互通。真实项目测试中，Claude Code 耗时 1h17m 完成重构，Codex CLI 需 1h41m。
+        </div>
+        <div class="news-source">来源：SegmentFault 思否 / 腾讯云开发者社区（2026-04-17）</div>
+      </div>
+
+    </div>
+
+    <div class="footer-nav">
+      <a href="/">🏠 返回首页</a>
+    </div>
+    <div class="site-footer">由 WorkBuddy AI 自动整理 · 2026-04-18 · 仅供学习参考</div>
+  </div>
+</body>
+</html>

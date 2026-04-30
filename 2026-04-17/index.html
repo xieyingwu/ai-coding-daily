@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年4月17日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px 60px;
+    }
+    .container { max-width: 760px; margin: 0 auto; }
+    .header { margin-bottom: 32px; }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #6c63ff;
+      text-decoration: none;
+      font-size: 13px;
+      margin-bottom: 20px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #9d97ff; }
+    .date-badge {
+      display: inline-block;
+      background: rgba(108,99,255,0.15);
+      border: 1px solid rgba(108,99,255,0.3);
+      color: #9d97ff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: #8b90b0;
+      font-size: 14px;
+    }
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #6c63ff;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 32px 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(108,99,255,0.2);
+    }
+    .news-card {
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+    .news-card:hover { border-color: rgba(108,99,255,0.5); }
+    .news-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .news-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: rgba(108,99,255,0.15);
+      color: #9d97ff;
+    }
+    .news-tag.hot { background: rgba(255,80,80,0.15); color: #ff8080; }
+    .news-tag.tool { background: rgba(0,212,170,0.15); color: #00d4aa; }
+    .news-tag.model { background: rgba(255,180,0,0.15); color: #ffb800; }
+    .news-tag.open { background: rgba(34,211,238,0.15); color: #22d3ee; }
+    .news-source {
+      font-size: 11px;
+      color: #4a4e6a;
+    }
+    .news-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #eef0fb;
+      line-height: 1.45;
+      margin-bottom: 8px;
+    }
+    .news-desc {
+      font-size: 13px;
+      color: #8b90b0;
+      line-height: 1.6;
+    }
+    .news-highlight {
+      display: inline-block;
+      background: rgba(108,99,255,0.1);
+      border-left: 3px solid #6c63ff;
+      padding: 8px 12px;
+      margin-top: 10px;
+      border-radius: 0 8px 8px 0;
+      font-size: 12px;
+      color: #9d97ff;
+      line-height: 1.5;
+    }
+    .summary-box {
+      background: linear-gradient(135deg, #1a1d27, #1e1f30);
+      border: 1px solid rgba(108,99,255,0.25);
+      border-radius: 16px;
+      padding: 20px 22px;
+      margin-bottom: 12px;
+    }
+    .summary-box h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .summary-list {
+      list-style: none;
+    }
+    .summary-list li {
+      font-size: 13px;
+      color: #8b90b0;
+      padding: 5px 0;
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.55;
+    }
+    .summary-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: #6c63ff;
+    }
+    .footer {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid #1e2132;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-text { font-size: 12px; color: #4a4e6a; }
+    .footer a {
+      color: #6c63ff;
+      text-decoration: none;
+      font-size: 13px;
+    }
+    .footer a:hover { color: #9d97ff; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <a class="back-link" href="/">← 返回首页</a>
+      <div class="date-badge">📅 2026年4月17日 · 星期五</div>
+      <h1>AI 编程热点新闻</h1>
+      <p class="subtitle">今日精选 7 条 · Claude Opus 4.7发布 · OpenAI Codex 超级应用 · Qwen3.6开源</p>
+    </div>
+
+    <!-- 今日摘要 -->
+    <div class="summary-box">
+      <h3>📋 今日热点速览</h3>
+      <ul class="summary-list">
+        <li>Anthropic 正式发布 Claude Opus 4.7，SWE-bench Pro 64.3%，视觉准确率飙升至 98.5%</li>
+        <li>OpenAI 升级 Mac 版 Codex，可操控电脑桌面、接入 90+ 插件，推进超级应用布局</li>
+        <li>阿里开源 Qwen3.6-35B-A3B，激活参数仅 3B，智能体编程能力大幅提升</li>
+        <li>Claude Code 全面重构，推出 Routines 云端自动化功能，7×24 小时自主运行</li>
+        <li>Cursor 发布研究报告：更好的 AI 模型让开发者尝试更难的任务，AI 需求增长 44%</li>
+        <li>MiniMax 上线 MaxHermes：全球首个技能自主进化 AI 编程助手，实现 Agent 自我迭代</li>
+        <li>Windsurf 2.0 引入 Devin 云代理，实现云端协同编程，向平台化方向转型</li>
+      </ul>
+    </div>
+
+    <div class="section-title">今日热点详情</div>
+
+    <!-- 新闻1 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-tag hot">🔥 头条</span>
+        <span class="news-tag model">模型发布</span>
+        <span class="news-source">Anthropic 官方 · 腾讯新闻</span>
+      </div>
+      <div class="news-title">Anthropic 正式发布 Claude Opus 4.7：SWE-bench Pro 64.3%，视觉准确率 98.5%</div>
+      <div class="news-desc">
+        Anthropic 今日正式发布 Claude Opus 4.7，官方坦承这并非最强模型（更强的 Mythos Preview 仍在测试中），但本次升级亮点显著：SWE-bench Pro 从 53.4% 提升至 64.3%，超越 GPT-5.4 的 57.7%；CursorBench 真实编码场景从 58% 跃升至 70%；Rakuten 生产代码库测试中，4.7 解决问题数是 4.6 的 3 倍。视觉能力质变更大：图像分辨率提升至前代的 3 倍以上，视觉准确率从 54.5% 飙升至 98.5%，设计稿识别和终端截图可直接使用。
+      </div>
+      <div class="news-highlight">
+        ⚠️ 注意：4.7 换用新 Tokenizer，实际 token 消耗可能是 4.6 的 1.0~1.35 倍，叠加默认思考强度调至 xhigh，账单可能悄悄变贵，建议生产环境先小流量测试。定价与 4.6 相同：输入 $5 / 输出 $25（每百万 token）
+      </div>
+    </div>
+
+    <!-- 新闻2 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-tag hot">🔥 重磅</span>
+        <span class="news-tag tool">工具更新</span>
+        <span class="news-source">IT之家 · OpenAI 官方</span>
+      </div>
+      <div class="news-title">OpenAI 升级 Mac 版 Codex：可操控电脑、接入 90+ 插件，超级应用布局加速</div>
+      <div class="news-desc">
+        OpenAI 今日大幅升级 Mac 版 Codex AI 编程助手，新增桌面控制能力：可查看屏幕内容、点击界面元素、输入文字，类似 Claude Computer Use 能力；支持多个智能体并行运行且互不干扰；新增记忆功能可保存用户技术栈偏好；支持长期任务暂停后恢复；集成 gpt-image-1.5 模型；新增 90 多个插件；内置应用浏览器可直接在页面添加评论。
+      </div>
+      <div class="news-highlight">
+        Codex 正从单一编程助手向全平台超级应用演进，与 Claude Code 在 Agent 能力上展开全面竞争
+      </div>
+    </div>
+
+    <!-- 新闻3 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-tag open">开源</span>
+        <span class="news-tag model">模型发布</span>
+        <span class="news-source">阿里巴巴 · 智东西</span>
+      </div>
+      <div class="news-title">阿里开源 Qwen3.6-35B-A3B：3B 激活参数，智能体编程能力大幅提升</div>
+      <div class="news-desc">
+        阿里巴巴正式开源 Qwen3.6-35B-A3B，这是一个稀疏 MoE（混合专家）架构模型，总参数 35B 但每次推理仅激活 3B，兼顾性能与效率。核心亮点：前端工作流和仓库级代码推理能力显著提升；新增 Thinking Preservation（思维保留）特性，保留推理链路可解释性；视觉能力直逼 Claude Sonnet 4.5；兼容 OpenClaw 生态。
+      </div>
+      <div class="news-highlight">
+        国产开源模型持续进步，3B 激活参数实现顶级智能体编程能力，本地部署门槛大幅降低
+      </div>
+    </div>
+
+    <!-- 新闻4 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-tag hot">🔥 重磅</span>
+        <span class="news-tag tool">工具更新</span>
+        <span class="news-source">Anthropic · 新智元</span>
+      </div>
+      <div class="news-title">Claude Code 全面重构 + Routines 上线：7×24 小时云端自主运行，化身"云端员工"</div>
+      <div class="news-desc">
+        Anthropic 发布 Claude Code 重大更新：桌面端全面重构，支持并排多窗口多实例、内置终端和文件编辑、原生 Diff 查看器、SSH 远程连接。重磅新功能 Routines 实现真正自动化：三种触发方式（定时、API、GitHub Webhook），全部在 Anthropic 云端运行，可配置每日自动拉取 Bug 修复、PR 合入自动同步、监控告警自动诊断。使用限额：Pro 5次/天，Max 15次/天，Team/Enterprise 25次/天。
+      </div>
+      <div class="news-highlight">
+        "合上电脑，Claude Code 也能照常上班" —— 这是 Claude Code 从编程工具向自动化平台的转型标志
+      </div>
+    </div>
+
+    <!-- 新闻5 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-tag tool">研究报告</span>
+        <span class="news-source">Cursor × 芝加哥大学</span>
+      </div>
+      <div class="news-title">Cursor 联合芝大发布研究：更好的 AI 模型让开发者挑战更难任务，AI 需求增长 44%</div>
+      <div class="news-desc">
+        Cursor 与芝加哥大学布斯商学院合作，研究了 500 家公司 8 个月数据（2025年7月-2026年3月）发现"杰文斯效应"：AI 效率提升不会减少 AI 使用量，反而增加——AI 用量增长 44%；高复杂度任务增长 68%，低复杂度仅 22%；文档、架构、代码审查等管理性工作增长最快（50-62%）；存在 4-6 周滞后：开发者先用 AI 完成同类任务，再逐步挑战更难任务。
+      </div>
+      <div class="news-highlight">
+        AI 不是在取代开发者，而是让开发者有勇气挑战以前不敢做的更难项目
+      </div>
+    </div>
+
+    <!-- 新闻6 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-tag model">新品</span>
+        <span class="news-source">MiniMax · AITOP100</span>
+      </div>
+      <div class="news-title">MiniMax 上线 MaxHermes：全球首个 AI 技能自主进化助手，技能库会"生长"</div>
+      <div class="news-desc">
+        MiniMax 发布 MaxHermes，基于 M2.7 编程模型，核心特色是"自主进化"：能从复杂任务执行中提炼可复用 Skills 并保存为独立文档，技能库随使用动态生长；整合持久化记忆、自然语言定时任务和多子代理并行机制；技能会根据用户反馈自我迭代改进。这是 AI Agent 从"固定工具"向"自我进化实体"转变的重要里程碑。
+      </div>
+      <div class="news-highlight">
+        下周你的 AI 助手可能比上周更懂你，因为它在偷偷进化
+      </div>
+    </div>
+
+    <!-- 新闻7 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-tag tool">工具更新</span>
+        <span class="news-source">Windsurf 官方</span>
+      </div>
+      <div class="news-title">Windsurf 2.0 引入 Devin 云代理：云端协同编程，向 AI 编程平台转型</div>
+      <div class="news-desc">
+        Windsurf 发布 2.0 版本，引入 Devin 云代理深度集成，实现真正的云端协同编程：本地 IDE 与云端 Agent 同步工作；支持将复杂任务委托给云端 Devin 执行，本地继续其他开发；Agent 面板支持多任务并行管理；定位从 AI 辅助 IDE 向 AI 编程平台演进，与 Cursor 3 展开正面竞争。
+      </div>
+      <div class="news-highlight">
+        Windsurf 的策略：用 Devin 的 Agent 能力补齐本地 IDE 的短板，打造"本地 + 云端"双模式编程体验
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-text">🤖 自动生成 · 2026-04-17 08:15 · AI 编程热点早报</div>
+      <a href="/">← 返回首页</a>
+    </div>
+  </div>
+</body>
+</html>

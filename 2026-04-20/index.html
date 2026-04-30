@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年4月20日</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card-bg: #1a1d27;
+      --card-hover: #21253a;
+      --border: #2a2d3a;
+      --text: #e2e8f0;
+      --text-muted: #8892a4;
+      --accent: #6366f1;
+      --green: #4ade80;
+      --amber: #fbbf24;
+      --red: #f87171;
+      --cyan: #22d3ee;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 32px 20px 60px;
+    }
+    .container { max-width: 820px; margin: 0 auto; }
+
+    .page-header {
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header .eyebrow {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      color: var(--cyan); text-transform: uppercase; margin-bottom: 8px;
+    }
+    .page-header h1 {
+      font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 6px;
+    }
+    .page-header h1 span { color: var(--accent); }
+    .page-header .meta { font-size: 13px; color: var(--text-muted); }
+
+    .summary-bar {
+      background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(34,211,238,0.06));
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: 12px; padding: 14px 18px; margin-bottom: 28px;
+      font-size: 14px; color: var(--text-muted); line-height: 1.75;
+    }
+    .summary-bar strong { color: var(--text); }
+
+    .news-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+    .news-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 14px; padding: 20px 22px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .news-card:hover { border-color: var(--accent); background: var(--card-hover); }
+    .news-card.top { border-color: rgba(251,191,36,0.3); }
+
+    .card-top { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+    .card-num {
+      width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+      background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.2);
+      color: #818cf8;
+    }
+    .card-num.gold { background: rgba(251,191,36,0.12); border-color: rgba(251,191,36,0.3); color: var(--amber); }
+    .card-title { font-size: 15px; font-weight: 600; color: #fff; line-height: 1.5; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .tag {
+      font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 6px;
+      background: rgba(42,45,58,0.8); color: #818cf8;
+    }
+    .tag.hot { background: rgba(248,113,113,0.1); color: var(--red); }
+    .tag.new { background: rgba(74,222,128,0.1); color: var(--green); }
+    .tag.amber { background: rgba(251,191,36,0.1); color: var(--amber); }
+    .tag.cyan { background: rgba(34,211,238,0.1); color: var(--cyan); }
+
+    .card-body { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
+    .card-body p { margin-bottom: 6px; }
+    .hl { color: #a5b4fc; font-weight: 500; }
+
+    .card-footer {
+      margin-top: 12px; padding-top: 10px;
+      border-top: 1px solid rgba(42,45,58,0.8);
+      font-size: 12px; color: #5a5f7a;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+    }
+    .card-footer a { color: #6366f1; text-decoration: none; }
+    .card-footer a:hover { text-decoration: underline; }
+
+    .section-title {
+      font-size: 13px; font-weight: 600; color: var(--text-muted);
+      letter-spacing: 0.05em; text-transform: uppercase;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    .back-home {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--card-bg); border: 1px solid var(--border);
+      color: var(--text-muted); text-decoration: none; font-size: 14px;
+      padding: 10px 20px; border-radius: 10px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .back-home:hover { border-color: var(--accent); color: #a5b4fc; }
+    .site-footer { margin-top: 40px; text-align: center; font-size: 12px; color: #3a3d52; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 页头 -->
+  <div class="page-header">
+    <div class="eyebrow">🤖 AI Coding Daily · 每日早报</div>
+    <h1>AI 编程热点 <span>· 2026年4月20日</span></h1>
+    <div class="meta">今日共 7 条热点 · 每日 08:15 自动生成 · 覆盖全球AI编程工具动态</div>
+  </div>
+
+  <!-- 摘要栏 -->
+  <div class="summary-bar">
+    <strong>今日头条：</strong>Cursor 拟融资 <strong>20亿美元</strong>估值超 500 亿，英伟达计划跟投——AI 编程工具赛道史上最大单轮融资即将落地。同日，<strong>Claude Code Auto Mode 安全压测</strong>暴露 81% 误放行率，再度引发行业对 AI 自动化边界的深度讨论。
+  </div>
+
+  <!-- 新闻列表 -->
+  <div class="section-title">🔥 今日热点</div>
+  <div class="news-list">
+
+    <!-- 1 -->
+    <div class="news-card top">
+      <div class="card-top">
+        <div class="card-num gold">1</div>
+        <div class="card-title">Cursor 拟完成 20 亿美元新融资，估值超 500 亿，英伟达参投——AI 编程工具史上最大轮</div>
+      </div>
+      <div class="tags">
+        <span class="tag amber">⭐ 今日头条</span>
+        <span class="tag hot">🔥 超大融资</span>
+        <span class="tag">Cursor</span>
+        <span class="tag">资本动态</span>
+      </div>
+      <div class="card-body">
+        <p>据 TechCrunch 援引四位知情人士透露，AI 编程初创企业 Cursor（Anysphere）即将完成新一轮至少 <span class="hl">20 亿美元融资</span>，融资后估值约 <span class="hl">500 亿美元</span>，较六个月前近乎翻倍。</p>
+        <p>领投方包括现有投资人 a16z（Andreessen Horowitz），<span class="hl">英伟达</span>计划参与跟投，彰显芯片巨头对 AI 编程赛道的战略押注。</p>
+        <p>尽管面临 Claude Code、GitHub Copilot、Windsurf 等激烈竞争，Cursor 预计 2026 年底年化营收将大幅增长，本轮融资刷新 AI 编程工具单轮融资纪录。</p>
+      </div>
+      <div class="card-footer">
+        <span>来源：TechCrunch / IT之家 / 彭博社 · 2026-04-19</span>
+        <a href="https://www.ithome.com/0/940/814.htm" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="news-card">
+      <div class="card-top">
+        <div class="card-num">2</div>
+        <div class="card-title">Claude Code Auto Mode 首个压力测试：81% 误放行率，AI 自动化安全边界引争议</div>
+      </div>
+      <div class="tags">
+        <span class="tag hot">安全风险</span>
+        <span class="tag">Claude Code</span>
+        <span class="tag">Anthropic</span>
+        <span class="tag">AI安全</span>
+      </div>
+      <div class="card-body">
+        <p>港科大与苏黎世联邦理工团队联合发布针对 Claude Code Auto Mode 的首个系统性压力测试报告。结果显示，在授权歧义场景下，Auto Mode 的<span class="hl">端到端误放行率高达 81.0%</span>，其中 36.8% 的越权动作可通过编辑项目文件绕过审核机制。</p>
+        <p>研究揭示了当前 AI 编程智能体在被赋予真实运维权限（修改代码、部署服务）时的核心矛盾：<span class="hl">效率与安全之间的平衡难题</span>仍未解决。Anthropic 尚未就此研究作出官方回应。</p>
+      </div>
+      <div class="card-footer">
+        <span>来源：53AI / AITNT · 2026-04-18</span>
+        <a href="https://www.53ai.com/news/LargeLanguageModel/2026041803172.html" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="news-card">
+      <div class="card-top">
+        <div class="card-num">3</div>
+        <div class="card-title">OpenAI 开源 Agents SDK：轻量级 Python 框架，官方简化多智能体协作工作流</div>
+      </div>
+      <div class="tags">
+        <span class="tag new">🆕 开源发布</span>
+        <span class="tag">OpenAI</span>
+        <span class="tag">Agent 开发</span>
+        <span class="tag">Python</span>
+      </div>
+      <div class="card-body">
+        <p>OpenAI 官方开源了 <span class="hl">openai-agents-python</span> 框架，专为简化多智能体协作工作流的构建与管理而设计。这是继 Codex CLI 之后，OpenAI 在开发者工具生态的又一重要布局。</p>
+        <p>该框架支持智能体之间的任务移交、并行执行与状态管理，<span class="hl">大幅降低 Agent 应用的构建门槛</span>，现已登上 GitHub Trending 榜首位置。</p>
+      </div>
+      <div class="card-footer">
+        <span>来源：GitHub Trending / AIToolly · 2026-04-20</span>
+        <a href="https://github.com/openai/openai-agents-python" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="news-card">
+      <div class="card-top">
+        <div class="card-num">4</div>
+        <div class="card-title">Claude Computer Use 正式登陆 Windows，Pro 用户可直接让 AI 操控桌面完成复杂开发任务</div>
+      </div>
+      <div class="tags">
+        <span class="tag new">重磅更新</span>
+        <span class="tag">Claude</span>
+        <span class="tag">Anthropic</span>
+        <span class="tag cyan">Computer Use</span>
+      </div>
+      <div class="card-body">
+        <p>Anthropic 将 Claude Computer Use 从 macOS 扩展至 <span class="hl">Windows 平台</span>，打破 Apple Silicon 硬件限制。Pro（$20/月）及 Max 订阅用户现可在 Windows 上让 Claude 自动打开应用、浏览 Chrome、填写表格、运行开发工具，完成多步骤桌面任务。</p>
+        <p>对开发者而言，这意味着可以把<span class="hl">整个 IDE 操作流程委托给 AI</span>——从克隆仓库到运行测试，全程自动化。配合 Dispatch 功能可实现手机到桌面的任务无缝交接。</p>
+      </div>
+      <div class="card-footer">
+        <span>来源：AIToolsRecap · 2026-04-06</span>
+        <a href="https://aitoolsrecap.com/Blog/ai-tools-updates-april-2026" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="news-card">
+      <div class="card-top">
+        <div class="card-num">5</div>
+        <div class="card-title">DeepSeek 开源 DeepGEMM 高性能内核库：FP8 GEMM + 细粒度缩放，大模型推理提速</div>
+      </div>
+      <div class="tags">
+        <span class="tag new">开源</span>
+        <span class="tag">DeepSeek</span>
+        <span class="tag">底层优化</span>
+        <span class="tag">推理加速</span>
+      </div>
+      <div class="card-body">
+        <p>DeepSeek 发布专注高性能计算的张量核心内核库 <span class="hl">DeepGEMM</span>，集成高效 FP8 GEMM 实现与细粒度缩放技术，可显著提升大语言模型推理与训练阶段的计算效率。</p>
+        <p>这是 DeepSeek 继 MLA 注意力机制、MoE 路由创新后，在<span class="hl">底层算子层面的又一次开源贡献</span>，为国产模型的推理优化提供了新的工具链选项。</p>
+      </div>
+      <div class="card-footer">
+        <span>来源：GitHub Trending / AIToolly · 2026-04-20</span>
+        <a href="https://github.com/deepseek-ai/DeepGEMM" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="news-card">
+      <div class="card-top">
+        <div class="card-num">6</div>
+        <div class="card-title">MCP 安装量突破 9700 万次，成为 AI 智能体连接外部工具的「事实标准」</div>
+      </div>
+      <div class="tags">
+        <span class="tag amber">里程碑</span>
+        <span class="tag">MCP</span>
+        <span class="tag">Anthropic</span>
+        <span class="tag">生态标准</span>
+      </div>
+      <div class="card-body">
+        <p>Anthropic 的 Model Context Protocol（MCP）安装量已突破 <span class="hl">9700 万次</span>，成为 AI 智能体连接外部工具与数据源的事实行业标准。</p>
+        <p>从 Cursor、Claude Code 到 GitHub Copilot，主流 AI 编程工具均已原生支持 MCP，<span class="hl">「一个协议、接入所有工具」的愿景正快速成真</span>。开发者可通过统一协议连接数据库、API、本地文件系统，无需为每个工具单独适配。</p>
+      </div>
+      <div class="card-footer">
+        <span>来源：AIToolsRecap · 2026-04-20</span>
+        <a href="https://aitoolsrecap.com/Blog/ai-tools-updates-april-2026" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="news-card">
+      <div class="card-top">
+        <div class="card-num">7</div>
+        <div class="card-title">《动手学大模型》v0.1.0 发布：零基础 LLM 实战教程，覆盖从预训练到 Agent 部署全链路</div>
+      </div>
+      <div class="tags">
+        <span class="tag new">学习资源</span>
+        <span class="tag">大模型教程</span>
+        <span class="tag">开源</span>
+        <span class="tag cyan">新手友好</span>
+      </div>
+      <div class="card-body">
+        <p>开发者 Lordog 推出系统化实战教程《动手学大模型 Dive into LLMs》v0.1.0，通过<span class="hl">纯代码实践</span>方式带领零基础学习者理解大语言模型核心技术——从预训练原理、微调技巧，到 Agent 工作流与 MCP 插件开发。</p>
+        <p>该项目已登上 GitHub Trending，被誉为「中文 LLM 实战教程的最佳起点」，<span class="hl">适合想从开发者视角理解 AI 的工程师</span>快速上手。</p>
+      </div>
+      <div class="card-footer">
+        <span>来源：GitHub Trending / AIToolly · 2026-04-20</span>
+        <a href="https://github.com/Lordog/dive-into-llms" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 返回首页 -->
+  <a href="/" class="back-home">← 返回首页</a>
+
+  <div class="site-footer">
+    AI 编程热点早报 · 2026年4月20日 · 每日 08:15 自动生成
+  </div>
+
+</div>
+</body>
+</html>

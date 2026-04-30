@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 编程热点 · 2026年4月12日</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card-bg: #1a1d27;
+      --card-hover: #21253a;
+      --border: #2a2d3a;
+      --text: #e2e8f0;
+      --text-muted: #8892a4;
+      --accent: #6366f1;
+      --accent-glow: rgba(99,102,241,0.15);
+      --green: #4ade80;
+      --amber: #fbbf24;
+      --red: #f87171;
+      --cyan: #22d3ee;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 32px 20px 60px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .header-icon { font-size: 48px; margin-bottom: 12px; }
+    h1 { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .date { font-size: 14px; color: var(--text-muted); }
+    .date span { color: var(--accent); font-weight: 600; }
+
+    .news-grid { display: flex; flex-direction: column; gap: 16px; }
+    .news-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 24px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .news-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .news-card.hot { border-color: rgba(251,191,36,0.3); }
+    .news-card.trending { border-color: rgba(99,102,241,0.4); }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .card-num {
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(99,102,241,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+      color: #818cf8; flex-shrink: 0;
+    }
+    .card-num.hot { background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.3); color: var(--amber); }
+
+    .card-title {
+      font-size: 16px; font-weight: 600; color: #fff; line-height: 1.45;
+    }
+    .card-meta {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;
+    }
+    .tag {
+      font-size: 11px; font-weight: 500; padding: 3px 10px;
+      border-radius: 6px; background: #2a2d3a; color: #818cf8;
+    }
+    .tag.green { background: rgba(74,222,128,0.1); color: var(--green); }
+    .tag.amber { background: rgba(251,191,36,0.1); color: var(--amber); }
+    .tag.red { background: rgba(248,113,113,0.1); color: var(--red); }
+    .tag.cyan { background: rgba(34,211,238,0.1); color: var(--cyan); }
+
+    .card-body {
+      font-size: 14px; color: var(--text-muted); line-height: 1.75;
+    }
+    .card-body p { margin-bottom: 6px; }
+    .card-body .hl { color: #a5b4fc; font-weight: 500; }
+    .card-body ul { padding-left: 18px; }
+    .card-body li { margin-bottom: 4px; }
+
+    .card-footer {
+      margin-top: 14px; padding-top: 12px;
+      border-top: 1px solid rgba(42,45,58,0.8);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 8px;
+    }
+    .card-footer a {
+      font-size: 12px; color: #6366f1; text-decoration: none;
+    }
+    .card-footer a:hover { text-decoration: underline; }
+    .card-source { font-size: 12px; color: #4a4e6a; }
+
+    .summary-box {
+      background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(139,92,246,0.08));
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: 14px; padding: 20px 22px; margin-bottom: 28px;
+    }
+    .summary-box h2 { font-size: 15px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; }
+    .summary-box ul { padding-left: 18px; }
+    .summary-box li { font-size: 13px; color: var(--text-muted); margin-bottom: 5px; line-height: 1.6; }
+    .summary-box li strong { color: var(--text); }
+
+    .back-home {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--card-bg); border: 1px solid var(--border);
+      color: var(--text-muted); text-decoration: none;
+      font-size: 14px; padding: 10px 20px; border-radius: 10px;
+      transition: border-color 0.2s, color 0.2s; margin-top: 36px;
+    }
+    .back-home:hover { border-color: var(--accent); color: #a5b4fc; }
+    .site-footer { margin-top: 32px; text-align: center; font-size: 12px; color: #3a3d52; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="header-icon">🤖</div>
+    <h1>AI 编程热点新闻</h1>
+    <div class="date">
+      <span>2026年4月12日 · 周日</span> &nbsp;·&nbsp; 共收录 7 条热点
+    </div>
+  </div>
+
+  <!-- 热点摘要 -->
+  <div class="summary-box">
+    <h2>📋 今日热点速览</h2>
+    <ul>
+      <li><strong>Claude Computer Use 登陆 Windows</strong> —— Anthropic 将 AI 自动操控电脑的能力扩展到 Windows 平台</li>
+      <li><strong>Google Gemma 4 开源模型发布</strong> —— 免费可商用，31B 版本编程基准 80%，手机即可运行轻量版</li>
+      <li><strong>Claude Code 拿下 28% 市场份额</strong> —— 2026年4月AI编程工具三强格局最新数据出炉</li>
+      <li><strong>Cursor 3 Glass 界面 + 多 Agent 并行</strong> —— Cursor 迭代最快，SWE-bench 72.3% 居第二</li>
+      <li><strong>Microsoft 自研三款 AI 模型</strong> —— MAI 系列转录、语音、图像模型，10 人小团队打破对 OpenAI 的依赖</li>
+      <li><strong>AI 编程助手进入「记忆层」时代</strong> —— 持久化记忆层让助手真正「认识」你的代码库</li>
+      <li><strong>Anthropic 收紧第三方工具生态</strong> —— Pro/Max 订阅不再覆盖 OpenClaw 等外部工具</li>
+    </ul>
+  </div>
+
+  <!-- 新闻列表 -->
+  <div class="news-grid">
+
+    <!-- 1 -->
+    <div class="news-card hot">
+      <div class="card-top">
+        <div class="card-num hot">1</div>
+        <div class="card-title">Claude Computer Use 正式登陆 Windows —— AI 帮你操作电脑不再是 Mac 专属</div>
+      </div>
+      <div class="card-meta">
+        <span class="tag amber">🔥 今日热点</span>
+        <span class="tag cyan">Anthropic</span>
+        <span class="tag">Claude Code</span>
+        <span class="tag">Windows</span>
+      </div>
+      <div class="card-body">
+        <p>Anthropic 将「计算机使用（Computer Use）」功能从 macOS 扩展到 Windows 全系列硬件，不再局限于 Apple Silicon 设备。这意味着 AI 现在可以在 Windows 上自动打开应用、浏览网页、填写表格、运行开发工具，完成多步骤桌面任务。</p>
+        <p><span class="hl">怎么开启？</span> Claude Code Desktop → 设置 → 通用 → 桌面应用 → 开启「浏览器使用」和「计算机使用」。需要 Pro（$20/月）或 Max（$100-200/月）订阅。</p>
+        <p><span class="hl">配套功能：</span> 支持 Dispatch 手机到桌面任务交接，适合跨设备工作流场景。</p>
+      </div>
+      <div class="card-footer">
+        <a href="https://aitoolsrecap.com/Blog/ai-tools-updates-april-2026" target="_blank">🔗 查看详情</a>
+        <span class="card-source">来源：AIToolsRecap · 2026-04-06</span>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="news-card hot">
+      <div class="card-top">
+        <div class="card-num hot">2</div>
+        <div class="card-title">Google Gemma 4 开源发布 —— 手机可跑、编程基准 80%、Apache 2.0 免费商用</div>
+      </div>
+      <div class="card-meta">
+        <span class="tag amber">🔥 今日热点</span>
+        <span class="tag green">开源</span>
+        <span class="tag">Google</span>
+        <span class="tag">本地模型</span>
+      </div>
+      <div class="card-body">
+        <p>Google DeepMind 正式开源 Gemma 4 系列模型，涵盖 2B/4B/26B/31B 四个规格，全部 Apache 2.0 授权，可免费商用。</p>
+        <p><span class="hl">编程能力：</span> 31B Dense 版在 LiveCodeBench v6 上得分 80.0%，AIME 2026 数学推理 89.2%，Arena AI Elo 1452（全球开源第三）。</p>
+        <p><span class="hl">上下文：</span> 256K tokens 超长上下文，适合处理大型代码库。首日支持 Hugging Face、Ollama、vLLM、llama.cpp、LM Studio 等主流推理框架。</p>
+        <p><span class="hl">设备端特性：</span> 2B/4B 轻量版可在手机离线运行，支持调用 Wikipedia、地图等工具，数据不上传云端。</p>
+      </div>
+      <div class="card-footer">
+        <a href="https://llm-stats.com/ai-news" target="_blank">🔗 查看详情</a>
+        <span class="card-source">来源：LLM Stats / AIToolsRecap · 2026-04</span>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="news-card trending">
+      <div class="card-top">
+        <div class="card-num">3</div>
+        <div class="card-title">2026 年 4 月 AI 编程工具格局：Claude Code 28% 领跑，Cursor 3 紧追，三强鼎立</div>
+      </div>
+      <div class="card-meta">
+        <span class="tag">行业分析</span>
+        <span class="tag">Claude Code</span>
+        <span class="tag">Cursor 3</span>
+        <span class="tag cyan">市场数据</span>
+      </div>
+      <div class="card-body">
+        <p>最新横评数据：Claude Code 以 SWE-bench 80.8% 得分和 28% 市场份额领跑，Cursor 3（26%）和 GitHub Copilot（24%）紧随其后，Windsurf（12%）、Trae（6%）占据尾部。</p>
+        <p><span class="hl">各工具 2026 年重磅新功能：</span></p>
+        <ul>
+          <li><strong>Cursor 3：</strong> Glass 极简沉浸式界面 + 多 Agent 并行协作</li>
+          <li><strong>Claude Code：</strong> Agent Teams 多 Agent 协作分工 + 200 万 Token 上下文</li>
+          <li><strong>Windsurf：</strong> Agent Flow 可视化工作流编排 + 实时多人协作</li>
+          <li><strong>Trae：</strong> 完全免费策略 + Builder 一键构建完整项目</li>
+        </ul>
+        <p><span class="hl">专业选法：</span> 复杂工程任务选 Claude Code，追求体验和速度选 Cursor 3，企业合规选 GitHub Copilot，零预算选 Trae。</p>
+      </div>
+      <div class="card-footer">
+        <a href="https://aicoding.csdn.net/69d85d2a0a2f6a37c59e30c3.html" target="_blank">🔗 查看详情</a>
+        <span class="card-source">来源：AI编程社区CSDN · 2026-04-10</span>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="news-card">
+      <div class="card-top">
+        <div class="card-num">4</div>
+        <div class="card-title">Microsoft 自研 MAI 三件套 —— 10 人小团队打破对 OpenAI 的技术依赖</div>
+      </div>
+      <div class="card-meta">
+        <span class="tag">Microsoft</span>
+        <span class="tag">自研模型</span>
+        <span class="tag cyan">行业动态</span>
+      </div>
+      <div class="card-body">
+        <p>微软发布首批独立自研 AI 生产模型 MAI 系列，由仅 10 人的小团队开发，标志着微软开始减少对 OpenAI 的依赖：</p>
+        <ul>
+          <li><strong>MAI-TRANSCRIBE-1：</strong> 语音转录，25 语言平均 WER 3.8%（行业最低），适合开发文档音频转录</li>
+          <li><strong>MAI-VOICE-1：</strong> 语音合成，60 倍实时速度，$22/百万字符，适合语音交互编程助手</li>
+          <li><strong>MAI-IMAGE-2：</strong> 图像生成，Arena.ai 前三，生成速度较上代提升 2 倍，适合 UI 原型设计</li>
+        </ul>
+        <p><span class="hl">影响：</span> Microsoft Copilot 同步推出「批判模式（Critique）」和「模型委员会（Model Council）」，一个生成、一个审核，大幅降低代码幻觉。</p>
+      </div>
+      <div class="card-footer">
+        <a href="https://aitoolsrecap.com/Blog/ai-tools-updates-april-2026" target="_blank">🔗 查看详情</a>
+        <span class="card-source">来源：AIToolsRecap · 2026-04-06</span>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="news-card">
+      <div class="card-top">
+        <div class="card-num">5</div>
+        <div class="card-title">Cursor Bugbot 能「学习规则自我改进」了 —— AI 代码审查进入自进化时代</div>
+      </div>
+      <div class="card-meta">
+        <span class="tag">Cursor</span>
+        <span class="tag green">新功能</span>
+        <span class="tag">代码审查</span>
+      </div>
+      <div class="card-body">
+        <p>Cursor 团队于 4 月 8 日发布博客：Bugbot 现在可以通过学习你的代码库规则来持续自我改进。以前 Bugbot 只是按通用规则审查代码，现在它会记住你项目特有的编码规范，下次审查时自动应用。</p>
+        <p><span class="hl">实际使用效果：</span> PlanetScale 生产环境用 Bugbot 保障可靠性，Salesforce 通过它提升代码质量，开发速度提升超 30%。</p>
+        <p><span class="hl">适合场景：</span> 有固定编码规范的团队、需要自动化代码审查的项目、想减少 CR（Code Review）时间的开发者。</p>
+      </div>
+      <div class="card-footer">
+        <a href="https://cursor.com/cn/blog" target="_blank">🔗 查看 Cursor 博客</a>
+        <span class="card-source">来源：Cursor 官方博客 · 2026-04-08</span>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="news-card">
+      <div class="card-top">
+        <div class="card-num">6</div>
+        <div class="card-title">AI 编程助手进入「记忆层」时代 —— 跨会话上下文将彻底改变写代码体验</div>
+      </div>
+      <div class="card-meta">
+        <span class="tag">技术趋势</span>
+        <span class="tag cyan">记忆层</span>
+        <span class="tag">Agent</span>
+      </div>
+      <div class="card-body">
+        <p>Planet AI 研究发现：AI 编程助手最大的瓶颈不是代码生成能力，而是「无记忆」——每次对话都从零开始，不知道你的代码库结构、你的编码习惯、上次做了什么。</p>
+        <p><span class="hl">持久化记忆层能做什么？</span></p>
+        <ul>
+          <li>记住你的代码库文件结构和关键模块</li>
+          <li>跨会话延续上下文，不用每次重新解释项目背景</li>
+          <li>自动积累你的编码偏好，生成更符合风格的代码</li>
+        </ul>
+        <p><span class="hl">现状：</span> Cursor 的 CLAUDE.md 配置文件就是一种简易记忆层，Andrej Karpathy 的开源配置方案也在此方向上优化。</p>
+      </div>
+      <div class="card-footer">
+        <a href="https://llm-stats.com/ai-news" target="_blank">🔗 查看详情</a>
+        <span class="card-source">来源：Planet AI / LLM Stats · 2026-04</span>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="news-card">
+      <div class="card-top">
+        <div class="card-num">7</div>
+        <div class="card-title">Anthropic 收紧第三方工具订阅政策 —— OpenClaw 等外部工具需单独付费</div>
+      </div>
+      <div class="card-meta">
+        <span class="tag red">⚠️ 政策变更</span>
+        <span class="tag">Anthropic</span>
+        <span class="tag">开发者影响</span>
+      </div>
+      <div class="card-body">
+        <p>2026 年 4 月 4 日起，Claude Pro/Max 订阅<span class="hl">不再覆盖第三方 AI 代理工具</span>（如 OpenClaw、OpenCode 等外部客户端）。此政策自 2026 年 1 月已开始在技术层面执行，现正式落地。</p>
+        <p><span class="hl">影响哪些开发者？</span> 依赖 Claude API 但没有直接付费给 Anthropic 的第三方工具用户，之前通过 Pro 订阅「顺带使用」这些工具的流量将被断开。</p>
+        <p><span class="hl">替代方案：</span></p>
+        <ul>
+          <li>购买 Anthropic 官方按量付费使用包（一次性折扣信用额度）</li>
+          <li>切换至标准 API 密钥直连</li>
+          <li>迁移到 Cursor、Claude Code 官方客户端</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <a href="https://aitoolsrecap.com/Blog/ai-tools-updates-april-2026" target="_blank">🔗 查看详情</a>
+        <span class="card-source">来源：AIToolsRecap · 2026-04-06</span>
+      </div>
+    </div>
+
+  </div><!-- /news-grid -->
+
+  <a class="back-home" href="/">← 返回首页</a>
+
+  <div class="site-footer">由 WorkBuddy AI 自动整理 · 仅供学习参考 · https://genuine-sawine-b4c0cb.netlify.app</div>
+</div>
+</body>
+</html>

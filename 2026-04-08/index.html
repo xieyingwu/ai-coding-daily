@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点新闻 · 2026年4月8日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #2a2d3e;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(0,212,170,0.15);
+      color: #00d4aa;
+      border: 1px solid rgba(0,212,170,0.3);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+    .logo { font-size: 52px; margin-bottom: 12px; }
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    h1 span { color: #6c63ff; }
+    .meta {
+      color: #8b90b0;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .meta-dot { color: #2a2d3e; }
+    .news-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    .news-card {
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      border-radius: 14px;
+      padding: 22px 24px;
+      transition: border-color 0.2s;
+    }
+    .news-card:hover { border-color: #6c63ff; }
+    .news-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .num {
+      background: linear-gradient(135deg, #6c63ff, #a78bfa);
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .news-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #eef0fb;
+      line-height: 1.5;
+    }
+    .news-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      margin-left: 42px;
+    }
+    .tag {
+      background: rgba(108,99,255,0.12);
+      border: 1px solid rgba(108,99,255,0.25);
+      color: #a78bfa;
+      font-size: 11px;
+      padding: 2px 10px;
+      border-radius: 10px;
+    }
+    .tag.green {
+      background: rgba(0,212,170,0.1);
+      border-color: rgba(0,212,170,0.25);
+      color: #00d4aa;
+    }
+    .tag.orange {
+      background: rgba(255,165,0,0.1);
+      border-color: rgba(255,165,0,0.25);
+      color: #ffb84d;
+    }
+    .news-body {
+      font-size: 14px;
+      color: #9ca3c4;
+      line-height: 1.75;
+      margin-left: 42px;
+    }
+    .news-body strong { color: #c7cadf; }
+    .news-source {
+      margin-left: 42px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: #4a4e6a;
+    }
+    .news-source a {
+      color: #5c5f80;
+      text-decoration: none;
+    }
+    .news-source a:hover { color: #6c63ff; }
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #6c63ff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .summary-box {
+      background: linear-gradient(135deg, #1a1d27, #1c1f2e);
+      border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin-bottom: 40px;
+    }
+    .summary-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #a78bfa;
+      margin-bottom: 12px;
+    }
+    .summary-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .summary-list li {
+      font-size: 13px;
+      color: #8b90b0;
+      padding-left: 18px;
+      position: relative;
+    }
+    .summary-list li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: #6c63ff;
+    }
+    .footer {
+      text-align: center;
+      padding-top: 28px;
+      border-top: 1px solid #2a2d3e;
+      font-size: 12px;
+      color: #4a4e6a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      color: #8b90b0;
+      text-decoration: none;
+      padding: 7px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .back-btn:hover { border-color: #6c63ff; color: #6c63ff; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="badge">🆕 TODAY'S DIGEST</div>
+      <div class="logo">🤖</div>
+      <h1>AI 编程 <span>热点新闻</span></h1>
+      <div class="meta">
+        <span>📅 2026年4月8日</span>
+        <span class="meta-dot">·</span>
+        <span>星期三</span>
+        <span class="meta-dot">·</span>
+        <span>共 6 条热点</span>
+        <span class="meta-dot">·</span>
+        <span>08:15 自动生成</span>
+      </div>
+    </div>
+
+    <div class="section-title">今日精选 · 6 条热点</div>
+    <div class="news-list">
+
+      <!-- 第1条 -->
+      <div class="news-card">
+        <div class="news-header">
+          <div class="num">1</div>
+          <div class="news-title">Anthropic 挖角微软 AI 老将：Eric Boyd 出任基础设施负责人</div>
+        </div>
+        <div class="news-tags">
+          <span class="tag">Anthropic</span>
+          <span class="tag orange">人事动态</span>
+          <span class="tag green">基础设施</span>
+        </div>
+        <div class="news-body">
+          Anthropic 今日宣布，微软 AI 平台部门资深高管 <strong>Eric Boyd</strong> 正式加入，出任公司基础设施负责人。Boyd 在微软工作长达 <strong>16年</strong>，曾主导 Azure OpenAI Service 等核心 AI 基础设施建设，是将大规模模型能力商业化落地的关键人物。此次加入 Anthropic，将重点负责 Claude 系列模型的训练基础设施扩张，为其即将推出的 Mythos 系列下一代超级模型提供算力保障。分析人士指出，这一人事动向表明 Anthropic 正在加速构建自研基础设施能力，减少对第三方云服务的依赖。
+        </div>
+        <div class="news-source">📌 来源：Techmeme / LLM Stats · 2026年4月8日</div>
+      </div>
+
+      <!-- 第2条 -->
+      <div class="news-card">
+        <div class="news-header">
+          <div class="num">2</div>
+          <div class="news-title">智谱 GLM-5.1 发布：754B 参数，SWE-bench Pro 超越 GPT-5.4 与 Claude Opus 4.6</div>
+        </div>
+        <div class="news-tags">
+          <span class="tag green">开源</span>
+          <span class="tag">智谱 AI</span>
+          <span class="tag">代码生成</span>
+        </div>
+        <div class="news-body">
+          智谱 AI 旗下 <strong>Z.ai</strong> 今日发布 <strong>GLM-5.1</strong>，参数量达 <strong>754B</strong>，采用 MoE（混合专家）架构。官方公布的基准测试数据显示，GLM-5.1 在 <strong>SWE-bench Pro</strong>（专业级软件工程修复基准）上超越 GPT-5.4 和 Claude Opus 4.6，成为目前最强的代码生成与问题修复模型之一。值得关注的是，GLM-5.1 采用 <strong>MIT 许可证</strong>完全开放，允许商业使用，进一步降低企业 AI 编程工具的使用门槛。在 AI 编程场景下，该模型在复杂多步骤代码重构和 Bug 修复任务中表现突出。
+        </div>
+        <div class="news-source">📌 来源：Techmeme / Z.ai 官方 · 2026年4月8日</div>
+      </div>
+
+      <!-- 第3条 -->
+      <div class="news-card">
+        <div class="news-header">
+          <div class="num">3</div>
+          <div class="news-title">Anthropic Mythos Preview 曝光：SWE-bench Verified 达 93.9%，主动发现数千高危漏洞</div>
+        </div>
+        <div class="news-tags">
+          <span class="tag">Anthropic</span>
+          <span class="tag orange">安全研究</span>
+          <span class="tag">Benchmark</span>
+        </div>
+        <div class="news-body">
+          Anthropic 公布了内部下一代旗舰模型 <strong>Mythos Preview</strong> 的早期基准数据。在代码相关评测中：<strong>SWE-bench Verified</strong> 达到 <strong>93.9%</strong>（当前 Opus 4.6 为 80.8%），<strong>SWE-bench Pro</strong> 达到 <strong>77.8%</strong>（Opus 4.6 为 53.4%），大幅领先。更引人注目的是，Mythos 在主动安全测试中，于主流操作系统和浏览器中自主发现<strong>数千个高危安全漏洞</strong>，展现出超越人类安全专家的漏洞挖掘能力。这一能力对 AI 辅助代码审计和安全编程具有重要意义，也引发了对模型双重用途风险的讨论。
+        </div>
+        <div class="news-source">📌 来源：Anthropic 官方 / Techmeme · 2026年4月8日</div>
+      </div>
+
+      <!-- 第4条 -->
+      <div class="news-card">
+        <div class="news-header">
+          <div class="num">4</div>
+          <div class="news-title">Google 发布 LiteRT-LM：专为边缘设备设计的开源大模型推理框架</div>
+        </div>
+        <div class="news-tags">
+          <span class="tag green">开源</span>
+          <span class="tag">Google</span>
+          <span class="tag">边缘 AI</span>
+        </div>
+        <div class="news-body">
+          Google 今日推出 <strong>LiteRT-LM</strong>，这是一款专为边缘设备和移动端设计的高性能开源大语言模型推理框架。LiteRT-LM 能够让开发者在资源受限的设备（手机、嵌入式设备）上高效部署 AI 编程助手，无需连接云端。该框架支持量化压缩、硬件加速，并与 Google 的 Gemma 4 模型深度整合。对于需要本地化 AI 编程工具（如代码补全、离线代码分析）的开发者而言，LiteRT-LM 提供了一条可行的端侧路径，同时降低了数据隐私和网络延迟问题。
+        </div>
+        <div class="news-source">📌 来源：AIToolly / Google 官方博客 · 2026年4月8日</div>
+      </div>
+
+      <!-- 第5条 -->
+      <div class="news-card">
+        <div class="news-header">
+          <div class="num">5</div>
+          <div class="news-title">GitNexus 发布：浏览器端代码知识图谱 + Graph RAG 代理，重新定义代码理解</div>
+        </div>
+        <div class="news-tags">
+          <span class="tag">开发工具</span>
+          <span class="tag green">知识图谱</span>
+          <span class="tag">Graph RAG</span>
+        </div>
+        <div class="news-body">
+          全新 AI 开发工具 <strong>GitNexus</strong> 今日上线，这是一款创新的<strong>浏览器端代码知识图谱引擎</strong>，完全在本地运行，无需上传代码到服务器。开发者可导入 GitHub 仓库或 ZIP 文件，系统自动生成交互式代码知识图谱，并内置 <strong>Graph RAG 代理</strong>支持自然语言代码问答。相较于传统 AI 编程工具（如 GitHub Copilot、Cursor）线性阅读代码的方式，GitNexus 通过图结构理解代码模块间的依赖关系，在大型代码库的理解和重构场景下具有独特优势。该工具已开源，支持离线运行。
+        </div>
+        <div class="news-source">📌 来源：AIToolly · 2026年4月8日</div>
+      </div>
+
+      <!-- 第6条 -->
+      <div class="news-card">
+        <div class="news-header">
+          <div class="num">6</div>
+          <div class="news-title">2026 AI 编程工具大横评：Claude Code 领跑，Codex CLI 加速追赶，Cursor 守擂</div>
+        </div>
+        <div class="news-tags">
+          <span class="tag">Claude Code</span>
+          <span class="tag">Codex CLI</span>
+          <span class="tag">Cursor</span>
+          <span class="tag orange">横向对比</span>
+        </div>
+        <div class="news-body">
+          一份针对 2026 年主流 AI 编程工具的全面横评报告出炉，覆盖 <strong>Claude Code、OpenAI Codex CLI、Cursor Composer、GitHub Copilot、Gemini CLI、Cline</strong> 等六大工具。评测结论：<strong>Claude Code</strong> 在 CLI 终端编程和自主代理任务（Agentic Coding）中综合评分最高，尤其在复杂多文件重构、代码调试准确率方面领先；<strong>Codex CLI</strong> 凭借 GPT-5.4 加持，在速度和轻量化上反超，差距明显缩小；<strong>Cursor</strong> 凭借 IDE 集成体验和 AI 工作流调度能力守住"日常编程首选"地位。报告还指出，2026 年 AI 编程工具正从"代码补全助手"全面进化为"智能体调度平台"。
+        </div>
+        <div class="news-source">📌 来源：OfoxAI 横评报告 / TokenCalculator · 2026年4月8日</div>
+      </div>
+
+    </div>
+
+    <!-- 今日摘要 -->
+    <div class="summary-box">
+      <div class="summary-title">📊 今日总结 · 核心观察</div>
+      <ul class="summary-list">
+        <li>Anthropic 大动作不断：挖角微软 AI 高管建基础设施，Mythos 模型数据震撼业界</li>
+        <li>国产大模型反攻：智谱 GLM-5.1 以 754B 开源模型打败 GPT-5.4 代码基准</li>
+        <li>边缘 AI 编程加速落地：Google LiteRT-LM 让 AI 代码助手走进手机和嵌入式设备</li>
+        <li>代码理解工具进化：GitNexus 用知识图谱颠覆线性代码阅读范式</li>
+        <li>市场格局趋于稳定：Claude Code + Codex CLI + Cursor 三强格局延续，竞争进入精细化赛道</li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      <a class="back-btn" href="/">← 返回首页</a>
+      <span>由 WorkBuddy AI 自动整理 · 仅供学习参考</span>
+      <span>下次更新：2026年4月9日 08:15</span>
+    </div>
+  </div>
+</body>
+</html>

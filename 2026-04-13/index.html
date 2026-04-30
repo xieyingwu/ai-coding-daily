@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 编程热点 · 2026年4月13日</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card-bg: #1a1d27;
+      --card-hover: #21253a;
+      --border: #2a2d3a;
+      --text: #e2e8f0;
+      --text-muted: #8892a4;
+      --accent: #6366f1;
+      --accent-glow: rgba(99,102,241,0.15);
+      --green: #4ade80;
+      --amber: #fbbf24;
+      --red: #f87171;
+      --cyan: #22d3ee;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 32px 20px 60px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .header { margin-bottom: 32px; }
+    .header-top {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px; margin-bottom: 12px;
+    }
+    .header-left { display: flex; align-items: center; gap: 14px; }
+    .header-icon { font-size: 40px; }
+    .header-text h1 { font-size: 22px; font-weight: 700; color: #fff; }
+    .header-text .meta { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+    .date-badge {
+      background: linear-gradient(135deg, rgba(99,102,241,0.25), rgba(139,92,246,0.25));
+      border: 1px solid rgba(99,102,241,0.4);
+      color: #a5b4fc; font-size: 13px; font-weight: 700;
+      padding: 6px 16px; border-radius: 20px;
+    }
+
+    .summary-bar {
+      background: var(--card-bg); border: 1px solid rgba(99,102,241,0.3);
+      border-radius: 12px; padding: 14px 18px;
+      display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+    }
+    .sum-item { font-size: 13px; color: var(--text-muted); }
+    .sum-item strong { color: #a5b4fc; }
+    .divider-dot { color: #3a3d52; }
+
+    .section-title {
+      font-size: 13px; font-weight: 700; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.06em;
+      margin: 28px 0 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-title::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    .news-list { display: flex; flex-direction: column; gap: 12px; }
+    .news-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 14px; padding: 18px 20px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .news-card:hover { border-color: var(--accent); background: var(--card-hover); }
+    .news-card.hot { border-color: rgba(251,191,36,0.3); }
+    .news-card.top { border-color: rgba(248,113,113,0.3); }
+
+    .news-top {
+      display: flex; align-items: flex-start; gap: 12px; margin-bottom: 8px;
+    }
+    .news-num {
+      width: 26px; height: 26px; border-radius: 8px;
+      background: var(--accent-glow); border: 1px solid rgba(99,102,241,0.25);
+      color: #818cf8; font-size: 12px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .news-num.amber { background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.3); color: var(--amber); }
+    .news-num.red { background: rgba(248,113,113,0.1); border-color: rgba(248,113,113,0.3); color: var(--red); }
+    .news-num.cyan { background: rgba(34,211,238,0.1); border-color: rgba(34,211,238,0.3); color: var(--cyan); }
+    .news-num.green { background: rgba(74,222,128,0.1); border-color: rgba(74,222,128,0.3); color: var(--green); }
+    .news-title { font-size: 16px; font-weight: 600; color: #fff; line-height: 1.45; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+    .tag {
+      font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 6px;
+      background: #2a2d3a; color: #818cf8;
+    }
+    .tag.hot { background: rgba(251,191,36,0.1); color: var(--amber); }
+    .tag.green { background: rgba(74,222,128,0.1); color: var(--green); }
+    .tag.red { background: rgba(248,113,113,0.1); color: var(--red); }
+    .tag.cyan { background: rgba(34,211,238,0.1); color: var(--cyan); }
+
+    .news-body { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
+    .news-body p { margin-bottom: 6px; }
+    .news-body .hl { color: #a5b4fc; font-weight: 500; }
+    .news-body ul { padding-left: 18px; }
+    .news-body li { margin-bottom: 4px; }
+
+    .news-footer {
+      margin-top: 10px; padding-top: 9px;
+      border-top: 1px solid rgba(42,45,58,0.8);
+      font-size: 12px; color: #4a4f6a;
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px;
+    }
+    .news-footer a { color: #6366f1; text-decoration: none; }
+    .news-footer a:hover { text-decoration: underline; }
+
+    .insight-box {
+      background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(139,92,246,0.08));
+      border: 1px solid rgba(99,102,241,0.25);
+      border-radius: 14px; padding: 20px 22px; margin-top: 28px;
+    }
+    .insight-box h3 { font-size: 15px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; }
+    .insight-box ul { padding-left: 18px; }
+    .insight-box li { font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 6px; }
+    .insight-box li strong { color: var(--text); }
+
+    .back-bar {
+      margin-top: 40px; padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .back-home {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--card-bg); border: 1px solid var(--border);
+      color: var(--text-muted); text-decoration: none; font-size: 14px;
+      padding: 9px 18px; border-radius: 10px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .back-home:hover { border-color: var(--accent); color: #a5b4fc; }
+    .site-footer { text-align: center; font-size: 12px; color: #3a3d52; margin-top: 32px; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="header-top">
+      <div class="header-left">
+        <div class="header-icon">🤖</div>
+        <div class="header-text">
+          <h1>AI 编程热点新闻</h1>
+          <div class="meta">📅 2026年4月13日（周一）· 自动生成 · 覆盖全球AI编程工具动态</div>
+        </div>
+      </div>
+      <div class="date-badge">2026-04-13</div>
+    </div>
+    <div class="summary-bar">
+      <span class="sum-item">共 <strong>7</strong> 条热点</span>
+      <span class="divider-dot">·</span>
+      <span class="sum-item">涵盖 <strong>GPT-6前夜 / DeepSeek V4 / Cursor Marketplace</strong></span>
+      <span class="divider-dot">·</span>
+      <span class="sum-item">来源：<strong>全球AI资讯</strong></span>
+    </div>
+  </div>
+
+  <div class="section-title">🔥 今日热点</div>
+
+  <div class="news-list">
+
+    <!-- 1 -->
+    <div class="news-card hot">
+      <div class="news-top">
+        <div class="news-num amber">1</div>
+        <div class="news-title">GPT-6「Spud」明日发布倒计时：性能提升40%、200万Token、5-6万亿参数 Symphony MoE架构</div>
+      </div>
+      <div class="tags">
+        <span class="tag hot">🔥 重磅</span>
+        <span class="tag hot">明日发布</span>
+        <span class="tag">OpenAI</span>
+        <span class="tag">大模型</span>
+      </div>
+      <div class="news-body">
+        <p><span class="hl">事件：</span>OpenAI 官方确认代号「Spud（土豆）」的 GPT-6 将于 <strong>2026年4月14日</strong>（明天）全球同步发布。这是自 GPT-5 以来 OpenAI 18 个月研发投入超 20 亿美元的成果，使用约 10 万张 H100 GPU 完成预训练。</p>
+        <p><span class="hl">技术亮点：</span></p>
+        <ul>
+          <li>架构：<strong>Symphony（交响乐）混合专家架构（MoE）</strong>，5-6 万亿参数，激活参数仅 10%</li>
+          <li>上下文：从 10 万 Token 扩展至 <strong>200 万 Token</strong>（约等于 2 部《三体》）</li>
+          <li>推理：双系统设计——System-1 快速响应，System-2 深度逻辑校验</li>
+          <li>多模态：原生支持文本、图像、音频、视频统一理解</li>
+          <li>代码能力：综合性能较 GPT-5.4 提升 <strong>40%+</strong></li>
+        </ul>
+        <p><span class="hl">定价策略：</span>输入 $2.5/百万Token，输出 $12/百万Token，定位「Mythos 级智能，Sonnet 级定价」。</p>
+        <p><span class="hl">行业意义：</span>200 万 Token 上下文意味着可以把整个代码仓库甚至整个项目文档一次性送入，AI 编程将进入「全局理解」时代。</p>
+      </div>
+      <div class="news-footer">
+        <span>📌 来源：OpenAI 官方 + 多家媒体报道 · 2026-04-13</span>
+        <span>🔗 <a href="https://news.qq.com/rain/a/20260409A021OB00" target="_blank">腾讯新闻报道</a></span>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num red">2</div>
+        <div class="news-title">DeepSeek V4 灰度测试中：SWE-bench 83.7%，首次深度适配华为昇腾，4月下旬正式发布</div>
+      </div>
+      <div class="tags">
+        <span class="tag red">国产大模型</span>
+        <span class="tag green">开源</span>
+        <span class="tag">DeepSeek</span>
+        <span class="tag">编程基准</span>
+      </div>
+      <div class="news-body">
+        <p><span class="hl">事件：</span>DeepSeek V4 正式宣布将于 <strong>4月下旬发布</strong>，目前已进入灰度测试阶段。在 SWE-bench Verified 基准上达到 <strong>83.7%</strong>，有望成为开源最强编程模型。</p>
+        <p><span class="hl">核心亮点：</span></p>
+        <ul>
+          <li><strong>首次实现</strong>与华为昇腾等国产芯片的深度适配，打破行业惯例（以往模型优先适配英伟达）</li>
+          <li>SWE-bench 83.7% 超越 Claude Opus 4.6 和 GPT-5.4</li>
+          <li>完全开源，API 费用保持极具竞争力的低价</li>
+        </ul>
+        <p><span class="hl">对 AI 编程的影响：</span>DeepSeek V4 若发布后表现稳定，国内开发者将迎来性价比最强的编程 AI 选项，也使得华为 AI 生态价值大幅提升。</p>
+      </div>
+      <div class="news-footer">
+        <span>📌 来源：AI日报 · 2026-04-12</span>
+        <span>🔗 <a href="https://www.aitoolbox.hk/articles/anthropic-openclaw-ban-deepseek-v4-mercor-breach-april4-2026/" target="_blank">详情报道</a></span>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num cyan">3</div>
+        <div class="news-title">Cursor Marketplace 新增 30+ 插件：Atlassian、Datadog、GitLab、Glean 等主流工具全接入</div>
+      </div>
+      <div class="tags">
+        <span class="tag cyan">Cursor</span>
+        <span class="tag green">插件生态</span>
+        <span class="tag">AI Agent</span>
+        <span class="tag">企业级</span>
+      </div>
+      <div class="news-body">
+        <p><span class="hl">事件：</span>Cursor 官方宣布 Marketplace 新增 <strong>30+ 插件</strong>，覆盖主流开发工具链，让 AI Agent 能够真正「打通」开发者的全套工作流。</p>
+        <p><span class="hl">新增核心插件：</span></p>
+        <ul>
+          <li><strong>Atlassian</strong>：搜索 Jira 问题、生成状态报告、将需求文档自动转成任务列表</li>
+          <li><strong>Datadog</strong>：用自然语言查询日志、指标、告警和仪表盘</li>
+          <li><strong>GitLab</strong>：管理 MR、Pipeline 和仓库，AI 直接处理 DevOps 流程</li>
+          <li><strong>Glean</strong>：搜索企业内部知识库，找到项目负责人和相关资料</li>
+          <li><strong>monday.com</strong>：访问和管理项目看板与任务</li>
+          <li><strong>Hugging Face</strong>：直接访问模型和数据集</li>
+        </ul>
+        <p><span class="hl">自动化能力：</span>大多数插件支持云端 Agent 自动触发，配合 Cursor Automations 可构建「常驻智能体」—— 按计划巡逻代码库、自动处理 DevOps 任务。</p>
+      </div>
+      <div class="news-footer">
+        <span>📌 来源：Cursor 官方博客 · 2026-03-11（近期重点）</span>
+        <span>🔗 <a href="https://cursor.com/cn/blog/new-plugins" target="_blank">查看官方文章</a></span>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num green">4</div>
+        <div class="news-title">UC Berkeley 发现 SWE-bench 等主流基准存在严重漏洞：可脚本刷分，AI 编程排行榜可信度受质疑</div>
+      </div>
+      <div class="tags">
+        <span class="tag">学术研究</span>
+        <span class="tag red">⚠️ 警示</span>
+        <span class="tag">AI评测</span>
+        <span class="tag">Berkeley</span>
+      </div>
+      <div class="news-body">
+        <p><span class="hl">事件：</span>加州大学伯克利分校 Dawn Song、Alvin Cheung 团队发现，<strong>SWE-bench、WebArena、GAIA</strong> 等主流 AI Agent 基准测试存在严重漏洞——可通过简单脚本实现接近满分，却根本没有真正完成任务。</p>
+        <p><span class="hl">发现细节：</span></p>
+        <ul>
+          <li>当前许多排行榜高分模型可能通过「打测试漏洞」而非「真正解决问题」获得高分</li>
+          <li>SWE-bench Verified 得分可被人为操控，业界急需更可信的评估环境</li>
+          <li>这意味着「XXX 模型 SWE-bench 达到 85%」的宣传数字需要重新审视</li>
+        </ul>
+        <p><span class="hl">影响：</span>整个 AI 编程工具的选型决策需要更谨慎，真实项目测试远比基准数字可靠。</p>
+      </div>
+      <div class="news-footer">
+        <span>📌 来源：AIToolly · UC Berkeley 研究 · 2026-04-12</span>
+        <span>🔗 <a href="https://aitoolly.com/ai-news/2026-04-12" target="_blank">查看详情</a></span>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">5</div>
+        <div class="news-title">Archon 开源：首个专为 AI 编程设计的基准测试构建工具，让 AI 代码质量可量化</div>
+      </div>
+      <div class="tags">
+        <span class="tag green">开源</span>
+        <span class="tag">AI编程工具</span>
+        <span class="tag">基准测试</span>
+      </div>
+      <div class="news-body">
+        <p><span class="hl">事件：</span>开发者 coleam00 发布 <strong>Archon</strong>，这是首个专门为 AI 编程场景设计的开源基准测试构建工具，目标是让 AI 辅助编程从「不可预测」变为「可确定性、可重复的过程」。</p>
+        <p><span class="hl">核心价值：</span></p>
+        <ul>
+          <li>可以针对你自己的代码库和业务逻辑创建定制化评估集</li>
+          <li>标准化的 AI 编程助手性能评估框架</li>
+          <li>填补通用基准无法反映真实业务场景的空白</li>
+        </ul>
+        <p><span class="hl">适合谁：</span>AI 基础设施团队、想量化评估 AI 编程工具效果的工程团队。</p>
+      </div>
+      <div class="news-footer">
+        <span>📌 来源：AIToolly · 2026-04-12</span>
+        <span>🔗 <a href="https://aitoolly.com/ai-news/2026-04-12" target="_blank">查看详情</a></span>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">6</div>
+        <div class="news-title">阿里通义千问累计下载近 10 亿，占全球开源模型下载量 50%+ ，成为 AI 编程领域核心底座之一</div>
+      </div>
+      <div class="tags">
+        <span class="tag">阿里巴巴</span>
+        <span class="tag">通义千问</span>
+        <span class="tag green">国产开源</span>
+        <span class="tag">市场数据</span>
+      </div>
+      <div class="news-body">
+        <p><span class="hl">事件：</span>阿里通义千问（Qwen）系列模型累计下载量接近 <strong>10 亿次</strong>，占全球开源模型总下载量的 50% 以上，成为全球使用最广泛的开源大模型系列。</p>
+        <p><span class="hl">对 AI 编程的意义：</span></p>
+        <ul>
+          <li>Qwen-Coder 系列在代码生成能力上持续提升，已被多个 AI 编程工具集成为底层模型</li>
+          <li>超大体量的下载量意味着大量私有部署场景，为国内不便使用境外 API 的团队提供选择</li>
+          <li>与 DeepSeek 共同构成中国开源 AI 编程的双核心格局</li>
+        </ul>
+      </div>
+      <div class="news-footer">
+        <span>📌 来源：AI日报 · 2026-04-12</span>
+        <span>🔗 <a href="https://www.bilibili.com/video/BV1NVDDB5EAC/" target="_blank">来源视频</a></span>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">7</div>
+        <div class="news-title">Rowboat + Multica 双开源：AI Agent 开始拥有「持久记忆」，从工具进化为真正的协作伙伴</div>
+      </div>
+      <div class="tags">
+        <span class="tag green">开源</span>
+        <span class="tag">AI Agent</span>
+        <span class="tag cyan">持久记忆</span>
+        <span class="tag">工程工具</span>
+      </div>
+      <div class="news-body">
+        <p><span class="hl">事件：</span>Rowboat Labs 发布 <strong>Rowboat</strong>（具备持久记忆的 AI 协作伙伴）和 Multica 发布<strong>开源托管 Agent 平台</strong>，两款工具都聚焦于解决 AI Agent「失忆」问题。</p>
+        <p><span class="hl">核心特性：</span></p>
+        <ul>
+          <li><strong>Rowboat</strong>：保留上下文和历史交互，解决长期项目中 AI 助手「对话一结束就忘光」的痛点</li>
+          <li><strong>Multica</strong>：可以给 Agent 分配任务、实时监控进度、让 Agent 积累技能</li>
+          <li>两款工具共同指向同一趋势：<strong>AI 从「工具」向「协作者」进化</strong></li>
+        </ul>
+        <p><span class="hl">趋势判断：</span>持久记忆 + 自主 Agent 是 2026 年 AI 编程工具的核心差异化方向，Cursor 的 CLAUDE.md 记忆层、Bugbot 规则学习都是这一趋势的具体体现。</p>
+      </div>
+      <div class="news-footer">
+        <span>📌 来源：AIToolly · 2026-04-12</span>
+        <span>🔗 <a href="https://aitoolly.com/ai-news/2026-04-12" target="_blank">查看详情</a></span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 今日洞察 -->
+  <div class="insight-box">
+    <h3>💡 今日洞察 · 编辑点评</h3>
+    <ul>
+      <li><strong>明天是 AI 编程的重要分水岭：</strong>GPT-6 明日发布，200 万 Token 上下文意味着整个代码仓库可以「一次性喂给 AI」，这将彻底改变大型项目的 AI 编程工作流。</li>
+      <li><strong>国产力量不断壮大：</strong>DeepSeek V4 灰度测试 83.7%，通义千问下载量过半，Huawei 昇腾生态破局——国产 AI 编程工具链正在形成独立的技术闭环。</li>
+      <li><strong>基准「注水」需警惕：</strong>UC Berkeley 的发现提醒我们，评估 AI 编程工具别只看 SWE-bench 分数，真实项目中的实际表现才是选型依据。</li>
+      <li><strong>AI Agent 正在「长大」：</strong>Cursor Marketplace 30+ 插件、Rowboat 持久记忆、Multica 托管 Agent——AI 正在从「代码补全工具」进化为能独立完成端到端开发任务的「数字团队成员」。</li>
+    </ul>
+  </div>
+
+  <div class="back-bar">
+    <a class="back-home" href="/">← 返回首页</a>
+    <a class="back-home" href="/cursor-tips/">⌨️ Cursor 技巧专栏</a>
+  </div>
+
+  <div class="site-footer">
+    🤖 AI 编程热点新闻 · 每日 08:15 自动生成 · https://genuine-sawine-b4c0cb.netlify.app
+  </div>
+
+</div>
+</body>
+</html>

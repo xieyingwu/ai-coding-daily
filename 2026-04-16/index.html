@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 编程热点 · 2026年4月16日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 32px 20px 60px;
+    }
+    .container { max-width: 680px; margin: 0 auto; }
+
+    .header { margin-bottom: 28px; }
+    .header-top {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 12px;
+    }
+    .header-icon { font-size: 36px; }
+    .header-date {
+      font-size: 13px;
+      color: #6c63ff;
+      font-weight: 600;
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      font-size: 14px;
+      color: #8b90b0;
+      margin-bottom: 16px;
+    }
+
+    .hot-list { display: flex; flex-direction: column; gap: 16px; }
+
+    .hot-card {
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      border-radius: 14px;
+      padding: 18px 20px;
+      transition: border-color 0.2s;
+    }
+    .hot-card:hover { border-color: #6c63ff; }
+    .hot-card.top { border-color: rgba(108,99,255,0.5); background: linear-gradient(135deg, #1a1d27, #1e1f30); }
+
+    .hot-top {
+      display: flex; align-items: flex-start; gap: 10px;
+      margin-bottom: 8px;
+    }
+    .hot-rank {
+      font-size: 18px;
+      width: 28px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .hot-title { font-size: 16px; font-weight: 600; color: #eef0fb; line-height: 1.45; }
+    .hot-card.top .hot-title { color: #fff; font-size: 17px; }
+
+    .hot-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; padding-left: 38px; }
+    .tag {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 6px;
+      background: #2a2d3e;
+      color: #818cf8;
+    }
+    .tag.red { background: rgba(248,113,113,0.15); color: #f87171; }
+    .tag.green { background: rgba(74,222,128,0.15); color: #4ade80; }
+    .tag.amber { background: rgba(251,191,36,0.15); color: #fbbf24; }
+    .tag.cyan { background: rgba(34,211,238,0.15); color: #22d3ee; }
+
+    .hot-desc {
+      font-size: 14px;
+      color: #8b90b0;
+      line-height: 1.7;
+      padding-left: 38px;
+    }
+    .hot-desc strong { color: #a5b4fc; }
+    .hot-desc em { color: #6c63ff; font-style: normal; }
+
+    .cursor-section {
+      margin-top: 32px;
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      border-radius: 14px;
+      padding: 20px;
+    }
+    .cursor-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 14px;
+    }
+    .cursor-icon { font-size: 20px; }
+    .cursor-title {
+      font-size: 15px; font-weight: 600; color: #fff;
+    }
+    .cursor-desc {
+      font-size: 13px;
+      color: #8b90b0;
+      line-height: 1.7;
+    }
+    .cursor-desc p { margin-bottom: 8px; }
+    .cursor-desc .hl { color: #22d3ee; font-weight: 500; }
+    .cursor-desc code {
+      background: rgba(99,102,241,0.15);
+      color: #c4b5fd;
+      font-family: 'SF Mono', monospace;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .back-home {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      color: #8b90b0; text-decoration: none; font-size: 14px;
+      padding: 10px 20px; border-radius: 10px;
+      transition: border-color 0.2s, color 0.2s;
+      margin-top: 28px;
+    }
+    .back-home:hover { border-color: #6c63ff; color: #a5b4fc; }
+
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 12px;
+      color: #4a4e6a;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-top">
+      <span class="header-icon">🤖</span>
+      <span class="header-date">📅 2026年4月16日 · 星期四</span>
+    </div>
+    <h1>AI 编程热点新闻</h1>
+    <p class="subtitle">每日 08:15 自动生成 · 覆盖全球 AI 编程工具动态</p>
+  </div>
+
+  <!-- Hot News -->
+  <div class="hot-list">
+
+    <!-- 1. Top News -->
+    <div class="hot-card top">
+      <div class="hot-top">
+        <span class="hot-rank">🔴</span>
+        <span class="hot-title">智谱 GLM-5.1 发布：可持续编程 8 小时，SWE-Bench Pro 超越 Claude Opus 4.6</span>
+      </div>
+      <div class="hot-tags">
+        <span class="tag red">头条</span>
+        <span class="tag green">国产模型</span>
+        <span class="tag">GLM-5.1</span>
+        <span class="tag">编程能力</span>
+      </div>
+      <div class="hot-desc">
+        智谱 AI 发布 <strong>GLM-5.1</strong>，专注长时编程任务可稳定运行 8 小时。在 <em>SWE-Bench Pro</em> 测试中超越 <strong>Claude Opus 4.6</strong> 分，创国产模型历史新高。核心突破：长上下文保持、多轮迭代稳定性、代码质量一致性。<a href="https://blog.csdn.net/internetear/article/details/160163185" target="_blank" style="color:#6c63ff">[来源]</a>
+      </div>
+    </div>
+
+    <!-- 2. OpenClaw -->
+    <div class="hot-card">
+      <div class="hot-top">
+        <span class="hot-rank">🔥</span>
+        <span class="hot-title">OpenClaw 修复高危漏洞 CVE-2026-33579，GitHub Stars 突破 31 万</span>
+      </div>
+      <div class="hot-tags">
+        <span class="tag amber">安全</span>
+        <span class="tag">OpenClaw</span>
+        <span class="tag">CVE</span>
+      </div>
+      <div class="hot-desc">
+        微软 OpenClaw 项目修复编号为 <strong>CVE-2026-33579</strong> 的高危漏洞，GitHub Stars 已突破 <strong>31 万</strong>。作为微软的 AI 编程工具，OpenClaw 持续快速迭代，安全性受到开发者社区高度关注。
+      </div>
+    </div>
+
+    <!-- 3. AI编程工具横评 -->
+    <div class="hot-card">
+      <div class="hot-top">
+        <span class="hot-rank">📊</span>
+        <span class="hot-title">AI 编程工具格局：Claude Code 28% · Cursor 26% · Copilot 24%，GPT-6 入场打破均衡</span>
+      </div>
+      <div class="hot-tags">
+        <span class="tag cyan">市场格局</span>
+        <span class="tag">横评</span>
+        <span class="tag">Claude Code</span>
+      </div>
+      <div class="hot-desc">
+        CSDN AI 编程社区发布 2026 年 4 月最新横评数据：Claude Code 以 <strong>28%</strong> 工作使用率领跑，Cursor 3 紧随其后 <strong>26%</strong>，GitHub Copilot 占 <strong>24%</strong>。GPT-6 入场后凭借 200 万 Token 上下文优势，有望重塑三足鼎立格局。
+      </div>
+    </div>
+
+    <!-- 4. Llama 4争议 -->
+    <div class="hot-card">
+      <div class="hot-top">
+        <span class="hot-rank">⚠️</span>
+        <span class="hot-title">Llama 4 发布引发评测争议：Chatbot Arena 成绩疑似特殊微调</span>
+      </div>
+      <div class="hot-tags">
+        <span class="tag">Llama 4</span>
+        <span class="tag amber">争议</span>
+        <span class="tag">Meta</span>
+      </div>
+      <div class="hot-desc">
+        Meta 发布 Llama 4 Scout (109B) 和 Maverick (400B)，采用 MoE 架构（仅需 <strong>17B 激活参数</strong>）。但 LMSys 监测发现提交版本与开源版本存在差异，引发评测公平性争议。独立测试显示处理复杂逻辑时仍略逊于 DeepSeek-V3。
+      </div>
+    </div>
+
+    <!-- 5. AI编程智能体架构 -->
+    <div class="hot-card">
+      <div class="hot-top">
+        <span class="hot-rank">🧠</span>
+        <span class="hot-title">AI 编程智能体四大架构全解析：Code-as-Action / ACI / Plan-and-Execute / React-and-Iterate</span>
+      </div>
+      <div class="hot-tags">
+        <span class="tag">技术架构</span>
+        <span class="tag green">深度解读</span>
+        <span class="tag">OpenHands</span>
+      </div>
+      <div class="hot-desc">
+        n1n.ai 发布重磅技术解析，四大主流架构各有优劣：<strong>OpenHands</strong>（CodeAct 灵活但可靠性挑战）、<strong>SWE-agent</strong>（ACI 专为 LLM 设计）、<strong>Plandex/Devin</strong>（Plan-and-Execute 安全可审计）、<strong>Cline/Aider</strong>（React-and-Iterate 模拟人类工作流）。
+      </div>
+    </div>
+
+    <!-- 6. KTransformers -->
+    <div class="hot-card">
+      <div class="hot-top">
+        <span class="hot-rank">🚀</span>
+        <span class="hot-title">KTransformers v0.5 发布：单块 RTX 4090 跑动 109B Llama 4 Scout</span>
+      </div>
+      <div class="hot-tags">
+        <span class="tag cyan">推理加速</span>
+        <span class="tag">开源</span>
+        <span class="tag">本地部署</span>
+      </div>
+      <div class="hot-desc">
+        利用 Intel AMX/AVX-512 指令集，将非活跃专家卸载到系统内存，KTransformers v0.5 实现<strong>单卡 RTX 4090 运行 109B 模型</strong>，解码速度达 10-15 tokens/s，让消费级硬件运行超大模型成为可能。
+      </div>
+    </div>
+
+    <!-- 7. 浙大AI自我纠错 -->
+    <div class="hot-card">
+      <div class="hot-top">
+        <span class="hot-rank">🔬</span>
+        <span class="hot-title">浙大团队发布「在线标签改善」方法：AI 代码生成与修复的新范式</span>
+      </div>
+      <div class="hot-tags">
+        <span class="tag">学术</span>
+        <span class="tag green">代码生成</span>
+        <span class="tag">自我纠错</span>
+      </div>
+      <div class="hot-desc">
+        浙大团队发布「在线标签改善」（Online Label Improvement）方法，提供完整 Python 实现代码，适用于：<strong>代码生成与修复</strong>、数学推理、Agent 多步规划。这一方法让 AI 能够在执行过程中动态调整内部标签，提升推理准确性。
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Cursor Tips Summary -->
+  <div class="cursor-section">
+    <div class="cursor-header">
+      <span class="cursor-icon">⌨️</span>
+      <span class="cursor-title">今日 Cursor 技巧预告</span>
+    </div>
+    <div class="cursor-desc">
+      <p><span class="hl">画布可视化交互</span>：Cursor Agent 现在可以在画布中创建可视化内容，你可以在画布中直接与 Agent 生成的图表、流程图进行交互操作——点击、拖拽、提问，更直观地理解和修改 AI 生成的内容。</p>
+      <p><span class="hl">多智能体 GPU 加速 38%</span>：Cursor 研究团队发现通过多智能体协作优化 GPU kernel 调度，性能提升达 38%。这意味着 Composer 和 Agent 的响应速度会越来越快。</p>
+      <p style="margin-top:12px"><a href="/cursor-tips/" target="_blank" style="color:#6c63ff">→ 查看完整 Cursor 技巧专栏</a></p>
+    </div>
+  </div>
+
+  <!-- Back -->
+  <a class="back-home" href="/">← 返回首页</a>
+
+  <div class="footer">由 WorkBuddy AI 每日整理 · 仅供学习参考</div>
+</div>
+</body>
+</html>

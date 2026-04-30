@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI编程热点 · 2026.04.05 · Vercel Agent & Cursor 3.0 & Apple SSD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card-bg: #1a1d27;
+      --card-hover: #21253a;
+      --border: #2a2d3a;
+      --text: #e2e8f0;
+      --text-muted: #8892a4;
+      --accent: #6366f1;
+      --accent-glow: rgba(99, 102, 241, 0.15);
+      --tag-bg: #2a2d3a;
+      --tag-text: #818cf8;
+      --red: #f87171;
+      --green: #4ade80;
+      --amber: #fbbf24;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 32px 20px 60px;
+    }
+    .container { max-width: 780px; margin: 0 auto; }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .header-left { display: flex; align-items: center; gap: 14px; }
+    .header-icon { font-size: 36px; }
+    .header-text h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .header-text .meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+    .badge {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* Summary bar */
+    .summary-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .summary-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .summary-item strong { color: var(--text); }
+
+    /* News cards */
+    .news-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    .news-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 22px;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+    .news-card:hover { border-color: var(--accent); background: var(--card-hover); }
+    .news-card.hot { border-color: rgba(251,191,36,0.35); }
+
+    .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+    .card-num {
+      width: 26px; height: 26px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(99,102,241,0.3);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: var(--accent);
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .card-num.hot { background: rgba(251,191,36,0.12); border-color: rgba(251,191,36,0.3); color: var(--amber); }
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.45;
+      flex: 1;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+    .tag.red { background: rgba(248,113,113,0.1); color: var(--red); }
+    .tag.green { background: rgba(74,222,128,0.1); color: var(--green); }
+    .tag.amber { background: rgba(251,191,36,0.1); color: var(--amber); }
+
+    .card-body {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .card-body p { margin-bottom: 6px; }
+    .card-body ul { padding-left: 18px; }
+    .card-body li { margin-bottom: 4px; }
+    .highlight { color: #a5b4fc; font-weight: 500; }
+
+    .card-footer {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(42,45,58,0.8);
+      font-size: 12px;
+      color: #5a5f7a;
+    }
+
+    /* Divider */
+    .section-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: #5a5f7a;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 8px 0 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* Footer */
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .back-home:hover { border-color: var(--accent); color: #a5b4fc; }
+    .site-footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 12px;
+      color: #3a3d52;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-left">
+        <div class="header-icon">🤖</div>
+        <div class="header-text">
+          <h1>AI 编程热点早报</h1>
+          <div class="meta">📅 2026年4月5日 · 星期日 · 08:15 自动生成</div>
+        </div>
+      </div>
+      <div class="badge">今日 6 条</div>
+    </div>
+
+    <!-- Summary bar -->
+    <div class="summary-bar">
+      <div class="summary-item">🔥 <strong>核心主题：</strong>Vercel Agent / Cursor 3.0 / Apple SSD</div>
+      <div class="summary-item">🌐 <strong>来源：</strong>The Neuron / Digital Applied / 多课网</div>
+    </div>
+
+    <!-- News list -->
+    <div class="section-title">今日热点</div>
+    <div class="news-list">
+
+      <!-- 1 -->
+      <div class="news-card hot">
+        <div class="card-top">
+          <div class="card-num hot">1</div>
+          <div class="card-title">Vercel Agent 正式发布：AI 直接集成到部署流水线，自动处理代码差异与修复建议</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">重磅发布</span>
+          <span class="tag">DevOps</span>
+          <span class="tag">AI Agent</span>
+        </div>
+        <div class="card-body">
+          <p>Vercel 本周末推出 <span class="highlight">Vercel Agent</span>，将 AI 智能体深度嵌入其部署管道中。该工具可自动读取代码差异（diff）、提出修复建议并直接执行变更，极大减少开发者在部署环节的手动干预。</p>
+          <ul>
+            <li>自动检测部署失败原因并生成修复 PR</li>
+            <li>作为 Vercel 平台的"智能层"，与现有 CI/CD 流程无缝集成</li>
+            <li>可直接将修复后的版本重新部署，形成闭环</li>
+            <li>定价暂未披露，可能包含在现有 Vercel 订阅计划内</li>
+          </ul>
+        </div>
+        <div class="card-footer">📌 来源：The Neuron · April 4-5, 2026 周末摘要</div>
+      </div>
+
+      <!-- 2 -->
+      <div class="news-card">
+        <div class="card-top">
+          <div class="card-num">2</div>
+          <div class="card-title">Apple 开源 SSD（简单自蒸馏）方法：无需教师模型，代码生成通过率提升 30%</div>
+        </div>
+        <div class="tags">
+          <span class="tag green">开源</span>
+          <span class="tag">代码生成</span>
+          <span class="tag">模型优化</span>
+        </div>
+        <div class="card-body">
+          <p>Apple 研究院开源 <span class="highlight">ml-ssd（Simple Self-Distillation）</span>，通过从冻结模型采样输出并对原始输出进行微调，无需验证器、强化学习或教师模型，即可显著提升代码生成能力。</p>
+          <ul>
+            <li>Qwen3-30B 在 <span class="highlight">LiveCodeBench</span> 上 pass@1 率：42.4% → <span class="highlight">55.3%</span>（提升 30.4%）</li>
+            <li>方案极简，无外部依赖，适合任意代码生成模型的后训练阶段</li>
+            <li>为开发者和研究者提供了低成本提升代码 LLM 性能的新路径</li>
+          </ul>
+        </div>
+        <div class="card-footer">📌 来源：Apple Research / The Neuron · 2026-04-05</div>
+      </div>
+
+      <!-- 3 -->
+      <div class="news-card">
+        <div class="card-top">
+          <div class="card-num">3</div>
+          <div class="card-title">Cursor 3.0 上手评测：从"写代码工具"转变为"AI 智能体调度仪表板"</div>
+        </div>
+        <div class="tags">
+          <span class="tag">工具评测</span>
+          <span class="tag amber">IDE</span>
+          <span class="tag">多智能体</span>
+        </div>
+        <div class="card-body">
+          <p>Cursor 3.0 发布数日后，开发者社区大规模上手测评反馈出炉。<span class="highlight">核心变化</span>：其设计重心已从辅助编写代码，转向管理多个并行 AI 智能体任务，界面更接近"项目调度仪表板"。</p>
+          <ul>
+            <li>支持多代码仓库并行布局、本地与云端任务无缝切换</li>
+            <li>CursorBench 评分 61.3（较 1.5 版提升 37%），每百万 Token 仅 $0.5</li>
+            <li>社区评价：工程师角色开始向"AI 中层管理者"转变</li>
+            <li>适合日常编辑场景，搭配 Claude Code 处理复杂架构任务效果最佳</li>
+          </ul>
+        </div>
+        <div class="card-footer">📌 来源：Digital Applied · AI Coding Assistants April 2026 评测</div>
+      </div>
+
+      <!-- 4 -->
+      <div class="news-card hot">
+        <div class="card-top">
+          <div class="card-num hot">4</div>
+          <div class="card-title">研究论文：简单终端代理即可胜任企业自动化，成本比复杂 Web 代理低 10 倍</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">研究</span>
+          <span class="tag">AI Agent</span>
+          <span class="tag red">成本效益</span>
+        </div>
+        <div class="card-body">
+          <p>最新论文《终端代理足以实现企业自动化》引发开发者广泛讨论。研究发现，仅使用"终端 + 文件系统 + API + REPL 循环"构成的简单终端代理，在处理真实企业任务时，表现可以匹配甚至超越复杂的基于浏览器/工具的智能体方案。</p>
+          <ul>
+            <li>成本优势：成本降低高达 <span class="highlight">10 倍</span></li>
+            <li>适用场景：代码审查、数据分析、API 调用、文件批处理等企业常见任务</li>
+            <li>对 AI 编程工具选型具有直接参考价值：复杂不等于高效</li>
+          </ul>
+        </div>
+        <div class="card-footer">📌 来源：The Neuron 周末摘要 · 2026-04-05</div>
+      </div>
+
+      <!-- 5 -->
+      <div class="news-card">
+        <div class="card-top">
+          <div class="card-num">5</div>
+          <div class="card-title">AI 编程助手 2026年4月综合排名出炉：Cursor、GitHub Copilot、Claude Code 三足鼎立</div>
+        </div>
+        <div class="tags">
+          <span class="tag">工具对比</span>
+          <span class="tag">排名报告</span>
+        </div>
+        <div class="card-body">
+          <p>Digital Applied 发布 2026 年 4 月 AI 编程助手权威排名，覆盖 CursorBench、Terminal-Bench 2.0 等多项基准。三大工具定位清晰分化：</p>
+          <ul>
+            <li><span class="highlight">Cursor Composer 2</span>：IDE 原生集成，日常编辑首选，自动补全接受率 72%</li>
+            <li><span class="highlight">GitHub Copilot</span>：企业 10+ IDE 覆盖，代理模式全面开放，$39/月 Pro+</li>
+            <li><span class="highlight">Claude Code</span>：终端优先，200K 上下文，复杂重构/架构任务独占优势</li>
+            <li>推荐组合：<span class="highlight">Cursor Pro + Claude Max</span>（极致效率，$120/月）</li>
+          </ul>
+        </div>
+        <div class="card-footer">📌 来源：Digital Applied · digitalapplied.com · 2026-04-02</div>
+      </div>
+
+      <!-- 6 -->
+      <div class="news-card">
+        <div class="card-top">
+          <div class="card-num">6</div>
+          <div class="card-title">open-multi-agent 开源框架：一行 runTeam() 调用实现目标到结果的多智能体并行编程</div>
+        </div>
+        <div class="tags">
+          <span class="tag green">开源</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">多智能体</span>
+        </div>
+        <div class="card-body">
+          <p><span class="highlight">open-multi-agent</span> 是一个 TypeScript 多智能体框架，只需调用 <code style="background:#2a2d3a;padding:2px 6px;border-radius:4px;font-size:12px;">runTeam()</code>，即可实现从目标到结果的自动任务分解与并行执行，大幅降低构建复杂 AI 编程工作流的技术门槛。</p>
+          <ul>
+            <li>支持目标驱动的自动任务分解（无需手动定义子任务）</li>
+            <li>内置并行执行引擎，多个智能体同时工作</li>
+            <li>适合构建 AI 驱动的代码审查、多步骤调试、自动化测试等工作流</li>
+            <li>TypeScript 原生，无缝集成现有 Node.js/前端项目</li>
+          </ul>
+        </div>
+        <div class="card-footer">📌 来源：The Neuron 周末摘要 · GitHub open-multi-agent · 2026-04-05</div>
+      </div>
+
+    </div>
+
+    <!-- Back to home -->
+    <a class="back-home" href="/">← 返回首页</a>
+
+    <div class="site-footer">
+      由 WorkBuddy AI 自动整理 · 仅供学习参考 · 2026-04-05
+    </div>
+
+  </div>
+</body>
+</html>

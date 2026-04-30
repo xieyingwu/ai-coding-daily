@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点新闻 · 2026年4月9日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #2a2d3e;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(0,212,170,0.15);
+      color: #00d4aa;
+      border: 1px solid rgba(0,212,170,0.3);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+    .logo { font-size: 52px; margin-bottom: 12px; }
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    h1 span { color: #6c63ff; }
+    .meta {
+      color: #8b90b0;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .meta-dot { color: #2a2d3e; }
+    .news-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    .news-card {
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      border-radius: 14px;
+      padding: 22px 24px;
+      transition: border-color 0.2s;
+    }
+    .news-card:hover { border-color: #6c63ff; }
+    .news-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .num {
+      background: linear-gradient(135deg, #6c63ff, #a78bfa);
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .news-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #eef0fb;
+      line-height: 1.5;
+    }
+    .news-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      margin-left: 42px;
+    }
+    .tag {
+      background: rgba(108,99,255,0.12);
+      border: 1px solid rgba(108,99,255,0.25);
+      color: #a78bfa;
+      font-size: 11px;
+      padding: 2px 10px;
+      border-radius: 10px;
+    }
+    .tag.green {
+      background: rgba(0,212,170,0.1);
+      border-color: rgba(0,212,170,0.25);
+      color: #00d4aa;
+    }
+    .tag.orange {
+      background: rgba(255,165,0,0.1);
+      border-color: rgba(255,165,0,0.25);
+      color: #ffb84d;
+    }
+    .news-body {
+      font-size: 14px;
+      color: #9ca3c4;
+      line-height: 1.75;
+      margin-left: 42px;
+    }
+    .news-body strong { color: #c7cadf; }
+    .news-source {
+      margin-left: 42px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: #4a4e6a;
+    }
+    .news-source a {
+      color: #5c5f80;
+      text-decoration: none;
+    }
+    .news-source a:hover { color: #6c63ff; }
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #6c63ff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .summary-box {
+      background: linear-gradient(135deg, #1a1d27, #1c1f2e);
+      border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin-bottom: 40px;
+    }
+    .summary-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #a78bfa;
+      margin-bottom: 12px;
+    }
+    .summary-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .summary-list li {
+      font-size: 13px;
+      color: #8b90b0;
+      padding-left: 18px;
+      position: relative;
+    }
+    .summary-list li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: #6c63ff;
+    }
+    .footer {
+      text-align: center;
+      padding-top: 28px;
+      border-top: 1px solid #2a2d3e;
+      font-size: 12px;
+      color: #4a4e6a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      color: #8b90b0;
+      text-decoration: none;
+      padding: 7px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .back-btn:hover { border-color: #6c63ff; color: #6c63ff; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="badge">🆕 TODAY'S DIGEST</div>
+      <div class="logo">🤖</div>
+      <h1>AI 编程 <span>热点新闻</span></h1>
+      <div class="meta">
+        <span>📅 2026年4月9日</span>
+        <span class="meta-dot">·</span>
+        <span>星期四</span>
+        <span class="meta-dot">·</span>
+        <span>共 6 条热点</span>
+        <span class="meta-dot">·</span>
+        <span>08:15 自动生成</span>
+      </div>
+    </div>
+
+    <div class="section-title">今日精选 · 6 条热点</div>
+    <div class="news-list">
+
+      <!-- 第1条 -->
+      <div class="news-card">
+        <div class="news-header">
+          <div class="num">1</div>
+          <div class="news-title">Meta 超级智能实验室首款模型 Muse Spark 正式发布：小巧高效、多智能体协同</div>
+        </div>
+        <div class="news-tags">
+          <span class="tag">Meta</span>
+          <span class="tag green">模型发布</span>
+          <span class="tag orange">AI智能体</span>
+        </div>
+        <div class="news-body">
+          Meta Superintelligence Labs（MSL）由 Scale AI 创始人 <strong>Alexandr Wang</strong> 掌管，今日发布首款模型 <strong>Muse Spark</strong>（原代号"牛油果"）。该模型计算成本比前代中型 Llama 4 <strong>低一个数量级</strong>，支持多模态感知（图文处理），并具备"沉思模式"——可调用多个 AI 智能体并行推理以应对极复杂任务。目前 API 处于私有预览阶段，后续将接入 Facebook、Instagram、WhatsApp 等平台及 Meta 智能眼镜。Meta 股价当日一度大涨近 9%。
+        </div>
+        <div class="news-source">来源：<a href="https://www.ithome.com/0/937/211.htm" target="_blank">IT之家</a> · <a href="https://wallstreetcn.com/articles/3769514" target="_blank">华尔街见闻</a></div>
+      </div>
+
+      <!-- 第2条 -->
+      <div class="news-card">
+        <div class="news-header">
+          <div class="num">2</div>
+          <div class="news-title">Anthropic 供应链黑名单法律战升级：DC 上诉法院驳回暂停申请，法律拉锯仍在持续</div>
+        </div>
+        <div class="news-tags">
+          <span class="tag">Anthropic</span>
+          <span class="tag orange">政策法规</span>
+          <span class="tag">安全合规</span>
+        </div>
+        <div class="news-body">
+          华盛顿特区上诉法院今日裁定，<strong>驳回 Anthropic 暂停五角大楼"供应链风险"认定的申请</strong>，与加州联邦法院此前发出的初步禁令相冲突，令该案陷入复杂的司法博弈。Anthropic 于今年 3 月起诉美国国防部，认为将其列为供应链风险实体的做法违法越权。此案的走向将影响 AI 公司能否自由开展政府合同业务，对 AI 编程工具的企业采购格局具有重要影响。
+        </div>
+        <div class="news-source">来源：<a href="https://wallstreetcn.com/articles/3769522" target="_blank">华尔街见闻</a> · Reuters</div>
+      </div>
+
+      <!-- 第3条 -->
+      <div class="news-card">
+        <div class="news-header">
+          <div class="num">3</div>
+          <div class="news-title">Google Gemini 应用推出 Notebooks 功能：深度整合 NotebookLM，打造开发者知识管理新范式</div>
+        </div>
+        <div class="news-tags">
+          <span class="tag">Google</span>
+          <span class="tag green">产品更新</span>
+          <span class="tag">开发工具</span>
+        </div>
+        <div class="news-body">
+          Google 在 Gemini 应用中正式推出 <strong>Notebooks</strong> 功能，与 NotebookLM 进行深度整合，为用户提供专属空间来<strong>组织聊天记录与工程文档</strong>。开发者可直接在 Gemini 界面挂载个人笔记本，通过最新推理模型对项目文档进行知识问答、代码分析和内容转换。该功能目前向 Gemini Pro 订阅用户开放，标志着 Google 将 AI 编程辅助从单次对话推向<strong>持久化项目知识库</strong>模式。
+        </div>
+        <div class="news-source">来源：<a href="https://llm-stats.com/ai-news" target="_blank">LLM Stats</a> · 9to5Google</div>
+      </div>
+
+      <!-- 第4条 -->
+      <div class="news-card">
+        <div class="news-header">
+          <div class="num">4</div>
+          <div class="news-title">OpenAI CFO 确认 IPO 将为散户预留份额：AI 编程工具赛道融资热度持续高涨</div>
+        </div>
+        <div class="news-tags">
+          <span class="tag">OpenAI</span>
+          <span class="tag orange">商业动态</span>
+          <span class="tag green">IPO</span>
+        </div>
+        <div class="news-body">
+          OpenAI 首席财务官 <strong>Sarah Friar</strong> 接受 CNBC 采访时表示，鉴于个人投资者在最新一轮融资中展现"强劲需求"（散户贡献超 30 亿美元），公司 IPO 时"肯定"会为<strong>散户投资者预留股份</strong>。这是继 1220 亿美元融资（估值 8520 亿美元）之后 OpenAI 对资本市场释放的新信号。随着 OpenAI Codex CLI、GPT-5 等 AI 编程工具持续迭代，资本市场对这一赛道的信心仍居高不下。
+        </div>
+        <div class="news-source">来源：<a href="https://llm-stats.com/ai-news" target="_blank">LLM Stats</a> · CNBC</div>
+      </div>
+
+      <!-- 第5条 -->
+      <div class="news-card">
+        <div class="news-header">
+          <div class="num">5</div>
+          <div class="news-title">2026 AI 编程工具进化报告：从「代码补全」到「多智能体并行」，Cursor 与 Claude Code 双雄格局深化</div>
+        </div>
+        <div class="news-tags">
+          <span class="tag">行业报告</span>
+          <span class="tag">Cursor</span>
+          <span class="tag">Claude Code</span>
+        </div>
+        <div class="news-body">
+          最新横评汇总显示，2026 年 AI 编程工具已从"代码补全"全面进入 <strong>Agent 自主编程时代</strong>。Cursor 以 <strong>8 个 Agent 并行开发</strong>体验领跑 IDE 类工具；Claude Code 以 SWE-bench 80.8% 的 Agent 能力成为重度用户首选；Windsurf 则以性价比优势抢占中端市场。终端工具方面，Claude Code CLI、OpenAI Codex CLI 和 Gemini CLI 三足鼎立，各擅胜场。开发者的选择逻辑正从"哪个补全更准"转向"哪个智能体完成任务更可靠"。
+        </div>
+        <div class="news-source">来源：<a href="https://www.cnblogs.com/qiniushanghai/p/19837486" target="_blank">博客园</a> · <a href="https://blog.csdn.net/xyghehehehe/article/details/159848516" target="_blank">CSDN</a></div>
+      </div>
+
+      <!-- 第6条 -->
+      <div class="news-card">
+        <div class="news-header">
+          <div class="num">6</div>
+          <div class="news-title">AI 自主化研发加速：Anthropic 称 Claude 编写 90% 代码，OpenAI 计划 6 个月内部署"AI 实习生"</div>
+        </div>
+        <div class="news-tags">
+          <span class="tag">Anthropic</span>
+          <span class="tag">OpenAI</span>
+          <span class="tag green">自动化研发</span>
+        </div>
+        <div class="news-body">
+          据最新披露，<strong>Anthropic 内部某些项目中 Claude 的代码编写占比已达 90%</strong>；与此同时，OpenAI 计划在未来 6 个月内正式部署一个 AI "实习生"参与其自身的研发工作。这场"AI 用 AI 开发 AI"的自我加速正在将软件开发效率推向新极限。与此同时，专业化 AI 代理平台 <strong>Poke</strong> 今日发布——无需复杂配置，普通用户即可像发短信一样设置 AI 自动化工作流，标志着 AI 编程自动化正向非技术人群加速普及。
+        </div>
+        <div class="news-source">来源：<a href="https://www.humai.blog/ai-news-trends-april-2026-complete-monthly-digest/" target="_blank">humAI.blog</a> · TechCrunch</div>
+      </div>
+
+    </div>
+
+    <!-- 今日速览 -->
+    <div class="summary-box">
+      <div class="summary-title">📋 今日速览</div>
+      <ul class="summary-list">
+        <li>Meta 超级智能实验室首款模型 Muse Spark 发布：计算成本降一个数量级，支持多智能体并行推理，股价大涨 9%</li>
+        <li>Anthropic vs 五角大楼：DC 上诉法院驳回暂停申请，供应链黑名单法律战持续升级</li>
+        <li>Google Gemini 推出 Notebooks 功能：与 NotebookLM 深度整合，AI 编程知识库进入持久化时代</li>
+        <li>OpenAI CFO 确认 IPO 散户预留份额，AI 编程赛道资本热度不减</li>
+        <li>2026 AI 编程工具进化报告：Cursor 8 并行 Agent 领跑、Claude Code SWE-bench 80.8%，Agent 时代全面到来</li>
+        <li>Anthropic Claude 编写 90% 代码 + OpenAI "AI 实习生"计划 + Poke 平台发布：AI 自主研发进入加速轨道</li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      <a href="/" class="back-btn">← 返回首页</a>
+      <span>AI 编程热点早报 · 每日 08:15 自动生成</span>
+      <span>2026年4月9日 · 星期四</span>
+    </div>
+  </div>
+</body>
+</html>
