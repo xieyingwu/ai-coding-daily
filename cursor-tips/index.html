@@ -127,6 +127,52 @@
     }
     .back-home:hover { border-color: var(--accent); color: #a5b4fc; }
     .site-footer { margin-top: 40px; text-align: center; font-size: 12px; color: #3a3d52; }
+
+    /* ── 响应式 ── */
+    @media (max-width: 768px) {
+      body { padding: 20px 14px 48px; }
+      .container { max-width: 100%; }
+
+      /* header：纵向排列 */
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .header-icon { font-size: 30px; }
+      .header-text h1 { font-size: 20px; }
+      .header-text .meta { font-size: 12px; }
+      .badge { font-size: 11px; padding: 3px 12px; }
+
+      .desc-bar { padding: 12px 14px; font-size: 13px; }
+
+      /* day-header：标题折行友好 */
+      .day-header {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .day-divider { display: none; }
+      .day-title { font-size: 14px; width: 100%; }
+
+      /* 技巧卡片 */
+      .tip-card { padding: 16px 14px; }
+      .tip-top { gap: 10px; }
+      .tip-icon { width: 28px; height: 28px; font-size: 14px; }
+      .tip-title { font-size: 14px; }
+      .tip-body { font-size: 13px; }
+      .tip-body ul { padding-left: 16px; }
+      .tip-footer { flex-direction: column; align-items: flex-start; gap: 4px; font-size: 11px; }
+
+      .back-home { font-size: 13px; padding: 9px 16px; }
+    }
+
+    @media (max-width: 390px) {
+      body { padding: 16px 10px 40px; }
+      .header-text h1 { font-size: 18px; }
+      .day-tag { font-size: 11px; }
+      .tip-title { font-size: 13px; }
+      .tip-body { font-size: 12px; }
+      .tag { font-size: 10px; padding: 2px 7px; }
+    }
   </style>
 </head>
 <body>
