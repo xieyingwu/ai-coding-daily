@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年5月1日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px 80px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: #6c63ff; font-size: 14px; text-decoration: none;
+      margin-bottom: 28px;
+      padding: 8px 16px; border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 8px; background: rgba(108,99,255,0.06);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .back-btn:hover { background: rgba(108,99,255,0.14); border-color: rgba(108,99,255,0.5); }
+
+    .page-header { margin-bottom: 36px; }
+    .date-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(34,211,238,0.15));
+      border: 1px solid rgba(108,99,255,0.35);
+      color: #a5b4fc; font-size: 13px; font-weight: 600;
+      padding: 5px 14px; border-radius: 8px; margin-bottom: 14px;
+    }
+    .page-title { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.35; }
+    .page-title span { color: #6c63ff; }
+    .page-meta { font-size: 14px; color: #6a6e8e; }
+
+    .section-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+      color: #6c63ff; text-transform: uppercase; margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(108,99,255,0.2); }
+
+    /* 新闻卡片 */
+    .news-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+    .news-card {
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      border-radius: 14px; padding: 18px 22px;
+      transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .news-card:hover {
+      border-color: #6c63ff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(108,99,255,0.1);
+    }
+    .news-card.hot { border-color: rgba(251,191,36,0.3); }
+    .news-card.hot .news-num { color: #fbbf24; }
+
+    .news-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 10px; }
+    .news-num {
+      font-size: 22px; font-weight: 800; color: #6c63ff;
+      line-height: 1.2; flex-shrink: 0; min-width: 28px;
+    }
+    .news-title { font-size: 16px; font-weight: 700; color: #fff; line-height: 1.45; }
+    .news-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; padding-left: 42px; }
+    .tag {
+      font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 6px;
+      background: #2a2d3e; color: #818cf8;
+    }
+    .tag.green { background: rgba(74,222,128,0.1); color: #4ade80; }
+    .tag.amber { background: rgba(251,191,36,0.1); color: #fbbf24; }
+    .tag.red { background: rgba(248,113,113,0.1); color: #f87171; }
+    .tag.cyan { background: rgba(34,211,238,0.1); color: #22d3ee; }
+    .tag.purple { background: rgba(167,139,250,0.12); color: #a78bfa; }
+
+    .news-body {
+      font-size: 14px; color: #8b90b0; line-height: 1.75;
+      padding-left: 42px;
+    }
+    .news-body strong { color: #c4b5fd; }
+    .news-body .hl { color: #a5b4fc; font-weight: 500; }
+
+    /* Cursor 技巧 */
+    .tips-section { margin-bottom: 40px; }
+    .tip-card {
+      background: linear-gradient(135deg, #1a1d27, #1a1e30);
+      border: 1px solid rgba(99,102,241,0.25);
+      border-radius: 14px; padding: 20px 22px;
+      margin-bottom: 14px;
+      transition: border-color 0.2s;
+    }
+    .tip-card:hover { border-color: rgba(99,102,241,0.5); }
+    .tip-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .tip-icon {
+      width: 34px; height: 34px; border-radius: 9px;
+      background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.25);
+      display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0;
+    }
+    .tip-title { font-size: 15px; font-weight: 600; color: #fff; line-height: 1.45; }
+    .tip-body { font-size: 14px; color: #8b90b0; line-height: 1.8; }
+    .tip-body p { margin-bottom: 8px; }
+    .tip-body ul { padding-left: 18px; }
+    .tip-body li { margin-bottom: 5px; }
+    .tip-body .code {
+      background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.2);
+      color: #c4b5fd; font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 12px; padding: 2px 7px; border-radius: 5px;
+    }
+    .tip-footer {
+      margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(42,45,58,0.8);
+      font-size: 12px; color: #5a5f7a;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+    }
+    .tip-footer a { color: #6366f1; text-decoration: none; }
+    .tip-footer a:hover { text-decoration: underline; }
+
+    .summary-box {
+      background: linear-gradient(135deg, #1a1d27, #1d1f2e);
+      border: 1px solid rgba(108,99,255,0.2);
+      border-radius: 14px; padding: 20px 24px; margin-bottom: 36px;
+    }
+    .summary-box h3 { font-size: 15px; color: #a5b4fc; margin-bottom: 12px; }
+    .summary-box ul { list-style: none; }
+    .summary-box li { font-size: 13px; color: #7b80a0; line-height: 1.7; padding: 3px 0; }
+    .summary-box li::before { content: '▸ '; color: #6c63ff; }
+
+    footer {
+      text-align: center; margin-top: 48px;
+      font-size: 13px; color: #3a3d52;
+    }
+    footer a { color: #6c63ff; text-decoration: none; }
+
+    @media (max-width: 640px) {
+      .page-title { font-size: 22px; }
+      .news-num { font-size: 18px; }
+      .news-title { font-size: 15px; }
+      .news-body, .news-tags { padding-left: 0; }
+      .news-top { flex-direction: column; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back-btn" href="/">← 返回首页</a>
+
+  <div class="page-header">
+    <div class="date-badge">📅 2026年5月1日 · 劳动节特刊</div>
+    <h1 class="page-title">AI 编程热点 · <span>五一特辑</span></h1>
+    <p class="page-meta">每日 08:15 自动生成 · 共 7 条热点 · 1 组 Cursor 技巧</p>
+  </div>
+
+  <!-- ===== 新闻速览 ===== -->
+  <div class="section-label">📰 今日 AI 编程热点</div>
+  <div class="news-list">
+
+    <!-- 1 -->
+    <div class="news-card hot">
+      <div class="news-top">
+        <div class="news-num">01</div>
+        <div class="news-title">Cursor 智能体框架重大升级：上下文动态感知 + 多智能体调度 + 错误率降一个数量级</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag amber">🔥 头条</span>
+        <span class="tag green">Cursor</span>
+        <span class="tag">智能体框架</span>
+        <span class="tag purple">官方研究</span>
+      </div>
+      <div class="news-body">
+        Cursor 官方团队（Stefan &amp; Jediah）4 月 30 日发布深度研究报告《持续改进我们的智能体框架》，披露了 Cursor Agent 的核心技术演进路线。<strong>上下文管理从「静态预加载」转向「动态按需拉取」</strong>，显著减少 Token 消耗；工具调用错误率经专项冲刺后<strong>降低了一个数量级</strong>；同时支持聊天中途切换模型（含缓存摘要优化方案）。未来将向<strong>多智能体调度框架</strong>演进，实现专业化子智能体分工（规划、编辑、调试各司其职），框架工程重要性将超越单一模型。
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">02</div>
+        <div class="news-title">OpenAI Codex 密集更新：WebSocket 加速、Figma 插件、数据分析升级全面铺开</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag">OpenAI Codex</span>
+        <span class="tag cyan">功能更新</span>
+        <span class="tag">Figma 集成</span>
+      </div>
+      <div class="news-body">
+        五一前后 OpenAI Codex 密集发布多项新功能：<strong>WebSocket 实时通信加速</strong>大幅缩短 Agent 响应延迟；新增 <strong>Figma 插件</strong>，设计稿可直接推送给 Codex 生成代码；数据分析能力全面升级，支持表格数据直接在 Codex 内处理。与此同时，Codex 大量展示工作流教育案例，意图推动更多团队落地使用，正面挑战 Cursor 和 Claude Code 的市场份额。
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">03</div>
+        <div class="news-title">Cline 重写 Beta 开启：AI 编程辅助工具进入「自我进化」新阶段</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag">Cline</span>
+        <span class="tag green">开源</span>
+        <span class="tag">重构升级</span>
+      </div>
+      <div class="news-body">
+        开源 AI 编程辅助工具 <strong>Cline 完成重大重写并开启 Beta 测试</strong>。此次重写针对大型代码库的上下文管理、多文件并行编辑和任务中断恢复能力进行全面优化。新增 <strong>Kanban 可视化任务看板</strong>（Cline Kanban），让复杂 Agent 任务的进度一目了然。作为 VS Code 插件生态中最活跃的 AI 编程工具之一，Cline 此次重写标志着开源 AI 编程助手进入体验与商业工具对齐的新阶段。
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">04</div>
+        <div class="news-title">Cognition Devin for Terminal 正式发布：终端原生 AI 编程智能体来了</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag">Devin</span>
+        <span class="tag amber">新品发布</span>
+        <span class="tag cyan">终端 Agent</span>
+      </div>
+      <div class="news-body">
+        Cognition 推出 <strong>Devin for Terminal</strong>，将 Devin 的自主编程能力带入命令行环境。开发者无需打开 GUI，直接在终端输入自然语言即可让 Devin 完成代码任务。<strong>适合 CI/CD 流水线集成、服务器端批量任务、无头环境自动化</strong>。这是继 Claude Code CLI 之后，另一家专业 AI 编程公司布局终端原生 Agent 的重要信号，终端 AI 编程赛道正在成为新战场。
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">05</div>
+        <div class="news-title">小米 MiMo-V2.5-Pro 开源全面上线：国产编程推理模型密集发力五月</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag">MiMo</span>
+        <span class="tag green">国产开源</span>
+        <span class="tag purple">推理模型</span>
+      </div>
+      <div class="news-body">
+        小米 <strong>MiMo-V2.5-Pro</strong> 系列正式开源并推出开发者激励计划，在代码竞技场评测中表现优异，成为继 Qwen3.6 之后又一国产开源编程推理模型。MiMo-V2.5 系列专为编程和数学推理优化，支持本地部署。<strong>Poolside Laguna</strong> 等企业级编程模型同期发布，标志着 2026 年五月 AI 编程模型竞争进入密集发布期，国内外厂商同步加码开源编程赛道。
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">06</div>
+        <div class="news-title">DeepSeek-V4 API 兼容性踩坑指南出炉：致命兼容坑提醒开发者注意</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag">DeepSeek-V4</span>
+        <span class="tag red">⚠️ 避坑</span>
+        <span class="tag">API 兼容</span>
+      </div>
+      <div class="news-body">
+        随着 DeepSeek-V4 在 AI 编程工具链中快速普及，社区总结了<strong>「致命兼容性避坑指南」</strong>：部分接口与 OpenAI API 格式存在差异，直接替换 Base URL 会导致工具调用（Function Calling）格式不匹配；流式输出的分块策略也与 OpenAI 不同，需要单独适配。<strong>建议接入 Cursor、Claude Code 等工具时通过官方适配层或 LiteLLM 代理</strong>，而非直接硬替换 API Endpoint，避免生产环境踩坑。
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">07</div>
+        <div class="news-title">OpenAI DevDay 2026 定档 9 月 29 日：GPT-5.5 创作竞赛 + AI 编程开发者盛宴</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag cyan">DevDay 2026</span>
+        <span class="tag">开发者大会</span>
+        <span class="tag amber">9月29日</span>
+      </div>
+      <div class="news-body">
+        OpenAI 正式宣布 <strong>DevDay 2026 定档 9 月 29 日</strong>，同时推出基于 GPT-5.5 的创作竞赛，涵盖 AI 辅助编程创作赛道。作为年度最大 AI 开发者大会，预计将发布新版 Codex Agent、Agents SDK 重大更新以及面向企业的 AI 编程新定价方案。这一时间节点也与 Google I/O 2026（Gemini 4 预计发布）和 Anthropic 产品路线图形成<strong>2026 年下半年 AI 编程工具的三方发布竞争格局</strong>。
+      </div>
+    </div>
+
+  </div><!-- /news-list -->
+
+  <!-- ===== Cursor 技巧 ===== -->
+  <div class="section-label">⌨️ 今日 Cursor 技巧</div>
+  <div class="tips-section">
+
+    <div class="tip-card">
+      <div class="tip-header">
+        <div class="tip-icon">🧠</div>
+        <div class="tip-title">智能体上下文管理进阶：用「动态上下文」而非「堆文件」让 Agent 跑得更稳</div>
+      </div>
+      <div class="news-tags" style="padding-left:0; margin-bottom:10px;">
+        <span class="tag amber">官方研究</span>
+        <span class="tag green">稳定性</span>
+        <span class="tag cyan">上下文管理</span>
+      </div>
+      <div class="tip-body">
+        <p><strong>这是什么？</strong><br>
+        Cursor 官方最新研究揭示了一个核心反直觉结论：<span style="color:#a5b4fc;">把大量文件预先塞给 Agent，反而会让它变笨、变慢、更容易出错。</span> 官方现在的策略是「动态按需拉取」——只在启动时给 Agent 最基本的上下文（操作系统、git 状态、当前文件），让 Agent 自己去按需读取更多信息。
+        </p>
+        <p><strong>怎么用？</strong></p>
+        <ul>
+          <li><strong>少塞文件</strong>：不要在 prompt 里 @ 大量文件，只 @ 你确定 Agent 当前步骤需要的</li>
+          <li><strong>让 Agent 自主搜索</strong>：描述任务时说清目标而非指路，例如「找到用户认证相关的代码并修复 bug」而非「打开 auth.ts 修改第 42 行」</li>
+          <li><strong>小步任务分解</strong>：把大任务拆成小步骤，每步完成后 git commit，防止上下文积累腐坏</li>
+          <li><strong>中途切换模型时</strong>：Cursor 会自动摘要上下文交接给新模型，但复杂任务尽量全程用同一模型</li>
+        </ul>
+        <p><strong>适合什么场景？</strong><br>
+        执行多步骤重构、跨文件 bug 修复、长周期 Agent 任务时。按这套方法，工具调用错误率可降一个数量级，任务完成率显著提升。</p>
+      </div>
+      <div class="tip-footer">
+        <span>来源：<a href="https://cursor.com/cn/blog/continually-improving-agent-harness" target="_blank">Cursor 官方博客 · 持续改进我们的智能体框架</a> · 2026-04-30</span>
+        <span>适合：中高级 Cursor 用户</span>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-header">
+        <div class="tip-icon">📊</div>
+        <div class="tip-title">「代码保留率」自测法：如何判断你用 Cursor 的方式是对的</div>
+      </div>
+      <div class="news-tags" style="padding-left:0; margin-bottom:10px;">
+        <span class="tag">质量评估</span>
+        <span class="tag green">新手必看</span>
+      </div>
+      <div class="tip-body">
+        <p><strong>这是什么？</strong><br>
+        Cursor 内部用「代码保留率」评估 Agent 质量——AI 生成的代码，你有多少是直接保留了，多少需要反复修改？这个指标同样适合自我评估你的使用方式是否高效。
+        </p>
+        <p><strong>自测方法：</strong></p>
+        <ul>
+          <li>如果你经常需要告诉 Cursor「不对，重做」或者自己大改 AI 的输出 → 说明 <strong>prompt 不够清晰</strong>，需要增加更多约束条件（框架版本、编码规范、目标函数签名等）</li>
+          <li>如果 Cursor 每次改完都能直接用 → 你已经掌握了高效使用的核心</li>
+          <li><strong>一个实用技巧</strong>：在 <span class="code">.cursorrules</span> 里写入你的项目约束（语言版本、禁用库、代码风格），Agent 每次都会自动遵守，保留率立刻提升</li>
+        </ul>
+      </div>
+      <div class="tip-footer">
+        <span>来源：Cursor 官方框架研究 · 2026-04-30</span>
+        <span>适合：新手 / 想提升效率的用户</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== 今日摘要 ===== -->
+  <div class="summary-box">
+    <h3>📌 今日要点速记</h3>
+    <ul>
+      <li>Cursor Agent 框架：动态上下文 + 错误率降一个数量级 + 多智能体架构提上日程</li>
+      <li>OpenAI Codex 密集更新：WebSocket 加速 + Figma 插件 + 数据分析</li>
+      <li>Cline 完成重大重写开启 Beta，Kanban 可视化任务管理</li>
+      <li>Devin for Terminal 发布，终端 AI 编程 Agent 赛道开启</li>
+      <li>国产编程模型：小米 MiMo-V2.5-Pro 开源 + Poolside Laguna 同期发布</li>
+      <li>DeepSeek-V4 API 兼容踩坑：接入建议用 LiteLLM 代理而非硬替换 Endpoint</li>
+      <li>OpenAI DevDay 2026 定档 9 月 29 日，AI 编程工具下半年发布竞争格局形成</li>
+    </ul>
+  </div>
+
+  <footer>
+    <p>AI 编程热点新闻 · 每日自动生成 · <a href="/">返回首页</a> · <a href="/cursor-tips/">Cursor 技巧专栏</a></p>
+    <p style="margin-top:8px;">2026-05-01 · 劳动节快乐 🎉</p>
+  </footer>
+
+</div>
+</body>
+</html>
