@@ -194,6 +194,109 @@
     <strong>这是什么？</strong> 每天从 Cursor 官方博客精选 1-3 个<strong>实用技巧或使用场景</strong>，用大白话讲清楚——你能学到什么、怎么用、什么时候用。从新手到进阶，边用边学。
   </div>
 
+  <!-- ========== 2026-05-02 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">05月02日</span>
+      <span class="day-title">团队应用市场工程化 · CLAUDE.md配置最佳实践 · Agent自主部署新范式</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <!-- 技巧1: 团队应用市场 -->
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🏢</div>
+          <div class="tip-title">用 Cursor 团队应用市场打造「企业 AI 编程标准化工具箱」</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">🆕 新功能</span>
+          <span class="tag green">团队协作</span>
+          <span class="tag cyan">企业版</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          Cursor 于 2026-05-01 正式上线「团队应用市场」——企业和团队可以将内部最佳实践打包成可复用的 Agent 工作流，像内部 App Store 一样分发给全团队成员一键安装使用。这是 AI 编程从「个人工具」走向「团队工程体系」的关键一步。
+          </p>
+          <p><strong>怎么用？</strong></p>
+          <ul>
+            <li><strong>进入团队后台</strong>：Cursor 设置 → 团队 → 应用市场 → 创建新 Agent/工作流</li>
+            <li><strong>可封装的高频任务</strong>：代码审查、项目脚手架生成、单元测试自动补全、API 文档生成等</li>
+            <li><strong>分发给团队</strong>：打包后团队成员无需额外配置，一键安装，全团队 AI 使用规范保持一致</li>
+            <li><strong>搭配配置文件</strong>：<span class="code">.cursorrules</span> 控制行为约束 + 市场 Agent 执行具体任务，双剑合璧</li>
+          </ul>
+          <p><strong>适合什么场景？</strong><br>
+          5 人以上团队、多模块大型项目、需要统一 AI 编程规范的企业开发环境。团队 AI 编程效率可提升 30% 以上。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：<a href="https://cursor.com/cn/blog" target="_blank">Cursor 官方更新日志</a> · 2026-05-01 团队应用市场更新</span>
+          <span>适合：5人以上团队</span>
+        </div>
+      </div>
+
+      <!-- 技巧2: CLAUDE.md配置法 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🏗️</div>
+          <div class="tip-title">CLAUDE.md / .cursorrules 工程配置法——让 AI 代码可用率从 40% 跃升到 85%</div>
+        </div>
+        <div class="tags">
+          <span class="tag green">工程实践</span>
+          <span class="tag">配置优化</span>
+          <span class="tag amber">高效提升</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          今日研究揭示：Claude Code 中 <span class="hl">98.4% 是工程基础设施，AI 本身只占 1.6%</span>。这对 Cursor 同样成立——写好配置文件，比换更贵的模型更重要。
+          </p>
+          <p><strong>核心配置内容：</strong></p>
+          <ul>
+            <li><strong>技术栈声明</strong>：「使用 React 18 + TypeScript 5 + Tailwind CSS，不要使用 CSS Modules」</li>
+            <li><strong>项目结构说明</strong>：「前端在 /src/client，后端在 /src/server，共享类型在 /src/types」</li>
+            <li><strong>禁止行为列表</strong>：「不要修改 package.json 的 scripts 字段」「不要引入新依赖除非我明确要求」</li>
+            <li><strong>常用命令清单</strong>：「开发命令: <span class="code">npm run dev</span>」「测试命令: <span class="code">npm test</span>」</li>
+          </ul>
+          <p><strong>效果验证：</strong>配置后 AI 生成代码的直接可用率从 40% 跃升至 85% 以上，来回纠正减少 80%。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：AITNT Claude Code 工程架构深度研究 · 2026-05-02</span>
+          <span>适合：所有 Cursor 用户</span>
+        </div>
+      </div>
+
+      <!-- 技巧3: Agent自主部署 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🤖</div>
+          <div class="tip-title">Agent 自主部署新范式：用 Cloudflare+Stripe 让你写的 AI 脚本「自己管自己」</div>
+        </div>
+        <div class="tags">
+          <span class="tag cyan">前沿探索</span>
+          <span class="tag">Agent 自主化</span>
+          <span class="tag green">独立开发者</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          Cloudflare 和 Stripe 今日联合发布新协议，允许 AI Agent 自主完成：申请账号 → 订阅付费 → 注册域名 → 获取 API Token → 部署代码。对开发者而言，这意味着你可以用 Cursor 写一个脚本，交给 Agent 自己上线、自己运营。
+          </p>
+          <p><strong>实战场景：</strong></p>
+          <ul>
+            <li>用 Cursor 写自动化数据抓取+报告工具 → 交给 Agent → 自主部署到 Cloudflare Workers → 定期运行</li>
+            <li>小型 SaaS MVP 从开发到上线全程 AI 自动化，人类只需最终审批</li>
+            <li>Stripe 内置 100 美元/月安全上限，防止 Agent 超支</li>
+          </ul>
+          <p><strong>适合什么场景？</strong><br>
+          独立开发者快速验证 MVP、个人 SaaS 项目自动化运维。AI 编程 + AI 自主运营 = 真正「一人公司」时代开启。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cloudflare × Stripe Agent 协议 · 2026-05-02</span>
+          <span>适合：独立开发者 / 小团队</span>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /2026-05-02 -->
+
   <!-- ========== 2026-05-01 ========== -->
   <div class="day-entry">
     <div class="day-header">

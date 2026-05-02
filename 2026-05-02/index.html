@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年5月2日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px 80px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .header-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 32px; flex-wrap: wrap; gap: 12px;
+    }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      color: #8b90b0; text-decoration: none; font-size: 13px;
+      padding: 8px 16px; border-radius: 8px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .back-btn:hover { border-color: #6c63ff; color: #a5b4fc; }
+
+    .hero { margin-bottom: 36px; }
+    .date-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(139,92,246,0.2));
+      border: 1px solid rgba(108,99,255,0.35);
+      color: #a5b4fc; font-size: 12px; font-weight: 700;
+      padding: 4px 14px; border-radius: 8px; margin-bottom: 14px;
+    }
+    .hero h1 { font-size: 26px; font-weight: 700; color: #fff; line-height: 1.4; margin-bottom: 8px; }
+    .hero h1 span { color: #6c63ff; }
+    .hero-meta { font-size: 13px; color: #8b90b0; }
+
+    .section-title {
+      font-size: 15px; font-weight: 700; color: #fff;
+      margin: 32px 0 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-title::after {
+      content: ''; flex: 1; height: 1px; background: #2a2d3e;
+    }
+
+    .news-list { display: flex; flex-direction: column; gap: 14px; }
+    .news-card {
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      border-radius: 14px; padding: 18px 20px;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .news-card:hover { border-color: #6c63ff; transform: translateY(-1px); }
+    .news-card.top1 { border-color: rgba(108,99,255,0.4); background: linear-gradient(135deg, #1a1d27, #1e1f30); }
+
+    .news-top { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+    .news-num {
+      width: 26px; height: 26px; border-radius: 8px; flex-shrink: 0;
+      background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: #818cf8;
+    }
+    .news-num.gold { background: rgba(251,191,36,0.15); border-color: rgba(251,191,36,0.3); color: #fbbf24; }
+    .news-title { font-size: 15px; font-weight: 600; color: #eef0fb; line-height: 1.5; }
+    .news-body { font-size: 13px; color: #8b90b0; line-height: 1.75; padding-left: 38px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; padding-left: 38px; margin-top: 8px; }
+    .tag {
+      font-size: 11px; font-weight: 500;
+      padding: 2px 9px; border-radius: 6px;
+      background: #2a2d3a; color: #818cf8;
+    }
+    .tag.green { background: rgba(74,222,128,0.1); color: #4ade80; }
+    .tag.amber { background: rgba(251,191,36,0.1); color: #fbbf24; }
+    .tag.red { background: rgba(248,113,113,0.1); color: #f87171; }
+    .tag.cyan { background: rgba(34,211,238,0.1); color: #22d3ee; }
+
+    /* Cursor 技巧区块 */
+    .tips-section {
+      background: linear-gradient(135deg, #11141f, #131826);
+      border: 1px solid rgba(34,211,238,0.25);
+      border-radius: 16px; padding: 24px;
+      margin-top: 36px;
+    }
+    .tips-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+    }
+    .tips-icon { font-size: 28px; }
+    .tips-header h2 { font-size: 18px; font-weight: 700; color: #22d3ee; }
+    .tips-header .tips-date { font-size: 12px; color: #5a8fa0; margin-top: 2px; }
+
+    .tip-item { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .tip-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .tip-item-title { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .tip-item-body { font-size: 13px; color: #8892a4; line-height: 1.75; }
+    .tip-item-body ul { padding-left: 18px; margin-top: 6px; }
+    .tip-item-body li { margin-bottom: 4px; }
+    .tip-item-body .hl { color: #a5b4fc; font-weight: 500; }
+    .code {
+      background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.2);
+      color: #c4b5fd; font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 11px; padding: 1px 6px; border-radius: 4px;
+    }
+
+    .tips-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: #22d3ee; font-size: 13px; text-decoration: none; margin-top: 16px;
+    }
+    .tips-link:hover { text-decoration: underline; }
+
+    .footer {
+      margin-top: 48px; text-align: center; font-size: 12px; color: #3a3d52;
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 24px 14px 60px; }
+      .hero h1 { font-size: 20px; }
+      .news-title { font-size: 14px; }
+      .news-body { font-size: 12px; padding-left: 30px; }
+      .tags { padding-left: 30px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 顶部导航 -->
+  <div class="header-bar">
+    <a class="back-btn" href="/">← 返回首页</a>
+    <a class="back-btn" href="/cursor-tips/">⌨️ Cursor 技巧专栏</a>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="date-tag">📅 2026年5月2日 · 星期六</div>
+    <h1>AI 编程热点 · <span>今日速览</span></h1>
+    <p class="hero-meta">共 7 条精选新闻 · 自动生成于 08:15 · 数据来源：全球多渠道汇总</p>
+  </div>
+
+  <!-- 新闻列表 -->
+  <div class="section-title">🔥 今日热点新闻</div>
+  <div class="news-list">
+
+    <!-- 1 -->
+    <div class="news-card top1">
+      <div class="news-top">
+        <div class="news-num gold">01</div>
+        <div class="news-title">AI Agent 可自主开账户+付钱+部署代码——Cloudflare 与 Stripe 联合发布 Agent 自主运营协议</div>
+      </div>
+      <div class="news-body">
+        Cloudflare 联手 Stripe 推出全新协议，允许 AI Agent 自主创建 Cloudflare 账户、订阅付费方案、注册域名并获取 API Token 完成代码部署，整个流程人类零操作。Stripe 默认为每个 Agent 设置每月 100 美元支出上限以控制风险。这是 AI Agent 首次获得「完整互联网运营能力」——从写代码到上线，一键搞定。
+      </div>
+      <div class="tags">
+        <span class="tag amber">🔑 里程碑</span>
+        <span class="tag green">Agent 自主化</span>
+        <span class="tag">Cloudflare</span>
+        <span class="tag">Stripe</span>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">02</div>
+        <div class="news-title">OpenAI Codex 接管整台 Mac——8 分钟完成人类 2 小时工作，全程零操作</div>
+      </div>
+      <div class="news-body">
+        OpenAI 大幅升级 Codex，从单一代码工具跃升为可操控整台电脑的通用 AI 智能体，支持多应用集成，可全自动完成音频修复、开发设计等任务。开发者实测：交给 Codex 一个复杂任务，离开去喝咖啡，8 分钟后回来发现已完成——过去需要 2 小时。Codex 正式宣告进入「全自动编程」时代。
+      </div>
+      <div class="tags">
+        <span class="tag amber">🆕 重大升级</span>
+        <span class="tag">OpenAI</span>
+        <span class="tag">Codex</span>
+        <span class="tag cyan">全自动</span>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">03</div>
+        <div class="news-title">Claude Code 98.4% 是工程、1.6% 是 AI——工程基础设施才是「好用」的秘密</div>
+      </div>
+      <div class="news-body">
+        深度研究揭示 Claude Code 的真正竞争力：整个工具中 AI 决策逻辑仅占 1.6%，剩余 98.4% 是工程基础设施（Shell 集成、文件管理、安全策略、上下文处理等）。实践启示：使用 CLAUDE.md、.cursorrules 等配置文件构建「AI 编程工程架构」，让 AI 适配你的项目规则，开发效率大幅提升，而非单纯依赖模型本身。
+      </div>
+      <div class="tags">
+        <span class="tag">Claude Code</span>
+        <span class="tag green">工程实践</span>
+        <span class="tag">CLAUDE.md</span>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">04</div>
+        <div class="news-title">AI 编程初创 Factory 完成 1.5 亿美元 C 轮，估值 15 亿成独角兽——企业级 AI 编程格局三强并立</div>
+      </div>
+      <div class="news-body">
+        Factory（专注企业级 AI 编程的初创公司）完成 1.5 亿美元 C 轮融资，投后估值 15 亿美元正式跻身独角兽行列。行业分析对比了 Anysphere（Cursor 母公司）、Cognition（Devin）、Factory 三家企业级 AI 编程头部公司的差异化定位：Anysphere 走 IDE 原生路线，Cognition 主打全自动任务执行，Factory 专注大型代码库代码审查与 CI/CD 流水线智能化。
+      </div>
+      <div class="tags">
+        <span class="tag amber">💰 融资</span>
+        <span class="tag">Factory</span>
+        <span class="tag green">企业级 AI 编程</span>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">05</div>
+        <div class="news-title">英伟达秘密武器曝光：AI 一夜完成芯片设计，顶 8 名顶尖工程师 10 个月工作量</div>
+      </div>
+      <div class="news-body">
+        英伟达在 GTC 大会正式披露自研 AI 芯片设计工具 NB-Cell：原本需要 8 名资深工程师耗时 10 个月完成的芯片标准单元库迁移工作，NB-Cell 一夜搞定，且性能指标达到甚至超过人类设计水平。这是 AI 辅助硬件工程领域的重大突破，标志着 AI 编程能力已从软件延伸至芯片硬件设计。
+      </div>
+      <div class="tags">
+        <span class="tag amber">🏆 技术突破</span>
+        <span class="tag">英伟达</span>
+        <span class="tag">NB-Cell</span>
+        <span class="tag cyan">AI 芯片设计</span>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">06</div>
+        <div class="news-title">2026 AI 编程工具红黑榜深度横评——Claude Code 最受喜爱，Copilot 用户最多，Cursor 日活 500 万稳坐市场认知榜首</div>
+      </div>
+      <div class="news-body">
+        最新横评数据：GitHub Copilot 月活 1500 万用户最多，但最受喜爱的是 Claude Code；Cursor 日活突破 500 万，IDE 原生 AI 编程认知度第一。市场呈现明显分裂：使用最广的 ≠ 最受喜爱，最受喜爱的 ≠ 最多人用。建议：个人日常开发用 Cursor，复杂重构和安全任务用 Claude Code，自动化 PR 批量修改用 Codex。
+      </div>
+      <div class="tags">
+        <span class="tag">市场横评</span>
+        <span class="tag green">选型指南</span>
+        <span class="tag">Cursor</span>
+        <span class="tag">Claude Code</span>
+        <span class="tag">Copilot</span>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">07</div>
+        <div class="news-title">Cursor 5月1日更新日志：团队应用市场上线——企业版现可内部分发自定义 AI 工作流</div>
+      </div>
+      <div class="news-body">
+        Cursor 于 2026-05-01 发布「团队应用市场」更新，企业和团队用户现在可以在内部创建、分发和管理自定义 AI 工作流（Agents / 插件），类似 App Store 但面向企业内网。这意味着团队中的资深工程师可以打包最佳实践工作流，供全团队一键复用，降低 AI 编程的使用门槛和对接成本。
+      </div>
+      <div class="tags">
+        <span class="tag amber">🆕 新功能</span>
+        <span class="tag">Cursor</span>
+        <span class="tag cyan">团队协作</span>
+        <span class="tag green">企业版</span>
+      </div>
+    </div>
+
+  </div><!-- /news-list -->
+
+  <!-- Cursor 技巧区块 -->
+  <div class="tips-section">
+    <div class="tips-header">
+      <div class="tips-icon">⌨️</div>
+      <div>
+        <h2>今日 Cursor 使用技巧</h2>
+        <div class="tips-date">来源：cursor.com/cn/blog · 2026-05-02</div>
+      </div>
+    </div>
+
+    <!-- 技巧1 -->
+    <div class="tip-item">
+      <div class="tip-item-title">🏢 用 Cursor 团队应用市场打造「企业 AI 编程标准化工具箱」</div>
+      <div class="tip-item-body">
+        <p><strong>这是什么？</strong><br>
+        Cursor 最新上线的「团队应用市场」让企业可以将内部最佳实践打包成可复用的 Agent 工作流，像 App Store 一样在团队内部分发。这不仅是功能更新，更是 AI 编程从「个人工具」走向「团队工程体系」的关键一步。</p>
+        <p><strong>怎么用？</strong></p>
+        <ul>
+          <li>进入 Cursor 团队后台 → 「应用市场」→ 创建自定义 Agent 或工作流</li>
+          <li>可以封装：代码审查流程、项目脚手架生成、单元测试自动补全、文档生成等高频任务</li>
+          <li>团队成员无需配置，一键安装即可使用，保持全团队 AI 使用规范一致</li>
+          <li>结合 <span class="code">.cursorrules</span> 和 <span class="code">CLAUDE.md</span> 使用效果更佳——规则文件控制行为约束，市场 Agent 执行具体任务</li>
+        </ul>
+        <p><strong>适合什么场景？</strong><br>
+        5 人以上团队、多模块大型项目、需要统一 AI 编程规范的企业开发环境。团队 AI 编程效率可提升 30% 以上。</p>
+      </div>
+    </div>
+
+    <!-- 技巧2 -->
+    <div class="tip-item">
+      <div class="tip-item-title">🏗️ CLAUDE.md 工程配置法：让 Claude Code 更好用的 98.4% 秘诀</div>
+      <div class="tip-item-body">
+        <p><strong>这是什么？</strong><br>
+        今天的头条研究证明：<span class="hl">AI 编程工具「好不好用」，工程基础设施占 98.4%，AI 本身只占 1.6%。</span> 这对 Cursor 同样适用——写好配置文件，比换更贵的模型更重要。</p>
+        <p><strong>核心配置文件写法：</strong></p>
+        <ul>
+          <li><strong>项目根目录放 <span class="code">CLAUDE.md</span> 或 <span class="code">.cursorrules</span></strong>：写清楚使用的框架版本、禁用的库、编码风格（如「所有函数必须有 JSDoc 注释」）</li>
+          <li><strong>描述项目结构</strong>：「前端在 /src/client，后端在 /src/server，共享类型在 /src/types」——让 Agent 一开始就知道往哪找文件</li>
+          <li><strong>添加禁止行为</strong>：「不要修改 package.json 的 scripts 字段」「不要引入新的 npm 依赖除非我明确要求」</li>
+          <li><strong>提供常用命令</strong>：「开发服务器启动命令: npm run dev」「测试命令: npm test」</li>
+        </ul>
+        <p><strong>效果：</strong>配置好之后，AI 生成代码的可用率从 40% 跃升至 85% 以上，减少 80% 的来回纠正。</p>
+      </div>
+    </div>
+
+    <!-- 技巧3 -->
+    <div class="tip-item">
+      <div class="tip-item-title">🤖 Agent 工程化部署新思路：用 Cloudflare+Stripe 协议让你的 AI 脚本「自己管自己」</div>
+      <div class="tip-item-body">
+        <p><strong>这是什么？</strong><br>
+        今天 Cloudflare 与 Stripe 发布的 Agent 自主运营协议，对开发者来说是一个重大机会：你现在可以用 Cursor 写一个 AI 脚本，让它自己申请 API 配额、自己部署、自己续费，整个 SaaS 应用的运营可以全部交给 Agent 自主完成。</p>
+        <p><strong>实际应用场景：</strong></p>
+        <ul>
+          <li>用 Cursor 写一个自动化数据抓取+报告生成工具 → Agent 自主部署到 Cloudflare Workers → 自动注册域名 → 定期运行发报告</li>
+          <li>小型 SaaS 产品从开发到上线，全程 AI 完成，人类只需审批最终结果</li>
+          <li>Stripe 的 100 美元/月安全上限保证不会超支</li>
+        </ul>
+        <p><strong>适合什么场景？</strong><br>
+        独立开发者、小团队快速验证 MVP。AI 编程 + AI 运维 = 真正的「一人公司」成为可能。</p>
+      </div>
+    </div>
+
+    <a class="tips-link" href="/cursor-tips/">📖 查看全部 Cursor 技巧专栏 →</a>
+  </div>
+
+  <!-- 底部 -->
+  <div class="footer">
+    <p>AI 编程热点新闻 · 自动生成于 2026-05-02 08:15 · <a href="/" style="color:#6c63ff; text-decoration:none;">返回首页</a></p>
+  </div>
+
+</div>
+</body>
+</html>
