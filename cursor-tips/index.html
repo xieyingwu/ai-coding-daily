@@ -194,6 +194,112 @@
     <strong>这是什么？</strong> 每天从 Cursor 官方博客精选 1-3 个<strong>实用技巧或使用场景</strong>，用大白话讲清楚——你能学到什么、怎么用、什么时候用。从新手到进阶，边用边学。
   </div>
 
+  <!-- ========== 2026-05-03 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">05月03日</span>
+      <span class="day-title">智能体框架双层评估法 · 代码保留率自测技巧 · 多模型适配中途切换指南</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <!-- 技巧1: 代码保留率自测法 -->
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">📊</div>
+          <div class="tip-title">用「代码保留率」来判断 Cursor 输出质量：AI 给的代码你都留下了吗？</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">🔍 评估技巧</span>
+          <span class="tag green">实用方法</span>
+          <span class="tag cyan">Cursor 官方</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          Cursor 官方在最新研究博客中公开了他们内部衡量 AI 输出质量的核心指标之一：<span class="hl">代码保留率</span>——统计 AI 生成的代码变更，在一段时间后（比如1小时/次日）你还留着多少。留存比例越低，说明这次 AI 输出质量越差。
+          </p>
+          <p><strong>怎么用（个人版）？</strong></p>
+          <ul>
+            <li><strong>留意自己的操作习惯</strong>：如果 AI 生成代码后你立刻开始大量手改，说明这次输出质量不高；如果基本原封不动地接受，说明质量不错</li>
+            <li><strong>建立自己的感知基准</strong>：同一个任务，多试几次不同 prompt，哪种写法让你保留得更多，就是更好的提问方式</li>
+            <li><strong>任务越清晰，保留率越高</strong>：拆解到「单个函数/单个功能」粒度提问，比「帮我写整个模块」保留率高得多</li>
+            <li><strong>搭配后续动作判断</strong>：如果 AI 输出后你是「继续推进下一个功能」→ 说明成功；如果你是「粘贴报错信息过来修」→ 说明没成功</li>
+          </ul>
+          <p><strong>适合什么场景？</strong><br>
+          每个用 Cursor 的开发者都可以用这个思路来「自我复盘」：反思哪些任务 AI 帮到了你，哪些其实在做无用功。比查 SWE-bench 分数更贴近自己的真实使用体验。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：<a href="https://cursor.com/cn/blog/continually-improving-agent-harness" target="_blank">Cursor 官方博客 · 持续改进我们的智能体框架</a></span>
+          <span>适合：所有 Cursor 用户</span>
+        </div>
+      </div>
+
+      <!-- 技巧2: 多模型切换技巧 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🔀</div>
+          <div class="tip-title">中途切换模型会让 Cursor 变慢变贵——Cursor 官方告诉你该怎么做</div>
+        </div>
+        <div class="tags">
+          <span class="tag">模型切换</span>
+          <span class="tag amber">省钱技巧</span>
+          <span class="tag green">性能优化</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          很多人在用 Cursor 时会在对话中途切换模型（比如先用 Claude 写代码，再切 GPT-5.5 来审查）。但 Cursor 官方最新研究披露：<span class="hl">中途切换模型会导致缓存失效，首轮响应更慢、Token 消耗更高</span>，还可能因为工具格式不兼容引发错误。
+          </p>
+          <p><strong>应该怎么做？</strong></p>
+          <ul>
+            <li><strong>一个任务用一个模型贯穿始终</strong>：如无明确理由，整段对话保持同一模型，避免缓存失效</li>
+            <li><strong>需要换模型处理子任务？用「子智能体」</strong>：Cursor 支持为子 Agent 指定不同模型，新开一个独立上下文窗口执行，互不干扰</li>
+            <li><strong>切换前确认清楚</strong>：不同模型对工具调用的格式要求不同（OpenAI 用 patch 格式，Claude 用字符串替换），中途切换会让模型在第一轮「摸索期」出错</li>
+            <li><strong>Claude 和 GPT 的提示风格不同</strong>：Claude 对模糊指令容忍度更高，GPT 更偏字面理解——换模型时要注意调整你的 prompt 风格</li>
+          </ul>
+          <p><strong>适合什么场景？</strong><br>
+          想节省 Token、提升响应速度、减少奇怪报错的所有用户。特别适合需要用不同模型处理不同子任务的高级用户。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：<a href="https://cursor.com/cn/blog/continually-improving-agent-harness" target="_blank">Cursor 官方博客 · 智能体框架深度研究</a></span>
+          <span>适合：进阶用户 · 多模型用户</span>
+        </div>
+      </div>
+
+      <!-- 技巧3: 错误分类监控 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🔧</div>
+          <div class="tip-title">为什么 Cursor 有时会「卡住」或乱跑？——理解上下文腐坏，从根源减少 AI 出错</div>
+        </div>
+        <div class="tags">
+          <span class="tag red">踩坑预防</span>
+          <span class="tag">上下文管理</span>
+          <span class="tag cyan">框架原理</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          Cursor 官方揭示了一个重要机制：工具调用出错后，<span class="hl">错误信息会残留在上下文中，浪费 Token，并干扰模型后续决策</span>——这就是「上下文腐坏」。严重时会让智能体卡住（反复出错）或失控（执行错误操作）。
+          </p>
+          <p><strong>实用建议：</strong></p>
+          <ul>
+            <li><strong>遇到 Agent 反复出错时，直接新开一个对话</strong>：不要让错误堆在同一个上下文里越来越难修</li>
+            <li><strong>提前把任务拆清楚</strong>：任务越模糊，Agent 调用工具的歧义越多，出错概率越高</li>
+            <li><strong>上下文填太满会触发「上下文焦虑」</strong>：某些模型上下文接近填满时会拒绝执行任务，建议定期新建对话，而非在同一个 chat 里反复追加</li>
+            <li><strong>粘贴报错给 AI 修 = 质量信号变差</strong>：Cursor 团队把「用户粘贴堆栈跟踪」当作任务未完成的可靠信号——如果你一直在贴报错，说明需要换一种提问方式了</li>
+          </ul>
+          <p><strong>适合什么场景？</strong><br>
+          所有遇到过 Cursor「奇怪行为」的用户——AI 反复道歉、不断绕圈子、执行了不该执行的操作，都可能是上下文腐坏的表现。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：<a href="https://cursor.com/cn/blog/continually-improving-agent-harness" target="_blank">Cursor 官方博客 · 智能体框架研究</a></span>
+          <span>适合：所有用户</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- /2026-05-03 -->
+
   <!-- ========== 2026-05-02 ========== -->
   <div class="day-entry">
     <div class="day-header">

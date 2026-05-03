@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年5月3日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px 60px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: #6c63ff; text-decoration: none; font-size: 14px;
+      margin-bottom: 28px;
+      padding: 8px 16px;
+      border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 8px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .back-btn:hover { border-color: #6c63ff; background: rgba(108,99,255,0.08); }
+
+    .page-header { margin-bottom: 32px; }
+    .date-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(139,92,246,0.2));
+      border: 1px solid rgba(108,99,255,0.4);
+      color: #a5b4fc; font-size: 13px; font-weight: 600;
+      padding: 5px 14px; border-radius: 8px;
+      margin-bottom: 12px;
+    }
+    .page-header h1 {
+      font-size: 26px; font-weight: 700; color: #fff;
+      line-height: 1.4; margin-bottom: 8px;
+    }
+    .page-header h1 span { color: #6c63ff; }
+    .page-meta { font-size: 13px; color: #8b90b0; }
+
+    .news-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+
+    .news-card {
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      border-radius: 14px;
+      padding: 20px 22px;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .news-card:hover { border-color: #6c63ff; transform: translateY(-1px); }
+    .news-card.top { border-color: rgba(251,191,36,0.3); background: linear-gradient(135deg, #1a1d27, #1e1c11); }
+
+    .news-top { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+    .news-num {
+      min-width: 28px; height: 28px;
+      background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 8px; color: #a5b4fc;
+      font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .news-card.top .news-num { background: rgba(251,191,36,0.15); border-color: rgba(251,191,36,0.3); color: #fbbf24; }
+    .news-title { font-size: 16px; font-weight: 600; color: #eef0fb; line-height: 1.5; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .tag {
+      font-size: 11px; font-weight: 500;
+      padding: 3px 9px; border-radius: 6px;
+      background: #2a2d3a; color: #818cf8;
+    }
+    .tag.amber { background: rgba(251,191,36,0.1); color: #fbbf24; }
+    .tag.green { background: rgba(74,222,128,0.1); color: #4ade80; }
+    .tag.red { background: rgba(248,113,113,0.1); color: #f87171; }
+    .tag.cyan { background: rgba(34,211,238,0.1); color: #22d3ee; }
+
+    .news-body { font-size: 14px; color: #8b90b0; line-height: 1.75; }
+    .news-body .hl { color: #a5b4fc; font-weight: 500; }
+    .news-body p { margin-bottom: 6px; }
+
+    .news-footer {
+      margin-top: 12px; padding-top: 10px;
+      border-top: 1px solid rgba(42,45,58,0.8);
+      font-size: 12px; color: #5a5f7a;
+    }
+    .news-footer a { color: #6c63ff; text-decoration: none; }
+    .news-footer a:hover { text-decoration: underline; }
+
+    .section-title {
+      font-size: 18px; font-weight: 700; color: #fff;
+      margin-bottom: 16px; padding-bottom: 10px;
+      border-bottom: 1px solid #2a2d3e;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .summary-box {
+      background: linear-gradient(135deg, #1a1d27, #1e2035);
+      border: 1px solid rgba(108,99,255,0.25);
+      border-radius: 14px; padding: 20px 22px;
+      margin-bottom: 32px;
+    }
+    .summary-box .summary-title { font-size: 15px; font-weight: 600; color: #a5b4fc; margin-bottom: 10px; }
+    .summary-box p { font-size: 14px; color: #8b90b0; line-height: 1.75; }
+    .summary-box .hl { color: #a5b4fc; font-weight: 500; }
+
+    .footer-nav {
+      text-align: center; margin-top: 48px;
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 24px 14px 48px; }
+      .page-header h1 { font-size: 20px; }
+      .news-title { font-size: 15px; }
+      .news-body { font-size: 13px; }
+      .news-card { padding: 16px 14px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back-btn" href="/">← 返回首页</a>
+
+  <div class="page-header">
+    <div class="date-badge">📅 2026年5月3日 · 周日</div>
+    <h1>AI 编程热点 · <span>ARC-AGI-3 揭示推理天花板</span></h1>
+    <p class="page-meta">共 7 条精选热点 · 今日头条：顶尖模型双双折戟 ARC-AGI-3，人类100分 AI不足1分——推理鸿沟引爆行业反思</p>
+  </div>
+
+  <!-- 今日摘要 -->
+  <div class="summary-box">
+    <div class="summary-title">📋 今日要点速览</div>
+    <p>
+      今日最大事件：<span class="hl">ARC-AGI-3 发布并公布评测结果</span>——GPT-5.5 和 Claude Opus 4.7 联手不足1分，人类首次接触即满分，引发行业对「推理极限」的集体反思。与此同时，
+      <span class="hl">Karpathy 提出「Agentic Engineering」概念</span>，定义 Vibe Coding 与专业工程之间的边界；
+      <span class="hl">Claude Mythos 在 Firefox 中发现 271 个漏洞</span>，AI 安全能力引发全球监管关注；
+      谷歌 400 亿投资 Anthropic 格局持续发酵，
+      Cursor 智能体框架持续迭代，AI 编程走向多智能体协同。
+    </p>
+  </div>
+
+  <!-- 新闻列表 -->
+  <div class="section-title">🔥 今日 7 条热点</div>
+  <div class="news-list">
+
+    <!-- 1 -->
+    <div class="news-card top">
+      <div class="news-top">
+        <div class="news-num">🏆</div>
+        <div class="news-title">GPT-5.5 与 Opus 4.7 双双折戟 ARC-AGI-3：人类100分 顶尖 AI 不足1分，推理鸿沟震惊业界</div>
+      </div>
+      <div class="tags">
+        <span class="tag amber">🔥 头条</span>
+        <span class="tag red">AI 局限</span>
+        <span class="tag">基准测试</span>
+        <span class="tag cyan">推理能力</span>
+      </div>
+      <div class="news-body">
+        <p>ARC Prize 基金会公布了对 GPT-5.5 和 Claude Opus 4.7 在 <span class="hl">ARC-AGI-3</span> 基准测试中的系统性分析——160次运行，两款当前最顶尖的模型合计得分<span class="hl">低于1%</span>，而人类首次接触即可100%解决所有问题。</p>
+        <p>ARC-AGI-3 由 François Chollet 设计，专门测试模型面对「全新逻辑环境」的适应能力——即前所未见的规则与模式，无法从训练数据中记忆。两款模型的失败方式也不同：<span class="hl">Opus 4.7 过度自信坚持错误假设</span>，<span class="hl">GPT-5.5 提出多种可能性却无法收敛执行</span>。</p>
+        <p>这一结果引发行业广泛反思：LLM 在可验证任务（代码、数学）上因强化学习能力激增，却在需要真正归纳推理的新场景中束手无策。「刷榜」与「真正推理」之间的鸿沟依然巨大。</p>
+      </div>
+      <div class="news-footer">来源：<a href="https://arcprize.org/blog/arc-agi-3-gpt-5-5-opus-4-7-analysis" target="_blank">ARC Prize 官方博客</a> · <a href="https://www.huxiu.com/article/4855465.html" target="_blank">虎嗅报道</a></div>
+    </div>
+
+    <!-- 2 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">2</div>
+        <div class="news-title">Karpathy 提出「Agentic Engineering」：Vibe Coding 只是抬高地板，真正战场是不降低质量前提下的 10x+ 工程</div>
+      </div>
+      <div class="tags">
+        <span class="tag green">方法论</span>
+        <span class="tag">Vibe Coding</span>
+        <span class="tag cyan">AI 工程</span>
+      </div>
+      <div class="news-body">
+        <p>OpenAI 联合创始人 Andrej Karpathy 在 AI Ascent 2026 上分享了对 Vibe Coding 诞生一年的反思。他明确区分两个层次：<span class="hl">Vibe Coding 是抬高所有人的能力下限</span>（让非专业人士也能构建软件），而 <span class="hl">Agentic Engineering</span> 是在 Vibe Coding 之上建立的更严谨工程学科——核心是保持专业软件的安全与质量标准。</p>
+        <p>Karpathy 透露，2025年12月出现关键转折：最新模型生成的代码几乎无需手动修正，他对 AI 的信任度质变。他同时警示：<span class="hl">「你可以外包你的思考，但永远不能外包你的理解」</span>。Vibe Coding 普及后，最值钱的人类技能是品味、判断力和审慎监督。</p>
+      </div>
+      <div class="news-footer">来源：<a href="https://news.qq.com/rain/a/20260430A047OM00" target="_blank">腾讯新闻 · Karpathy AI Ascent 2026</a></div>
+    </div>
+
+    <!-- 3 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">3</div>
+        <div class="news-title">Claude Mythos 在 Firefox 148 中发现 271 个安全漏洞，全球监管机构高度警惕 AI 网络安全能力</div>
+      </div>
+      <div class="tags">
+        <span class="tag red">网络安全</span>
+        <span class="tag amber">Anthropic</span>
+        <span class="tag">Claude Mythos</span>
+        <span class="tag cyan">漏洞挖掘</span>
+      </div>
+      <div class="news-body">
+        <p>Anthropic 将 Claude Mythos Preview 向 Mozilla 等少数机构开放测试后，该模型在 Firefox 148 版本中发现了 <span class="hl">271 个安全漏洞</span>。Mozilla 表示，所有漏洞已在本周发布的 Firefox 150 中完成修复。</p>
+        <p>Claude Mythos 不对公众开放的原因之一，正是其近乎完全自主的漏洞挖掘+利用能力：<span class="hl">能发现零日漏洞、编写利用代码、串联多个弱点接管主流操作系统和浏览器</span>。美联储、英国央行等金融监管机构已表示正密切追踪该模型的发展动态，担忧其被用于攻击银行基础设施。</p>
+      </div>
+      <div class="news-footer">来源：<a href="https://news.qq.com/rain/a/20260429A001KK00" target="_blank">腾讯新闻 · Claude Mythos Firefox 漏洞</a></div>
+    </div>
+
+    <!-- 4 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">4</div>
+        <div class="news-title">谷歌豪掷 400 亿投资 Anthropic：Claude Code 获 5GW 算力支撑，AI 编程「两强对垒」格局正式确立</div>
+      </div>
+      <div class="tags">
+        <span class="tag amber">重大资本</span>
+        <span class="tag">谷歌 Alphabet</span>
+        <span class="tag green">Anthropic</span>
+        <span class="tag">Claude Code</span>
+      </div>
+      <div class="news-body">
+        <p>谷歌母公司 Alphabet 宣布以 <span class="hl">3800 亿美元估值投资 Anthropic 最高 400 亿美元</span>（首期 100 亿立即到账，其余 300 亿待续），同时提供约 5GW 的 TPU 算力资源，专门支持 Claude Code 的持续扩张。</p>
+        <p>此举被分析人士解读为：谷歌选择「把敌人变成 TPU 最大买家」，彻底终结 OpenAI/Anthropic/Google 三强鼎立的格局，形成 <span class="hl">OpenAI vs Anthropic+Google 的双强对垒</span>。AI 编程赛道进入「超级算力」决胜阶段，Claude Code 的未来资源保障大幅增强。</p>
+      </div>
+      <div class="news-footer">来源：<a href="https://wallstreetcn.com/articles/3770859" target="_blank">华尔街见闻</a> · <a href="https://aitoolly.com/zh/ai-news/article/2026-04-25-anthropic400ai" target="_blank">AI Toolly</a></div>
+    </div>
+
+    <!-- 5 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">5</div>
+        <div class="news-title">Cursor 持续改进智能体框架：双层评估体系 + 代码保留率指标 + 多模型深度适配，Multi-Agent 架构正式提上日程</div>
+      </div>
+      <div class="tags">
+        <span class="tag green">Cursor 官方</span>
+        <span class="tag cyan">Agent 框架</span>
+        <span class="tag">评估体系</span>
+      </div>
+      <div class="news-body">
+        <p>Cursor 官方发布研究博客《持续改进我们的智能体框架》，首次公开其 Agent 框架核心机制：<span class="hl">双层评估体系</span>（离线 CursorBench + 在线 A/B 测试）、<span class="hl">代码保留率</span>（统计 AI 生成代码在固定时间后的留存比例，低留存 = 质量差）、以及针对不同模型的深度定制策略。</p>
+        <p>此前框架以静态上下文+护栏为主，现已转向<span class="hl">动态上下文按需获取</span>，随模型能力提升逐步减少限制。关键披露：团队曾用在线实验否决了「高成本模型做上下文摘要」方案（投入产出比太低）。未来规划：<span class="hl">向多智能体协同架构演进</span>，专业化分工（规划/快速编辑/调试）是下一阶段核心。</p>
+      </div>
+      <div class="news-footer">来源：<a href="https://cursor.com/cn/blog/continually-improving-agent-harness" target="_blank">Cursor 官方博客</a></div>
+    </div>
+
+    <!-- 6 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">6</div>
+        <div class="news-title">OpenAI o1 急诊诊断准确率 67% 超越人类医生（50-55%）：AI 编程外，LLM 正在跨界拿下高专业度场景</div>
+      </div>
+      <div class="tags">
+        <span class="tag cyan">OpenAI</span>
+        <span class="tag">跨界应用</span>
+        <span class="tag amber">医疗 AI</span>
+      </div>
+      <div class="news-body">
+        <p>新研究结果显示，<span class="hl">OpenAI o1 模型结合电子病历与护士提供的简短病情描述，对急诊患者的诊断准确率达67%</span>，而人类分诊医生的准确率仅为50-55%。这是 LLM 在严格对照环境下首次在医疗诊断关键指标上明确超越专业人员的案例之一。</p>
+        <p>这一结果引发编程界关注：同样的 reasoning 能力，在代码场景（可验证、强化学习训练充分）体现为 SWE-bench 高分，在医疗场景（同样有明确对错标准）也开始出现突破。LLM 的「专业场景跨界」能力边界正在被持续拓展。</p>
+      </div>
+      <div class="news-footer">来源：<a href="https://llm-stats.com/ai-news" target="_blank">LLM Stats News · Techmeme (彭博供稿)</a></div>
+    </div>
+
+    <!-- 7 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">7</div>
+        <div class="news-title">中国法院裁定：企业不得仅以「用 AI 替代员工」为由解雇人员，AI 就业问题进入司法规范阶段</div>
+      </div>
+      <div class="tags">
+        <span class="tag red">政策监管</span>
+        <span class="tag">AI 就业</span>
+        <span class="tag">中国</span>
+      </div>
+      <div class="news-body">
+        <p>中国法院最新裁定：<span class="hl">企业不得仅因「使用 AI 替代现有员工」这一单一理由解雇员工</span>。此前（2025年12月）已有另一中国法院作出类似裁决，本次为同类判决的进一步确认。</p>
+        <p>这是 AI 编程/自动化工具在中国引发就业保障争议后，司法端首次系统性介入的信号。对国内开发团队而言，这意味着以 AI 工具为由的「降本」裁员策略将面临更高法律风险，AI 与人才的协作模式（而非替代模式）将成为合规方向。</p>
+      </div>
+      <div class="news-footer">来源：<a href="https://llm-stats.com/ai-news" target="_blank">LLM Stats News · 卫报供稿</a></div>
+    </div>
+
+  </div><!-- /news-list -->
+
+  <div class="footer-nav">
+    <a class="back-btn" href="/">← 返回首页</a>
+  </div>
+
+</div>
+</body>
+</html>
