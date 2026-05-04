@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年5月4日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 24px 64px;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #6c63ff;
+      text-decoration: none;
+      font-size: 14px;
+      margin-bottom: 28px;
+      padding: 7px 16px;
+      border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .back-btn:hover { background: rgba(108,99,255,0.1); }
+
+    .page-header { margin-bottom: 32px; }
+    .date-label {
+      font-size: 13px;
+      color: #6c63ff;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+    .page-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .page-subtitle { color: #8b90b0; font-size: 14px; line-height: 1.6; }
+
+    .summary-bar {
+      background: linear-gradient(135deg, #1a1d27, #1e1f30);
+      border: 1px solid rgba(108,99,255,0.25);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      font-size: 13px;
+      color: #8b90b0;
+      line-height: 1.7;
+    }
+    .summary-bar strong { color: #c5c8e6; }
+
+    .news-list { display: flex; flex-direction: column; gap: 16px; }
+
+    .news-card {
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      border-radius: 14px;
+      padding: 20px 22px;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .news-card:hover {
+      border-color: rgba(108,99,255,0.5);
+      transform: translateY(-1px);
+    }
+    .news-card.top1 { border-color: rgba(251,191,36,0.35); }
+
+    .news-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .news-num {
+      width: 24px; height: 24px;
+      background: #6c63ff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: #fff;
+      flex-shrink: 0;
+    }
+    .news-num.gold { background: linear-gradient(135deg, #f59e0b, #d97706); }
+    .tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 6px;
+    }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #f87171; }
+    .tag-tool { background: rgba(99,102,241,0.15); color: #a5b4fc; }
+    .tag-biz { background: rgba(34,197,94,0.12); color: #4ade80; }
+    .tag-research { background: rgba(251,191,36,0.12); color: #fbbf24; }
+    .tag-policy { background: rgba(6,182,212,0.12); color: #22d3ee; }
+    .tag-open { background: rgba(168,85,247,0.15); color: #c084fc; }
+
+    .news-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #eef0fb;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .news-body {
+      font-size: 13px;
+      color: #9096b8;
+      line-height: 1.7;
+    }
+    .news-body strong { color: #c5c8e6; }
+    .news-body .highlight {
+      background: rgba(108,99,255,0.12);
+      border-left: 3px solid #6c63ff;
+      padding: 8px 12px;
+      margin-top: 10px;
+      border-radius: 0 8px 8px 0;
+      font-size: 12px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      color: #6c63ff;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin: 36px 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #2a2d3e;
+    }
+
+    .footer-nav {
+      margin-top: 48px;
+      text-align: center;
+    }
+    .footer-nav a {
+      display: inline-block;
+      color: #6c63ff;
+      text-decoration: none;
+      font-size: 14px;
+      padding: 9px 22px;
+      border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .footer-nav a:hover { background: rgba(108,99,255,0.1); }
+
+    @media (max-width: 768px) {
+      .container { padding: 24px 16px 48px; }
+      .page-title { font-size: 20px; }
+      .news-title { font-size: 15px; }
+      .news-card { padding: 16px 16px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back-btn" href="/">← 返回首页</a>
+
+  <div class="page-header">
+    <div class="date-label">2026年5月4日 · 星期一 · 劳动节假期结束 · AI 编程早报</div>
+    <h1 class="page-title">Anthropic估值冲刺9000亿超越OpenAI · 微软松绑OpenAI牵手AWS · Google I/O 2026倒计时15天</h1>
+    <p class="page-subtitle">共 7 条热点 · 假期结束资本动作密集 · AI阵营格局重塑 · 国产AI芯片全栈突破 · Google I/O 5月19日即将发布Gemini 4</p>
+  </div>
+
+  <div class="summary-bar">
+    <strong>今日要点：</strong>五一假期刚结束，AI圈资本动作异常密集——Anthropic寻求9000亿美元估值融资反超OpenAI；微软与OpenAI结束独家合作，GPT-5.5和Codex全面入驻AWS；Google I/O 2026定于5月19日举行，Gemini 4呼之欲出；国产AI实现华为昇腾950PR全栈突破；AI编程工具商业竞争格局正在快速重塑。
+  </div>
+
+  <div class="section-title">今日 7 条热点</div>
+
+  <div class="news-list">
+
+    <!-- 1 头条 -->
+    <div class="news-card top1">
+      <div class="news-meta">
+        <div class="news-num gold">1</div>
+        <span class="tag tag-biz">资本动向</span>
+        <span class="tag tag-hot">头条</span>
+      </div>
+      <div class="news-title">Anthropic 寻求 9000 亿美元估值融资——反超 OpenAI，成全球最高估值 AI 公司</div>
+      <div class="news-body">
+        据彭博社、CNBC多方证实，Anthropic 正与投资者洽谈新一轮融资，<strong>目标估值高达 9000 亿美元</strong>，超越 OpenAI 当前 8520 亿美元估值，有望加冕全球最高估值 AI 独角兽。驱动此次估值飙升的核心动力是 Claude Code 的强劲增长——Anthropic 年化营收已超 300 亿美元，企业端 AI 编程市场被视为未来最大增量。谷歌和亚马逊是其现有最大股东，两家是否参与本轮融资尚不明朗，但据悉已有多家头部机构表达兴趣。
+        <div class="highlight">
+          这是 AI 行业「超级融资赛」的最新节点：短短数月内，Anthropic 与 OpenAI 的估值差距从数千亿收窄到零，并即将反超。Claude Code 在企业端的爆发式增长是估值逻辑最核心的支撑。
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-num">2</div>
+        <span class="tag tag-biz">战略合作</span>
+        <span class="tag tag-tool">OpenAI</span>
+      </div>
+      <div class="news-title">微软结束与 OpenAI 独家合作 · OpenAI 火速牵手 AWS · GPT-5.5 与 Codex 全面入驻亚马逊云</div>
+      <div class="news-body">
+        4月29日亚马逊云科技（AWS）发布会上，AWS 正式宣布携手 OpenAI，将 <strong>GPT-5.5 和 Codex</strong> 全面接入 Amazon Bedrock 平台。与此同时，微软与 OpenAI 的独家合作关系正式转为非独家，并停止原有的收入分成安排。此前微软一直是 OpenAI 在云端的唯一商业伙伴。分析师认为，此举标志着 OpenAI 从「微软生态内」走向「多云开放战略」，Bedrock 接入将大幅拓展 Codex 企业用户规模。
+        <div class="highlight">
+          AI 编程工具的商业格局正在从「平台绑定」走向「多云分发」。对开发者来说，通过 AWS Bedrock 直接调用 GPT-5.5 或 Codex 将成为新的选项。
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-num">3</div>
+        <span class="tag tag-research">Google I/O</span>
+        <span class="tag tag-tool">Gemini 4</span>
+      </div>
+      <div class="news-title">Google I/O 2026 定于 5月19-20日 · Gemini 4 呼之欲出 · AI 编程能力全面升级预期升温</div>
+      <div class="news-body">
+        Google 官方确认 Google I/O 2026 将于<strong>5月19至20日</strong>在加州山景城举行，开发者大会主题高度聚焦 AI 进展与全平台产品更新。业界预测大会将发布 <strong>Gemini 4</strong> 旗舰模型、Android 17 开发者预览，以及 ChromeOS 与 Android 融合平台（代号 ChromeOS Flex 2.0）。此前 Gemma 4（26B/31B 开源版）已于 4 月初发布，编程能力大幅提升。Google Cloud Next 上披露的 <strong>A2A 协议</strong>（已有 150 家机构接入）和 Gemini Enterprise Agent Platform 也将在 I/O 期间深度展示。
+        <div class="highlight">
+          距 Google I/O 还有 15 天，Gemini 4 若如期发布将直接冲击 Claude Opus 4.7 的旗舰地位，三方竞争格局将在五月下旬迎来关键节点。
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-num">4</div>
+        <span class="tag tag-policy">国产AI</span>
+        <span class="tag tag-hot">芯片突破</span>
+      </div>
+      <div class="news-title">国产 AI 编程栈全栈国产化突破 · DeepSeek V4 全面迁移华为昇腾 950PR · 大模型"去美化"加速</div>
+      <div class="news-body">
+        据新浪AI速报，DeepSeek V4 的训练和推理已基本完成向<strong>华为昇腾 950PR</strong> 的迁移，标志着中国头部开源大模型在 AI 编程场景下率先实现全栈国产化。昇腾 950PR 采用国产 7nm 工艺，AI 算力密度较上代大幅提升。DeepSeek V4 兼容 Anthropic API、拥有百万 Token 上下文，在国内 AI 编程圈已是 Claude Code 的重要替代选项。此次芯片迁移的完成，进一步降低了国内开发者使用高性能 AI 编程工具的算力依赖风险。
+        <div class="highlight">
+          AI 编程赛道的「去美化」路径逐渐清晰：模型层 DeepSeek V4、芯片层昇腾 950PR、IDE 层 AtomCode/Trae，国内自主 AI 编程闭环初步成型。
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-num">5</div>
+        <span class="tag tag-tool">AI工具</span>
+        <span class="tag tag-research">横评</span>
+      </div>
+      <div class="news-title">2026 春季 AI 编程工具终极横评出炉 · Claude Code 重构见长 · Cursor 补全无敌 · Codex CLI 开源潜力大</div>
+      <div class="news-body">
+        bestblogs.dev 发布的《2026 春季 AI 编程工具横评》从 8 个维度对 Claude Code、Cursor、Codex CLI、Gemini CLI 进行了系统评测。核心结论：<strong>Claude Code</strong> 在跨模块重构和代码质量上领跑，<strong>Cursor</strong> 在 IDE 原生集成和实时补全上无可替代，<strong>Codex CLI</strong> 凭借 OpenAI 开源策略和终端集成展现长期潜力，<strong>Gemini CLI</strong> 提供免费 100 万 Token 上下文配合谷歌搜索有独特优势。没有一款工具在所有维度占优，组合使用已成主流策略。
+        <div class="highlight">
+          「工具组合」正成为 2026 年 AI 编程最佳实践：日常补全用 Cursor，大型重构用 Claude Code，离线调试或成本敏感任务用 Codex CLI。
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-num">6</div>
+        <span class="tag tag-biz">亚马逊</span>
+        <span class="tag tag-tool">AWS</span>
+      </div>
+      <div class="news-title">亚马逊 AWS CEO：AI 不会淘汰程序员 · 岗位「重塑」而非「消失」· 亚马逊内部 AI 使用率大幅提升</div>
+      <div class="news-body">
+        亚马逊云科技 CEO 在最新采访中表示，AI 不会让程序员失业，而是<strong>「重塑编程岗位」</strong>——初级代码生成工作将被 AI 接管，但系统架构、代码审查、复杂 Bug 诊断等高价值工作需求反而上升，与「杰文斯效应」研究结论高度吻合。他透露亚马逊内部已有超过 60% 的 PR 在 AI 辅助下完成，但工程师数量并未减少，反而因开发提速而承接了更多项目。同时他强调，AWS 接入 GPT-5.5 和 Codex 并不意味着 Amazon Q 战略退场，两套系统将并存。
+        <div class="highlight">
+          这是继谷歌（75% AI 生成代码）、微软之后，又一家顶级云厂商公开披露 AI 编程使用率，「重塑而非消失」论正在成为行业主流叙事。
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-num">7</div>
+        <span class="tag tag-open">开源</span>
+        <span class="tag tag-tool">Gemma 4</span>
+      </div>
+      <div class="news-title">Google Gemma 4 开源 26B/31B 版本免费可用 · 不绑信用卡即可调用 API · AI Studio 全面开放</div>
+      <div class="news-body">
+        Google DeepMind 开源的 Gemma 4 系列（26B 和 31B 两个版本）已可通过 Google AI Studio 免费调用，<strong>无需绑定信用卡</strong>。实测显示两款模型在编程任务上表现出色，支持 100 万 Token 上下文，推理速度快，适合集成到 Cursor、Cline 等工具的 BYO 模型（自带模型）场景。GDG China 还同步发起 Gemma 4 开发者大赛，鼓励国内开发者基于 Gemma 4 构建真实 AI 编程应用。
+        <div class="highlight">
+          Gemma 4 免费开放是2026年开源 AI 模型最重要的进展之一。对于不想付费使用 Claude/GPT 但需要高性能模型的开发者，Gemma 4 + AI Studio 是目前最低门槛的生产级选择。
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /news-list -->
+
+  <div class="footer-nav">
+    <a href="/">← 返回首页</a>
+  </div>
+
+</div>
+</body>
+</html>
