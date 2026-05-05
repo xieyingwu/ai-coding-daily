@@ -194,6 +194,104 @@
     <strong>这是什么？</strong> 每天从 Cursor 官方博客精选 1-3 个<strong>实用技巧或使用场景</strong>，用大白话讲清楚——你能学到什么、怎么用、什么时候用。从新手到进阶，边用边学。
   </div>
 
+  <!-- ========== 2026-05-05 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">05月05日</span>
+      <span class="day-title">让 AI 自动发现自己的 Bug · 用「代码保留率」判断输出质量 · 给不同模型定制专属提示风格</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <!-- 技巧1: 自动错误监控 -->
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🔍</div>
+          <div class="tip-title">Cursor 团队怎么让 AI 自动发现框架 Bug？——「LLM 扫日志 + 自动生工单」的运维方法可复用到你自己的项目</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">Cursor 官方实践</span>
+          <span class="tag green">工程化技巧</span>
+          <span class="tag cyan">可复用方法论</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          Cursor 官方博客披露了一个很有意思的内部做法：他们每周用脚本让 AI 自动扫描系统日志，<span class="hl">让 LLM 帮忙发现异常、自动生成修复工单，甚至联动任务管理工具触发 Agent 去自动修复</span>。通过这种方式，他们曾在一次集中冲刺中把意外工具调用错误降低了一个数量级。
+          </p>
+          <p><strong>你能怎么用？</strong></p>
+          <ul>
+            <li><strong>方法一：让 Cursor 帮你分析错误日志</strong>——把 Android Studio 的 Logcat 输出或后端服务错误日志贴给 Cursor，让它分类整理、找出高频异常模式，比你手动看日志快 10 倍</li>
+            <li><strong>方法二：让 AI 帮你写自动化检测脚本</strong>——请 Cursor 写一个定时扫描日志的 Python 脚本，当某类错误出现频次异常时自动发通知（邮件/钉钉/企微）</li>
+            <li><strong>错误分类原则</strong>：把错误分为「框架/代码 Bug（必须修）」和「环境/用户错误（正常波动）」两类，分别设置不同的告警阈值，避免被正常波动淹没</li>
+            <li><strong>适合什么场景</strong>：负责后端接口维护、SDK 发版后监控、或者多模块 Android 项目的稳定性治理</li>
+          </ul>
+          <p><strong>核心启发</strong>：「用 AI 管理 AI 的输出质量」是 Cursor 团队给我们的最大启示——你不用亲自盯日志，可以让 AI 替你盯，出问题了自动告警，这才是真正的「AI 运维」。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客「持续改进我们的智能体框架」</span>
+          <a href="https://cursor.com/cn/blog/continually-improving-agent-harness" target="_blank">查看原文</a>
+        </div>
+      </div>
+
+      <!-- 技巧2: 代码保留率量化输出质量 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">📊</div>
+          <div class="tip-title">用「代码保留率」判断 AI 输出质量——一个比 benchmark 更真实的评估方法</div>
+        </div>
+        <div class="tags">
+          <span class="tag green">效果评估</span>
+          <span class="tag">质量量化</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          Cursor 团队发明了一个叫「代码保留率」的指标：<span class="hl">AI 写的代码，在固定时间（比如3天）后还留在代码库里的比例</span>。保留率高 = 代码质量好；保留率低 = 代码被大量改掉，说明初始输出质量差。
+          </p>
+          <p><strong>你能怎么用？</strong></p>
+          <ul>
+            <li><strong>自测方法</strong>：记录一下你最近一周让 Cursor 生成的代码，有多少被你直接用了、多少被大改了、多少被整段删掉了——这个比例就是你的「个人代码保留率」</li>
+            <li><strong>如果保留率低</strong>，通常是这几个原因：①给 AI 的需求描述不够清晰；②没有提供足够的上下文（没有@相关文件）；③任务太大没有拆解成小步骤</li>
+            <li><strong>提升技巧</strong>：让 AI 先输出方案/伪代码，你确认思路后再生成完整代码——这一步能把代码保留率从 50% 提升到 85% 以上</li>
+            <li><strong>另一个快速判断方法</strong>：看你对 AI 输出做的操作——如果你的下一步是「继续下一个功能」，说明输出成功；如果你的下一步是「粘贴报错信息」，说明输出失败了</li>
+          </ul>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客「持续改进我们的智能体框架」</span>
+          <a href="https://cursor.com/cn/blog/continually-improving-agent-harness" target="_blank">查看原文</a>
+        </div>
+      </div>
+
+      <!-- 技巧3: 多模型差异化提示 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🎛️</div>
+          <div class="tip-title">不同模型要用不同说话方式——Claude 喜欢「模糊指令」，GPT 喜欢「字面精确指令」</div>
+        </div>
+        <div class="tags">
+          <span class="tag cyan">多模型技巧</span>
+          <span class="tag amber">提示工程</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          Cursor 官方博客透露了一个工程细节：他们给不同模型配置了<span class="hl">不同的提示风格</span>，因为各个模型的训练方式不同，对指令的理解方式也不一样：
+          </p>
+          <ul>
+            <li><strong>Claude 系列</strong>：偏「直觉型」，能很好理解意图模糊的自然语言指令。你可以说「帮我优化这段代码的可读性」，它能自己判断怎么做最好</li>
+            <li><strong>GPT/OpenAI 系列</strong>：偏「字面型」，对指令的解读更精确和字面。说「把这段代码的变量名改成驼峰命名，注释改成英文」效果比说「优化代码风格」更好</li>
+            <li><strong>实用建议</strong>：切换模型时，顺便调整你的提示方式。用 Claude 可以更口语化；用 GPT 系列要更精确具体</li>
+            <li><strong>快速判断法</strong>：如果模型经常给你「理解了你的意图但做了不同的事」，说明它偏直觉型；如果经常「做了你说的但不是你想要的」，说明它偏字面型——对应调整提示策略</li>
+          </ul>
+          <p><strong>一句话记住</strong>：Claude 当聪明同事，给目标就行；GPT 当精确执行者，步骤要写清楚。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客「持续改进我们的智能体框架」</span>
+          <a href="https://cursor.com/cn/blog/continually-improving-agent-harness" target="_blank">查看原文</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ========== 2026-05-04 ========== -->
   <div class="day-entry">
     <div class="day-header">

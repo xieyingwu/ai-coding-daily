@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年5月5日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px 64px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: #6c63ff; font-size: 13px; text-decoration: none;
+      margin-bottom: 28px;
+      padding: 6px 14px;
+      border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 8px;
+      transition: border-color 0.2s;
+    }
+    .back-link:hover { border-color: #6c63ff; }
+
+    .page-header { margin-bottom: 36px; }
+    .date-badge {
+      display: inline-block;
+      background: rgba(108,99,255,0.15);
+      border: 1px solid rgba(108,99,255,0.35);
+      color: #a5b4fc;
+      font-size: 13px; font-weight: 700;
+      padding: 5px 14px; border-radius: 8px;
+      margin-bottom: 12px;
+    }
+    .page-title {
+      font-size: 26px; font-weight: 800; color: #fff;
+      line-height: 1.4; margin-bottom: 10px;
+    }
+    .page-title span { color: #6c63ff; }
+    .page-desc { font-size: 14px; color: #8b90b0; line-height: 1.7; }
+
+    .headline-bar {
+      background: linear-gradient(135deg, rgba(108,99,255,0.12), rgba(34,211,238,0.06));
+      border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 14px; padding: 18px 22px; margin-bottom: 28px;
+    }
+    .headline-label { font-size: 11px; font-weight: 700; color: #6c63ff; letter-spacing: 1px; margin-bottom: 6px; }
+    .headline-text { font-size: 16px; font-weight: 700; color: #fff; line-height: 1.55; }
+
+    .news-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+
+    .news-card {
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      border-radius: 14px; padding: 20px 22px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .news-card:hover { border-color: #6c63ff; transform: translateY(-1px); }
+    .news-card.top1 { border-color: rgba(108,99,255,0.45); }
+
+    .news-meta {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 9px; flex-wrap: wrap;
+    }
+    .news-num {
+      width: 22px; height: 22px; border-radius: 6px;
+      background: rgba(108,99,255,0.2); border: 1px solid rgba(108,99,255,0.3);
+      font-size: 11px; font-weight: 700; color: #a5b4fc;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .news-tag {
+      font-size: 11px; font-weight: 600;
+      padding: 2px 9px; border-radius: 5px;
+    }
+    .tag-model { background: rgba(99,102,241,0.15); color: #818cf8; }
+    .tag-tool  { background: rgba(74,222,128,0.12); color: #4ade80; }
+    .tag-biz   { background: rgba(251,191,36,0.12); color: #fbbf24; }
+    .tag-security { background: rgba(248,113,113,0.12); color: #f87171; }
+    .tag-event { background: rgba(34,211,238,0.12); color: #22d3ee; }
+
+    .news-title {
+      font-size: 16px; font-weight: 700; color: #eef0fb;
+      line-height: 1.5; margin-bottom: 8px;
+    }
+    .news-body {
+      font-size: 14px; color: #8b90b0; line-height: 1.75;
+    }
+    .news-body .hl { color: #a5b4fc; font-weight: 500; }
+    .news-body strong { color: #c4c8e8; }
+
+    .section-title {
+      font-size: 13px; font-weight: 700; color: #6c63ff;
+      letter-spacing: 1px; margin-bottom: 16px;
+      padding-bottom: 8px; border-bottom: 1px solid #2a2d3e;
+    }
+
+    .footer-nav {
+      margin-top: 48px; padding-top: 24px; border-top: 1px solid #2a2d3e;
+      text-align: center;
+    }
+    .footer-nav a {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      color: #8b90b0; text-decoration: none; font-size: 14px;
+      padding: 10px 24px; border-radius: 10px;
+      transition: border-color 0.2s, color 0.2s;
+      margin: 6px;
+    }
+    .footer-nav a:hover { border-color: #6c63ff; color: #a5b4fc; }
+
+    @media (max-width: 600px) {
+      .page-title { font-size: 20px; }
+      .news-title { font-size: 15px; }
+      .news-body { font-size: 13px; }
+      .news-card { padding: 16px 14px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back-link" href="/">← 返回首页</a>
+
+  <div class="page-header">
+    <div class="date-badge">2026年5月5日 · 星期二</div>
+    <h1 class="page-title">AI 编程热点 · <span>今日 7 条</span></h1>
+    <p class="page-desc">每日 08:15 自动生成 · 覆盖全球 AI 编程工具、模型动态、行业资讯</p>
+  </div>
+
+  <div class="headline-bar">
+    <div class="headline-label">TODAY'S HEADLINE</div>
+    <div class="headline-text">xAI Grok 4.3 全量发布——降价60%+百万Token上下文+永久推理模式，同等任务成本仅 GPT-5.5 的 1/10；四大巨头 AI 资本支出逼近 7250 亿美元，算力军备赛进入最高烈度</div>
+  </div>
+
+  <div class="section-title">TODAY'S TOP 7</div>
+
+  <div class="news-list">
+
+    <!-- 1 -->
+    <div class="news-card top1">
+      <div class="news-meta">
+        <div class="news-num">1</div>
+        <span class="news-tag tag-model">模型发布</span>
+        <span class="news-tag tag-biz">降价60%</span>
+      </div>
+      <div class="news-title">xAI Grok 4.3 正式全量发布——百万 Token 上下文 + 永久推理模式 + 60% 降价，对标 GPT-5.5 成本压至 1/10</div>
+      <div class="news-body">
+        <p>xAI 于4月30日完成 Grok 4.3 全量推出，这是 Grok 系列迄今<span class="hl">最激进的一次价格与能力双重升级</span>：输入价格降约 40%（1.25美元/百万token），输出降约 60%（2.5美元/百万token），同等 benchmark 完整跑测成本仅 395 美元，而 GPT-5.5 同测需 3959 美元——差距10倍。</p>
+        <p>技术侧升级同样显著：<strong>推理能力永久开启</strong>（所有查询默认先思考再输出，不再手动切换），上下文扩至 100 万 Token，专业领域表现突出——法律推理（CaseLaw v2，79.3%，排名第一）、企业金融（CorpFin，排名第一）。但通用编码与高难数学（ProofBench 仅11%）仍是短板。同步推出 <strong>Custom Voices 语音克隆套件</strong>，仅需 120 秒参考音频即可克隆语音，价格低于 ElevenLabs。</p>
+        <p><strong>对 AI 编程的影响</strong>：Grok 4.3 的法律 + 金融专业能力使其成为垂直行业 Agent 的低成本底座，但通用编码能力仍弱于 Claude Code 与 GPT-5.5 体系。</p>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-num">2</div>
+        <span class="news-tag tag-biz">资本支出</span>
+        <span class="news-tag tag-biz">Q1财报</span>
+      </div>
+      <div class="news-title">四大科技巨头 Q1 财报：AI 资本支出合计逼近 7250 亿美元，算力军备赛进入最高烈度</div>
+      <div class="news-body">
+        <p>谷歌、亚马逊、微软、Meta 四家同期发布2026年Q1财报，AI 投资规模令市场震动：<span class="hl">Meta 上调 2026 全年 CapEx 至 1250~1450 亿美元</span>；Alphabet 提高至 1800~1900 亿美元并称2027年还将「显著增加」；微软给出约 1900 亿美元全年 AI CapEx；亚马逊 AWS 保持同级别投入。</p>
+        <p>值得注意的是 Meta 在Q1<strong>零回购</strong>（2025年Q1回购127亿美元），资本全部转向新成立的<strong>「超智能实验室」</strong>，由首席 AI 官 Alexandr Wang 领导——这标志着 Meta 正式从「社交巨头」向「AI 基础设施玩家」全面转型。</p>
+        <p><strong>行业信号</strong>：四大巨头集体加码意味着未来12个月内 AI 工具的基础设施供给将进一步扩大，开发者可期待更强算力支撑下的 AI 编程工具升级潮。</p>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-num">3</div>
+        <span class="news-tag tag-tool">Agent框架</span>
+        <span class="news-tag tag-tool">架构演进</span>
+      </div>
+      <div class="news-title">Agent 框架工程化成 AI 编程新护城河——运行时设计取代单体模型成核心竞争力</div>
+      <div class="news-body">
+        <p>行业共识正在形成：<span class="hl">AI 编程助手的竞争重心已从「哪个模型更强」转向「谁的 Agent 运行时框架更好」</span>。Cursor、LangChain、Mistral Workflows 等正竞相落地工程化 Agent 基础设施。</p>
+        <p>核心趋势包括：<strong>① 多智能体通信效率优化</strong>——专业化子 Agent（规划/编辑/调试）分工协作，协同编排沉淀在框架而非单个 Agent；<strong>② 训练数据质量工程</strong>——框架驱动的高质量数据收集超越简单规模扩展；<strong>③ 可观测性提升</strong>——通过「代码保留率」、用户行为语义分析等指标量化 Agent 输出质量，而非单靠 benchmark。</p>
+        <p>Cursor 团队博客指出：未来AI辅助软件工程将走向专业化 Agent 分工协作模式，<strong>框架工程师的价值将超越提示工程师</strong>。</p>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-num">4</div>
+        <span class="news-tag tag-security">安全警报</span>
+        <span class="news-tag tag-tool">供应链攻击</span>
+      </div>
+      <div class="news-title">PyPI/npm 包投毒安全警报——Anthropic + Cursor 联合发布安全扫描工具应对 AI 代码供应链攻击</div>
+      <div class="news-body">
+        <p>针对 AI 生成代码的供应链安全威胁再度升级：<span class="hl">PyPI 和 npm 发现多批投毒包专门针对 AI 生成代码中的常见依赖模式</span>，攻击者利用 AI 工具自动补全倾向于引用「听起来合理的包名」这一特征，定向投毒。</p>
+        <p>应对动作：<strong>Anthropic 推出 Claude Code 内置依赖安全扫描</strong>，在代码生成阶段实时检测可疑包引用；<strong>Cursor 同步更新安全扫描模块</strong>，对 AI 自动补全的包名进行交叉验证。</p>
+        <p><strong>开发者须知</strong>：使用 AI 工具自动生成依赖引用时，务必启用包名验证功能；对于 AI 建议的不熟悉包，在安装前务必在 npm/PyPI 官网核实包的下载量与发布历史。AI 越会写代码，供应链攻击面越大，安全习惯需同步升级。</p>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-num">5</div>
+        <span class="news-tag tag-event">行业大会</span>
+        <span class="news-tag tag-model">Gemini 4</span>
+      </div>
+      <div class="news-title">Google I/O 2026 倒计时 14 天（5月19-20日）——Gemini 4 上场在即，多模态编程将迎重大升级</div>
+      <div class="news-body">
+        <p><span class="hl">Google I/O 2026 将于5月19-20日举行</span>，距今仅 14 天。本届大会最受开发者期待的发布是 <strong>Gemini 4</strong>——据爆料，Gemini 4 将重点强化多模态理解与代码生成能力，特别是图像→代码的跨模态转换（UI截图直接生成前端代码），这将直接冲击 Cursor 的 Canvas 画布功能定位。</p>
+        <p>同期预计公布的还有 <strong>Project Mariner 2.0</strong>（浏览器 Agent 升级）和 <strong>Google AI Studio 新定价体系</strong>。此外，谷歌 VS Code Copilot 已支持多模型提供商，避免厂商锁定策略也将在 I/O 上进一步明确。</p>
+        <p><strong>预判</strong>：如 Gemini 4 编码能力接近 Claude Code 水准，加上谷歌生态加持，下半年 AI 编程三强（Anthropic/OpenAI/谷歌）格局将更趋均衡。</p>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-num">6</div>
+        <span class="news-tag tag-biz">就业影响</span>
+        <span class="news-tag tag-tool">企业自动化</span>
+      </div>
+      <div class="news-title">Claude Opus 4.7 企业自动化全面落地——批量替代重复性工作，就业替代担忧持续升温</div>
+      <div class="news-body">
+        <p>Anthropic 的 Claude Opus 4.7 正加速在企业场景中落地：<span class="hl">多家企业已将数据整理、报告生成、客服响应、代码审查等重复性工作批量交由 Claude 自动完成</span>，自动化覆盖速度超出此前预期。</p>
+        <p>《独立报》调查显示，相关行业工会已对 AI 就业替代发出警告——<strong>与传统自动化不同，Claude 这类 AI 工具能处理需要语言理解的「非标准化」任务</strong>，使原本被认为安全的知识类岗位也面临压力。</p>
+        <p>另一方面，开发者社区的反应更偏正面：<strong>AI 自动化解放了开发者处理重复性代码审查和文档工作的时间</strong>，多份调研显示使用 Claude Code 的工程师将更多时间用于架构决策和产品创新。两种力量并行，「AI 与人的边界」将是2026年下半年最重要的行业议题之一。</p>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-num">7</div>
+        <span class="news-tag tag-model">开源模型</span>
+        <span class="news-tag tag-tool">本地部署</span>
+      </div>
+      <div class="news-title">开源模型加速追赶闭源旗舰——DeepSeek V4 + Qwen3.6 + MiMo-V2.5 三路并进，本地 AI 编程生态成型</div>
+      <div class="news-body">
+        <p>本周开源 AI 编程生态出现集体发力信号：<span class="hl">DeepSeek V4 空间推理机制成亮点</span>，在长上下文 Agent 任务上缩小与闭源模型差距；阿里 Qwen3.6 发布稀疏自编码器可解释性工具；小米 MiMo-V2.5-Pro 开源支持百万 Token 上下文，性能接近 Claude Sonnet 级别。</p>
+        <p>硬件侧，AMD Ryzen 395 Box 系列针对本地 AI 推理优化，内存带宽成为性能瓶颈关键指标。<strong>Qwen 3.6 27B 的 Q4_K_M 量化版</strong>被社区评测为目前性价比最高的本地编程模型——消费级 GPU 可流畅运行，代码补全延迟约 200ms。</p>
+        <p><strong>对 Android 开发者</strong>：本地模型的成熟意味着可以在不联网、数据不出园区的条件下获得媲美云端的 AI 编程辅助，适合保密性要求高的企业项目。</p>
+      </div>
+    </div>
+
+  </div><!-- /.news-list -->
+
+  <div class="footer-nav">
+    <a href="/">← 返回首页</a>
+    <a href="/cursor-tips/">⌨️ Cursor 技巧专栏</a>
+  </div>
+
+</div>
+</body>
+</html>
