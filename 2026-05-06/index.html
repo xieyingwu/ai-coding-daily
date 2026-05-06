@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年5月6日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px 64px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: #6c63ff; font-size: 13px; text-decoration: none;
+      margin-bottom: 28px;
+      padding: 6px 14px;
+      border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 8px;
+      transition: border-color 0.2s;
+    }
+    .back-link:hover { border-color: #6c63ff; }
+
+    .page-header { margin-bottom: 36px; }
+    .date-badge {
+      display: inline-block;
+      background: rgba(108,99,255,0.15);
+      border: 1px solid rgba(108,99,255,0.35);
+      color: #a5b4fc;
+      font-size: 13px; font-weight: 700;
+      padding: 5px 14px; border-radius: 8px;
+      margin-bottom: 12px;
+    }
+    .page-title {
+      font-size: 26px; font-weight: 800; color: #fff;
+      line-height: 1.4; margin-bottom: 10px;
+    }
+    .page-title span { color: #6c63ff; }
+    .page-desc { font-size: 14px; color: #8b90b0; line-height: 1.7; }
+
+    .headline-bar {
+      background: linear-gradient(135deg, rgba(108,99,255,0.12), rgba(34,211,238,0.06));
+      border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 14px; padding: 18px 22px; margin-bottom: 28px;
+    }
+    .headline-label {
+      font-size: 11px; font-weight: 700; color: #6c63ff;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;
+    }
+    .headline-text {
+      font-size: 16px; font-weight: 700; color: #fff; line-height: 1.55;
+    }
+    .headline-sub { font-size: 13px; color: #8b90b0; margin-top: 6px; line-height: 1.6; }
+
+    .section-title {
+      font-size: 13px; font-weight: 700;
+      color: #6c63ff; letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-title::after {
+      content: ''; flex: 1; height: 1px; background: #2a2d3e;
+    }
+
+    .news-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+    .news-card {
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      border-radius: 12px; padding: 16px 20px;
+      transition: border-color 0.2s;
+    }
+    .news-card:hover { border-color: rgba(108,99,255,0.5); }
+    .news-card.hot { border-color: rgba(251,191,36,0.25); }
+    .news-meta {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+    }
+    .news-num {
+      width: 22px; height: 22px; border-radius: 6px;
+      background: rgba(108,99,255,0.18); color: #a5b4fc;
+      font-size: 11px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .news-tag {
+      font-size: 11px; font-weight: 600; color: #8b90b0;
+      background: #21253a; padding: 2px 8px; border-radius: 5px;
+    }
+    .news-tag.hot-tag { color: #fbbf24; background: rgba(251,191,36,0.1); }
+    .news-tag.intl-tag { color: #22d3ee; background: rgba(34,211,238,0.1); }
+    .news-tag.cn-tag { color: #4ade80; background: rgba(74,222,128,0.1); }
+    .news-title {
+      font-size: 15px; font-weight: 700; color: #eef0fb; line-height: 1.5;
+      margin-bottom: 6px;
+    }
+    .news-body {
+      font-size: 13px; color: #8b90b0; line-height: 1.75;
+    }
+    .news-body strong { color: #c4b5fd; }
+
+    .cursor-section {
+      background: linear-gradient(135deg, #0f1a1e, #121827);
+      border: 1px solid rgba(34,211,238,0.25);
+      border-radius: 16px; padding: 22px 24px; margin-bottom: 28px;
+    }
+    .cursor-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+    }
+    .cursor-icon { font-size: 24px; }
+    .cursor-label {
+      font-size: 14px; font-weight: 700; color: #22d3ee;
+    }
+    .cursor-sub { font-size: 12px; color: #4a7a8a; margin-top: 2px; }
+
+    .tip-list { display: flex; flex-direction: column; gap: 14px; }
+    .tip-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(34,211,238,0.12);
+      border-radius: 10px; padding: 14px 16px;
+    }
+    .tip-name {
+      font-size: 14px; font-weight: 700; color: #e2e8f0; margin-bottom: 7px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .tip-badge {
+      font-size: 10px; font-weight: 600; color: #22d3ee;
+      background: rgba(34,211,238,0.1); padding: 2px 7px; border-radius: 5px;
+    }
+    .tip-desc { font-size: 13px; color: #7a8499; line-height: 1.75; }
+    .tip-desc strong { color: #a5c4d4; }
+    .tip-desc ul { padding-left: 16px; }
+    .tip-desc li { margin-bottom: 4px; }
+
+    .footer-nav {
+      display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px;
+    }
+    .footer-nav a {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: #6c63ff; font-size: 13px; text-decoration: none;
+      padding: 7px 16px;
+      border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 8px;
+      transition: border-color 0.2s;
+    }
+    .footer-nav a:hover { border-color: #6c63ff; }
+    .footer-nav a.tips-link { color: #22d3ee; border-color: rgba(34,211,238,0.3); }
+    .footer-nav a.tips-link:hover { border-color: #22d3ee; }
+
+    @media (max-width: 768px) {
+      body { padding: 24px 14px 48px; }
+      .page-title { font-size: 20px; }
+      .news-title { font-size: 14px; }
+      .news-body { font-size: 12px; }
+      .tip-desc { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back-link" href="/">← 返回首页</a>
+
+    <div class="page-header">
+      <div class="date-badge">2026年5月6日 · 星期三</div>
+      <h1 class="page-title">AI 编程热点 · <span>商业化进入快车道</span></h1>
+      <p class="page-desc">OpenAI+Anthropic双双联手华尔街 · Google I/O 2026倒计时13天 · 豆包Code登场企业级竞争 · 共 7 条精选热点</p>
+    </div>
+
+    <!-- 头条 -->
+    <div class="headline-bar">
+      <div class="headline-label">Today's Headline</div>
+      <div class="headline-text">OpenAI 与 Anthropic 同日宣布携手华尔街巨头成立合资企业——AI工具商业化进入冲刺阶段</div>
+      <div class="headline-sub">OpenAI联合TPG、博枫、贝恩等19家机构募集逾40亿美元成立企业AI服务公司；Anthropic同日宣布与黑石、高盛、Hellman &amp; Friedman联手，总投资约15亿美元。两大AI头部同日宣布华尔街合资，标志AI工具商业化从"融资扩张"转向"产业深度落地"新阶段。</div>
+    </div>
+
+    <!-- 新闻列表 -->
+    <div class="section-title">全部热点</div>
+    <div class="news-list">
+
+      <div class="news-card hot">
+        <div class="news-meta">
+          <span class="news-num">1</span>
+          <span class="news-tag hot-tag">头条 · 商业化</span>
+        </div>
+        <div class="news-title">OpenAI + Anthropic 同日牵手华尔街——AI 商业化冲刺战正式打响</div>
+        <div class="news-body">
+          OpenAI 从 TPG、博枫资产管理、Advent、贝恩资本等 19 家机构募集逾 <strong>40 亿美元</strong>，成立专注企业 AI 软件落地的合资公司，合作伙伴拥有超 2000 家投资组合企业。Anthropic 随即回应，宣布与 <strong>黑石、高盛、Hellman & Friedman</strong> 联手，三方各出资约 3 亿美元，合资规模约 15 亿美元，目标向 PE 投资组合公司推广 Claude 工具。两大巨头同日宣布，是 2026 年 AI 商业化竞争最激烈的一幕——AI 工具的战场已从"谁的模型更强"全面转向"谁能更快植入企业"。
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-meta">
+          <span class="news-num">2</span>
+          <span class="news-tag intl-tag">OpenAI · Codex</span>
+        </div>
+        <div class="news-title">GPT-5.5 Party 超 8000 人报名爆满——OpenAI 顺势赠送月度 Codex 10 倍限速</div>
+        <div class="news-body">
+          由 GPT-5.5 自主策划的庆典活动（时间由模型自行选定为 5 月 5 日下午 5:55 分）吸引超 <strong>8000 名开发者</strong>报名，远超场地容量。OpenAI 随即将活动升级为月度回馈计划——所有报名开发者获赠 <strong>Codex 10 倍 Rate Limit</strong> 权益直至 6 月 5 日。这场由 AI 自主策划的活动折射出：Codex 正凭借体验优势在编程工具市场形成差异化，与 Claude Code 的竞争进入白热化。
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-meta">
+          <span class="news-num">3</span>
+          <span class="news-tag hot-tag">Google I/O · 倒计时</span>
+        </div>
+        <div class="news-title">Google I/O 2026 倒计时 13 天——Gemini 4、Android XR 眼镜、Aluminum OS 将全面亮相</div>
+        <div class="news-body">
+          大会定于 <strong>5 月 19-20 日</strong>在加州山景城举行。预计亮点：① <strong>Gemini 4</strong> 正式发布，对标 GPT-5.5 和 Claude Opus 4.7；② <strong>Android XR 智能眼镜</strong>消费级版本首次公开；③ <strong>Aluminum OS</strong>——ChromeOS 与 Android 融合新平台；④ Gemini 深度集成 Android 17 及全 Google 生态。对开发者而言，Gemini 4 的 API 能力和 Code Assist 新版是最值得关注的产品线。
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-meta">
+          <span class="news-num">4</span>
+          <span class="news-tag intl-tag">行业趋势 · 工程化</span>
+        </div>
+        <div class="news-title">2026 AI 编程工具年度总结：核心竞争力从「会写代码」转向「能否稳定落地工程」</div>
+        <div class="news-body">
+          行业分析显示，2026 年 AI 编程工具的真正分水岭不是演示效果，而是<strong>能否进入真实工程流程</strong>。三大趋势正在主导竞争：① 工程化稳定性——崩溃率、上下文腐坏控制成核心指标；② 多 Agent 协作——单一模型让位于「Agent 团队 + 人工监督」架构；③ IDE 集成深度——Cursor 的深度 IDE 集成 vs Claude Code 的 CLI 灵活性，形成两条差异化路线。开发者选型建议：<strong>Cursor 适合 IDE 深度用户，Claude Code 适合终端/自动化流水线</strong>。
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-meta">
+          <span class="news-num">5</span>
+          <span class="news-tag cn-tag">国内 · 豆包</span>
+        </div>
+        <div class="news-title">字节豆包 Seed 2.0 Code 版全面推向企业级——百万 Token 仅 0.6 元，国内 AI 编程价格战升温</div>
+        <div class="news-body">
+          字节跳动豆包 <strong>Doubao-Seed-2.0 Code</strong> 版本面向企业级 Agent 长链路任务优化，百万 Token 定价仅 <strong>0.6 元人民币</strong>，是同等规格国际模型价格的 1/10 以下。四款变体（Pro/Code/Lite/Mini）分别覆盖复杂推理、代码生成、轻量场景和边缘部署。国内 AI 编程栈已初步形成：<strong>豆包 Code（本地化低价）+ DeepSeek V4（开源自建）+ 通义灵码（阿里生态集成）</strong>三强竞争格局。
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-meta">
+          <span class="news-num">6</span>
+          <span class="news-tag intl-tag">Claude Code · 企业落地</span>
+        </div>
+        <div class="news-title">Claude Code 企业自动化全面铺开——就业替代担忧随落地案例增多而升温</div>
+        <div class="news-body">
+          随着 <strong>Amplitude</strong>（生产代码量提升 3 倍）、<strong>Salesforce</strong>（开发速度提升 30%）、<strong>NAB</strong>（6000 工程师全员部署）等大量企业落地案例公开，Claude Code 在企业端的实际渗透率已领先市场预期。与此同时，关于<strong>就业替代</strong>的讨论在 HN 和 LinkedIn 上升温——多个公司已表示在 AI 工具上线后冻结初级工程师招聘。Anthropic 回应称 AI 工具应扩大而非收窄开发者角色边界。
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-meta">
+          <span class="news-num">7</span>
+          <span class="news-tag intl-tag">横评 · 工具选型</span>
+        </div>
+        <div class="news-title">2026 春季 AI 编程工具终极横评：Claude Code/Cursor/Codex CLI 三分天下格局确立</div>
+        <div class="news-body">
+          最新横评综合实测 8 个维度结论：<strong>Claude Code</strong>（CLI 多形态融合，企业自动化首选）、<strong>Cursor</strong>（IDE 原生 + BYO 模型，个人效率工具首选）、<strong>Codex CLI</strong>（OpenAI 开源终端 Agent，轻量脚本场景首选）三分天下。<strong>Windsurf 2.0</strong> 云代理能力补强排名上升，<strong>Gemini CLI</strong> 凭借 1M Token 上下文成为长文档处理黑马。对于 Android 团队建议：Cursor + Claude Code 双轨并行，Cursor 做日常开发，Claude Code 做跨仓库重构和大规模迁移任务。
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Cursor 技巧 -->
+    <div class="cursor-section">
+      <div class="cursor-header">
+        <div class="cursor-icon">⌨️</div>
+        <div>
+          <div class="cursor-label">今日 Cursor 技巧</div>
+          <div class="cursor-sub">来源：Cursor 官方博客「保持 Cursor 应用稳定」· 2026.04.21</div>
+        </div>
+      </div>
+      <div class="tip-list">
+
+        <div class="tip-item">
+          <div class="tip-name">
+            用「工作树隔离」让多个 Agent 同时干活不互相打架
+            <span class="tip-badge">多 Agent</span>
+          </div>
+          <div class="tip-desc">
+            <strong>这是什么？</strong> Cursor 官方博客揭秘了他们内部多 Agent 并行时避免冲突的核心方案——<strong>Git 工作树（Worktree）隔离</strong>。每个 Agent 在独立的工作树里工作，互不干扰文件系统，最后再合并。<br>
+            <strong>怎么用？</strong>
+            <ul>
+              <li>用 <strong>git worktree add</strong> 命令给每个并行任务创建独立目录，让 Cursor 分别在各目录里执行 Agent</li>
+              <li>比如：同时重构 A 模块 + 修复 B Bug + 更新文档，三个任务三个 worktree，最终 git merge 合入主分支</li>
+              <li>Android 多模块项目尤其适合：不同 SKU lib 的重构任务可以完全隔离并行</li>
+            </ul>
+            <strong>适合什么场景？</strong> 有多个互不依赖的任务需要同时推进，或者你想用 Cursor 的背景 Agent 在你工作时同步跑测试/文档更新任务。
+          </div>
+        </div>
+
+        <div class="tip-item">
+          <div class="tip-name">
+            检查点（Checkpoint）机制——让 Agent 出错了能「一键回滚」
+            <span class="tip-badge">稳定性</span>
+          </div>
+          <div class="tip-desc">
+            <strong>这是什么？</strong> Cursor 的 Agent 模式内置了检查点机制：每次 Agent 执行一个重要操作前会自动保存当前状态快照。如果 Agent 走偏了、改坏了代码，你可以回到任意一个检查点重新开始，而不用手动 git reset。<br>
+            <strong>怎么用？</strong>
+            <ul>
+              <li>在 Chat 面板中，Agent 执行记录旁会有「Restore checkpoint」按钮，点击即可回滚到任意历史状态</li>
+              <li>建议在发出「重构整个模块」这类高风险指令前，<strong>先手动做一次 git commit</strong>作为保险点</li>
+              <li>配合 Cursor 的「只读审查模式（Ask Mode）」先预览改动范围，再决定是否执行</li>
+            </ul>
+            <strong>核心原则：</strong> 大任务 = 小步骤 + 频繁检查点，不要一次让 Agent 改太多文件，每步确认后再继续。
+          </div>
+        </div>
+
+        <div class="tip-item">
+          <div class="tip-name">
+            在 Cursor 里接入豆包 Code / DeepSeek V4 的 BYO 模型方案
+            <span class="tip-badge">国内用户</span>
+          </div>
+          <div class="tip-desc">
+            <strong>这是什么？</strong> Cursor 支持「BYO Model（Bring Your Own Model）」功能，允许你在 Settings 里配置自定义 API Endpoint，接入任意兼容 OpenAI API 格式的模型——包括豆包 Code、DeepSeek V4 等国内模型。<br>
+            <strong>怎么配置？</strong>
+            <ul>
+              <li>打开 Cursor → Settings → Models → Add Model，填入自定义 Base URL 和 API Key</li>
+              <li>豆包 Code：Base URL 填 <strong>https://ark.cn-beijing.volces.com/api/v3</strong>，模型 ID 填对应版本</li>
+              <li>DeepSeek V4：Base URL 填 <strong>https://api.deepseek.com</strong>，模型 ID 填 deepseek-coder-v4</li>
+              <li>配置好后在 Chat 面板顶部下拉菜单切换即可，两个模型可以随时对比输出质量</li>
+            </ul>
+            <strong>适合什么场景？</strong> 网络环境不稳定、想降低 API 成本、或者公司有合规要求必须用国内模型的团队。豆包 Code 每百万 Token 仅 0.6 元，长时间高频调用成本比 Claude 低一个量级。
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-nav">
+      <a href="/">← 返回首页</a>
+      <a class="tips-link" href="/cursor-tips/">⌨️ Cursor 技巧专栏</a>
+    </div>
+  </div>
+</body>
+</html>

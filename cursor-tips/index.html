@@ -194,6 +194,105 @@
     <strong>这是什么？</strong> 每天从 Cursor 官方博客精选 1-3 个<strong>实用技巧或使用场景</strong>，用大白话讲清楚——你能学到什么、怎么用、什么时候用。从新手到进阶，边用边学。
   </div>
 
+  <!-- ========== 2026-05-06 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">05月06日</span>
+      <span class="day-title">多 Agent 工作树隔离不打架 · 检查点一键回滚 · BYO 模型接入豆包Code/DeepSeek</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <!-- 技巧1: 工作树隔离 -->
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🌲</div>
+          <div class="tip-title">用「Git 工作树隔离」让多个 Agent 同时干活不互相打架——Cursor 官方披露的多 Agent 并行方案</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">Cursor 官方实践</span>
+          <span class="tag green">多 Agent 并行</span>
+          <span class="tag cyan">稳定性提升</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          当你有多个互不依赖的任务（比如同时重构模块A + 修复 Bug B + 更新文档）时，最好的方式是用 <span class="hl">Git Worktree</span> 给每个 Agent 创建独立的工作目录——就像给每个工人分了独立的工位，互不干扰，最后再合并成果。Cursor 官方在「保持 Cursor 应用稳定」博客中特别推荐了这个方案。
+          </p>
+          <p><strong>怎么操作？</strong></p>
+          <ul>
+            <li><strong>第一步</strong>：在终端运行 <span class="code">git worktree add ../task-refactor-a feature/refactor-a</span>，为任务A创建独立工作目录</li>
+            <li><strong>第二步</strong>：在 Cursor 中「File → Add Folder to Workspace」把新 worktree 加入工作区，在该目录下运行 Agent</li>
+            <li><strong>第三步</strong>：多个任务完成后，分别 commit，然后通过 PR 或 git merge 合入主分支</li>
+            <li><strong>Android 多模块场景</strong>：不同 SKU lib 的重构任务天然适合 worktree 隔离，互不干扰，各自独立测试</li>
+          </ul>
+          <p><strong>核心价值</strong>：Cursor Agent 默认在单一工作目录工作，如果两个 Agent 同时改同一组文件极易产生冲突。Worktree 隔离是目前官方认可的最佳并行方案，一次性解决「Agent 冲突」和「误改主分支」两大问题。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客「保持 Cursor 应用稳定」2026.04.21</span>
+          <a href="https://cursor.com/cn/blog" target="_blank">查看官方博客</a>
+        </div>
+      </div>
+
+      <!-- 技巧2: 检查点机制 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">💾</div>
+          <div class="tip-title">Cursor「检查点」机制——Agent 改坏了代码？一键回滚到任意历史状态</div>
+        </div>
+        <div class="tags">
+          <span class="tag green">风险管理</span>
+          <span class="tag">回滚恢复</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          Cursor 的 Agent 模式会在每个重要操作前自动保存状态快照（Checkpoint）。如果 Agent 走偏了——比如重构到一半改坏了代码、或者误删了关键逻辑——你可以直接回到任意一个检查点重来，完全不需要手动 <span class="code">git reset</span>。
+          </p>
+          <p><strong>怎么用？</strong></p>
+          <ul>
+            <li>在 Chat 面板的 Agent 执行记录旁，找到「<strong>Restore checkpoint</strong>」按钮，点击即可回滚到对应状态</li>
+            <li>在发出「重构整个 XXX 模块」这类高风险指令前，<strong>先手动做一次 git commit</strong>作为最终保险点</li>
+            <li>配合「<strong>Ask Mode（只读审查模式）</strong>」——先用 Ask Mode 让 AI 预览修改范围，确认没问题后再切换到 Agent 模式执行</li>
+          </ul>
+          <p><strong>养成习惯</strong>：大任务 = 小步骤 + 频繁检查。建议每次让 Agent 只完成一个「最小可验证单元」（比如一个函数或一个类），确认通过后再继续下一步，而不是一次性让 AI 改几十个文件。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客「保持 Cursor 应用稳定」2026.04.21</span>
+          <a href="https://cursor.com/cn/blog" target="_blank">查看官方博客</a>
+        </div>
+      </div>
+
+      <!-- 技巧3: BYO 模型 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🔌</div>
+          <div class="tip-title">BYO 模型实战——在 Cursor 里接入豆包 Code 或 DeepSeek V4，成本降到 1/10</div>
+        </div>
+        <div class="tags">
+          <span class="tag cyan">国内用户</span>
+          <span class="tag amber">降本增效</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          Cursor 支持「Bring Your Own Model」（BYO）功能——在设置里配置自定义 API Endpoint，接入任意兼容 OpenAI 接口格式的模型，包括国内的豆包 Code 和 DeepSeek V4，按量计费，成本比 Claude 低一个量级。
+          </p>
+          <p><strong>配置方法：</strong></p>
+          <ul>
+            <li><strong>打开配置</strong>：Cursor 顶部菜单 → Settings（齿轮图标）→ Models → 点击「Add Model」</li>
+            <li><strong>豆包 Code 配置</strong>：Base URL 填 <span class="code">https://ark.cn-beijing.volces.com/api/v3</span>，模型 ID 填 <span class="code">doubao-seed-2-0-code</span>，API Key 从火山引擎控制台获取</li>
+            <li><strong>DeepSeek V4 配置</strong>：Base URL 填 <span class="code">https://api.deepseek.com</span>，模型 ID 填 <span class="code">deepseek-coder</span></li>
+            <li>配置好后在 Chat 面板顶部下拉菜单切换模型，可以随时对比两个模型的输出质量</li>
+          </ul>
+          <p><strong>成本对比</strong>：豆包 Code 百万 Token 仅 0.6 元，DeepSeek V4 API 定价约 2 元/百万 Token，而 Claude Opus 4.7 约 108 元/百万 Token。长期高频使用下，切换到国内模型可节省 90% 以上 API 费用。</p>
+        </div>
+        <div class="tip-footer">
+          <span>适用：Cursor 3.x · BYO Model 功能需 Pro 或以上账户</span>
+          <a href="https://cursor.com/cn/blog" target="_blank">查看官方博客</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ========== 2026-05-05 ========== -->
   <div class="day-entry">
     <div class="day-header">
