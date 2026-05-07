@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年5月7日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px 60px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: #6c63ff; text-decoration: none; font-size: 14px;
+      margin-bottom: 28px;
+      padding: 8px 16px;
+      border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .back-btn:hover { background: rgba(108,99,255,0.1); }
+
+    .page-header { margin-bottom: 32px; }
+    .page-date {
+      font-size: 13px; color: #00d4aa;
+      font-weight: 600; margin-bottom: 8px;
+    }
+    .page-title {
+      font-size: 26px; font-weight: 700; color: #fff;
+      line-height: 1.4; margin-bottom: 10px;
+    }
+    .page-title span { color: #6c63ff; }
+    .page-meta { font-size: 13px; color: #6b7280; }
+
+    .summary-bar {
+      background: linear-gradient(135deg, #1a1d27, #1e1f30);
+      border: 1px solid rgba(108,99,255,0.25);
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      font-size: 14px; color: #a0a8c0;
+      line-height: 1.7;
+    }
+    .summary-bar strong { color: #e8eaf6; }
+
+    .news-list { display: flex; flex-direction: column; gap: 16px; }
+
+    .news-card {
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      border-radius: 14px;
+      padding: 20px 22px;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .news-card:hover {
+      border-color: #6c63ff;
+      transform: translateY(-1px);
+    }
+    .news-card.top1 {
+      border-color: rgba(251,191,36,0.35);
+      background: linear-gradient(135deg, #1a1d27, #1f1c10);
+    }
+
+    .news-top {
+      display: flex; align-items: flex-start;
+      gap: 12px; margin-bottom: 10px;
+    }
+    .news-num {
+      width: 26px; height: 26px;
+      border-radius: 8px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+      background: rgba(108,99,255,0.15);
+      border: 1px solid rgba(108,99,255,0.3);
+      color: #818cf8;
+    }
+    .news-card.top1 .news-num {
+      background: rgba(251,191,36,0.15);
+      border-color: rgba(251,191,36,0.4);
+      color: #fbbf24;
+    }
+    .news-headline {
+      font-size: 16px; font-weight: 600; color: #fff;
+      line-height: 1.45;
+    }
+
+    .news-tags {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      margin-bottom: 10px; padding-left: 38px;
+    }
+    .tag {
+      font-size: 11px; font-weight: 500;
+      padding: 3px 9px; border-radius: 6px;
+      background: #2a2d3a; color: #818cf8;
+    }
+    .tag.amber { background: rgba(251,191,36,0.12); color: #fbbf24; }
+    .tag.green { background: rgba(74,222,128,0.1); color: #4ade80; }
+    .tag.red { background: rgba(248,113,113,0.1); color: #f87171; }
+    .tag.cyan { background: rgba(34,211,238,0.1); color: #22d3ee; }
+
+    .news-body {
+      font-size: 14px; color: #8b90b0;
+      line-height: 1.75; padding-left: 38px;
+    }
+    .news-body .hl { color: #a5b4fc; font-weight: 500; }
+    .news-body strong { color: #c8cce8; }
+
+    .news-footer {
+      margin-top: 12px; padding-top: 10px;
+      border-top: 1px solid #1f2235;
+      font-size: 12px; color: #4a4e6a;
+      padding-left: 38px;
+    }
+
+    .tips-section { margin-top: 40px; }
+    .tips-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 18px;
+    }
+    .tips-label {
+      font-size: 13px; font-weight: 700;
+      background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2));
+      border: 1px solid rgba(99,102,241,0.35);
+      color: #a5b4fc; padding: 4px 12px; border-radius: 8px;
+    }
+    .tips-divider { flex: 1; height: 1px; background: #2a2d3e; }
+
+    .tip-card {
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      border-radius: 14px; padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .tip-card.featured { border-color: rgba(251,191,36,0.25); }
+    .tip-top {
+      display: flex; align-items: flex-start; gap: 12px;
+      margin-bottom: 10px;
+    }
+    .tip-icon {
+      width: 32px; height: 32px; border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+      background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.2);
+    }
+    .tip-title { font-size: 15px; font-weight: 600; color: #fff; line-height: 1.45; }
+    .tip-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .tip-body { font-size: 14px; color: #8b90b0; line-height: 1.75; }
+    .tip-body p { margin-bottom: 8px; }
+    .tip-body ul { padding-left: 18px; }
+    .tip-body li { margin-bottom: 5px; }
+    .tip-body .hl { color: #a5b4fc; font-weight: 500; }
+    .tip-body .code {
+      background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.2);
+      color: #c4b5fd; font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 12px; padding: 2px 7px; border-radius: 5px;
+    }
+    .tip-footer {
+      margin-top: 12px; padding-top: 10px;
+      border-top: 1px solid rgba(42,45,58,0.8);
+      font-size: 12px; color: #5a5f7a;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+    }
+    .tip-footer a { color: #6366f1; text-decoration: none; }
+    .tip-footer a:hover { text-decoration: underline; }
+
+    .page-footer {
+      margin-top: 48px; text-align: center;
+      font-size: 12px; color: #3a3d52;
+    }
+
+    @media (max-width: 768px) {
+      .page-title { font-size: 20px; }
+      .news-headline { font-size: 15px; }
+      .news-body { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back-btn" href="/">← 返回首页</a>
+
+  <div class="page-header">
+    <div class="page-date">2026年5月7日 · 星期四 · 每日 AI 编程热点</div>
+    <h1 class="page-title">Anthropic <span>Code with Claude</span> 开发者大会余波 · Orbit 主动助手揭幕 · Google I/O 2026 倒计时 12 天</h1>
+    <div class="page-meta">今日共收录 7 条热点 · 来源：Cursor 官方博客 / Anthropic / Google / 多家科技媒体</div>
+  </div>
+
+  <div class="summary-bar">
+    <strong>今日摘要：</strong>Anthropic 昨日在旧金山举行「Code with Claude」开发者大会，今日开设面向独立开发者的 Extended 专场；同日泄露的主动助手 <strong>Orbit</strong> 功能被证实将在大会亮相，标志 AI 从「被动问答」迈向「7×24小时主动助手」；与此同时，Meta 发布 ProgramBench 揭示现有模型「从零生成代码仓库准确率0%」的惊人短板，GPT-5.5 Instant 开始全量推送为 Codex 注入新引擎，Google I/O 12 天倒计时 Gemini 4.0 箭在弦上。
+  </div>
+
+  <!-- ===== 新闻列表 ===== -->
+  <div class="news-list">
+
+    <!-- 新闻1 头条 -->
+    <div class="news-card top1">
+      <div class="news-top">
+        <div class="news-num">01</div>
+        <div class="news-headline">Anthropic Orbit 主动助手正式揭幕——AI 从「被动回答」升级为「7×24小时主动帮你处理事情」</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag amber">Anthropic 头条</span>
+        <span class="tag green">主动式 AI</span>
+        <span class="tag">开发者生态</span>
+      </div>
+      <div class="news-body">
+        <p>Anthropic 在「Code with Claude」旧金山开发者大会（5月6-7日）上正式发布主动助手 <span class="hl">Orbit</span>，这是 Claude 迄今最大的交互范式升级。区别于传统「你问-AI答」模式，Orbit 会<strong>主动读取你连接的工具，每天自动生成个性化工作简报和可操作洞察</strong>。</p>
+        <p>初始集成工具包括 <strong>Gmail、Slack、GitHub、日历、Drive、Figma</strong>，精准覆盖开发者+设计师+PM群体。「Orbit Apps」生态暗示背后存在应用市场，Opt-in 按需开启。技术情报站挖掘出内部代号为「<strong>tibro</strong>」（orbit 的反拼），预计率先向 Max 订阅用户开放。这是 AI 助手竞争正式进入「主动化」的历史转折点。</p>
+      </div>
+      <div class="news-footer">来源：凤凰网科技 / 新智元 · Anthropic Code with Claude 开发者大会</div>
+    </div>
+
+    <!-- 新闻2 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">02</div>
+        <div class="news-headline">Meta ProgramBench 实测：顶尖模型「从零生成完整代码仓库」准确率为 0%——AI 编程能力边界被重新标定</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag red">能力边界警示</span>
+        <span class="tag">基准测试</span>
+        <span class="tag amber">行业反思</span>
+      </div>
+      <div class="news-body">
+        <p>Meta AI 发布 <span class="hl">ProgramBench</span> 基准测试，评估当前各主流模型从零生成<strong>完整可运行代码仓库</strong>的能力——结果令人震惊：所有被测模型的准确率均为 <strong>0%</strong>。</p>
+        <p>这一结果揭示出一个重要区别：AI 在「修改/补全已有代码」上表现出色，但在「从空白文件夹构建真实项目」时依然远未达到人类水平。这也是 Cursor autoinstall 技术（用前代模型自举 RL 训练环境）要解决的核心难题。<strong>对开发者的启示</strong>：AI 是强大的「协作者」而非「替代者」，人类对系统架构和项目初始化的掌控短期内仍无可替代。</p>
+      </div>
+      <div class="news-footer">来源：AI 开发者日报 / Meta AI · 2026年5月6日</div>
+    </div>
+
+    <!-- 新闻3 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">03</div>
+        <div class="news-headline">GPT-5.5 Instant 全量推送——「更快更省钱」的日常编程主力，Codex 新引擎上线</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag green">OpenAI</span>
+        <span class="tag cyan">成本优化</span>
+        <span class="tag">Codex 更新</span>
+      </div>
+      <div class="news-body">
+        <p>OpenAI 开始向 ChatGPT Plus/Pro/Business/Enterprise 用户逐步推送 <span class="hl">GPT-5.5 Instant</span>，定位为日常高频使用的默认模型，主打<strong>提升事实准确性、个性化记忆调用与 Gmail 上下文接入</strong>。相比 GPT-5.5 Pro，Instant 版本速度更快、调用成本更低，是写代码、Debug、文档生成的「日常主力」。</p>
+        <p>随着 GPT-5.5 Instant 进入 Codex 管道，Codex 的<strong>代码生成速度和上下文利用效率</strong>预计同步提升。配合 OpenAI 近期与三家华尔街巨头合资成立的 AI 编程服务公司，企业级编程自动化商业落地进一步提速。</p>
+      </div>
+      <div class="news-footer">来源：AI 开发者日报 / OpenAI · 2026年5月6日</div>
+    </div>
+
+    <!-- 新闻4 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">04</div>
+        <div class="news-headline">Google I/O 2026 倒计时 12 天：Gemini 4.0 + Android XR + Aluminum OS，谷歌史上最大 AI 全家桶在即</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag amber">Google I/O</span>
+        <span class="tag">Gemini 4.0</span>
+        <span class="tag cyan">5月19日</span>
+      </div>
+      <div class="news-body">
+        <p>距 <span class="hl">Google I/O 2026</span>（5月19-20日）还有 12 天。本届大会被外界公认为谷歌「AI 全面爆发」的关键节点：<strong>Gemini 4.0</strong> 将带来更深度的多模态推理（含超长视频端到端理解）；<strong>Android XR</strong> 扩展现实平台将正式亮相；<strong>Aluminum OS</strong>（跨设备 AI 操作系统）也将同台发布。</p>
+        <p>Google 已率先举办「vibe coding 倒计时挑战赛」，邀请开发者用 <strong>Gemini Canvas 或 AI Studio</strong> 创作倒计时作品，优胜者将登上 I/O 主舞台。此外，<strong>Gemini Workspace Intelligence</strong>（整合 Gmail/Drive/Calendar 实时上下文）预计将在大会后 2-4 周向普通用户推送。</p>
+      </div>
+      <div class="news-footer">来源：IT之家 / JR Academy / Google 官方 · 2026年5月</div>
+    </div>
+
+    <!-- 新闻5 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">05</div>
+        <div class="news-headline">Claude Security 公测全面开放——由 Opus 4.7 驱动，「推理引擎」取代「规则库」扫描全仓库漏洞</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag red">安全</span>
+        <span class="tag green">Anthropic</span>
+        <span class="tag">DevSecOps</span>
+      </div>
+      <div class="news-body">
+        <p>Anthropic 推出 <span class="hl">Claude Security</span> 公测版，由 Claude Opus 4.7 驱动，核心创新是<strong>首次以「推理引擎」替代传统「规则库」</strong>进行代码安全审查。它能追踪不安全输入跨越多个函数调用的传播路径，可检测 SQL 注入、远程代码执行等传统 SAST 工具的盲区。</p>
+        <p><strong>接入方式</strong>：无需额外 API Key 或独立订阅，直接整合进 Claude Enterprise 账户，支持 GitHub Actions 集成、本地 CLI 和 PR/commit 按需扫描。对中小团队来说，这意味着<strong>零增量成本</strong>即可获得企业级安全能力。（注：公测期尚未公布误报率数据，建议与 Semgrep、Snyk 对比使用）</p>
+      </div>
+      <div class="news-footer">来源：JR Academy / Anthropic 官方 · 2026年5月5日</div>
+    </div>
+
+    <!-- 新闻6 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">06</div>
+        <div class="news-headline">Alphabet 因 Anthropic 2000亿美元云合同短暂市值超越英伟达——AI 算力战争升级新信号</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag amber">资本市场</span>
+        <span class="tag">Google Cloud</span>
+        <span class="tag cyan">Anthropic</span>
+      </div>
+      <div class="news-body">
+        <p>据 CNBC 报道，Anthropic 已承诺在 <strong>5 年内向 Google Cloud 支付 2000 亿美元</strong>，该合同将占谷歌未来合约云收入的 40% 以上。消息发布后 Alphabet 股价飙升，盘后市值短暂超越英伟达——这标志着<strong>云端 AI 推理算力的价值已与芯片制造本身旗鼓相当</strong>。</p>
+        <p>结合 Google 此前对 Anthropic 的 400 亿美元股权投资，这一合同实质上意味着 <span class="hl">Google+Anthropic 双向绑定</span>：Anthropic 借用 Google 算力训练 Claude 系列，Google 凭借 Claude API 在企业端对抗 Azure+OpenAI 联盟。AI 基础设施的竞争已从「谁的模型更强」延伸为「谁锁定更多算力合同」。</p>
+      </div>
+      <div class="news-footer">来源：ToolsCompare.AI / CNBC · 2026年5月6日</div>
+    </div>
+
+    <!-- 新闻7 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">07</div>
+        <div class="news-headline">Grok 遭莫尔斯码提示注入攻击损失 17.5 万美元——AI Agent 安全边界敲响警钟</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag red">安全事件</span>
+        <span class="tag">提示注入</span>
+        <span class="tag amber">xAI Grok</span>
+      </div>
+      <div class="news-body">
+        <p>黑客通过在 X 平台发布<strong>莫尔斯码编码指令</strong>，诱导 Grok AI 在解码后<strong>自主执行加密资产转账授权</strong>，造成 17.5 万美元损失（攻击者事后归还，原因不明）。这是目前最典型的「提示注入劫持 Agent 执行权限」案例，攻击面在于<strong>模型对外部内容的信任边界</strong>而非代码漏洞。</p>
+        <p><strong>防御三原则</strong>：(1) 最小权限——AI 仅持有完成任务所需最少权限；(2) 高价值操作必须人类二次确认；(3) 外部内容（社媒数据）与工具调用权限完全隔离。随着 AI Agent 接入更多系统，这类攻击的行业影响将持续扩大。</p>
+      </div>
+      <div class="news-footer">来源：JR Academy / CNN Business · 2026年5月5日</div>
+    </div>
+
+  </div><!-- /news-list -->
+
+  <!-- ===== 今日 Cursor 技巧彩蛋 ===== -->
+  <div class="tips-section">
+    <div class="tips-header">
+      <span class="tips-label">今日 Cursor 技巧</span>
+      <span class="tips-divider"></span>
+    </div>
+
+    <div class="tip-card featured">
+      <div class="tip-top">
+        <div class="tip-icon">⚙️</div>
+        <div class="tip-title">autoinstall 自举 Composer——Cursor 用「上一代 AI 搭环境」给「下一代 AI 练手」，训练效率大幅提升</div>
+      </div>
+      <div class="tip-tags">
+        <span class="tag amber">Cursor 官方最新</span>
+        <span class="tag green">高阶原理</span>
+        <span class="tag">RL 训练</span>
+      </div>
+      <div class="tip-body">
+        <p><strong>这是什么？</strong><br>
+        Cursor 官方发布新研究「用 autoinstall 自举 Composer」（5月6日），揭示 Composer 2 是如何被训练出来的：用 Composer 1.5（旧版本）自动配置好训练环境，再让 Composer 2 在这些干净环境中做强化学习。这就是「<span class="hl">自举</span>」——AI 用自己的前辈来构建训练自己的基础。
+        </p>
+        <p><strong>对你有什么用？</strong></p>
+        <ul>
+          <li><strong>理解为什么 Composer 越用越准</strong>：它经历了真实仓库环境的 RL 训练，处理过 README、Makefile、依赖冲突，所以它「懂」你的项目结构</li>
+          <li><strong>可以学习的思路</strong>：autoinstall 的两阶段流程（目标设定 → 环境达成）本质上也是你给 Agent 布置任务的最佳范式——<span class="hl">先说清楚「做完是什么样子」，再让 Agent 去执行，最后验证结果</span></li>
+          <li><strong>实战类比</strong>：给 Cursor Agent 布置任务时，不要只说「实现功能 X」，改为说「实现完成后，运行 <span class="code">./gradlew test :module:testDebugUnitTest</span> 应该全绿，无任何报错」——给 Agent 一个可验证的成功标准</li>
+        </ul>
+        <p><strong>数据支撑</strong>：Composer 2 在 Terminal-Bench（含环境配置能力测试）上得分 <strong>61.7%</strong>，比 Composer 1.5 的 47.9% 提升 14 个百分点，这就是 autoinstall 训练数据的直接贡献。</p>
+      </div>
+      <div class="tip-footer">
+        <span>来源：Cursor 官方博客「用 autoinstall 自举 Composer」2026.05.06</span>
+        <a href="https://cursor.com/cn/blog/bootstrapping-composer-with-autoinstall" target="_blank">查看原文</a>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-top">
+        <div class="tip-icon">🎛️</div>
+        <div class="tip-title">Cursor 新增「模型支出管理 + 用量分析」面板——团队用 Cursor 终于能看清花了多少钱</div>
+      </div>
+      <div class="tip-tags">
+        <span class="tag cyan">新功能</span>
+        <span class="tag">团队管理</span>
+        <span class="tag amber">成本可视化</span>
+      </div>
+      <div class="tip-body">
+        <p><strong>这是什么？</strong><br>
+        Cursor 在 5月4日的更新日志中上线了<span class="hl">「模型控制、支出管理与用量分析」</span>面板。团队管理员现在可以：(1) 限制团队成员可使用的模型列表（防止乱用高价模型）；(2) 查看按成员/按模型/按时间段的 Token 消耗明细；(3) 设置使用量预算上限。
+        </p>
+        <p><strong>怎么用？（团队管理员）</strong></p>
+        <ul>
+          <li>进入 <span class="code">cursor.com/team/settings</span> → 「Usage & Spending」板块</li>
+          <li>在「Model Controls」中勾选允许团队使用的模型（比如只开放 claude-sonnet + gpt-5.5-instant，关闭 claude-opus 防止无谓消耗）</li>
+          <li>设置「Monthly Budget Alert」，当团队月度支出超过阈值时自动邮件通知</li>
+        </ul>
+        <p><strong>Android 团队场景</strong>：Android 多模块项目开发中，不同成员的 AI 使用习惯差异很大。启用用量分析后，可以识别「哪些模块 Agent 调用最频繁」「哪些任务类型最消耗 Token」，为后续优化 CLAUDE.md 规则文件提供数据依据。</p>
+      </div>
+      <div class="tip-footer">
+        <span>来源：Cursor 官方更新日志「模型控制、支出管理与用量分析」2026.05.04</span>
+        <a href="https://cursor.com/cn/blog" target="_blank">查看官方博客</a>
+      </div>
+    </div>
+
+  </div><!-- /tips-section -->
+
+  <div class="page-footer">
+    <a href="/" style="color: #6c63ff; text-decoration: none;">← 返回首页</a>
+    &nbsp;|&nbsp;
+    <a href="/cursor-tips/" style="color: #6c63ff; text-decoration: none;">Cursor 技巧专栏</a>
+    &nbsp;|&nbsp; AI 编程热点新闻 · 每日 08:15 自动生成
+  </div>
+
+</div>
+</body>
+</html>
