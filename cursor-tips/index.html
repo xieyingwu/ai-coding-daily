@@ -194,7 +194,107 @@
     <strong>这是什么？</strong> 每天从 Cursor 官方博客精选 1-3 个<strong>实用技巧或使用场景</strong>，用大白话讲清楚——你能学到什么、怎么用、什么时候用。从新手到进阶，边用边学。
   </div>
 
+  <!-- ========== 2026-05-08 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">05月08日</span>
+      <span class="day-title">双 Agent 协作法 · 先「定义成功标准」再「执行任务」· Mano-P 本地 4B 模型操控任意 App</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <!-- 技巧1: 双 Agent 协作——先定义成功标准 -->
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🎯</div>
+          <div class="tip-title">双 Agent 协作模式：先让一个 AI 「定义成功是什么样的」，再让另一个 AI 去干活</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">Cursor 官方最新</span>
+          <span class="tag green">工作流技巧</span>
+          <span class="tag">Agent 进阶</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这个功能是什么？</strong><br>
+          Cursor 官方 5 月 6 日发布的「用 autoinstall 自举 Composer」文章，揭示了一个超实用的 <span class="hl">双 Agent 协作工作流</span>：不是只给 AI 一个任务描述就了事，而是先让一个 Agent 负责「制定可验证的成功标准」，再让另一个 Agent 去实际执行任务，执行结果对照成功标准自动校验。
+          </p>
+          <p><strong>怎么用（日常开发场景）：</strong></p>
+          <ul>
+            <li><strong>场景 1 接手陌生项目：</strong>先让 Cursor Agent 读取 README、Makefile，列出「跑通这个项目的 5 条核心命令 + 预期输出是什么」，再开启另一个 Composer 对话实际去把项目跑起来，用预期输出作为验收标准</li>
+            <li><strong>场景 2 需求开发：</strong>需求来了别急着写代码——先让 AI 列出「这个需求完成后能看到什么效果 / 哪些测试要通过」，把这些标准写进 CLAUDE.md，再开始实现</li>
+            <li><strong>场景 3 调试复杂 Bug：</strong>让一个 Agent 先分析「正常情况下这里的输出应该是什么」，再让另一个 Agent 去找为什么实际输出不一样，收敛速度会大幅提升</li>
+          </ul>
+          <p><strong>为什么更好用？</strong> 没有「可验证的成功标准」，AI 很容易陷入「瞎干」模式——修了 A 坏了 B，改了这里忘了那里。双 Agent 模式的本质是把「做什么」和「怎么验证做好了」分离，让每一步都有客观的完成判断。Composer 2 就是靠这套思路把 Terminal-Bench 得分从 47.9% 提升到 61.7% 的。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客「用 autoinstall 自举 Composer」· 2026-05-06</span>
+          <a href="https://cursor.com/cn/blog/bootstrapping-composer-with-autoinstall" target="_blank">阅读原文 →</a>
+        </div>
+      </div>
+
+      <!-- 技巧2: 让 AI 模拟缺失的依赖 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🧩</div>
+          <div class="tip-title">缺服务不等人——让 Cursor 帮你「造一个假的」先跑通再说</div>
+        </div>
+        <div class="tags">
+          <span class="tag cyan">调试技巧</span>
+          <span class="tag">微服务</span>
+          <span class="tag">本地开发</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          Cursor autoinstall 系统在配置训练环境时，遇到缺失的外部依赖（比如 S3 存储、数据库、消息队列）时，不是报错停下，而是 <span class="hl">自动创建替代方案</span>：用 MinIO 模拟 S3、创建空数据库表、启动 Docker 容器替代缺失的 sidecar 服务。这个思路直接可以借用到你的日常开发中。
+          </p>
+          <p><strong>怎么用：</strong></p>
+          <ul>
+            <li>在 Cursor 中告诉 Agent：「我本地没有 Redis，帮我用内存 mock 一个，让这段代码能先跑起来」</li>
+            <li>调试某个依赖第三方 API 的功能：「帮我写一个 Mock 服务返回假数据，先把 UI 流程跑通再接真实接口」</li>
+            <li>接手需要特殊数据库版本的旧项目：「帮我创建一个兼容的 Docker Compose 配置让项目能本地启动」</li>
+          </ul>
+          <p><strong>适合什么场景：</strong> 微服务架构本地调试、接手遗留代码、前后端分离开发前端想先调 UI，只要是「缺某个东西跑不起来」的情况，都可以直接让 Cursor 帮你造一个够用的替代品，别让环境问题卡住开发节奏。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客「用 autoinstall 自举 Composer」· 2026-05-06</span>
+          <a href="https://cursor.com/cn/blog/bootstrapping-composer-with-autoinstall" target="_blank">阅读原文 →</a>
+        </div>
+      </div>
+
+      <!-- 技巧3: 本地 AI 模型操控 App -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">💻</div>
+          <div class="tip-title">Mano-P 本地 4B 模型：不上云、不耗 Token，让 AI 帮你操控 Mac 上任意 App</div>
+        </div>
+        <div class="tags">
+          <span class="tag green">工具推荐</span>
+          <span class="tag">本地 AI</span>
+          <span class="tag">隐私安全</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这是什么？</strong><br>
+          MININGLAMP-AI 发布的开源端侧 GUI Agent 模型 <span class="hl">Mano-P</span>，最小版本只有 4B 参数，可在 Mac 本地运行。它能「看着你的屏幕」理解界面，然后自动点按、填写表单、操作菜单——跟 Cursor 的 AI 编辑器协作使用时，可以帮你做很多重复性的 UI 操作工作。
+          </p>
+          <p><strong>对开发者的价值：</strong></p>
+          <ul>
+            <li>自动化本地测试流程——无需写复杂的 UI 测试脚本，让模型直接「点」一遍</li>
+            <li>处理涉及公司隐私数据的操作——数据完全不出设备，比上传给 GPT/Claude 安全</li>
+            <li>不消耗 Token 配额——对于重复性的批量操作特别划算</li>
+            <li>搭配 Cider 加速框架，性能损耗比想象中小</li>
+          </ul>
+          <p><strong>适合什么场景：</strong> 需要操作大量本地软件的重复任务、公司规定数据不能上云的场景、想给团队内部工具加 AI 自动化能力但预算有限的团队。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：AITNT 全球 AI 新闻日报 · 2026-05-08</span>
+        </div>
+      </div>
+
+    </div><!-- /tips-grid -->
+  </div><!-- /day-entry 2026-05-08 -->
+
   <!-- ========== 2026-05-07 ========== -->
+
   <div class="day-entry">
     <div class="day-header">
       <span class="day-tag">05月07日</span>

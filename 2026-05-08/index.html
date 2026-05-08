@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年5月8日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px 80px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .back-home {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      color: #8b90b0; text-decoration: none; font-size: 13px;
+      padding: 8px 16px; border-radius: 8px; margin-bottom: 32px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .back-home:hover { border-color: #6c63ff; color: #a5b4fc; }
+
+    .page-header { margin-bottom: 40px; }
+    .page-date {
+      font-size: 13px; font-weight: 600; color: #6c63ff;
+      margin-bottom: 10px; letter-spacing: 0.04em;
+    }
+    .page-title { font-size: 26px; font-weight: 700; color: #fff; line-height: 1.4; margin-bottom: 8px; }
+    .page-subtitle { font-size: 14px; color: #8b90b0; line-height: 1.6; }
+
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      color: #4a4e6a; text-transform: uppercase; margin-bottom: 16px;
+      padding-bottom: 8px; border-bottom: 1px solid #1e2030;
+    }
+
+    /* 新闻列表 */
+    .news-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 48px; }
+    .news-card {
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      border-radius: 14px; padding: 18px 22px;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .news-card:hover { border-color: #6c63ff; transform: translateX(4px); }
+    .news-card.top { border-color: rgba(108,99,255,0.35); background: linear-gradient(135deg, #1a1d27, #1e1f38); }
+
+    .news-meta {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .news-num {
+      width: 22px; height: 22px; border-radius: 6px;
+      background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.3);
+      color: #a5b4fc; font-size: 11px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .news-tag {
+      background: #2a2d3e; color: #8b90b0;
+      font-size: 11px; padding: 2px 8px; border-radius: 5px;
+    }
+    .news-tag.hot { background: rgba(248,113,113,0.1); color: #f87171; }
+    .news-tag.tool { background: rgba(99,102,241,0.1); color: #818cf8; }
+    .news-tag.research { background: rgba(34,211,238,0.1); color: #22d3ee; }
+    .news-tag.capital { background: rgba(251,191,36,0.1); color: #fbbf24; }
+    .news-tag.open { background: rgba(74,222,128,0.1); color: #4ade80; }
+
+    .news-title { font-size: 15px; font-weight: 600; color: #eef0fb; line-height: 1.5; margin-bottom: 6px; }
+    .news-body { font-size: 13px; color: #8b90b0; line-height: 1.7; }
+    .news-body .hl { color: #a5b4fc; font-weight: 500; }
+
+    /* 摘要区 */
+    .summary-box {
+      background: linear-gradient(135deg, #1a1d27, #1e1f38);
+      border: 1px solid rgba(108,99,255,0.25);
+      border-radius: 16px; padding: 24px 26px; margin-bottom: 48px;
+    }
+    .summary-box h3 { font-size: 15px; font-weight: 700; color: #a5b4fc; margin-bottom: 14px; }
+    .summary-box ul { padding-left: 18px; }
+    .summary-box li { font-size: 13px; color: #8b90b0; line-height: 1.8; margin-bottom: 4px; }
+    .summary-box li strong { color: #e8eaf6; }
+
+    .footer-nav {
+      display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+      padding-top: 32px; border-top: 1px solid #1e2030;
+    }
+    .footer-nav a {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      color: #8b90b0; text-decoration: none; font-size: 13px;
+      padding: 9px 18px; border-radius: 10px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .footer-nav a:hover { border-color: #6c63ff; color: #a5b4fc; }
+
+    @media (max-width: 768px) {
+      body { padding: 24px 14px 60px; }
+      .page-title { font-size: 20px; }
+      .news-card { padding: 14px 16px; }
+      .news-title { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back-home" href="/">← 返回首页</a>
+
+  <div class="page-header">
+    <div class="page-date">2026年5月8日 · 星期五 · AI 编程热点早报</div>
+    <h1 class="page-title">马斯克 xAI 向 Cursor 出租算力·Meta ProgramBench 顶级模型通过率 0%·CopilotKit 融资 2700 万美元</h1>
+    <p class="page-subtitle">共 7 条精选热点 · 覆盖 AI 编程工具、模型测评、资本动向、研究前沿</p>
+  </div>
+
+  <div class="section-label">今日 7 条热点新闻</div>
+
+  <div class="news-list">
+
+    <!-- 1 -->
+    <div class="news-card top">
+      <div class="news-meta">
+        <span class="news-num">1</span>
+        <span class="news-tag hot">头条</span>
+        <span class="news-tag tool">AI 编程工具</span>
+      </div>
+      <div class="news-title">马斯克 xAI 向 Cursor 出租数万 GPU——算力合作推动下一代编程模型训练</div>
+      <div class="news-body">
+        xAI 旗下拥有超 <span class="hl">55 万张 GPU</span>，现正向 AI 编程工具 Cursor 出租数万 GPU 用于训练专用编程模型，正式进军算力出租赛道。此次合作是在 Cursor 完成 20 亿美元 B 轮融资、估值超 500 亿之后的重要战略延伸——SpaceX 已锁定 600 亿期权，xAI 超算 Colossus 深度绑定 Cursor 的模型研发路线。
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-num">2</span>
+        <span class="news-tag capital">资本动向</span>
+      </div>
+      <div class="news-title">马斯克解散 xAI 并入 SpaceX——22 万块 GPU 全部租给 Anthropic 推理 Claude</div>
+      <div class="news-body">
+        马斯克官宣 xAI 并入 SpaceX，旗下拥有 <span class="hl">22 万块 GPU、300+ 兆瓦算力</span> 的 Colossus 1 超算，全部租给 Anthropic 用于 Claude 推理服务。此举一方面增强 OpenAI 最强竞争对手的算力底座，另一方面让 xAI 从模型公司转型为算力基础设施提供商，对冲亏损压力。
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-num">3</span>
+        <span class="news-tag capital">融资</span>
+        <span class="news-tag tool">AI Agent</span>
+      </div>
+      <div class="news-title">CopilotKit 完成 2700 万美元 A 轮——AG-UI 协议被谷歌、微软主流采纳</div>
+      <div class="news-body">
+        AI 应用框架 CopilotKit 完成 <span class="hl">2700 万美元 A 轮融资</span>，核心技术让开发者无需重写代码即可给任意应用接入 AI Agent 能力。目前已服务超半数世界 500 强企业。其主导的 <span class="hl">AG-UI 协议</span>（Agent-UI 通信标准）已被谷歌、微软等主流科技公司采纳，有望成为 Agent 接入应用的通用接口规范。
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-num">4</span>
+        <span class="news-tag research">学术研究</span>
+        <span class="news-tag hot">重磅</span>
+      </div>
+      <div class="news-title">Meta×斯坦福×哈佛 ProgramBench 实测：9款顶级 AI 模型从零生成完整仓库通过率均为 0%</div>
+      <div class="news-body">
+        Meta 联合斯坦福、哈佛发布 <span class="hl">ProgramBench</span> 编程能力测试，要求 AI 从零重写 200 个真实软件项目的完整代码库。测试结果震撼：9 款顶级 AI 模型完整通过率均为 <span class="hl">0%</span>，最强的 Claude Opus 4.7 单项平均通过率仅 51.2%。这与 SWE-Bench 等片段级测试的高分形成鲜明对比，揭示了 AI 在「端到端软件工程」能力上的巨大鸿沟。
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-num">5</span>
+        <span class="news-tag research">学术研究</span>
+        <span class="news-tag open">国产团队</span>
+      </div>
+      <div class="news-title">北大 SEAlign 框架获 ICSE 2026 杰出论文奖——14B 模型 SWE-bench 解决率从 3.7% 提升至 17.7%</div>
+      <div class="news-body">
+        北京大学团队提出的 <span class="hl">SEAlign</span> 软件工程智能体对齐框架，荣获 ICSE 2026（全球顶级软工会议）杰出论文奖。其方法通过识别智能体执行轨迹中的关键决策节点进行精准对齐训练，14B 参数模型在 SWE-bench-lite 解决率从 <span class="hl">3.7%→17.7%</span>，SWE-bench-verified 从 2.8%→21.8%，展现了轻量模型在专业场景的超大提升空间。
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-num">6</span>
+        <span class="news-tag research">模型训练</span>
+      </div>
+      <div class="news-title">Anthropic 提出 MSM 训练方法——让模型真正「理解规则原理」，通义千问 32B 失准率从 68% 降至 5%</div>
+      <div class="news-body">
+        Anthropic 发布 <span class="hl">MSM（Mid-Stage Model）</span>训练方法，插在预训练和后训练之间，通过让模型学习规范文档来理解规则背后的原理，而非死记规则。实验用通义千问 32B 验证：安全失准率从 68%、54% 骤降至 <span class="hl">5%、7%</span>，微调数据量减少 40-60 倍。为更安全的 AI 编程助手铺平技术路线。
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-num">7</span>
+        <span class="news-tag open">开源</span>
+        <span class="news-tag tool">端侧 AI</span>
+      </div>
+      <div class="news-title">本地 4B 开源模型 Mano-P 上线——无需上云、不耗 Token，Mac 本地操作任意 App</div>
+      <div class="news-body">
+        MININGLAMP-AI 发布开源端侧 GUI Agent 模型 <span class="hl">Mano-P</span>，最小 4B 参数版可在 Mac 本地运行。数据不出设备、无需上传云端、不消耗 Token，搭配 Cider 推理加速框架可实现本地操控电脑中的各类应用——从浏览器自动填表到本地 IDE 操作均可覆盖，为隐私敏感型开发者提供可行的「离线 AI 助手」方案。
+      </div>
+    </div>
+
+  </div><!-- /news-list -->
+
+  <!-- 摘要 -->
+  <div class="summary-box">
+    <h3>今日核心信号</h3>
+    <ul>
+      <li><strong>算力重新洗牌：</strong>xAI Colossus 从 Grok 推理转向对外出租（同时服务 Cursor + Claude），算力基础设施正在成为 AI 巨头的新商业模式。</li>
+      <li><strong>AG-UI 协议崛起：</strong>CopilotKit 主导的 Agent-UI 通信标准获谷歌/微软背书，标志 AI Agent 应用接入将走向协议化标准化。</li>
+      <li><strong>ProgramBench 揭示能力天花板：</strong>0% 完整通过率说明当前 AI 仍是「片段高手、工程弱手」，端到端软件工程能力是下一个核心战场。</li>
+      <li><strong>国产研究强势出圈：</strong>北大 SEAlign 夺 ICSE 2026 杰出论文，Anthropic MSM 方法联手通义千问验证，国产模型+国际方法论的结合正在走向世界舞台。</li>
+    </ul>
+  </div>
+
+  <div class="footer-nav">
+    <a href="/">← 返回首页</a>
+    <a href="/cursor-tips/">⌨️ Cursor 使用技巧专栏</a>
+    <a href="/2026-05-07/">← 昨日新闻</a>
+  </div>
+
+</div>
+</body>
+</html>
