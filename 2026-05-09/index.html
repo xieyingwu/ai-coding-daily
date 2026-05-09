@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年5月9日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px 64px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .nav {
+      margin-bottom: 32px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .nav a {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      color: #8b90b0; text-decoration: none; font-size: 13px;
+      padding: 7px 14px; border-radius: 8px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .nav a:hover { border-color: #6c63ff; color: #a5b4fc; }
+
+    .page-header { margin-bottom: 36px; }
+    .date-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(99,102,241,0.2));
+      border: 1px solid rgba(108,99,255,0.35);
+      color: #a5b4fc; font-size: 12px; font-weight: 700;
+      padding: 4px 14px; border-radius: 20px; margin-bottom: 12px;
+    }
+    .page-header h1 {
+      font-size: 26px; font-weight: 700; color: #fff; line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .page-header h1 span { color: #6c63ff; }
+    .page-header .summary {
+      font-size: 14px; color: #8b90b0; line-height: 1.7;
+    }
+
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      color: #6c63ff; text-transform: uppercase; margin-bottom: 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: #2a2d3e; }
+
+    .news-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 48px; }
+
+    .news-card {
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      border-radius: 14px; padding: 20px 22px;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .news-card:hover { border-color: #6c63ff; transform: translateX(2px); }
+    .news-card.headline {
+      border-color: rgba(108,99,255,0.4);
+      background: linear-gradient(135deg, #1a1d27, #1e1f32);
+    }
+
+    .news-meta {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 8px; flex-wrap: wrap;
+    }
+    .news-num {
+      width: 22px; height: 22px; border-radius: 6px;
+      background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.3);
+      color: #a5b4fc; font-size: 11px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .news-num.top1 { background: rgba(251,191,36,0.15); border-color: rgba(251,191,36,0.35); color: #fbbf24; }
+    .tag {
+      font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 5px;
+      background: #2a2d3a; color: #818cf8;
+    }
+    .tag.amber { background: rgba(251,191,36,0.1); color: #fbbf24; }
+    .tag.green { background: rgba(74,222,128,0.1); color: #4ade80; }
+    .tag.red { background: rgba(248,113,113,0.1); color: #f87171; }
+    .tag.cyan { background: rgba(34,211,238,0.1); color: #22d3ee; }
+
+    .news-title {
+      font-size: 16px; font-weight: 600; color: #eef0fb;
+      line-height: 1.5; margin-bottom: 8px;
+    }
+    .news-body {
+      font-size: 13px; color: #8b90b0; line-height: 1.75;
+    }
+    .news-body strong { color: #b0b8d0; }
+
+    .cursor-section {
+      background: linear-gradient(135deg, #111827, #0f1e27);
+      border: 1px solid rgba(34,211,238,0.25);
+      border-radius: 16px; padding: 24px 26px; margin-bottom: 48px;
+    }
+    .cursor-section .section-label { color: #22d3ee; }
+    .cursor-section .section-label::after { background: rgba(34,211,238,0.15); }
+    .tip-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(42,45,58,0.7);
+      border-radius: 12px; padding: 16px 18px; margin-top: 14px;
+    }
+    .tip-card-title { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+    .tip-card-body { font-size: 13px; color: #8b90b0; line-height: 1.75; }
+    .tip-card-body ul { padding-left: 18px; }
+    .tip-card-body li { margin-bottom: 5px; }
+    .tip-card-body .hl { color: #a5b4fc; font-weight: 500; }
+    .tip-link { font-size: 12px; color: #6366f1; text-decoration: none; margin-top: 10px; display: inline-block; }
+    .tip-link:hover { text-decoration: underline; }
+
+    .footer-nav {
+      text-align: center; padding-top: 32px; border-top: 1px solid #1e2030;
+    }
+    .footer-nav a {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      color: #8b90b0; text-decoration: none; font-size: 14px;
+      padding: 10px 22px; border-radius: 10px;
+      transition: border-color 0.2s, color 0.2s;
+      margin: 0 6px;
+    }
+    .footer-nav a:hover { border-color: #6c63ff; color: #a5b4fc; }
+
+    @media (max-width: 768px) {
+      body { padding: 24px 14px 48px; }
+      .page-header h1 { font-size: 20px; }
+      .news-title { font-size: 14px; }
+      .news-card { padding: 16px 16px; }
+      .cursor-section { padding: 18px 16px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 导航 -->
+  <div class="nav">
+    <a href="/">← 返回首页</a>
+    <a href="/cursor-tips/">⌨️ Cursor 技巧专栏</a>
+  </div>
+
+  <!-- 页面头部 -->
+  <div class="page-header">
+    <div class="date-badge">2026年5月9日 · 星期六</div>
+    <h1>AI 编程热点 · <span>GitHub为Agent筑「免疫系统」</span><br>Kimi K2.6-Code发布 · Anthropic CEO警告SaaS生死存亡</h1>
+    <p class="summary">共收录 7 条热点 · Google I/O 2026 倒计时 10 天 · 今日 Cursor 技巧：autoinstall 自举 Composer 双 Agent 工作流进阶</p>
+  </div>
+
+  <!-- 新闻列表 -->
+  <div class="section-label">今日热点新闻</div>
+  <div class="news-list">
+
+    <!-- 1. GitHub免疫系统 -->
+    <div class="news-card headline">
+      <div class="news-meta">
+        <div class="news-num top1">1</div>
+        <span class="tag amber">头条</span>
+        <span class="tag">GitHub · 安全</span>
+        <span class="tag cyan">MCP</span>
+      </div>
+      <div class="news-title">GitHub 为 MCP 上的 AI 编程智能体构建「免疫系统」——CodeQL + 密钥扫描 + 依赖审查三层防护在 PR 落地前强制运行</div>
+      <div class="news-body">
+        随着 AI 编程智能体在 MCP 平台深度集成，GitHub 正式宣布为 AI Agent 构建类生物免疫系统的安全防护机制。Copilot 编程智能体在拉取请求到达人工审阅者之前，现已强制运行 <strong>CodeQL 静态分析、密钥扫描、依赖项审查</strong>三层自动化安全扫描。这标志着 AI 生成代码的安全合规已从「事后人工检查」进化为「事前 Agent 自动拦截」——对于企业级代码库，今后每一行 AI 写的代码在合入前都有机器免疫守门。
+      </div>
+    </div>
+
+    <!-- 2. Kimi K2.6-Code -->
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-num">2</div>
+        <span class="tag green">国产新品</span>
+        <span class="tag">月之暗面</span>
+      </div>
+      <div class="news-title">Kimi K2.6-Code 正式发布——SWE-Bench Pro 58.6% 夺冠，对标 Sonnet 4.6，支持接入 Claude Code</div>
+      <div class="news-body">
+        月之暗面推出专为编程场景优化的 <strong>Kimi K2.6-Code</strong>，在衡量真实软件工程能力的 SWE-Bench Pro 测试中以 58.6% 得分位居第一，超越 GPT-5.4（57.7%）和 Gemini 3.1 Pro（54.2%）。该模型基于 MoE 混合专家架构，支持 12 小时自主编码、300 Agent 协同，兼容 Anthropic API 可直接接入 Claude Code 工作流。国产编程专用模型首次打破闭源模型垄断格局，对 Android/后端开发者有较强实用价值。
+      </div>
+    </div>
+
+    <!-- 3. Anthropic CEO警告SaaS -->
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-num">3</div>
+        <span class="tag red">行业震荡</span>
+        <span class="tag">Anthropic</span>
+      </div>
+      <div class="news-title">Anthropic CEO 公开警告：不集成 AI 的 SaaS 软件公司将彻底破产，资本市场已开始用脚投票</div>
+      <div class="news-body">
+        Anthropic CEO 达里奥·阿莫代伊在金融服务专题峰会上表示，无法顺应 AI 浪潮完成转型的 SaaS 企业将面临覆灭。AI 编程工具的快速普及正在侵蚀传统软件公司的护城河——<strong>当 Claude Code / Cursor 可以三周交付四个月的工作量，传统 SaaS 的定价逻辑就不再成立</strong>。同时 Anthropic 正式推出 10 款面向金融服务行业的即用型 AI Agent 模板，进一步加速企业端渗透。Anthropic 年化营收目前已达 440 亿美元（4 月数据）。
+      </div>
+    </div>
+
+    <!-- 4. AI代码性能被高估研究 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-num">4</div>
+        <span class="tag amber">研究警示</span>
+        <span class="tag">基准测试</span>
+      </div>
+      <div class="news-title">新研究结论：AI 生成代码的实际性能被行业系统性高估——基准好看不等于生产可用</div>
+      <div class="news-body">
+        最新研究通过实际生产场景测试发现，当前 AI 生成代码在真实环境中的性能表现显著低于主流基准测试成绩所展示的水平。核心问题在于 <strong>SWE-Bench 等基准测试与真实工程场景存在较大偏差</strong>：基准倾向于孤立的 bug 修复任务，而真实软件工程要求跨文件、跨模块的全局理解与长期一致性。这与 Meta ProgramBench 此前发现的「9 款顶级模型完整仓库生成通过率 0%」结论相互印证，给过度依赖 AI 生成代码的团队敲响警钟。
+      </div>
+    </div>
+
+    <!-- 5. OpenClaw重大更新 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-num">5</div>
+        <span class="tag">开源工具</span>
+        <span class="tag green">重大更新</span>
+      </div>
+      <div class="news-title">OpenClaw 发布重大版本更新：支持 GPT-5.4、新增内存热插拔架构，GitHub Star 突破 28 万</div>
+      <div class="news-body">
+        开源 AI 编程 Agent 框架 OpenClaw 发布核心版本更新，引入 <strong>Context Engine 插件体系和内存热插拔（Memory Hot-Swapping）</strong>架构。内存热插拔允许在不重启 Agent 的情况下动态切换记忆策略（RAG / 知识图谱），彻底解决困扰 Agent 社区的「断片」问题。同时全面支持 GPT-5.4、支持分布式通道绑定。这是继 Claude Code / Cursor 之后，开源 Agent 框架领域最受关注的一次里程碑更新，对于自建 AI 编程工具链的团队有极高参考价值。
+      </div>
+    </div>
+
+    <!-- 6. Google I/O 倒计时10天 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-num">6</div>
+        <span class="tag cyan">倒计时</span>
+        <span class="tag">Google</span>
+      </div>
+      <div class="news-title">Google I/O 2026 倒计时 10 天（5月19-20日）：Gemini 4 + Android XR + Aluminum OS 全面亮相在即</div>
+      <div class="news-body">
+        距离 Google I/O 2026 还剩 10 天，大会将于 5 月 19-20 日在美国加州山景城举行，主题为「AI for Everyone」。预计本届重磅发布包括：<strong>Gemini 4（下一代旗舰模型）、Android XR 智能眼镜、全新 Aluminum OS 操作系统</strong>。Gemini 4 若如外界预期拥有超强编程能力，将直接挑战 Claude Code 和 GPT-5.5 的市场地位。AI 编程工具格局可能在 10 天后迎来重大重塑。
+      </div>
+    </div>
+
+    <!-- 7. 华为云码道日活18倍增长 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="news-num">7</div>
+        <span class="tag">国内动态</span>
+        <span class="tag green">企业落地</span>
+      </div>
+      <div class="news-title">华为云码道（CodeArts）代码智能体日活 18 倍增长，企业级 AI 编程本土化加速，Skill 市场 + 多任务并行即将上线</div>
+      <div class="news-body">
+        华为云码道（CodeArts）代码智能体自今年 2 月公测以来日活用户实现约 <strong>18 倍增长</strong>，在企业级 AI 编程场景快速渗透。核心能力包括专家技能 Skills、Codebase 代码库索引、规范驱动开发，本周即将上线 Skill 市场、自定义 Agent、多任务并行等新特性。对于国内有信息安全合规要求的大型企业（银行、央企、政府系统），华为云码道正成为替代 Cursor/Claude Code 的重要选项。
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Cursor 技巧区 -->
+  <div class="cursor-section">
+    <div class="section-label">今日 Cursor 使用技巧</div>
+    <p style="font-size:13px;color:#8b90b0;margin-bottom:4px;">来源：Cursor 官方博客「用 autoinstall 自举 Composer」· 2026-05-06 发布</p>
+
+    <div class="tip-card">
+      <div class="tip-card-title">技巧一：用「双 Agent 协作法」接手陌生项目——先让 AI 制定验收标准，再开始干活</div>
+      <div class="tip-card-body">
+        <p><span class="hl">是什么：</span>不要直接对 Cursor 说「帮我把这个项目跑起来」——先开一个 Composer 对话，让它读 README / Makefile，输出「把这个项目跑通，需要哪些命令和预期结果（3条核心验收标准）」。然后关掉这个对话，再开一个全新的 Composer，把这 3 条标准粘进去，让它去真正搭环境。</p>
+        <ul>
+          <li><span class="hl">接手遗留项目：</span>先问「这个项目跑通的 3 个最小验证命令是什么」，再执行</li>
+          <li><span class="hl">需求开发：</span>先让 AI 写出「这个功能完成后能看到什么效果 / 哪些测试要过」，存进 CLAUDE.md，再写代码</li>
+          <li><span class="hl">调试复杂 Bug：</span>先让 AI 描述「正常情况下这里应该输出什么」，再让另一个 Agent 找差异</li>
+        </ul>
+        <p style="margin-top:8px;"><span class="hl">为什么好用：</span>没有「可验证的成功标准」，AI 容易陷入瞎改循环——改了 A 坏 B，改了 B 又坏 C。把「定义目标」和「执行任务」分给两个独立 Agent，就能大幅降低这种漂移。Cursor 官方用这套方法把 Composer 2 的 Terminal-Bench 得分从 47.9% 提升到 61.7%。</p>
+        <a class="tip-link" href="https://cursor.com/cn/blog/bootstrapping-composer-with-autoinstall" target="_blank">阅读原文：用 autoinstall 自举 Composer →</a>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-card-title">技巧二：让 Cursor 「模拟」缺失的依赖——不完美环境也能跑起来，训练模型的方法你也能用</div>
+      <div class="tip-card-body">
+        <p><span class="hl">是什么：</span>接手一个依赖复杂、文档残缺、数据库连不上的烂摊子时，不要卡在「等真实环境就绪」——让 Cursor 用模拟依赖先把代码跑通：</p>
+        <ul>
+          <li>用 MinIO 模拟 S3 存储</li>
+          <li>用占位假数据代替真实数据库表</li>
+          <li>写启动脚本模拟 sidecar 容器</li>
+          <li>图片缺失就用纯色占位图先跑通渲染逻辑</li>
+        </ul>
+        <p style="margin-top:8px;"><span class="hl">适合场景：</span>新人接手老项目搭本地开发环境 / CI 环境没有完整基础设施 / 快速验证某个模块逻辑不想等运维配环境。核心原则：<span class="hl">「能获得反馈信号」比「完全还原生产环境」更重要</span>，先跑通再完善。</p>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-card-title">技巧三：autoinstall 的「5 次重试上限」思路——给 AI 足够试错空间，又不陷入无效循环</div>
+      <div class="tip-card-body">
+        <p><span class="hl">是什么：</span>让 Cursor 自动搭环境或修复某个问题时，建议在 prompt 里明确告诉它：「最多尝试 5 次，每次失败后分析原因换不同策略，5 次还没解决就停下来告诉我卡在哪里」。</p>
+        <p style="margin-top:8px;"><span class="hl">为什么：</span>不设上限 AI 会无限重试，消耗大量 Token 却不出结果；设太少（比如 2 次）又不够。Cursor 官方在 autoinstall 中验证过——<span class="hl">5 次是效率和容错的最优平衡点</span>。超过 5 次未解决的任务，大多是根本性问题（缺少关键信息 / 权限 / 工具），需要人工介入，AI 继续尝试也无益。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部导航 -->
+  <div class="footer-nav">
+    <a href="/">← 返回首页</a>
+    <a href="/cursor-tips/">⌨️ 更多 Cursor 技巧</a>
+  </div>
+
+</div>
+</body>
+</html>
