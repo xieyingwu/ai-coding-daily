@@ -194,6 +194,101 @@
     <strong>这是什么？</strong> 每天从 Cursor 官方博客精选 1-3 个<strong>实用技巧或使用场景</strong>，用大白话讲清楚——你能学到什么、怎么用、什么时候用。从新手到进阶，边用边学。
   </div>
 
+  <!-- ========== 2026-05-10 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">05月10日</span>
+      <span class="day-title">更强模型驱动更有雄心的任务 · CursorBench 模型质量自测法 · BYO 模型接国产大模型降本策略</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <!-- 技巧1: 更强模型 = 更有雄心的任务 -->
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🚀</div>
+          <div class="tip-title">「更强的模型」不是让你做同样的事更快——而是让你敢做以前不敢碰的任务</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">Cursor 官方研究</span>
+          <span class="tag green">思维方式升级</span>
+          <span class="tag">杰文斯效应</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这个理念是什么？</strong><br>
+          Cursor 官方「更强的 AI 模型推动更具雄心的工作」博客（2026-04-15）提出：大多数开发者升级模型后，只是用它做同样的事——但真正的收益在于<span class="hl">用更强的模型去挑战以前觉得「太难/太耗时」而放弃的任务</span>。
+          </p>
+          <p><strong>怎么用（3 个重新定义工作的场景）：</strong></p>
+          <ul>
+            <li><strong>架构重构：</strong>以前觉得「太复杂不敢动」的模块，现在可以让 Cursor 先做架构分析和迁移方案，不用从零开始</li>
+            <li><strong>技术文档：</strong>以前「写文档没时间」，现在可以让 Cursor 根据代码自动生成 API 文档 + 使用示例，你只负责审阅</li>
+            <li><strong>代码审查：</strong>以前只能抽查，现在可以让 Cursor 对整个 PR 做完整的安全/性能/逻辑三维审查</li>
+          </ul>
+          <p><strong>关键心态转变：</strong><span class="hl">每次模型升级，先问「我以前不敢做的任务里，现在哪些可以做了？」</span>而不是「这个任务我能做更快了吗？」</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客「更强的 AI 模型推动更具雄心的工作」· 2026-04-15</span>
+          <a href="https://cursor.com/cn/blog/better-models-ambitious-work" target="_blank">阅读原文 →</a>
+        </div>
+      </div>
+
+      <!-- 技巧2: CursorBench 自测模型质量 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">📊</div>
+          <div class="tip-title">用「代码保留率」判断模型输出质量——不用等跑分，5 分钟自测哪个模型更懂你的项目</div>
+        </div>
+        <div class="tags">
+          <span class="tag green">质量评估</span>
+          <span class="tag cyan">选模型</span>
+          <span class="tag">CursorBench</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>是什么：</strong>Cursor 内部用「代码保留率」评估模型质量——给模型一段代码，让它修复 Bug 或完成需求，<span class="hl">看它保留了原有逻辑的多少比例</span>。保留率高 = 模型真正理解了代码意图；乱改一通 = 模型没理解上下文。</p>
+          <p><strong>你可以这样用：</strong></p>
+          <ul>
+            <li>同一个任务分别用 Claude / GPT-5.5 / Gemini 做，用 <span class="code">git diff --stat</span> 看每个模型的改动量</li>
+            <li>改动越少、通过测试越多 = 这个模型对这类任务更精准</li>
+            <li>改动巨大但功能不对 = 模型没理解约束，换模型或拆分任务</li>
+          </ul>
+          <p><strong>适合场景：</strong>选新模型时、切换项目类型时（前端/后端/算法各有擅长的模型）做快速对比验证。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客「我们如何在 Cursor 中比较模型质量」· 2026-03-11</span>
+          <a href="https://cursor.com/cn/blog/cursorbench" target="_blank">阅读原文 →</a>
+        </div>
+      </div>
+
+      <!-- 技巧3: BYO 模型接国产大模型 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">💰</div>
+          <div class="tip-title">BYO 模型（自带模型）接入豆包 Code / DeepSeek V4——同等能力，成本最低降 99%</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">省钱必看</span>
+          <span class="tag">BYO 模型</span>
+          <span class="tag cyan">国产大模型</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>是什么：</strong>Cursor 支持 BYO（Bring Your Own）模型，即接入自定义的 OpenAI 兼容接口。<span class="hl">豆包 Seed 2.0 Code（100 万 Token 仅 0.6 元）和 DeepSeek V4（0.27 美元/百万 Token）的编程能力已达到 GPT-4 级别，但成本只有 1% 左右</span>。</p>
+          <p><strong>怎么接入：</strong></p>
+          <ul>
+            <li>Cursor 设置 → Models → Add custom model</li>
+            <li>填入 API Base URL（豆包/DeepSeek 官方提供）和 API Key</li>
+            <li>模型名称填入对应的 model ID，保存即可在 Composer 中选用</li>
+          </ul>
+          <p><strong>推荐策略：</strong><span class="hl">常规需求用国产模型（成本极低），复杂架构/深度推理任务切 Claude Opus 4.7 或 GPT-5.5</span>，按需切换，月账单可降 80% 以上。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor BYO 模型功能 + 豆包/DeepSeek 官方定价</span>
+          <a href="https://cursor.com/cn/blog/better-models-ambitious-work" target="_blank">参考博客 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ========== 2026-05-09 ========== -->
   <div class="day-entry">
     <div class="day-header">

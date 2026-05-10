@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年5月10日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px 60px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .top-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 32px; flex-wrap: wrap; gap: 12px;
+    }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      color: #8b90b0; text-decoration: none; font-size: 13px;
+      padding: 8px 16px; border-radius: 8px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .back-btn:hover { border-color: #6c63ff; color: #a5b4fc; }
+    .date-badge {
+      background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(139,92,246,0.2));
+      border: 1px solid rgba(108,99,255,0.3);
+      color: #a5b4fc; font-size: 13px; font-weight: 600;
+      padding: 6px 16px; border-radius: 20px;
+    }
+
+    .page-title {
+      font-size: 28px; font-weight: 700; color: #fff;
+      margin-bottom: 6px; line-height: 1.3;
+    }
+    .page-title span { color: #6c63ff; }
+    .page-meta {
+      font-size: 13px; color: #5a5f7a; margin-bottom: 32px;
+    }
+
+    .summary-bar {
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      border-radius: 12px; padding: 14px 20px;
+      margin-bottom: 28px; font-size: 13px; color: #8b90b0; line-height: 1.7;
+    }
+    .summary-bar strong { color: #e8eaf6; }
+
+    .news-list { display: flex; flex-direction: column; gap: 16px; }
+
+    .news-card {
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      border-radius: 14px; padding: 20px 22px;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .news-card:hover { border-color: #6c63ff; transform: translateY(-1px); }
+    .news-card.headline {
+      border-color: rgba(108,99,255,0.4);
+      background: linear-gradient(135deg, #1a1d27, #1e1f30);
+    }
+
+    .news-top {
+      display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px;
+    }
+    .news-num {
+      min-width: 28px; height: 28px; border-radius: 8px;
+      background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.25);
+      color: #a5b4fc; font-size: 12px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .news-num.top1 { background: rgba(251,191,36,0.15); border-color: rgba(251,191,36,0.3); color: #fbbf24; }
+
+    .news-title { font-size: 15px; font-weight: 600; color: #eef0fb; line-height: 1.5; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+    .tag {
+      font-size: 11px; font-weight: 500; padding: 2px 9px;
+      border-radius: 6px;
+    }
+    .tag-purple { background: rgba(108,99,255,0.15); color: #a5b4fc; }
+    .tag-green  { background: rgba(74,222,128,0.1);  color: #4ade80; }
+    .tag-amber  { background: rgba(251,191,36,0.1);  color: #fbbf24; }
+    .tag-cyan   { background: rgba(34,211,238,0.1);  color: #22d3ee; }
+    .tag-red    { background: rgba(248,113,113,0.1); color: #f87171; }
+
+    .news-body {
+      font-size: 13px; color: #8b90b0; line-height: 1.75; margin-top: 8px;
+    }
+    .news-body .hl { color: #a5b4fc; font-weight: 500; }
+
+    .divider {
+      height: 1px; background: #2a2d3e; margin: 8px 0 0;
+    }
+    .news-footer {
+      margin-top: 10px; font-size: 11px; color: #4a4e6a;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .cursor-tips-link {
+      display: block; margin-top: 32px;
+      background: linear-gradient(135deg, #1a1d27, #0f1e27);
+      border: 1px solid rgba(34,211,238,0.3); border-radius: 14px;
+      padding: 16px 20px; text-decoration: none; color: inherit;
+      transition: border-color 0.2s;
+    }
+    .cursor-tips-link:hover { border-color: #22d3ee; }
+    .cursor-tips-link .ctl { font-size: 12px; color: #22d3ee; font-weight: 600; margin-bottom: 4px; }
+    .cursor-tips-link .ctt { font-size: 14px; color: #eef0fb; font-weight: 600; }
+    .cursor-tips-link .ctd { font-size: 12px; color: #5a5f7a; margin-top: 2px; }
+
+    .footer-area { margin-top: 40px; text-align: center; }
+
+    @media (max-width: 768px) {
+      body { padding: 24px 14px 48px; }
+      .page-title { font-size: 22px; }
+      .news-card { padding: 16px 14px; }
+      .news-title { font-size: 14px; }
+      .news-body { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="top-bar">
+    <a class="back-btn" href="/">← 返回首页</a>
+    <span class="date-badge">2026年5月10日 · 星期日</span>
+  </div>
+
+  <div class="page-title">AI 编程热点 · <span>每日早报</span></div>
+  <div class="page-meta">共收录 7 条热点 · 自动生成于 08:15 · 数据覆盖全球AI编程工具动态</div>
+
+  <div class="summary-bar">
+    <strong>今日要点：</strong>DeepSeek 启动 500 亿元融资刷新中国大模型纪录、百度文心 5.1 发布搜索能力全球第四、Anthropic Claude 全面入驻 Microsoft 365（Excel/Word/PPT/Outlook）、OpenAI Codex Chrome 扩展上线浏览器原生测试 Web 应用、Google I/O 2026 倒计时 9 天谷歌内测 Remy AI Agent、微软 Agent 365 商用 GA、蚂蚁百灵万亿思考模型 Ring-2.6-1T 开启开源倒计时。
+  </div>
+
+  <div class="news-list">
+
+    <!-- 1 -->
+    <div class="news-card headline">
+      <div class="news-top">
+        <div class="news-num top1">头</div>
+        <div class="news-title">DeepSeek 启动 500 亿元融资——刷新中国大模型单轮融资纪录，梁文锋个人出资 200 亿，V4.1 多模态版 6 月发布</div>
+      </div>
+      <div class="tags">
+        <span class="tag tag-amber">今日头条</span>
+        <span class="tag tag-purple">DeepSeek</span>
+        <span class="tag tag-red">融资纪录</span>
+        <span class="tag tag-cyan">国产AI</span>
+      </div>
+      <div class="news-body">
+        2026 年 5 月 9 日消息，DeepSeek 启动本轮融资，规模 500 亿元（约 70 亿美元），<span class="hl">创始人梁文锋个人出资 200 亿元</span>，占总融资额 40%，公司估值升至 500 亿美元（约合 3500 亿元人民币），刷新中国大模型单轮融资纪录。技术层面，DeepSeek V4 已支持 100 万 Token 超长上下文，处理复杂代码库能力大幅提升；<span class="hl">V4.1 版本定档 2026 年 6 月发布，将新增图像与音频的多模态能力</span>。融资将用于算力储备、商业交付和人才激励，宣示从单一模型指标转向技术、算力、商业化全方位竞争。
+      </div>
+      <div class="divider"></div>
+      <div class="news-footer">🏷️ 国产 AI 编程 · 融资动态 · 2026-05-09</div>
+    </div>
+
+    <!-- 2 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">2</div>
+        <div class="news-title">Anthropic Claude 全面入驻 Microsoft 365——Excel/Word/PPT/Outlook 四件套正式开放，原生侧边栏协同改写 Office 工作流</div>
+      </div>
+      <div class="tags">
+        <span class="tag tag-purple">Anthropic</span>
+        <span class="tag tag-green">已正式发布</span>
+        <span class="tag tag-cyan">Microsoft 365</span>
+      </div>
+      <div class="news-body">
+        5 月 7 日，Anthropic 宣布 Claude for Microsoft 365 正式全量开放：<span class="hl">Excel、PowerPoint、Word 版已 GA，Outlook 版进入公测</span>。Claude 通过侧边栏对话实现跨应用上下文共享——在 Excel 中可读多标签工作簿、用真实公式构建模型；在 PowerPoint 中严格遵循企业模板字体配色生成可编辑图表；在 Word 中所有修改以修订模式呈现，可回复评论线程。这标志着 AI 办公助手从单点增强迈向全流程协同，<span class="hl">Claude 成为继 Copilot 之后第二个深度嵌入 Office 生态的大模型</span>。
+      </div>
+      <div class="divider"></div>
+      <div class="news-footer">🏷️ AI 办公 · 大模型生态 · 2026-05-07</div>
+    </div>
+
+    <!-- 3 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">3</div>
+        <div class="news-title">百度文心大模型 5.1 正式发布——搜索能力全球第四、国产第一，预训练成本仅行业同规模的 6%</div>
+      </div>
+      <div class="tags">
+        <span class="tag tag-purple">百度</span>
+        <span class="tag tag-green">已发布</span>
+        <span class="tag tag-cyan">国产大模型</span>
+      </div>
+      <div class="news-body">
+        5 月 9 日，百度文心大模型 5.1 上线千帆模型广场与文心一言官网。采用多维弹性预训练技术，<span class="hl">总参数量压缩至约 1/3，激活参数减半，预训练成本仅为行业同规模的 6%</span>。在 LMArena 国际榜单搜索能力得分 1223，全球第四、国内第一；Agent 能力超越 DeepSeek-V4-Pro，创意写作比肩 Gemini 3.1 Pro。百度 AI 开发者大会定于 5 月 13-14 日举办，将披露更多技术细节与商业化规划。
+      </div>
+      <div class="divider"></div>
+      <div class="news-footer">🏷️ 国产大模型 · 文心 · 2026-05-09</div>
+    </div>
+
+    <!-- 4 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">4</div>
+        <div class="news-title">OpenAI Codex Chrome 扩展上线——无需接管浏览器即可调用 DevTools 测 Web 应用，macOS/Windows 双端支持</div>
+      </div>
+      <div class="tags">
+        <span class="tag tag-purple">OpenAI</span>
+        <span class="tag tag-amber">Codex</span>
+        <span class="tag tag-green">Chrome 扩展</span>
+      </div>
+      <div class="news-body">
+        5 月 8 日，OpenAI 上线「Codex for Chrome」扩展。<span class="hl">不同于此前接管整台电脑的 Computer Use 模式，该扩展让 Codex 直接在浏览器沙箱内操作</span>——调用 DevTools、跨标签页获取上下文、测试 Web 应用——更贴近开发者真实工作流。安装方式：在桌面版 Codex 应用 Plugins 菜单中直接安装，支持 macOS 与 Windows。OpenAI 观察到用户 Codex 工作流 80%+ 发生在浏览器中，该扩展是针对性优化。
+      </div>
+      <div class="divider"></div>
+      <div class="news-footer">🏷️ OpenAI · Codex · 浏览器 · 2026-05-08</div>
+    </div>
+
+    <!-- 5 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">5</div>
+        <div class="news-title">Google 内测 Remy AI Agent——类 OpenClaw 全能私人助手，正面对标 OpenAI，Google I/O 2026 倒计时 9 天</div>
+      </div>
+      <div class="tags">
+        <span class="tag tag-cyan">Google</span>
+        <span class="tag tag-amber">Google I/O 9天</span>
+        <span class="tag tag-purple">AI Agent</span>
+      </div>
+      <div class="news-body">
+        据报道，谷歌正秘密内测 AI 智能体 <span class="hl">Remy</span>，深度集成 Gemini，能力形态与 OpenClaw 高度相似——代为回复消息、网络调研、代办任务。OpenClaw 创始团队今年 2 月已加入 OpenAI，Remy 被视为谷歌在个人 AI Agent 领域对 OpenAI 的直接回应。与此同时，<span class="hl">Google I/O 2026 大会将于 5 月 19 日正式开幕</span>，Gemini 4.0、Android XR 智能眼镜、Aluminum OS 操作系统等多项重磅发布箭在弦上，倒计时仅剩 9 天。
+      </div>
+      <div class="divider"></div>
+      <div class="news-footer">🏷️ Google · Gemini · AI Agent · 2026-05-10</div>
+    </div>
+
+    <!-- 6 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">6</div>
+        <div class="news-title">蚂蚁百灵 Ring-2.6-1T 万亿思考模型发布——高难度推理 AIME26 得分 95.83，近期将开源</div>
+      </div>
+      <div class="tags">
+        <span class="tag tag-purple">蚂蚁 AI</span>
+        <span class="tag tag-green">即将开源</span>
+        <span class="tag tag-cyan">推理模型</span>
+      </div>
+      <div class="news-body">
+        5 月 9 日，蚂蚁百灵正式推出 Ring-2.6-1T 万亿思考模型，主打复杂生产场景。<span class="hl">双推理模式设计</span>：high 模式低 Token 开销适配高频 Agent 协作；xhigh 模式专注高难度逻辑推演与竞赛任务。实测成绩：xhigh 模式 AIME26 得分 95.83、GPQA Diamond 得分 88.27；high 模式 PinchBench 得分 87.60，超越多款国际主流闭源模型。模型已上线 OpenRouter 提供一周免费体验，<span class="hl">近期计划开源</span>，标志国产大模型竞争从参数堆叠转向推理效能精细化运营。
+      </div>
+      <div class="divider"></div>
+      <div class="news-footer">🏷️ 国产推理模型 · 蚂蚁 · 2026-05-09</div>
+    </div>
+
+    <!-- 7 -->
+    <div class="news-card">
+      <div class="news-top">
+        <div class="news-num">7</div>
+        <div class="news-title">微软 Agent 365 正式商用（GA）——企业级 AI Agent 获身份管理+安全防护+合规治理全套支持，AI 办公 Agent 时代加速到来</div>
+      </div>
+      <div class="tags">
+        <span class="tag tag-purple">微软</span>
+        <span class="tag tag-green">正式商用</span>
+        <span class="tag tag-amber">企业级</span>
+      </div>
+      <div class="news-body">
+        5 月 2 日，微软 Agent 365 正式商用（GA），为企业跨场景 AI Agent 提供<span class="hl">身份管理、安全防护、合规治理</span>的全套工具支持。这与同期 Anthropic Claude for Microsoft 365 全量开放形成合力——微软正在将 AI Agent 从「点状工具」升级为「企业级基础设施」：Agent 拥有独立身份和权限管理、行为日志、合规审计能力，可在 Microsoft 365 生态内自主执行复杂任务。结合 GitHub Copilot 6 月 1 日即将转向按量计费，<span class="hl">微软 AI 办公生态正向「Agent 即基础设施」全面转型</span>。
+      </div>
+      <div class="divider"></div>
+      <div class="news-footer">🏷️ 微软 · Agent · 企业AI · 2026-05-02</div>
+    </div>
+
+  </div><!-- /news-list -->
+
+  <!-- Cursor 技巧入口 -->
+  <a class="cursor-tips-link" href="/cursor-tips/">
+    <div class="ctl">⌨️ 今日 Cursor 技巧 · 点击查看专栏</div>
+    <div class="ctt">Cursor「更强模型驱动更有雄心的工作」· 模型质量评测方法 · BYO 模型接入国产大模型降本策略</div>
+    <div class="ctd">来自 Cursor 官方「更强的 AI 模型推动更具雄心的工作」博客 · 2026-04-15</div>
+  </a>
+
+  <div class="footer-area">
+    <a class="back-btn" href="/">← 返回首页</a>
+  </div>
+
+</div>
+</body>
+</html>
