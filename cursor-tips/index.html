@@ -194,6 +194,103 @@
     <strong>这是什么？</strong> 每天从 Cursor 官方博客精选 1-3 个<strong>实用技巧或使用场景</strong>，用大白话讲清楚——你能学到什么、怎么用、什么时候用。从新手到进阶，边用边学。
   </div>
 
+  <!-- ========== 2026-05-11 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">05月11日</span>
+      <span class="day-title">autoinstall 双阶段自举法 · 模拟缺失依赖先跑通逻辑 · 5次重试上限最优容错策略</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <!-- 技巧1: autoinstall 双阶段自举 -->
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">🔄</div>
+          <div class="tip-title">autoinstall 双阶段自举——先「定目标」再「跑环境」，Agent 任务成功率从 47.9% 跃升到 61.7%</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">Cursor 官方研究</span>
+          <span class="tag green">环境配置</span>
+          <span class="tag">自举法</span>
+          <span class="tag cyan">Terminal-Bench</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这个方法是什么？</strong><br>
+          Cursor 官方「用 autoinstall 自举 Composer」博客（2026-05-06）揭示了一个核心方法论：不要直接让 AI 「配环境」，而是<span class="hl">先让一个智能体定义「成功标准」，再让另一个智能体去实现它</span>。这是 Cursor 训练 Composer 2 的内部方法，Terminal-Bench 得分从 47.9% 提升到 61.7%。
+          </p>
+          <p><strong>两个阶段怎么用（以新项目接手为例）：</strong></p>
+          <ul>
+            <li><strong>阶段 1——目标定设：</strong>让 Cursor 读 README/Makefile，输出「10 条验证环境 OK 的命令 + 每条命令的预期输出」。例如：<span class="code">npm test</span> 应看到「All 23 tests passed」</li>
+            <li><strong>阶段 2——环境构建：</strong>再让另一个 Chat 窗口的 Agent 去跑通这 10 条命令，它会自主安装依赖、模拟缺失文件、搜索官方文档补全配置</li>
+            <li><strong>验证闭环：</strong>只有全部命令的输出和预期一致，才算「环境 OK」，后续所有任务都在这个稳定基础上进行</li>
+          </ul>
+          <p><strong>为什么有效？</strong><span class="hl">把「定标准」和「执行」交给不同 Agent，避免了自证清白式的偷懒——执行 Agent 不知道标准是谁定的，只能老老实实跑到对</span>。</p>
+          <p><strong>适合场景：</strong>接手老项目、搭建测试环境、给 CI/CD 配置自动化检查，任何「环境不确定」的新起点。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客「用 autoinstall 自举 Composer」· 2026-05-06 · Shomil, Joshua & Andrew</span>
+          <a href="https://cursor.com/cn/blog/bootstrapping-composer-with-autoinstall" target="_blank">阅读原文 →</a>
+        </div>
+      </div>
+
+      <!-- 技巧2: 模拟缺失依赖 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🧩</div>
+          <div class="tip-title">缺依赖别等——让 Cursor 自己「造替代品」先跑通逻辑，再补真实依赖</div>
+        </div>
+        <div class="tags">
+          <span class="tag green">缺失依赖</span>
+          <span class="tag">Mock 策略</span>
+          <span class="tag amber">效率提升</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>是什么：</strong>autoinstall 的核心实践之一——当项目需要 <span class="code">S3 Bucket</span>、外部数据库、第三方 sidecar 容器等「现在没有的依赖」时，<span class="hl">Cursor 会主动创建 MinIO 模拟 S3、本地 Docker 容器模拟外部服务、占位图片模拟媒体文件</span>，确保代码能先跑通，不被依赖卡住。</p>
+          <p><strong>怎么用：</strong></p>
+          <ul>
+            <li>告诉 Cursor：「这个项目需要 XXX 服务，但我现在没有——帮我用最简单的本地方案模拟它，让测试能跑起来」</li>
+            <li>Cursor 会生成模拟配置（如 <span class="code">docker-compose.mock.yml</span>）或在代码里插入 Mock 层</li>
+            <li>真实依赖就绪后，再让 Cursor 帮你替换掉 Mock 层，通常只需改几行配置</li>
+          </ul>
+          <p><strong>适合场景：</strong>本地开发阶段、写单元测试、演示/Demo 场景，任何「依赖没到位但逻辑要先验证」的情况。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客「用 autoinstall 自举 Composer」· 2026-05-06</span>
+          <a href="https://cursor.com/cn/blog/bootstrapping-composer-with-autoinstall" target="_blank">阅读原文 →</a>
+        </div>
+      </div>
+
+      <!-- 技巧3: 5次重试上限 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">⚡</div>
+          <div class="tip-title">给 Agent 设「5次重试上限」——失败就换策略，而不是反复硬撞，避免无效消耗上下文</div>
+        </div>
+        <div class="tags">
+          <span class="tag cyan">容错策略</span>
+          <span class="tag">重试上限</span>
+          <span class="tag amber">Token 节省</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>是什么：</strong>Cursor autoinstall 有一条明确规则：<span class="hl">同一环境构建任务，重试不超过 5 次，5 次后仍不成功直接丢弃该环境，换一个新的切入点</span>。这个「硬截止」设计是防止 Agent 陷入死循环的关键。</p>
+          <p><strong>你可以这样用：</strong></p>
+          <ul>
+            <li>给 Cursor 下指令时加上：「最多尝试 5 种不同方案，每种方案最多做 X 步，如果还没解决就停下来告诉我你尝试了什么」</li>
+            <li>或者在 <span class="code">.cursorrules</span> 里写：「任何问题尝试 3 次不成功须停下来报告，不要继续盲目重试」</li>
+            <li>当 Cursor 卡住时，主动问它：「你已经尝试了哪几种方法？」强制它梳理思路换角度</li>
+          </ul>
+          <p><strong>为什么重要：</strong>AI 在没有明确截止的情况下倾向于「继续尝试同类方法」而不是「换策略」，设置重试上限能强制它走出局部最优。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客「用 autoinstall 自举 Composer」· 2026-05-06</span>
+          <a href="https://cursor.com/cn/blog/bootstrapping-composer-with-autoinstall" target="_blank">阅读原文 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /day-entry 2026-05-11 -->
+
   <!-- ========== 2026-05-10 ========== -->
   <div class="day-entry">
     <div class="day-header">
