@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年5月12日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px 60px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .page-header { margin-bottom: 32px; }
+    .date-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(0,212,170,0.15));
+      border: 1px solid rgba(108,99,255,0.4);
+      color: #a5b4fc;
+      font-size: 13px; font-weight: 700;
+      padding: 5px 14px; border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .page-header h1 {
+      font-size: 28px; font-weight: 800; color: #fff;
+      margin-bottom: 8px; line-height: 1.3;
+    }
+    .page-header h1 span { color: #6c63ff; }
+    .page-header .meta { font-size: 13px; color: #6b7280; }
+
+    /* 头条 */
+    .headline-card {
+      background: linear-gradient(135deg, #1a1d27, #1e1f32);
+      border: 1px solid rgba(108,99,255,0.5);
+      border-radius: 16px; padding: 22px 24px;
+      margin-bottom: 24px;
+    }
+    .headline-label {
+      font-size: 11px; font-weight: 700; color: #00d4aa;
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .headline-title {
+      font-size: 18px; font-weight: 700; color: #fff;
+      line-height: 1.5; margin-bottom: 10px;
+    }
+    .headline-body { font-size: 14px; color: #9ca3af; line-height: 1.75; }
+    .headline-body strong { color: #e2e8f0; }
+
+    /* 新闻列表 */
+    .section-title {
+      font-size: 12px; font-weight: 700; color: #6c63ff;
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 14px; padding-bottom: 8px;
+      border-bottom: 1px solid #2a2d3e;
+    }
+    .news-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .news-item {
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      border-radius: 12px; padding: 16px 20px;
+      transition: border-color 0.2s;
+    }
+    .news-item:hover { border-color: #6c63ff; }
+    .news-item-header {
+      display: flex; align-items: flex-start; gap: 10px;
+      margin-bottom: 8px;
+    }
+    .news-num {
+      min-width: 24px; height: 24px;
+      background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.3);
+      color: #a5b4fc; font-size: 11px; font-weight: 700;
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .news-title { font-size: 15px; font-weight: 600; color: #eef0fb; line-height: 1.5; }
+    .news-body { font-size: 13px; color: #8b90b0; line-height: 1.7; padding-left: 34px; }
+    .news-body strong { color: #c4c9e8; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; padding-left: 34px; }
+    .tag {
+      font-size: 11px; font-weight: 500; padding: 2px 9px;
+      border-radius: 5px;
+    }
+    .tag-purple { background: rgba(108,99,255,0.12); color: #a5b4fc; }
+    .tag-green { background: rgba(74,222,128,0.1); color: #4ade80; }
+    .tag-amber { background: rgba(251,191,36,0.1); color: #fbbf24; }
+    .tag-red { background: rgba(248,113,113,0.1); color: #f87171; }
+    .tag-cyan { background: rgba(34,211,238,0.1); color: #22d3ee; }
+
+    /* 趋势总结 */
+    .trend-box {
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      border-radius: 14px; padding: 20px 22px;
+      margin-bottom: 32px;
+    }
+    .trend-box h3 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .trend-item { display: flex; gap: 10px; margin-bottom: 9px; font-size: 13px; color: #8b90b0; line-height: 1.6; }
+    .trend-icon { font-size: 15px; flex-shrink: 0; }
+    .trend-item strong { color: #e2e8f0; }
+
+    /* 底部 */
+    .footer-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px; padding-top: 20px;
+      border-top: 1px solid #2a2d3e;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      color: #8b90b0; text-decoration: none;
+      font-size: 13px; padding: 8px 18px; border-radius: 9px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn:hover { border-color: #6c63ff; color: #a5b4fc; }
+    .btn-primary { border-color: rgba(108,99,255,0.4); color: #a5b4fc; }
+
+    @media (max-width: 768px) {
+      body { padding: 28px 14px 48px; }
+      .page-header h1 { font-size: 22px; }
+      .headline-title { font-size: 16px; }
+      .news-title { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 页面标题 -->
+  <div class="page-header">
+    <div class="date-badge">2026年5月12日 · 星期二</div>
+    <h1>AI 编程热点 · <span>今日速递</span></h1>
+    <p class="meta">每日 08:15 自动生成 · 覆盖 AI 编程工具、大模型、开源生态全动态</p>
+  </div>
+
+  <!-- 头条 -->
+  <div class="headline-card">
+    <div class="headline-label">今日头条</div>
+    <div class="headline-title">Codex 单周下载量破 9000 万——是 Claude Code 的 12 倍，OpenAI 发布官方 12 用例库力推普及</div>
+    <div class="headline-body">
+      OpenAI 放出 Codex 官方 12 用例库，覆盖 PR 审查、数据分析、PPT 生成、游戏开发等场景，核心方法论是把<strong>规则、上下文和验收标准</strong>交给 AI 执行，<strong>AGENTS.md</strong> 作为项目规则文件帮助 Codex 理解工作方式。奥特曼称 GPT-5.5 为「自闭天才」，<strong>token 消耗比 Claude 少近 40%</strong>。与此同时，Uber 部署 AI 编程工具后 70% 代码由 AI 生成，6000 工程师每月 AI 成本达 <strong>600 万美元</strong>，四个月烧完全年预算，企业从「推广难」陷入「控量难」。
+    </div>
+  </div>
+
+  <!-- 新闻列表 -->
+  <div class="section-title">今日 7 条热点</div>
+  <div class="news-list">
+
+    <div class="news-item">
+      <div class="news-item-header">
+        <div class="news-num">1</div>
+        <div class="news-title">OpenAI 发布 Codex 官方 12 用例库，单周下载量 9000 万是 Claude Code 的 12 倍</div>
+      </div>
+      <div class="news-body">
+        OpenAI 放出 Codex 官方 12 用例库，覆盖 PR 审查、数据分析、PPT 生成、游戏开发等完整工作流。核心不是功能展示，而是演示如何将<strong>规则、上下文和验收标准</strong>交给 AI 执行——<strong>AGENTS.md</strong> 项目规则文件成为 Codex 理解团队工作方式的关键。奥特曼称 GPT-5.5 为「自闭天才」，token 消耗比 Claude 少近 40%，Codex 单周下载量已达 9000 万，是 Claude Code 的 12 倍。一个 16 人团队退订 Claude 转用 GPT-5.5，每月节省 3.2 万美元。
+      </div>
+      <div class="tags">
+        <span class="tag tag-purple">OpenAI Codex</span>
+        <span class="tag tag-green">用例库</span>
+        <span class="tag tag-amber">GPT-5.5</span>
+        <span class="tag tag-cyan">AGENTS.md</span>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-item-header">
+        <div class="news-num">2</div>
+        <div class="news-title">Uber 70% 代码由 AI 生成，月均成本 600 万美元，四个月烧光全年 AI 预算</div>
+      </div>
+      <div class="news-body">
+        Uber 部署 AI 编程工具后 95% 工程师使用，70% 代码由 AI 生成，6000 名工程师每月 AI 工具成本约<strong> 600 万美元</strong>，四个月就烧完全年预算。企业软件预算模型假设使用量可预测，但 AI 工具使用量无天花板，挑战从「推广难」变成<strong>「控量难」</strong>。这是 2026 年企业级 AI 编程面临的全新成本管理困境。
+      </div>
+      <div class="tags">
+        <span class="tag tag-amber">企业落地</span>
+        <span class="tag tag-red">成本爆炸</span>
+        <span class="tag tag-purple">Uber</span>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-item-header">
+        <div class="news-num">3</div>
+        <div class="news-title">Claude Code 被曝「有毒」header 破坏 KV 缓存，推理延迟飙升 5 倍</div>
+      </div>
+      <div class="news-body">
+        NVIDIA Dynamo 团队发现，Claude Code 每条请求中<strong>逐行变化的 billing header</strong> 破坏了 52K 上下文的 KV 缓存复用，导致推理延迟增加近 <strong>5 倍</strong>。添加移除 header 的 flag 后延迟恢复正常。在 Claude 已被 Codex 下载量以 12 倍差距甩开的背景下，这一技术缺陷让 Claude Code 雪上加霜，Anthropic 预计将在近期修复。
+      </div>
+      <div class="tags">
+        <span class="tag tag-red">Claude Code</span>
+        <span class="tag tag-amber">KV 缓存</span>
+        <span class="tag tag-purple">NVIDIA Dynamo</span>
+        <span class="tag tag-cyan">性能优化</span>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-item-header">
+        <div class="news-num">4</div>
+        <div class="news-title">Anthropic 估值逼近万亿美元，IPO 规模或超越 SpaceX 成史上最大</div>
+      </div>
+      <div class="news-body">
+        Anthropic 正在推进接近<strong>万亿美元估值</strong>的上市前最后一轮融资，若成功将超越 OpenAI 成为全球估值最高的 AI 独角兽。5 个月内 ARR 从 300 亿暴涨至 <strong>450 亿美元</strong>，IPO 规模或超越 SpaceX 成为史上最大 IPO。与此同时，Cerebras Systems 披露 IPO 详情，股票代码 CBRS，目标估值 <strong>266 亿美元</strong>，将成为 2026 年迄今全球最大 AI 芯片上市案例。
+      </div>
+      <div class="tags">
+        <span class="tag tag-amber">Anthropic</span>
+        <span class="tag tag-green">IPO</span>
+        <span class="tag tag-purple">Cerebras</span>
+        <span class="tag tag-cyan">AI 估值</span>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-item-header">
+        <div class="news-num">5</div>
+        <div class="news-title">Google Gemini Omni 泄露：统一文本+图片+视频，I/O 2026 倒计时 7 天</div>
+      </div>
+      <div class="news-body">
+        谷歌自家 Gemini 视频生成界面中出现了名为 <strong>Gemini Omni</strong> 的泄露模型，推测是能统一处理文本、图片、视频的单一全能模型。Google I/O 2026 将于<strong>5月19日</strong>开幕（倒计时 7 天），预计发布 Gemini 4.0 + Android XR 眼镜 + Aluminum OS（Chrome OS×Android 融合平台）三大方向，今年将是谷歌 AI 能力集中爆发的里程碑。
+      </div>
+      <div class="tags">
+        <span class="tag tag-green">Google I/O 2026</span>
+        <span class="tag tag-amber">Gemini Omni</span>
+        <span class="tag tag-cyan">5月19日</span>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-item-header">
+        <div class="news-num">6</div>
+        <div class="news-title">Chrome 静默安装 Gemini Nano：偷塞 4GB 模型、删后自动重下，引发隐私警报</div>
+      </div>
+      <div class="news-body">
+        谷歌通过 Chrome 浏览器在数亿台电脑上<strong>静默安装 4GB 的 Gemini Nano 模型</strong>，未事先征求用户同意，且删除后会自动重新下载。此举引发开发者和隐私倡导者强烈反弹，被批评为借助 Chrome 近 70% 的市占强推本地 AI。该模型旨在支持 Chrome 内置 AI 功能，但安装方式触及用户设备控制权的底线。
+      </div>
+      <div class="tags">
+        <span class="tag tag-red">隐私争议</span>
+        <span class="tag tag-amber">Chrome</span>
+        <span class="tag tag-purple">Gemini Nano</span>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-item-header">
+        <div class="news-num">7</div>
+        <div class="news-title">Cursor Bugbot 全面转为按用量计费，高级模式可多发现 35% 缺陷</div>
+      </div>
+      <div class="news-body">
+        Cursor 官方宣布 <strong>Bugbot</strong> 计费模式重大调整：取消每席位每月 40 美元订阅制，全面切换为<strong>按用量计费</strong>，平均每次运行 1.00-1.50 美元。新增「投入级别配置」功能，高级别模式下 Bugbot 能<strong>多发现 35% 的缺陷</strong>，默认模式下 80% 缺陷在合并前被解决。现有客户可在 2026年6月8日之前主动切换，或等待下次账单续费日自动生效。
+      </div>
+      <div class="tags">
+        <span class="tag tag-purple">Cursor Bugbot</span>
+        <span class="tag tag-green">按用量计费</span>
+        <span class="tag tag-amber">5月11日发布</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 趋势总结 -->
+  <div class="trend-box">
+    <h3>今日 AI 编程趋势总结</h3>
+    <div class="trend-item">
+      <span class="trend-icon">⚡</span>
+      <span><strong>Codex 生态全面爆发：</strong>9000 万周下载量+官方用例库+性价比优势，OpenAI 用「实用主义」路线正在把 Claude Code 挤出主流市场</span>
+    </div>
+    <div class="trend-item">
+      <span class="trend-icon">💸</span>
+      <span><strong>企业 AI 成本失控成行业新痛点：</strong>Uber 600万/月的案例揭示「推广难→控量难」的周期，企业需要新的 AI 预算管控工具</span>
+    </div>
+    <div class="trend-item">
+      <span class="trend-icon">📈</span>
+      <span><strong>AI 资本高烧不退：</strong>Anthropic 万亿估值冲刺+Cerebras IPO，2026 年 AI 资本市场进入史上最密集的变现收割期</span>
+    </div>
+    <div class="trend-item">
+      <span class="trend-icon">🎯</span>
+      <span><strong>Google I/O 7 天倒计时：</strong>Gemini Omni 提前泄露，Gemini 4.0+Android XR+Aluminum OS 将是 5 月最重要的技术发布节点</span>
+    </div>
+  </div>
+
+  <!-- 底部导航 -->
+  <div class="footer-nav">
+    <a class="btn btn-primary" href="/">← 返回首页</a>
+    <a class="btn" href="/cursor-tips/">⌨️ Cursor 技巧专栏</a>
+    <span style="font-size:12px;color:#4a4e6a;">自动生成 · 2026-05-12 08:15</span>
+  </div>
+
+</div>
+</body>
+</html>

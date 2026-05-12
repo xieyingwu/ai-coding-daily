@@ -194,6 +194,108 @@
     <strong>这是什么？</strong> 每天从 Cursor 官方博客精选 1-3 个<strong>实用技巧或使用场景</strong>，用大白话讲清楚——你能学到什么、怎么用、什么时候用。从新手到进阶，边用边学。
   </div>
 
+  <!-- ========== 2026-05-12 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">05月12日</span>
+      <span class="day-title">Bugbot 按用量计费新策略 · AGENTS.md 项目规则文件工程法 · AI 工具成本控量管理</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <!-- 技巧1: AGENTS.md 项目规则文件 -->
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">📋</div>
+          <div class="tip-title">AGENTS.md 项目规则文件——告诉 AI「我们团队怎么工作」，让 Codex 和 Cursor 理解你的工程规范</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">OpenAI Codex 官方实践</span>
+          <span class="tag green">项目规范</span>
+          <span class="tag">AGENTS.md</span>
+          <span class="tag cyan">工程化</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这个方法是什么？</strong><br>
+          OpenAI 今日发布的 Codex 官方 12 用例库揭示了一个核心工程实践：在项目根目录放一个 <span class="code">AGENTS.md</span> 文件，用自然语言告诉 AI <span class="hl">这个项目的工作方式、命名规范、提交标准和验收条件</span>。类似 Cursor 的 <span class="code">.cursorrules</span>，但更聚焦于「Agent 行为规范」。
+          </p>
+          <p><strong>AGENTS.md 里该写什么（参考结构）：</strong></p>
+          <ul>
+            <li><strong>项目背景：</strong>这是一个什么项目、主要语言/框架、目录结构说明</li>
+            <li><strong>工作规范：</strong>PR 标题格式、Commit Message 规则、代码风格要求</li>
+            <li><strong>验收标准：</strong>「每次改动必须通过 npm test」「新增 API 必须有 OpenAPI 文档」</li>
+            <li><strong>禁止事项：</strong>「不要修改 legacy/ 目录下的文件」「不要删除已有的类型定义」</li>
+            <li><strong>常用命令：</strong>本地启动命令、测试命令、部署命令</li>
+          </ul>
+          <p><strong>为什么有效？</strong><span class="hl">每次开新对话，AI 读完 AGENTS.md 就能「接班」，不需要你重复解释上下文</span>，特别适合团队协作和长期项目维护。</p>
+          <p><strong>适合场景：</strong>多人协作项目、长周期项目、需要保持代码风格一致的团队，以及任何你不想每次都重新解释「我们怎么做」的项目。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：OpenAI Codex 官方 12 用例库 · 2026-05-12 · 项目规范最佳实践</span>
+          <a href="https://openai.com/codex" target="_blank">了解 Codex →</a>
+        </div>
+      </div>
+
+      <!-- 技巧2: Bugbot 按用量计费新策略 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🐛</div>
+          <div class="tip-title">Bugbot 新计费模式上线：用「高投入级别」让 AI 多发现 35% 代码缺陷，每次 1-1.5 美元</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">Cursor 官方 5月11日</span>
+          <span class="tag green">Bugbot</span>
+          <span class="tag">按用量计费</span>
+          <span class="tag cyan">代码质量</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>是什么：</strong>Cursor 官方刚刚宣布 Bugbot 从「每席位 40 美元/月订阅制」切换为<span class="hl">按用量计费（每次 PR 审查约 1.00-1.50 美元）</span>，同时新增「投入级别配置」功能，让你控制 Bugbot 审查的深度。</p>
+          <p><strong>投入级别怎么选？</strong></p>
+          <ul>
+            <li><strong>默认级别：</strong>与原来一样，80% 的缺陷在合并前被发现和解决，适合日常开发</li>
+            <li><strong>高级别：</strong>Bugbot 会花更长时间思考，<span class="hl">多发现 35% 的缺陷</span>，约 2-3 美元/次，适合重要功能/发版前</li>
+            <li><strong>自定义逻辑：</strong>可以设置规则让 Cursor 自动判断该用哪个级别（比如 main 分支 PR 自动升级为高级别）</li>
+          </ul>
+          <p><strong>实用建议：</strong>对于关键路径代码（支付/权限/数据处理），手动选高级别模式，额外多发现的缺陷远比 1 美元成本值钱；日常小改动用默认级别即可。</p>
+          <p><strong>适合场景：</strong>发版前的 PR 审查、核心功能合并、跨服务接口变更，任何「出了 bug 代价很高」的改动。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor 官方博客「Bugbot 团队版和个人版更新」· 2026-05-11 · Cursor Team</span>
+          <a href="https://cursor.com/cn/blog/may-2026-bugbot-changes" target="_blank">阅读原文 →</a>
+        </div>
+      </div>
+
+      <!-- 技巧3: AI 工具成本控量 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">💰</div>
+          <div class="tip-title">Uber 600 万/月的教训：怎么在团队里合理控制 AI 工具成本，不让预算失控</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">企业实践</span>
+          <span class="tag red">成本控制</span>
+          <span class="tag">AI 工具管理</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>背景：</strong>今日曝出 Uber 6000 名工程师使用 AI 编程工具后，<span class="hl">每月成本高达 600 万美元，四个月烧光全年预算</span>。AI 工具从「难以推广」变成「用量无上限」，企业面临全新的成本管控问题。</p>
+          <p><strong>个人和小团队可借鉴的控量策略：</strong></p>
+          <ul>
+            <li><strong>区分任务优先级：</strong>用 BYO（自带模型）接入性价比高的模型（如 DeepSeek/豆包 Code）处理日常补全，把贵的模型留给复杂任务</li>
+            <li><strong>善用 Cursor 的模型切换：</strong>Cursor 支持在对话中途切换模型，简单问题用 Flash 级别，重要任务才启用最强模型</li>
+            <li><strong>设置 token 预算提示词：</strong>在 AGENTS.md 中加入「优先用最短路径解决问题，不要无谓地扩展代码」来隐性约束 token 消耗</li>
+            <li><strong>代码保留率自测：</strong>如果 AI 输出后你大量修改，说明上下文没给够，反而浪费；多给上下文能降低总成本</li>
+          </ul>
+          <p><strong>适合场景：</strong>管理团队 AI 工具预算、个人控制 API 费用、评估不同 AI 工具的性价比。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Uber AI 编程成本事件 · 2026-05-12 · 结合 Cursor 官方 BYO 模型实践</span>
+          <a href="https://cursor.com/cn/blog/better-models-ambitious-work" target="_blank">Cursor BYO 模型指南 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ========== 2026-05-11 ========== -->
   <div class="day-entry">
     <div class="day-header">
