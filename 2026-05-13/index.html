@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年5月13日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px 80px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .top-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 32px; flex-wrap: wrap; gap: 12px;
+    }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      color: #8b90b0; text-decoration: none; font-size: 13px;
+      padding: 8px 16px; border-radius: 8px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .back-btn:hover { border-color: #6c63ff; color: #a5b4fc; }
+    .date-badge {
+      background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(139,92,246,0.2));
+      border: 1px solid rgba(108,99,255,0.35);
+      color: #a5b4fc; font-size: 12px; font-weight: 700;
+      padding: 5px 14px; border-radius: 8px;
+    }
+
+    .page-header { margin-bottom: 28px; }
+    .page-header h1 { font-size: 26px; font-weight: 700; color: #fff; line-height: 1.4; margin-bottom: 8px; }
+    .page-header h1 span { color: #6c63ff; }
+    .page-meta { font-size: 13px; color: #6b7280; }
+
+    .news-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+
+    .news-card {
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      border-radius: 14px; padding: 20px 22px;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .news-card:hover { border-color: #6c63ff; transform: translateY(-1px); }
+    .news-card.featured { border-color: rgba(251,191,36,0.35); background: linear-gradient(135deg, #1a1d27, #1e1f2e); }
+
+    .news-num {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      background: rgba(108,99,255,0.15); color: #818cf8;
+      border: 1px solid rgba(108,99,255,0.25);
+      padding: 2px 8px; border-radius: 5px; margin-bottom: 8px;
+    }
+    .news-num.top { background: rgba(251,191,36,0.1); color: #fbbf24; border-color: rgba(251,191,36,0.25); }
+
+    .news-title { font-size: 16px; font-weight: 600; color: #eef0fb; line-height: 1.5; margin-bottom: 8px; }
+    .news-body { font-size: 14px; color: #8b90b0; line-height: 1.75; }
+    .news-body .hl { color: #a5b4fc; font-weight: 500; }
+    .news-body strong { color: #c4b5fd; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .tag {
+      font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 6px;
+      background: #2a2d3a; color: #818cf8;
+    }
+    .tag.green { background: rgba(74,222,128,0.1); color: #4ade80; }
+    .tag.amber { background: rgba(251,191,36,0.1); color: #fbbf24; }
+    .tag.red { background: rgba(248,113,113,0.1); color: #f87171; }
+    .tag.cyan { background: rgba(34,211,238,0.1); color: #22d3ee; }
+
+    .summary-box {
+      background: #1a1d27; border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 14px; padding: 20px 22px; margin-bottom: 32px;
+    }
+    .summary-box h2 { font-size: 15px; font-weight: 700; color: #a5b4fc; margin-bottom: 12px; }
+    .summary-box p { font-size: 14px; color: #8b90b0; line-height: 1.75; }
+
+    .footer-links { display: flex; gap: 12px; flex-wrap: wrap; }
+    .footer-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      color: #8b90b0; text-decoration: none; font-size: 13px;
+      padding: 10px 18px; border-radius: 10px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .footer-link:hover { border-color: #6c63ff; color: #a5b4fc; }
+    .footer-link.accent { border-color: rgba(34,211,238,0.3); color: #22d3ee; }
+    .footer-link.accent:hover { border-color: #22d3ee; }
+
+    @media (max-width: 768px) {
+      body { padding: 24px 14px 60px; }
+      .page-header h1 { font-size: 20px; }
+      .news-title { font-size: 15px; }
+      .news-body { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="top-bar">
+    <a class="back-btn" href="/">← 返回首页</a>
+    <span class="date-badge">2026年5月13日 · 星期三</span>
+  </div>
+
+  <div class="page-header">
+    <h1>AI 编程热点 · <span>2026年5月13日</span></h1>
+    <p class="page-meta">每日 08:15 自动生成 · 覆盖全球 AI 编程工具动态 · 共 7 条精选</p>
+  </div>
+
+  <div class="news-list">
+
+    <!-- 头条 -->
+    <div class="news-card featured">
+      <div class="news-num top">头条</div>
+      <div class="news-title">Anthropic 洽谈 300 亿美元融资，投前估值超 9000 亿美元——Claude 大模型成最大赢家，IPO 最快 10 月启动</div>
+      <div class="news-body">
+        知情人士透露，Claude 开发方 Anthropic 正与投资者展开初步磋商，计划新一轮融资规模<strong>至少 300 亿美元</strong>，投前估值超过 <span class="hl">9000 亿美元</span>，本轮最快 5 月底完成。随着 Claude Code 在企业级 AI 编程市场持续爆发（ARR 已超 440 亿美元），Anthropic 正加大募资力度以覆盖算力基础设施成本。消息人士还称公司考虑最早 <strong>2026 年 10 月启动 IPO</strong>，若成功将超越 SpaceX 成为史上最大科技 IPO 之一。
+      </div>
+      <div class="tags">
+        <span class="tag amber">融资</span>
+        <span class="tag">Anthropic</span>
+        <span class="tag cyan">Claude Code</span>
+        <span class="tag amber">IPO 预期</span>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="news-card">
+      <div class="news-num">热点 02</div>
+      <div class="news-title">Google 将 Gemini 植入安卓底层——从聊天机器人升级为「操作系统层 AI」，Google I/O 2026 倒计时 6 天</div>
+      <div class="news-body">
+        在 Google I/O 2026（5 月 19-20 日）召开前夕，谷歌宣布将 Gemini 从应用层升级为<span class="hl">横跨手机、浏览器、汽车、笔记本电脑的操作层</span>，新功能包括 AI 驱动的应用自动化、更智能的 Chrome、重新设计的 Android Auto 体验。此时距苹果 WWDC 发布 Gemini 驱动的 Apple Intelligence 重磅更新仅剩数周，<strong>AI 操作系统</strong>之战正式打响。编程开发者预计 I/O 上将发布 Gemini 4 正式版。
+      </div>
+      <div class="tags">
+        <span class="tag green">Google I/O</span>
+        <span class="tag">Gemini</span>
+        <span class="tag">Android</span>
+        <span class="tag cyan">倒计时 6 天</span>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="news-card">
+      <div class="news-num">热点 03</div>
+      <div class="news-title">Anthropic 推出 12 款法律 AI 工具，打通 DocuSign + 汤森路透——Claude 正式杀入专业服务市场</div>
+      <div class="news-body">
+        Anthropic 宣布推出 12 款面向<strong>法律行业</strong>的 AI 插件，覆盖合同审查、司法考试备考等功能，同时 Claude 将与 DocuSign、汤森路透等法律常用软件实现互联。这是继 Anthropic 与华尔街合资后，将<span class="hl">垂直专业服务市场作为企业战略核心</span>的重大布局。对 AI 编程工具来说，法律文档自动化和合同代码化是一个新的 AI Coding 应用场景。
+      </div>
+      <div class="tags">
+        <span class="tag">Anthropic</span>
+        <span class="tag amber">企业级</span>
+        <span class="tag">法律 AI</span>
+        <span class="tag green">新市场</span>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="news-card">
+      <div class="news-num">热点 04</div>
+      <div class="news-title">国产「爱马仕」Hermes Agent 三连登顶 OpenRouter 全球调用榜，上海两大模型跻身前五</div>
+      <div class="news-body">
+        开源 AI 智能体框架 Hermes（代号"爱马仕"）在 5 月 9-12 日连续三天<span class="hl">反超 OpenClaw（"龙虾"）登顶全球 OpenRouter 智能体调用量榜首</span>，累计 token 消耗超 6.72 万亿。OpenRouter 平台当前前三名为"爱马仕""龙虾"和 Kilo Code，<strong>上海两大基座模型已跻身全球调用前五</strong>。这是继中国论文登顶 ICLR 2026 后，国产 AI 编程生态全球竞争力的又一重要信号。
+      </div>
+      <div class="tags">
+        <span class="tag green">国产 AI</span>
+        <span class="tag">Hermes</span>
+        <span class="tag">OpenRouter</span>
+        <span class="tag cyan">开源生态</span>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="news-card">
+      <div class="news-title">Claude Code 创始人红杉 AI 峰会分享 7 个核心判断——AI 编程正在重新定义工程师的核心价值</div>
+      <div class="news-body">
+        Anthropic Claude Code 创始人 Boris Cherny 在红杉资本第四届 AI Ascent 大会上发表演讲，分享了 7 个关于 AI 发展的核心判断，核心观点包括：<span class="hl">AI 编程工具将把工程师的核心价值从"写代码"转向"定义问题、审查质量、把控方向"</span>；AI Agent 最适合的场景是「有明确验收标准的重复性任务」；以及企业落地 AI 编程的关键是<strong>规范化上下文管理</strong>而非单纯堆叠工具。
+      </div>
+      <div class="tags">
+        <span class="tag amber">Claude Code</span>
+        <span class="tag">红杉 AI 峰会</span>
+        <span class="tag">工程师价值</span>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="news-card">
+      <div class="news-title">PayPal 8000 开发者全面上线 Cursor：研发路线图交付效率提升 40%，Java 升级速度提升 6 倍</div>
+      <div class="news-body">
+        Cursor 官方博客发布 PayPal 案例：8000 名开发者全面采用 Cursor 后，研发路线图交付效率提升 <strong>40%</strong>，3000 个应用的 Java 版本升级速度<span class="hl">从 8-12 个月压缩至 2 个月（提升 6 倍）</span>，高采用率团队实现从每月 1 次到每日多次部署的跨越。PayPal 负责人表示：这是大型企业首次看到兼顾「创业公司般精干敏捷」同时保留自身资金和体系优势的可行路径。
+      </div>
+      <div class="tags">
+        <span class="tag green">企业案例</span>
+        <span class="tag">PayPal</span>
+        <span class="tag cyan">Cursor</span>
+        <span class="tag">6倍提速</span>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="news-card">
+      <div class="news-title">AI 加持国产光刻胶研发破局——「书生」科学大模型打通从 AI 决策到自动化合成的闭环，芯片材料研发新路径</div>
+      <div class="news-body">
+        上海人工智能实验室联合厦门大学、苏州实验室等，基于"书生"科学大模型成功研制出高纯度 <strong>KrF 光刻胶树脂</strong>，打破了高端光刻胶制备依赖国外企业"黑箱能力"的局面。团队已建立<span class="hl">从 AI 决策到自动化合成的闭环研发体系</span>，可标准化、快速迭代——AI 编程思维（可验证、可复现、可迭代）正在渗透到芯片材料等硬科技研发领域，标志着 AI 辅助科学发现进入实用化阶段。
+      </div>
+      <div class="tags">
+        <span class="tag green">国产突破</span>
+        <span class="tag">AI 科学发现</span>
+        <span class="tag">芯片材料</span>
+        <span class="tag amber">书生大模型</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 今日摘要 -->
+  <div class="summary-box">
+    <h2>今日热点摘要</h2>
+    <p>
+      今日最大信号：<strong>Anthropic 洽谈 300 亿美元融资、估值超 9000 亿美元</strong>，IPO 传言最快 10 月，Claude Code 成为 AI 编程市场估值增长最强驱动力。谷歌在 I/O 前夕将 Gemini 植入安卓底层，标志 AI 从工具升级为操作系统层能力，<strong>Google I/O 2026 倒计时 6 天</strong>（5 月 19 日），Gemini 4 正式版最为期待。PayPal 8000 开发者案例显示 Cursor 已进入全球顶级金融科技公司核心工程流程；国产爱马仕 Hermes 三连登顶 OpenRouter 全球调用榜，国产开源生态正在与国际工具正面竞争。
+    </p>
+  </div>
+
+  <div class="footer-links">
+    <a class="footer-link" href="/">← 返回首页</a>
+    <a class="footer-link accent" href="/cursor-tips/">⌨️ Cursor 使用技巧专栏</a>
+  </div>
+
+</div>
+</body>
+</html>
