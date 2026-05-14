@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年5月14日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px 64px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+    .back { margin-bottom: 28px; }
+    .back a {
+      color: #6c63ff; text-decoration: none; font-size: 14px;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border: 1px solid #2a2d3e; border-radius: 8px;
+      background: #1a1d27; transition: border-color 0.2s;
+    }
+    .back a:hover { border-color: #6c63ff; }
+    .header { margin-bottom: 32px; }
+    .date-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(0,212,170,0.15));
+      border: 1px solid rgba(108,99,255,0.35);
+      color: #a5b4fc; font-size: 13px; font-weight: 700;
+      padding: 5px 14px; border-radius: 8px; margin-bottom: 14px;
+    }
+    h1 { font-size: 26px; font-weight: 700; color: #fff; line-height: 1.4; margin-bottom: 8px; }
+    h1 span { color: #6c63ff; }
+    .summary { font-size: 14px; color: #8b90b0; line-height: 1.7; }
+    .divider { height: 1px; background: #2a2d3e; margin: 28px 0; }
+
+    .news-list { display: flex; flex-direction: column; gap: 16px; }
+    .news-card {
+      background: #1a1d27; border: 1px solid #2a2d3e; border-radius: 14px;
+      padding: 20px 22px; transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .news-card:hover { border-color: #6c63ff; box-shadow: 0 6px 20px rgba(108,99,255,0.1); }
+    .news-card.top { border-color: rgba(108,99,255,0.4); background: linear-gradient(135deg, #1a1d27, #1e1f30); }
+    .news-num {
+      display: inline-block; width: 22px; height: 22px;
+      background: rgba(108,99,255,0.2); border: 1px solid rgba(108,99,255,0.3);
+      color: #a5b4fc; font-size: 11px; font-weight: 700;
+      border-radius: 6px; text-align: center; line-height: 22px;
+      margin-right: 8px; flex-shrink: 0;
+    }
+    .news-title-row { display: flex; align-items: flex-start; margin-bottom: 10px; }
+    .news-title { font-size: 16px; font-weight: 600; color: #eef0fb; line-height: 1.5; }
+    .news-body { font-size: 14px; color: #8b90b0; line-height: 1.75; }
+    .news-body strong { color: #c5c9e8; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .tag {
+      font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 6px;
+      background: #2a2d3e; color: #818cf8;
+    }
+    .tag.green { background: rgba(74,222,128,0.1); color: #4ade80; }
+    .tag.amber { background: rgba(251,191,36,0.1); color: #fbbf24; }
+    .tag.red { background: rgba(248,113,113,0.1); color: #f87171; }
+    .tag.cyan { background: rgba(34,211,238,0.1); color: #22d3ee; }
+
+    .cursor-section {
+      margin-top: 32px; background: #1a1d27;
+      border: 1px solid rgba(34,211,238,0.3); border-radius: 16px; padding: 24px;
+    }
+    .cursor-section h2 { font-size: 18px; color: #22d3ee; margin-bottom: 16px; }
+    .tip-card { background: #0f1117; border: 1px solid #2a2d3e; border-radius: 12px; padding: 16px 18px; margin-bottom: 14px; }
+    .tip-card:last-child { margin-bottom: 0; }
+    .tip-title { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+    .tip-body { font-size: 14px; color: #8b90b0; line-height: 1.75; }
+    .tip-body ul { padding-left: 18px; }
+    .tip-body li { margin-bottom: 4px; }
+    .tip-body .hl { color: #a5b4fc; font-weight: 500; }
+    .tip-source { margin-top: 10px; font-size: 12px; color: #4a4e6a; }
+    .tip-source a { color: #6366f1; text-decoration: none; }
+
+    footer { margin-top: 40px; text-align: center; font-size: 12px; color: #3a3d52; }
+    @media (max-width: 768px) {
+      body { padding: 24px 14px 48px; }
+      h1 { font-size: 20px; }
+      .news-title { font-size: 14px; }
+      .news-body { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="back"><a href="/">← 返回首页</a></div>
+
+  <div class="header">
+    <div class="date-badge">2026年5月14日 · 星期四</div>
+    <h1>AI 编程热点 · <span>Cursor 企业75%代码由AI生成 · GPT-5.5 ProgramBench首破 · Google I/O 倒计时5天</span></h1>
+    <p class="summary">今日收录 7 条精选热点，覆盖 AI 编程工具最新动态、模型发布、行业融资与安全警报。</p>
+  </div>
+  <div class="divider"></div>
+
+  <div class="news-list">
+
+    <!-- 1 -->
+    <div class="news-card top">
+      <div class="news-title-row">
+        <span class="news-num">1</span>
+        <span class="news-title">Cursor 创始人实锤：企业 75% 代码已由 AI 生成，Agent 请求量暴涨 15 倍，内部 30% PR 已由 Agent 端到端完成</span>
+      </div>
+      <div class="news-body">
+        Cursor 创始人 Michael Truell 最新公开数据引爆行业：在深度使用 Cursor 的企业客户中，<strong>75% 的代码现在由 AI 生成</strong>，Agent 总请求量较年初暴涨 15 倍；更惊人的是，Cursor 内部已有 <strong>30% 的 PR 完全由 Agent 自主端到端完成</strong>，人类工程师主要负责审查和方向决策。ShareAI 开源社区同步发布 Claude Code 泄露源码的 Agent Harness 三层框架深度解析，相关 GitHub 教程已超 5 万 Star，"Agent 接管日常编码"的预言正在成真。
+      </div>
+      <div class="tag-row">
+        <span class="tag amber">头条</span>
+        <span class="tag green">Cursor</span>
+        <span class="tag">AI Agent</span>
+        <span class="tag cyan">企业落地</span>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="news-card">
+      <div class="news-title-row">
+        <span class="news-num">2</span>
+        <span class="news-title">GPT-5.5 在 ProgramBench 首破纪录——成为唯一能从零盲写完整程序的模型，xhigh 推理级别碾压 Claude Opus 4.7</span>
+      </div>
+      <div class="news-body">
+        OpenAI GPT-5.5 成为<strong>首个在 ProgramBench 编程基准上解出题目的模型</strong>，以 xhigh 超级推理级别从零盲写出 cmatrix 动画程序，其他模型（包括 Claude Opus 4.7）在该基准上得分仍为 0。此前 Meta 发布 ProgramBench 时，9 款顶级模型完整仓库通过率均为 0%，GPT-5.5 的突破标志着 AI 编程进入「从零构建完整可运行程序」的新阶段。
+      </div>
+      <div class="tag-row">
+        <span class="tag green">GPT-5.5</span>
+        <span class="tag">ProgramBench</span>
+        <span class="tag amber">模型突破</span>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="news-card">
+      <div class="news-title-row">
+        <span class="news-num">3</span>
+        <span class="news-title">Cursor 正式推出云端 Agent 开发环境：支持多代码仓库并行、Dockerfile 配置即代码、层缓存构建提速 70%</span>
+      </div>
+      <div class="news-body">
+        Cursor 官方博客（5/13）正式宣布面向企业的云端智能体开发环境三大升级：① <strong>多代码仓库环境</strong>——Agent 可跨多个 repo 推理、交付和确认变更，Amplitude/Decagon/Snyk 已在生产环境部署；② <strong>Dockerfile 配置即代码</strong>——环境定义纳入版本管理，支持构建密钥安全注入私有包注册表；③ <strong>层缓存升级</strong>——命中缓存的构建速度提升 70%，Cursor 还可自动检查仓库生成 Dockerfile 配置（企业私测中）。
+      </div>
+      <div class="tag-row">
+        <span class="tag green">Cursor 官方</span>
+        <span class="tag cyan">云端Agent</span>
+        <span class="tag">多仓库</span>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="news-card">
+      <div class="news-title-row">
+        <span class="news-num">4</span>
+        <span class="news-title">Google 发布 Gemini Intelligence 品牌：Gemini 从「问答助手」升级为安卓操作系统级 AI，可操控浏览器 · Google I/O 倒计时 5 天</span>
+      </div>
+      <div class="news-body">
+        在 2026 年 The Android Show | I/O Edition 发布会上，Google 正式推出 <strong>Gemini Intelligence</strong> 系统方案，宣布 Gemini 将从单一问答助手升级为贯穿安卓系统的操作系统层 AI——可操控浏览器、感知屏幕内容、跨 App 自主执行任务，媒体形容为「安卓变身豆包手机」。Google I/O 2026（5月19-20日）倒计时 5 天，Gemini 4.0 正式版、Android XR、AI 眼镜有望同台亮相。
+      </div>
+      <div class="tag-row">
+        <span class="tag green">Google</span>
+        <span class="tag">Gemini Intelligence</span>
+        <span class="tag amber">Google I/O 倒计时5天</span>
+        <span class="tag cyan">安卓AI</span>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="news-card">
+      <div class="news-title-row">
+        <span class="news-num">5</span>
+        <span class="news-title">Anthropic 估值突破 9000 亿美元，正洽谈 300 亿美元新融资，IPO 最快 Q4 启动</span>
+      </div>
+      <div class="news-body">
+        继 5 月 13 日消息确认后，今日 Anthropic 融资谈判持续发酵：<strong>投前估值超 9000 亿美元</strong>，新一轮融资规模 300 亿美元，多家顶级机构已在洽谈中。Claude Code 年化 ARR 持续攀升是核心估值驱动，分析师预测 Anthropic IPO 最快在 2026 年 Q4 启动，届时有望以超 1 万亿美元估值上市，超越 SpaceX 成为全球最高估值私有科技公司。
+      </div>
+      <div class="tag-row">
+        <span class="tag amber">Anthropic</span>
+        <span class="tag">融资</span>
+        <span class="tag">9000亿估值</span>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="news-card">
+      <div class="news-title-row">
+        <span class="news-num">6</span>
+        <span class="news-title">Isomorphic Labs 完成 21 亿美元 B 轮融资：创 AI 制药融资纪录，AI×生物科技进入超级融资周期</span>
+      </div>
+      <div class="news-body">
+        Alphabet 旗下 AI 制药公司 Isomorphic Labs 今日宣布完成 <strong>21 亿美元（约 143 亿元人民币）B 轮融资</strong>，创下全球 AI 制药领域单轮融资纪录。Isomorphic 以 AlphaFold 为核心，正将 AI 编程范式移植到药物分子设计流程中——其工程团队大量使用 AI 辅助代码生成来构建蛋白质结构预测与药物候选筛选系统，被视为「AI 编程→AI 科研」跨界落地的标杆。
+      </div>
+      <div class="tag-row">
+        <span class="tag green">AI制药</span>
+        <span class="tag">Isomorphic Labs</span>
+        <span class="tag amber">21亿美元融资</span>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="news-card">
+      <div class="news-title-row">
+        <span class="news-num">7</span>
+        <span class="news-title">供应链安全警报：Mistral AI 官方 PyPI 包被注入恶意代码，窃取 Linux 密钥凭证——AI 工具包投毒攻击升级</span>
+      </div>
+      <div class="news-body">
+        安全研究人员发现 Mistral AI 官方 PyPI 包遭受 <strong>Mini Shai-Hulud 供应链攻击</strong>，恶意代码会在安装后静默窃取 Linux 系统的 SSH 密钥和 API 凭证。这是继此前 Anthropic/Cursor 联合扫描工具发现 PyPI/npm 投毒事件后，又一起针对 AI 工具开发者的定向供应链攻击。安全专家建议：所有使用 Mistral SDK 的项目立即核查依赖版本，并审查 CI/CD 环境中的凭证暴露风险。
+      </div>
+      <div class="tag-row">
+        <span class="tag red">安全警报</span>
+        <span class="tag">Mistral AI</span>
+        <span class="tag">供应链攻击</span>
+        <span class="tag">PyPI</span>
+      </div>
+    </div>
+
+  </div><!-- /news-list -->
+
+  <div class="divider"></div>
+
+  <!-- Cursor 技巧 -->
+  <div class="cursor-section">
+    <h2>⌨️ 今日 Cursor 技巧 · 云端 Agent 开发环境三大神器</h2>
+
+    <!-- 技巧1 -->
+    <div class="tip-card">
+      <div class="tip-title">多代码仓库 Agent 环境——让 Agent 跨 10 个 repo 同时干活</div>
+      <div class="tip-body">
+        <p><strong>这个功能是什么？</strong><br>
+        Cursor 新推出的「多代码仓库云端环境」，允许你把企业里所有相关 repo（比如前端、后端、基础设施库）打包成一个 Agent 环境，Agent 可以在所有 repo 之间自由穿梭推理。</p>
+        <p><strong>怎么用？</strong></p>
+        <ul>
+          <li>进入 <span style="color:#c4b5fd; font-family:monospace; font-size:13px;">cursor.com/dashboard/cloud-agents</span> 创建新环境</li>
+          <li>添加需要关联的 repo（支持私有仓库），配置好克隆凭证</li>
+          <li>Agent 接到任务后会自动判断涉及哪些 repo，跨仓库发起 PR</li>
+        </ul>
+        <p><strong>适合什么场景？</strong> 微服务架构的团队、前后端联动改动、需要同步更新多个库的基础设施工作。Amplitude 实测：「多仓库支持才让云端 Agent 真正实用起来。」</p>
+      </div>
+      <div class="tip-source">来源：Cursor 官方博客《智能体的开发环境》· 2026-05-13 &nbsp;<a href="https://cursor.com/cn/blog/cloud-agent-development-environments" target="_blank">查看原文 →</a></div>
+    </div>
+
+    <!-- 技巧2 -->
+    <div class="tip-card">
+      <div class="tip-title">Dockerfile 配置即代码——把 Agent 运行环境纳入 Git 版本管理</div>
+      <div class="tip-body">
+        <p><strong>这个功能是什么？</strong><br>
+        云端 Agent 跑在一个隔离的容器环境里，以前这个环境配置是「隐形的」，出了问题很难排查。现在 Cursor 支持用 Dockerfile 来定义 Agent 的运行环境，这个文件可以提交到 repo 里一起做版本管理。</p>
+        <p><strong>怎么用？</strong></p>
+        <ul>
+          <li>在环境设置里选择「基于 Dockerfile 配置」，上传你的 Dockerfile</li>
+          <li>用 <span style="color:#c4b5fd; font-family:monospace; font-size:13px;">--secret</span> 传入私有包注册表凭证（构建完成后自动销毁，不会泄露到运行环境）</li>
+          <li>层缓存升级后，只有修改过的层才会重建，缓存命中时构建速度提升 <strong>70%</strong></li>
+        </ul>
+        <p><strong>适合什么场景？</strong> 团队协作场景（大家共享同一份 Dockerfile）、需要安装私有 npm/pip 包的企业项目、频繁迭代环境配置的场景。不想写 Dockerfile？让 Cursor 帮你生成一份（企业私测中）。</p>
+      </div>
+      <div class="tip-source">来源：Cursor 官方博客《智能体的开发环境》· 2026-05-13 &nbsp;<a href="https://cursor.com/cn/blog/cloud-agent-development-environments" target="_blank">查看原文 →</a></div>
+    </div>
+
+    <!-- 技巧3 -->
+    <div class="tip-card">
+      <div class="tip-title">环境版本历史 + 出口网络管控——给云端 Agent 装「安全门」</div>
+      <div class="tip-body">
+        <p><strong>这个功能是什么？</strong><br>
+        企业安全的两大需求，Cursor 这次都照顾到了：① 每个环境都有版本历史，出了问题一键回滚；② 可以在环境级别限制出站网络——某个环境只能访问白名单域名，另一个可以开放更多权限，互不干扰。</p>
+        <p><strong>怎么用？</strong></p>
+        <ul>
+          <li>版本回滚：环境设置 → 版本历史 → 选择时间点回滚（管理员可限制普通用户的回滚权限）</li>
+          <li>网络管控：为高安全级别环境设置出口白名单，敏感密钥也做到「环境级隔离」，A 环境的 secret 在 B 环境里完全看不到</li>
+        </ul>
+        <p><strong>适合什么场景？</strong> 金融、医疗等合规要求高的企业；需要对 Agent 联网行为做审计的安全团队；多项目并行时防止密钥串用。</p>
+      </div>
+      <div class="tip-source">来源：Cursor 官方博客《智能体的开发环境》· 2026-05-13 &nbsp;<a href="https://cursor.com/cn/blog/cloud-agent-development-environments" target="_blank">查看原文 →</a></div>
+    </div>
+
+  </div><!-- /cursor-section -->
+
+  <footer>
+    <p>AI 编程热点新闻 · 每日 08:15 自动生成 · 2026年5月14日</p>
+    <p style="margin-top:6px;"><a href="/" style="color:#6c63ff; text-decoration:none;">← 返回首页</a></p>
+  </footer>
+</div>
+</body>
+</html>
