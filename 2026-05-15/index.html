@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年5月15日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px 64px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: #6c63ff; text-decoration: none; font-size: 13px;
+      margin-bottom: 28px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #a78bfa; }
+
+    .page-header { margin-bottom: 32px; }
+    .page-date {
+      font-size: 13px; font-weight: 600;
+      color: #00d4aa; letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .page-title {
+      font-size: 26px; font-weight: 700; color: #fff;
+      line-height: 1.4; margin-bottom: 8px;
+    }
+    .page-title span { color: #6c63ff; }
+    .page-sub { font-size: 14px; color: #8b90b0; }
+
+    .section-label {
+      font-size: 11px; font-weight: 700;
+      color: #6c63ff; letter-spacing: 1px;
+      text-transform: uppercase;
+      margin: 32px 0 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px; background: #2a2d3e;
+    }
+
+    .news-list { display: flex; flex-direction: column; gap: 12px; }
+    .news-card {
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      border-radius: 14px; padding: 18px 20px;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .news-card:hover { border-color: #6c63ff; transform: translateX(3px); }
+    .news-card.top1 { border-color: rgba(251,191,36,0.35); background: linear-gradient(135deg, #1a1d27, #1e1b0f); }
+
+    .news-meta {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 7px; flex-wrap: wrap;
+    }
+    .news-num {
+      width: 22px; height: 22px; border-radius: 7px;
+      background: rgba(108,99,255,0.18); border: 1px solid rgba(108,99,255,0.3);
+      color: #a78bfa; font-size: 11px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .news-num.hot { background: rgba(251,191,36,0.18); border-color: rgba(251,191,36,0.3); color: #fbbf24; }
+    .news-tag {
+      font-size: 11px; font-weight: 600; padding: 2px 8px;
+      border-radius: 5px; background: rgba(108,99,255,0.12); color: #818cf8;
+    }
+    .news-tag.orange { background: rgba(251,146,60,0.12); color: #fb923c; }
+    .news-tag.green { background: rgba(74,222,128,0.1); color: #4ade80; }
+    .news-tag.cyan { background: rgba(34,211,238,0.1); color: #22d3ee; }
+    .news-tag.red { background: rgba(248,113,113,0.1); color: #f87171; }
+    .news-tag.amber { background: rgba(251,191,36,0.1); color: #fbbf24; }
+
+    .news-title {
+      font-size: 15px; font-weight: 600; color: #eef0fb;
+      line-height: 1.55; margin-bottom: 7px;
+    }
+    .news-body {
+      font-size: 13px; color: #8b90b0; line-height: 1.75;
+    }
+    .news-body strong { color: #c4c8e0; }
+
+    /* Cursor 技巧区 */
+    .tips-section {
+      background: linear-gradient(135deg, #141728, #0f1723);
+      border: 1px solid rgba(99,102,241,0.25);
+      border-radius: 16px; padding: 24px 22px; margin-top: 14px;
+    }
+    .tips-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+    .tips-icon { font-size: 26px; }
+    .tips-title { font-size: 17px; font-weight: 700; color: #fff; }
+    .tips-sub { font-size: 12px; color: #6b7280; margin-top: 2px; }
+
+    .tip-item { margin-bottom: 20px; }
+    .tip-item:last-child { margin-bottom: 0; }
+    .tip-name {
+      font-size: 14px; font-weight: 600; color: #a5b4fc;
+      margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+    }
+    .tip-name::before {
+      content: ''; width: 3px; height: 14px;
+      background: linear-gradient(180deg, #6366f1, #8b5cf6);
+      border-radius: 2px; flex-shrink: 0;
+    }
+    .tip-content { font-size: 13px; color: #8b90b0; line-height: 1.8; }
+    .tip-content strong { color: #c4c8e0; }
+    .tip-content .code {
+      background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.2);
+      color: #c4b5fd; font-family: monospace; font-size: 12px;
+      padding: 1px 6px; border-radius: 4px;
+    }
+    .tip-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+    .tip-tag {
+      font-size: 11px; font-weight: 500; padding: 2px 8px;
+      border-radius: 5px; background: rgba(99,102,241,0.1); color: #818cf8;
+    }
+    .tip-src { font-size: 11px; color: #4a4e6a; margin-top: 10px; }
+    .tip-src a { color: #6366f1; text-decoration: none; }
+    .tip-divider { height: 1px; background: rgba(42,45,58,0.6); margin: 16px 0; }
+
+    .page-footer {
+      margin-top: 48px; text-align: center;
+      font-size: 12px; color: #3a3d52; line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 24px 14px 48px; }
+      .page-title { font-size: 20px; }
+      .news-card { padding: 14px 16px; }
+      .news-title { font-size: 14px; }
+      .tips-section { padding: 18px 16px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back-link" href="/">← 返回首页</a>
+
+  <div class="page-header">
+    <div class="page-date">2026年5月15日 · 星期五 · 每日 AI 编程早报</div>
+    <h1 class="page-title">GPT-5.6 内测加速 + OpenAI 补贴战来袭<br><span>Google I/O 4 天倒计时 · Anthropic Claude Code 额度提升 50%</span></h1>
+    <p class="page-sub">共 7 条热点新闻 · 1 组 Cursor 使用技巧 · 自动聚合自全球科技媒体</p>
+  </div>
+
+  <div class="section-label">今日热点新闻</div>
+
+  <div class="news-list">
+
+    <!-- 1 -->
+    <div class="news-card top1">
+      <div class="news-meta">
+        <span class="news-num hot">1</span>
+        <span class="news-tag amber">头条</span>
+        <span class="news-tag orange">OpenAI</span>
+        <span class="news-tag">AI 编程</span>
+      </div>
+      <div class="news-title">GPT-5.6 内测加速 + OpenAI 补贴战——Codex 环境已悄然跑测试，「ultrafast 模式」响应提速 2-3 倍，迁移补贴价值 400 美元</div>
+      <div class="news-body">
+        GPT-5.5 发布仅 3 周，GPT-5.6 的内部测试代码便被曝光：<strong>首批测试节点已在 Codex 环境启动验证，预计 6 月正式亮相</strong>。新版本同步测试「ultrafast 模式」，专为延迟敏感场景设计，响应速度提升 2-3 倍。更值得关注的是，GPT-5.3-Codex 已实现「自我训练」能力，内部使用率达 85%，GPT-5.6 的开发将深度依赖前代模型，形成 AI 辅助 AI 开发的闭环。
+        与此同时，Anthropic 抢先推出 Opus 4.7 Fast 模式后，OpenAI 紧随其后启动补贴大战：为迁移至 Codex 的企业用户提供<strong> 2 个月免费使用权（价值 400 美元）</strong>，补贴推出 3 小时内即有 2000 名开发者完成迁移。
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-num">2</span>
+        <span class="news-tag green">Anthropic</span>
+        <span class="news-tag cyan">Claude Code</span>
+      </div>
+      <div class="news-title">Anthropic 宣布 Claude Code 每周额度提升 50%——持续至 7 月 13 日，可与「加倍至 5 小时」叠加，全力压低开发者试错成本</div>
+      <div class="news-body">
+        Anthropic 正式宣布将 Claude Code 的每周使用限额提升 50%，<strong>政策持续至 2026 年 7 月 13 日</strong>，且此次 50% 的增量可以和此前已实施的「加倍至 5 小时」限制累加，开发者将获得实质性更多的代码生成与处理能力。Anthropic 明确表示此举旨在降低开发者的高频试错成本，吸引更多深度用户嵌入其 API 生态，也预示着 AI 编程辅助工具正向高强度生产力阶段迈进——继 Claude Code ARR 突破 440 亿美元后，Anthropic 正用额度杠杆继续扩张市场份额。
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-num">3</span>
+        <span class="news-tag green">阿里巴巴</span>
+        <span class="news-tag">财报</span>
+        <span class="news-tag cyan">MaaS 平台</span>
+      </div>
+      <div class="news-title">阿里 2026 财年 Q4 财报：百炼 MaaS 平台 ARR 突破 80 亿元，AI 编程需求驱动流量半年增长超 10 倍</div>
+      <div class="news-body">
+        阿里巴巴发布 2026 财年 Q4 财报，核心亮点是<strong>阿里云「百炼」MaaS 平台年化经常性收入（ARR）已突破 80 亿元人民币，预计本季度将跨越 100 亿元大关</strong>。AI 编程与复杂任务智能体需求激增，带动平台流量在半年内增长超 10 倍。财报数据印证了阿里正从传统 IaaS 向价值链更高层的 MaaS 与 AI 应用层加速转型——百炼平台已成为阿里在中国市场对标 AWS Bedrock 的战略资产，Claude Code 也已接入阿里云百炼提供服务。
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-num">4</span>
+        <span class="news-tag amber">Google I/O</span>
+        <span class="news-tag">倒计时 4 天</span>
+        <span class="news-tag red">中美芯片</span>
+      </div>
+      <div class="news-title">Google I/O 2026 倒计时 4 天——Gemini 4.0 箭在弦上；特朗普-习近平北京峰会结束，未达成 AI 芯片协议，Nvidia H200 对华交付仍停滞</div>
+      <div class="news-body">
+        距离 5 月 19-20 日的 Google I/O 大会还剩 4 天，Gemini 4.0 正式发布已进入倒计时，Android XR 眼镜与 Aluminium OS 三线齐发。与此同时，<strong>特朗普与习近平北京峰会于今日结束，但未能就 AI 芯片出口达成签署协议</strong>，Nvidia H200 对约 10 家已获批中国企业（含阿里、腾讯）的交付依然处于停滞状态。芯片管制不确定性持续成为中国 AI 编程工具企业的供应链风险，而 Google I/O 上的 Gemini 4.0 一旦面世，将直接改变全球 AI 编程工具的基座模型格局。
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-num">5</span>
+        <span class="news-tag orange">Snap</span>
+        <span class="news-tag red">AI 重组</span>
+      </div>
+      <div class="news-title">Snap AI 重组年省 5 亿美元——65% 新代码由 AI 生成，裁员 1000 人，AI 生产率变革冲击社交媒体行业</div>
+      <div class="news-body">
+        社交媒体公司 Snap 宣布：目前<strong>超过 65% 的新代码由 AI 生成</strong>，这一比例使得更小规模团队即可实现同等业务产出，本次重组（裁员约 1000 人 + 关闭 300 余个岗位）预计每年节省超过 5 亿美元成本。Snap CEO Evan Spiegel 明确将此次调整归因于「AI 快速发展」。值得关注的是，AI 驱动的重组浪潮已不再局限于技术研发岗位，正渗透至内容创作、市场营销、数据分析等多个领域——Snap 成为继谷歌（75% 代码由 AI 生成）后，又一以具体数据披露 AI 生产效率转型的科技巨头。
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-num">6</span>
+        <span class="news-tag green">MiniMax</span>
+        <span class="news-tag">品牌升级</span>
+      </div>
+      <div class="news-title">MiniMax Agent 正式更名 Mavis——专注企业智能体平台，发布多项工具更新，国产 Agent 框架品牌化加速</div>
+      <div class="news-body">
+        国产 AI 独角兽 MiniMax 宣布将其 Agent 产品线正式更名为 <strong>Mavis</strong>，聚焦企业级智能体平台战略，并同步发布多项工具与模型更新。此次品牌升级标志着 MiniMax 从「大模型提供商」向「企业 AI Agent 解决方案商」的战略转型——与 OpenAI Codex、Anthropic Claude Code 在编程 Agent 赛道形成差异竞争的同时，也瞄准了 Notion AI、Microsoft 365 Copilot 在生产力平台的市场份额。
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-num">7</span>
+        <span class="news-tag cyan">Cursor</span>
+        <span class="news-tag green">云端 Agent</span>
+      </div>
+      <div class="news-title">Cursor 云端 Agent 开发环境全面上线——多仓库并行 + Dockerfile 配置即代码 + 版本历史回滚 + 网络出口白名单，企业安全合规利器</div>
+      <div class="news-body">
+        Cursor 正式上线「云端 Agent 开发环境」完整功能集，核心亮点：<strong>多代码仓库环境</strong>（Agent 跨 10 个 repo 同时作业，微服务团队必看）；<strong>Dockerfile 配置即代码</strong>（提交到 Git 版本管理，层缓存命中构建提速 70%，私有包注册表密钥安全注入）；<strong>环境版本历史与回滚</strong>（管理员可限制回滚权限，审计日志记录所有操作）；<strong>网络出口与密钥作用域隔离</strong>（不同环境独立网络策略，密钥跨环境不可访问）。已有 Amplitude、Decagon、Snyk、BILT 等企业客户投入生产使用。访问 cursor.com/dashboard/cloud-agents 开始配置。
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Cursor 技巧 -->
+  <div class="section-label">今日 Cursor 使用技巧</div>
+
+  <div class="tips-section">
+    <div class="tips-header">
+      <span class="tips-icon">⌨️</span>
+      <div>
+        <div class="tips-title">云端 Agent 环境安全治理——版本历史 · 网络隔离 · 密钥作用域</div>
+        <div class="tips-sub">来源：cursor.com/cn/blog · 2026-05-13 官方博客《云端智能体的开发环境》</div>
+      </div>
+    </div>
+
+    <!-- 技巧1 -->
+    <div class="tip-item">
+      <div class="tip-name">技巧一：给云端 Agent 环境开启「版本历史」，出错直接回滚</div>
+      <div class="tip-content">
+        <strong>这个功能是什么？</strong><br>
+        Cursor 云端 Agent 现在为每个开发环境维护独立的「版本历史」，你可以随时查看某次配置变更记录，并一键回滚到任意历史版本。企业管理员还可以把回滚权限限制为仅限管理员操作，防止误操作。<br><br>
+        <strong>怎么用？</strong><br>
+        进入 <span class="code">cursor.com/dashboard/cloud-agents</span> → 选择环境 → 点击「版本历史」→ 选择目标版本 → 确认回滚。审计日志会记录每一步操作的操作人与时间。<br><br>
+        <strong>适合什么场景？</strong> 团队 Dockerfile 被人误改、依赖版本升级引发 Agent 运行异常、需要追溯某次配置变更责任的合规场景。
+      </div>
+      <div class="tip-tags">
+        <span class="tip-tag">版本控制</span>
+        <span class="tip-tag">云端 Agent</span>
+        <span class="tip-tag">权限管理</span>
+      </div>
+    </div>
+
+    <div class="tip-divider"></div>
+
+    <!-- 技巧2 -->
+    <div class="tip-item">
+      <div class="tip-name">技巧二：用「网络出口白名单」给 Agent 套上安全围栏</div>
+      <div class="tip-content">
+        <strong>这个功能是什么？</strong><br>
+        云端 Agent 在工作时会访问外部 API、代码仓库、内部服务等。Cursor 现在支持在<strong>环境级别</strong>限制出站网络访问，你可以为某个环境设置只允许访问特定域名白名单，其他环境保持宽松设置——互不影响。<br><br>
+        <strong>怎么用？</strong><br>
+        环境配置 → 「网络策略」→ 选择「限制模式」→ 添加允许访问的域名列表（如 github.com、npm.registry.com、内部 CI 地址）。<br><br>
+        <strong>适合什么场景？</strong> 金融、医疗等对网络隔离有合规要求的企业；需要防止 Agent 意外调用第三方服务泄露代码的高安全级别团队。
+      </div>
+      <div class="tip-tags">
+        <span class="tip-tag">安全合规</span>
+        <span class="tip-tag">网络隔离</span>
+        <span class="tip-tag">企业功能</span>
+      </div>
+    </div>
+
+    <div class="tip-divider"></div>
+
+    <!-- 技巧3 -->
+    <div class="tip-item">
+      <div class="tip-name">技巧三：「密钥作用域隔离」——给每个 Agent 环境配独立密钥，互不污染</div>
+      <div class="tip-content">
+        <strong>这个功能是什么？</strong><br>
+        为某个环境配置的 API Key、数据库凭证等密钥，<strong>无法从任何其他环境访问</strong>——即使同一团队的两个不同 Agent 环境也完全隔离。这比在团队级别共享密钥安全得多。<br><br>
+        <strong>怎么用？</strong><br>
+        环境设置 → 「Secrets」→ 添加密钥（名称 + 值）→ 保存后该密钥仅在当前环境的 Agent 运行时可见，其他环境查不到。Dockerfile 构建密钥（<span class="code">--secret</span>）也遵循同样的隔离规则，构建完成后自动销毁。<br><br>
+        <strong>适合什么场景？</strong> 同一团队维护多套环境（dev/staging/prod）时，防止测试环境密钥越权访问生产数据；外包团队接入时限制其只能访问特定环境。
+      </div>
+      <div class="tip-tags">
+        <span class="tip-tag">密钥管理</span>
+        <span class="tip-tag">环境隔离</span>
+        <span class="tip-tag">零信任</span>
+      </div>
+    </div>
+
+    <div class="tip-src">
+      来源：<a href="https://cursor.com/cn/blog/cloud-agent-development-environments" target="_blank">Cursor 官方博客《云端智能体的开发环境》· 2026-05-13</a>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <p>AI 编程热点新闻 · 2026年5月15日 · 自动聚合生成</p>
+    <p style="margin-top: 6px;"><a href="/" style="color: #6c63ff; text-decoration: none;">← 返回首页查看所有日期</a></p>
+  </div>
+
+</div>
+</body>
+</html>
