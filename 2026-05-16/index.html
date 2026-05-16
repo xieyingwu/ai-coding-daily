@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年5月16日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px 60px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+    .header { text-align: center; margin-bottom: 40px; }
+    .header .date-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(0,212,170,0.15));
+      border: 1px solid rgba(108,99,255,0.35);
+      color: #a5b4fc; font-size: 13px; font-weight: 600;
+      padding: 5px 16px; border-radius: 20px; margin-bottom: 16px;
+    }
+    .header h1 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .header h1 span { color: #6c63ff; }
+    .header .subtitle { font-size: 14px; color: #8b90b0; }
+
+    .news-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 48px; }
+
+    .news-card {
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      border-radius: 14px;
+      padding: 20px 24px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .news-card:hover { border-color: #6c63ff; transform: translateY(-1px); }
+    .news-card.top { border-color: rgba(108,99,255,0.45); background: linear-gradient(135deg, #1a1d27, #1e1f30); }
+
+    .news-meta {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap;
+    }
+    .news-num {
+      background: #6c63ff; color: #fff;
+      font-size: 11px; font-weight: 700;
+      width: 22px; height: 22px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .news-num.hot { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+    .news-tag {
+      font-size: 11px; font-weight: 500;
+      padding: 2px 9px; border-radius: 6px;
+    }
+    .tag-model { background: rgba(108,99,255,0.15); color: #a5b4fc; }
+    .tag-tool  { background: rgba(34,211,238,0.12); color: #22d3ee; }
+    .tag-biz   { background: rgba(74,222,128,0.12); color: #4ade80; }
+    .tag-sec   { background: rgba(248,113,113,0.12); color: #f87171; }
+    .tag-china { background: rgba(251,191,36,0.12); color: #fbbf24; }
+
+    .news-title { font-size: 16px; font-weight: 700; color: #eef0fb; line-height: 1.5; margin-bottom: 8px; }
+    .news-body  { font-size: 14px; color: #8b90b0; line-height: 1.75; }
+    .news-body strong { color: #c4b5fd; }
+    .news-body .hl { color: #a5b4fc; }
+
+    .section-title {
+      font-size: 13px; font-weight: 600; color: #6c63ff;
+      margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: #2a2d3e; }
+
+    .footer-nav {
+      text-align: center; margin-top: 48px;
+      display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;
+    }
+    .btn-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      color: #8b90b0; text-decoration: none; font-size: 14px;
+      padding: 10px 22px; border-radius: 10px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-back:hover { border-color: #6c63ff; color: #a5b4fc; }
+    .btn-tips {
+      background: linear-gradient(135deg, rgba(34,211,238,0.12), rgba(99,102,241,0.1));
+      border-color: rgba(34,211,238,0.3); color: #22d3ee;
+    }
+    .btn-tips:hover { border-color: #22d3ee; color: #67e8f9; }
+
+    @media (max-width: 768px) {
+      body { padding: 24px 14px 48px; }
+      .header h1 { font-size: 22px; }
+      .news-card { padding: 16px 16px; }
+      .news-title { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="date-badge">2026年5月16日 · 周六</div>
+    <h1>AI 编程 <span>热点新闻</span></h1>
+    <p class="subtitle">OpenAI Codex 登陆手机端 · xAI 发布首款编程 Agent · Gemini 3.5 Pro 编程追平 GPT-5.5 · Google I/O 倒计时 3 天</p>
+  </div>
+
+  <div class="section-title">今日 7 条热点</div>
+
+  <div class="news-list">
+
+    <!-- 1 -->
+    <div class="news-card top">
+      <div class="news-meta">
+        <span class="news-num hot">1</span>
+        <span class="news-tag tag-tool">OpenAI Codex</span>
+        <span class="news-tag tag-biz">移动端</span>
+      </div>
+      <div class="news-title">OpenAI Codex 正式登陆手机端——iOS/Android 全用户（含免费版）均可使用，每周活跃用户已超 400 万</div>
+      <div class="news-body">
+        OpenAI 宣布 Codex 正式上线 ChatGPT iOS 和 Android 客户端，<strong>面向所有用户开放预览，包括免费版</strong>。用户随时随地可以处理代码任务、查看进度、审批 Agent 操作。当前 Codex 每周已有超 400 万用户使用，移动端的开放将进一步打破编程与设备的边界——你甚至可以在手机上审批 AI 提交的 PR。
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="news-card top">
+      <div class="news-meta">
+        <span class="news-num hot">2</span>
+        <span class="news-tag tag-model">Gemini 3.5 Pro</span>
+        <span class="news-tag tag-model">Google I/O</span>
+      </div>
+      <div class="news-title">Gemini 3.5 Pro 曝光：编程能力追平 GPT-5.5，配套 3.2 Flash 成本低 15-20 倍，Google I/O 倒计时 3 天</div>
+      <div class="news-body">
+        距 Google I/O 2026（5月19日开幕）仅剩 3 天，<strong>Gemini 3.5 Pro 全网首曝</strong>：编程能力追平 OpenAI GPT-5.5，配套 3.2 Flash 版本成本比同类产品低 15-20 倍。同期曝光的还有谷歌全时 AI 智能体 <strong>Gemini Spark</strong>，可 24 小时处理日常开发任务。这是谷歌反击 OpenAI 和 Anthropic 的最重磅信号——"谷歌终于狠起来了"。
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-num">3</span>
+        <span class="news-tag tag-tool">xAI Grok Build</span>
+        <span class="news-tag tag-model">Agent</span>
+      </div>
+      <div class="news-title">马斯克人在北京，xAI 同日发布首款编程 Agent Grok Build——支持并行子 Agent，99 美元/月前 6 个月优惠</div>
+      <div class="news-body">
+        马斯克访华期间，xAI 发布旗下<strong>首款编程智能体 Grok Build</strong>，面向 SuperGrok Heavy 订阅用户开放测试。核心能力：支持并行子智能体同步处理多个编程任务，兼容现有开发工作流（可调用 shell、文件读写等）。订阅原价 300 美元/月，当前前 6 个月<strong>优惠价 99 美元/月</strong>。Grok Build 的发布标志 xAI 正式踏入 Cursor/Claude Code 主场。
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-num">4</span>
+        <span class="news-tag tag-china">阿里 Qoder</span>
+        <span class="news-tag tag-biz">国产 IDE</span>
+      </div>
+      <div class="news-title">阿里 Qoder 1.0 发布：从 AI IDE 升级为「智能体自主开发工作台」，代码保留率提升 11%，Token 消耗降 40%</div>
+      <div class="news-body">
+        阿里云正式发布 <strong>Qoder 1.0</strong>，定位从 AI IDE 全面升级为「智能体自主开发工作台」。核心升级：支持<strong>多任务并行处理、团队知识共享</strong>，代码保留率提升 11%，Token 消耗降低 40%。目前已服务超 500 万用户。阿里将 Qoder 定位为面向国内开发者的 Cursor 替代方案，结合通义系列模型降低成本是其差异化核心。
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-num">5</span>
+        <span class="news-tag tag-tool">OpenAI Codex</span>
+        <span class="news-tag tag-biz">AI 科研</span>
+      </div>
+      <div class="news-title">博士 80 小时研究任务，Codex + GPT-5.5 Goal Mode 仅用 2 小时完成——AI 科研效率提升约 40 倍</div>
+      <div class="news-body">
+        AI 工程师 Dan McAteer 的实验引发广泛关注：原本需要博士研究员<strong>耗时 80 小时</strong>的科研开发任务，使用 OpenAI Codex 搭配 GPT-5.5 Goal Mode 仅用时<strong>1 小时 56 分钟</strong>完成，效率提升约 40 倍。实验可自主完成实验设计、代码实现、数据处理全流程。这是 AI 科研工具化最直观的案例——AI 编程正在从「写代码」扩展到「做研究」。
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-num">6</span>
+        <span class="news-tag tag-china">飞书 CLI</span>
+        <span class="news-tag tag-biz">办公 Agent</span>
+      </div>
+      <div class="news-title">飞书 CLI 开源 47 天 GitHub Star 破万——覆盖 17 个业务域、200+ 命令，AI Agent 可直接调用企业办公能力</div>
+      <div class="news-body">
+        飞书 CLI 于 3 月 28 日开源，<strong>47 天内 GitHub Star 突破 1 万</strong>，覆盖 17 个飞书业务域、200 多条命令。开发者可借助飞书 CLI 让 AI Agent 直接调用飞书办公功能（文档、日历、会议等），大幅缩短企业内部开发工作流。这代表着「办公 Agent」正在成为 AI 编程的下一个热点——你的 Agent 可以自己发飞书、订会议室了。
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="news-card">
+      <div class="news-meta">
+        <span class="news-num">7</span>
+        <span class="news-tag tag-biz">成本优化</span>
+        <span class="news-tag tag-tool">AI 编程</span>
+      </div>
+      <div class="news-title">90% 的 AI 编程费用都在浪费——优化上下文管理后月账单从 4200 美元降到 312 美元，成本缩减 80%+</div>
+      <div class="news-body">
+        技术博主分析指出，当前<strong>90% 的 AI 编程成本被浪费在无效上下文上</strong>：大量重复代码、无关文件被反复喂给模型，白白消耗 Token。通过引入分层模型路由（复杂任务用贵模型，简单任务用便宜模型）+ 上下文精准切片，月开销从 4200 美元降至 312 美元，降幅超过 80%。这也再次印证了 Cursor 上下文使用量拆分查看功能的价值。
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-nav">
+    <a class="btn-back" href="/">← 返回首页</a>
+    <a class="btn-back btn-tips" href="/cursor-tips/">⌨️ Cursor 使用技巧专栏</a>
+  </div>
+
+  <div style="text-align:center; margin-top: 24px; font-size: 12px; color: #3a3d52;">
+    AI 编程热点新闻 · 自动生成 · 2026-05-16 08:15
+  </div>
+
+</div>
+</body>
+</html>
