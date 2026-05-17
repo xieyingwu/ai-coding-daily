@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 编程热点 · 2026年5月17日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f1117;
+      color: #e8eaf6;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px 80px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .header { text-align: center; margin-bottom: 40px; }
+    .header .date-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(0,212,170,0.2));
+      border: 1px solid rgba(108,99,255,0.4);
+      color: #a5b4fc;
+      font-size: 13px; font-weight: 600;
+      padding: 6px 16px; border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .header h1 {
+      font-size: 28px; font-weight: 700; color: #fff;
+      margin-bottom: 8px; line-height: 1.4;
+    }
+    .header h1 span { color: #6c63ff; }
+    .header .subtitle { color: #8b90b0; font-size: 14px; }
+
+    .headline-bar {
+      background: linear-gradient(135deg, #1a1d27, #1e1f30);
+      border: 1px solid rgba(108,99,255,0.35);
+      border-radius: 14px; padding: 18px 22px;
+      margin-bottom: 28px;
+    }
+    .headline-bar .label {
+      font-size: 11px; font-weight: 700; color: #6c63ff;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      margin-bottom: 8px;
+    }
+    .headline-bar .text {
+      font-size: 15px; font-weight: 600; color: #eef0fb;
+      line-height: 1.6;
+    }
+
+    .news-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+
+    .news-card {
+      background: #1a1d27;
+      border: 1px solid #2a2d3e;
+      border-radius: 14px; padding: 18px 22px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .news-card:hover {
+      border-color: #6c63ff;
+      transform: translateY(-1px);
+    }
+    .news-card.top { border-color: rgba(108,99,255,0.4); }
+
+    .card-meta {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 10px; flex-wrap: wrap;
+    }
+    .card-num {
+      width: 24px; height: 24px;
+      background: rgba(108,99,255,0.2); border: 1px solid rgba(108,99,255,0.35);
+      border-radius: 7px; font-size: 12px; font-weight: 700; color: #a5b4fc;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .card-tag {
+      background: #2a2d3a; color: #818cf8;
+      font-size: 11px; font-weight: 500;
+      padding: 3px 9px; border-radius: 6px;
+    }
+    .card-tag.green { background: rgba(74,222,128,0.1); color: #4ade80; }
+    .card-tag.amber { background: rgba(251,191,36,0.1); color: #fbbf24; }
+    .card-tag.cyan { background: rgba(34,211,238,0.1); color: #22d3ee; }
+    .card-tag.red { background: rgba(248,113,113,0.1); color: #f87171; }
+
+    .card-title {
+      font-size: 16px; font-weight: 700; color: #fff;
+      margin-bottom: 8px; line-height: 1.5;
+    }
+    .card-body {
+      font-size: 13px; color: #8b90b0; line-height: 1.75;
+    }
+    .card-body strong { color: #c4b5fd; font-weight: 600; }
+    .card-body .highlight { color: #22d3ee; font-weight: 500; }
+
+    .divider {
+      height: 1px; background: #2a2d3e;
+      margin: 32px 0;
+    }
+
+    .tips-section { margin-bottom: 40px; }
+    .tips-section h2 {
+      font-size: 18px; font-weight: 700; color: #fff;
+      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .tip-card {
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      border-radius: 14px; padding: 18px 22px;
+      margin-bottom: 14px;
+    }
+    .tip-card .tip-title {
+      font-size: 15px; font-weight: 700; color: #fff;
+      margin-bottom: 8px; line-height: 1.45;
+    }
+    .tip-card .tip-body {
+      font-size: 13px; color: #8b90b0; line-height: 1.75;
+    }
+    .tip-card .tip-body p { margin-bottom: 6px; }
+    .tip-card .tip-body ul { padding-left: 18px; }
+    .tip-card .tip-body li { margin-bottom: 4px; }
+    .tip-card .tip-body .hl { color: #a5b4fc; font-weight: 500; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #1a1d27; border: 1px solid #2a2d3e;
+      color: #8b90b0; text-decoration: none; font-size: 14px;
+      padding: 10px 20px; border-radius: 10px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .back-link:hover { border-color: #6c63ff; color: #a5b4fc; }
+
+    @media (max-width: 768px) {
+      body { padding: 24px 14px 60px; }
+      .header h1 { font-size: 22px; }
+      .news-card { padding: 14px 16px; }
+      .card-title { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="date-badge">2026年5月17日 · 星期日</div>
+    <h1>AI 编程 <span>热点新闻</span></h1>
+    <p class="subtitle">Google I/O 倒计时 2 天 · Gemini 4 即将发布 · AI 编程格局加速重塑</p>
+  </div>
+
+  <!-- 今日头条 -->
+  <div class="headline-bar">
+    <div class="label">今日头条</div>
+    <div class="text">Google I/O 2026 后天开幕——Gemini 4 挑战 GPT-5.5，200 万 Token 上下文 + 全能代理模式，谷歌押注"全栈 AI 升级"向 OpenAI/Claude 全面宣战，AI 编程三国鼎立格局将迎来关键节点</div>
+  </div>
+
+  <!-- 新闻列表 -->
+  <div class="news-list">
+
+    <!-- 1 -->
+    <div class="news-card top">
+      <div class="card-meta">
+        <div class="card-num">1</div>
+        <span class="card-tag amber">Google I/O · 倒计时 2 天</span>
+        <span class="card-tag green">重磅发布</span>
+      </div>
+      <div class="card-title">Google I/O 2026 后天开幕——Gemini 4 亮相在即，200 万 Token 全代理模式挑战 GPT-5.5</div>
+      <div class="card-body">
+        Google I/O 2026 将于 <strong>5 月 19 日</strong> 在加州山景城 Shoreline Amphitheatre 正式开幕。核心看点是 <strong>Gemini 4</strong> 的首秀——据预测拥有 200 万 Token 超长上下文，从"聊天机器人"升级为<span class="highlight">全能 AI 代理</span>，原生深度整合 Android 17 与 Chrome 生态。谷歌同期发布 <strong>Android XR</strong> 智能眼镜和 <strong>Aluminum OS</strong>，打造 AI 硬件闭环。这被认为是谷歌史上赌注最大的一届 I/O，正式向 OpenAI + Anthropic 生态全面宣战。AI 编程赛道：Gemini CLI 与 Antigravity IDE 料将迎来重磅升级。
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="news-card">
+      <div class="card-meta">
+        <div class="card-num">2</div>
+        <span class="card-tag cyan">OpenAI · Codex</span>
+        <span class="card-tag">移动端</span>
+      </div>
+      <div class="card-title">OpenAI Codex 完成移动端布局——iOS/Android 全量上线远程控制 Mac 端任务，周活超 400 万</div>
+      <div class="card-body">
+        5 月 15 日，OpenAI 正式宣布 <strong>Codex 进入 ChatGPT 移动端预览版</strong>，iOS 和 Android 用户（含免费版）可随时通过手机审批任务、查看进展、发起新指令，实现对桌面端 Codex 的远程控制。当前 <span class="highlight">Codex 周活已超 400 万</span>，开发者粘性极强。移动端的落地意味着 AI 编程 Agent 正式突破桌面限制，"离开电脑也能派活"的工作流成为现实。这是 OpenAI 与 Anthropic Claude Code 争夺开发者工作流入口的最新动作。
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="news-card">
+      <div class="card-meta">
+        <div class="card-num">3</div>
+        <span class="card-tag red">Anthropic vs OpenAI</span>
+        <span class="card-tag">补贴战</span>
+      </div>
+      <div class="card-title">AI 编程补贴战白热化——OpenAI 免费 2 个月挖用户，Anthropic 立刻反杀 Claude Code 额度 +50%</div>
+      <div class="card-body">
+        <strong>OpenAI</strong> 宣布愿意向从 Claude Code 切换到 Codex 的企业提供 <strong>2 个月免费</strong> 使用期，配合 400 美元迁移补贴 3 小时内吸引 2000 名开发者。<strong>Anthropic 不到 1 小时回击</strong>：宣布 Claude Code 每周使用上限提升 <span class="highlight">50%</span>，优惠持续至 2026 年 7 月 13 日，且可与原有加倍叠加。AI 编程工具从"模型比拼"进入<strong>抢工作流习惯</strong>的存量战，谁让开发者先上手谁的工作流，谁就更可能赢得下一阶段。
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="news-card">
+      <div class="card-meta">
+        <div class="card-num">4</div>
+        <span class="card-tag green">Anthropic · 里程碑</span>
+        <span class="card-tag">企业采用</span>
+      </div>
+      <div class="card-title">Anthropic 企业采用率首超 OpenAI——Claude 占比 34.4% vs OpenAI 32.3%，三年王座易主</div>
+      <div class="card-body">
+        企业信用卡平台 Ramp 最新 AI 支出指数（覆盖 5 万家美国公司）显示：<strong>Anthropic 工作场所采用率 34.4%，首次超越 OpenAI 32.3%</strong>。这不是微弱领先，过去 12 个月 Anthropic 企业付费采用率<span class="highlight">接近翻倍</span>。核心驱动力正是 <strong>Claude Code</strong>——Claude Code ARR 年化营收超 440 亿，带动 Anthropic 整体估值接近万亿。OpenAI 在 ChatGPT 消费端仍占绝对优势，但在开发者工作流领域已被 Claude 系工具步步紧逼。
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="news-card">
+      <div class="card-meta">
+        <div class="card-num">5</div>
+        <span class="card-tag amber">OpenAI · GPT-5.6</span>
+        <span class="card-tag">模型竞赛</span>
+      </div>
+      <div class="card-title">GPT-5.6 全速开发——GPT-5.5 发布仅 3 周已在 Codex 日志中现身，ultrafast 响应提速 2-3 倍</div>
+      <div class="card-body">
+        知名爆料人 Leo 和开发者社区在 <strong>OpenAI 内部 Codex 日志</strong>中发现了 GPT-5.6 的 rollout mapping 痕迹，部分请求已路由至 GPT-5.6 进行内测。据悉 <span class="highlight">ultrafast 模式响应速度提升 2-3 倍</span>，预计<strong>本月底至 6 月</strong>正式亮相。这意味着 OpenAI 正在以前所未有的迭代节奏推进模型更新，每月一代的速度让竞争对手措手不及。AI 编程赛道的底层模型能力将持续快速跃升。
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="news-card">
+      <div class="card-meta">
+        <div class="card-num">6</div>
+        <span class="card-tag cyan">Google · Android</span>
+        <span class="card-tag">生态战略</span>
+      </div>
+      <div class="card-title">Google Android Show 揭幕——Gemini 植入安卓底层成"操作系统级 AI"，I/O 前哨战已打响</div>
+      <div class="card-body">
+        5 月 13 日 The Android Show 在线上发布 Android 17 全系阵容：<strong>Gemini 智能体</strong>可自动执行手机操作（订外卖、查行程、填表单），与 Android 底层深度融合，不再只是对话框。同步发布 <strong>AI 优先 GoogleBooks 笔记本</strong>功能。这场发布会被外界解读为"读作 Android，写作 Gemini"——谷歌将用 <span class="highlight">30 亿台安卓设备</span>作为 Gemini 的天然分发渠道，与 OpenAI 的 ChatGPT 生态、Anthropic 的 Claude 开发者工具三分天下。
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="news-card">
+      <div class="card-meta">
+        <div class="card-num">7</div>
+        <span class="card-tag">Cursor · 企业落地</span>
+        <span class="card-tag green">实战案例</span>
+      </div>
+      <div class="card-title">Cursor 云端 Agent 环境成熟进入企业主场——团队可配置开发环境成批并行运行 Agent 任务</div>
+      <div class="card-body">
+        Cursor 最新 changelog 确认：<strong>云端 Agent 开发环境</strong>已面向企业团队全面开放，核心能力包括：① <strong>多代码仓库并行</strong>：一个 Agent 同时操作多个仓库；② <strong>Dockerfile 配置即代码</strong>：版本历史可回溯，构建提速 70%；③ <strong>网络出口白名单 + 密钥作用域隔离</strong>：企业级安全治理全面上线。Cursor 创始人披露：当前企业已有 <span class="highlight">75% 代码由 AI 生成</span>，Agent 请求量相比年初暴涨 15 倍，内部 30% 的 PR 已由 Agent 端到端完成。云端 Agent 成熟意味着 AI 编程真正进入规模化落地阶段。
+      </div>
+    </div>
+
+  </div><!-- /news-list -->
+
+  <div class="divider"></div>
+
+  <!-- Cursor 技巧 -->
+  <div class="tips-section">
+    <h2>⌨️ 今日 Cursor 技巧</h2>
+
+    <!-- 技巧1 -->
+    <div class="tip-card">
+      <div class="tip-title">技巧一：用 Cursor 云端 Agent 做「离线批量任务」——出门也能让 AI 帮你写代码</div>
+      <div class="tip-body">
+        <p><strong>这个功能是什么？</strong><br>
+        Cursor 云端 Agent 环境允许你在本地不开机的情况下，让 Agent 在云端服务器上运行编程任务，你只需要在手机上看进度、审批操作即可（配合 Codex 移动端思路类似）。</p>
+        <p><strong>怎么用？</strong></p>
+        <ul>
+          <li>在 Cursor 中配置好 Dockerfile（把你的开发环境依赖写进去），保存后云端就能复现你的本地环境</li>
+          <li>发起一个需要较长时间运行的 Agent 任务（如批量重构、测试生成），设置好验收条件后提交</li>
+          <li>Agent 在云端环境独立运行，你可以离开电脑做别的事</li>
+          <li>任务完成后审查 PR，不满意可通过版本历史一键回滚到任意快照</li>
+        </ul>
+        <p><strong>适合什么场景？</strong><br>
+        批量修改测试用例、跨多个仓库同步 API 接口变更、夜间无人值守的重构任务——任何不需要你盯着的长任务，都适合交给云端 Agent。</p>
+      </div>
+    </div>
+
+    <!-- 技巧2 -->
+    <div class="tip-card">
+      <div class="tip-title">技巧二：Google I/O 前夕备战技巧——提前配置 Gemini CLI，第一时间接入 Gemini 4</div>
+      <div class="tip-body">
+        <p><strong>这个功能是什么？</strong><br>
+        Google I/O 后天发布，Gemini 4 极大概率上线 Gemini CLI 和 Antigravity IDE，BYO 模型（自带模型）接入是 Cursor 核心能力之一，可在发布第一时间切换体验新模型。</p>
+        <p><strong>怎么用？</strong></p>
+        <ul>
+          <li>打开 Cursor 设置 → Models → 添加自定义模型（OpenAI 兼容接口）</li>
+          <li>提前在 Google AI Studio 申请 Gemini 4 API key（I/O 后会开放）</li>
+          <li>填入 API endpoint 和 key，保存后即可在对话框切换到 Gemini 4</li>
+          <li>通过「代码保留率」指标对比 Gemini 4 和 GPT-5.5/Claude Opus 4.7 的实际质量</li>
+        </ul>
+        <p><strong>适合什么场景？</strong><br>
+        喜欢尝鲜最新模型的开发者、想降低 Claude/GPT 成本的团队（Gemini 价格通常更低）、需要超长上下文（200万Token）处理大型代码库的场景。</p>
+      </div>
+    </div>
+
+    <!-- 技巧3 -->
+    <div class="tip-card">
+      <div class="tip-title">技巧三：AI 编程「补贴战」实用策略——怎么薅两家巨头的羊毛，同时建立工作流双保险</div>
+      <div class="tip-body">
+        <p><strong>当前形势：</strong><br>
+        OpenAI 提供 2 个月免费 Codex，Anthropic Claude Code 额度提升 50%。两家都在争夺你的工作流。</p>
+        <p><strong>务实建议：</strong></p>
+        <ul>
+          <li><span class="hl">不必二选一</span>：Cursor 支持同时接入 Claude 和 GPT-5.5，用代码保留率衡量哪个模型对你的代码库更有效</li>
+          <li>把<span class="hl">重复性长任务</span>（批量测试、文档生成）交给 Codex Agent（后台跑，免费期间多用）</li>
+          <li>把<span class="hl">需要深度理解代码逻辑</span>的任务留给 Claude Code（额度提升 50%，这阵子多用）</li>
+          <li>建立自己的 <span class="hl">AGENTS.md / CLAUDE.md</span> 工程规则文件，在任何工具之间切换时 AI 都能快速理解项目</li>
+        </ul>
+        <p><strong>核心结论：</strong>AI 编程进入「抢习惯」阶段，建立跨工具的项目规则文件，才是真正不被平台绑架的护城河。</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 返回首页 -->
+  <a class="back-link" href="/">← 返回首页</a>
+
+</div>
+</body>
+</html>

@@ -194,6 +194,104 @@
     <strong>这是什么？</strong> 每天从 Cursor 官方博客精选 1-3 个<strong>实用技巧或使用场景</strong>，用大白话讲清楚——你能学到什么、怎么用、什么时候用。从新手到进阶，边用边学。
   </div>
 
+  <!-- ========== 2026-05-17 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">05月17日</span>
+      <span class="day-title">云端 Agent 离线批量任务 · Google I/O 前夕接入 Gemini 4 · 薅双巨头补贴建工作流双保险</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <!-- 技巧1: 云端 Agent 离线批量任务 -->
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">☁️</div>
+          <div class="tip-title">用 Cursor 云端 Agent 做「离线批量任务」——出门也能让 AI 帮你写代码</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">Cursor 云端 Agent · 2026-05</span>
+          <span class="tag green">批量任务</span>
+          <span class="tag">企业落地</span>
+          <span class="tag cyan">效率</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这个功能是什么？</strong><br>
+          Cursor 云端 Agent 环境让 Agent 在云端服务器上运行编程任务，你本地不用开机，只需在手机审批操作即可。Cursor 创始人披露：企业已有 <span class="hl">75% 代码由 AI 生成</span>，Agent 请求量暴涨 15 倍。</p>
+          <p><strong>怎么用？</strong></p>
+          <ul>
+            <li>在 Cursor 中配置好 <span class="code">Dockerfile</span>，把你的开发环境依赖写进去，云端就能复现本地环境</li>
+            <li>发起长时间运行的 Agent 任务（批量重构、测试生成），设置好验收条件后提交</li>
+            <li>Agent 在云端独立运行，你可以离开电脑，任务完成后审查 PR</li>
+            <li>不满意时通过<span class="hl">版本历史</span>一键回滚到任意快照</li>
+          </ul>
+          <p><strong>适合什么场景？</strong><br>
+          批量修改测试用例、跨多仓库同步 API 变更、夜间无人值守的重构任务——任何不需要你盯着的长任务都适合云端 Agent。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor changelog 2026-05 · 云端 Agent 企业版</span>
+        </div>
+      </div>
+
+      <!-- 技巧2: Google IO 前夕接入 Gemini 4 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🔑</div>
+          <div class="tip-title">Google I/O 前夕备战——提前配置好 BYO 模型，第一时间接入 Gemini 4</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">Google I/O 2026 · 倒计时 2 天</span>
+          <span class="tag cyan">BYO 模型</span>
+          <span class="tag">Gemini 4</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这个功能是什么？</strong><br>
+          Google I/O 后天发布，Gemini 4 极大概率开放 API，200 万 Token 超长上下文。Cursor 的 BYO 模型（自带模型）功能可让你在发布第一时间切换体验。</p>
+          <p><strong>怎么用？</strong></p>
+          <ul>
+            <li>Cursor 设置 → Models → 添加自定义模型（OpenAI 兼容接口）</li>
+            <li>提前在 Google AI Studio 申请账号，I/O 后第一时间拿 Gemini 4 API key</li>
+            <li>填入 API endpoint 和 key，即可切换到 Gemini 4</li>
+            <li>通过<span class="hl">代码保留率</span>对比 Gemini 4 与 GPT-5.5/Claude 的实际质量</li>
+          </ul>
+          <p><strong>适合什么场景？</strong><br>
+          喜欢尝鲜最新模型、想降低 Claude/GPT 成本（Gemini 价格通常更低）、需要超长上下文处理大型代码库的开发者。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Google I/O 2026 前瞻 · Cursor BYO 模型功能</span>
+        </div>
+      </div>
+
+      <!-- 技巧3: 补贴战实用策略 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">💡</div>
+          <div class="tip-title">AI 编程「补贴战」实用策略——怎么同时用好 OpenAI 和 Anthropic，建立工作流双保险</div>
+        </div>
+        <div class="tags">
+          <span class="tag red">OpenAI vs Anthropic · 补贴战</span>
+          <span class="tag green">省钱策略</span>
+          <span class="tag">工作流</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>当前形势：</strong>OpenAI 提供 2 个月免费 Codex，Anthropic Claude Code 额度提升 50% 持续至 7 月。</p>
+          <p><strong>务实建议：</strong></p>
+          <ul>
+            <li><span class="hl">不必二选一</span>：Cursor 同时接 Claude 和 GPT-5.5，用代码保留率衡量哪个更适合你的代码库</li>
+            <li>把<span class="hl">重复性长任务</span>（批量测试、文档生成）交给 Codex Agent（免费期间多用）</li>
+            <li>把<span class="hl">深度理解代码逻辑</span>的任务留给 Claude Code（额度 +50%，这阵子多用）</li>
+            <li>建立 <span class="code">AGENTS.md</span> / <span class="code">CLAUDE.md</span> 工程规则文件，在任何工具切换时 AI 都能快速理解项目</li>
+          </ul>
+          <p><strong>核心结论：</strong>AI 编程进入「抢习惯」阶段，跨工具的项目规则文件是真正不被平台绑架的护城河。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：OpenAI Codex 补贴战 + Anthropic Claude Code 加量反击 2026-05-14/15</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ========== 2026-05-16 ========== -->
   <div class="day-entry">
     <div class="day-header">
