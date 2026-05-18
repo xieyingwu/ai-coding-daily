@@ -194,6 +194,106 @@
     <strong>这是什么？</strong> 每天从 Cursor 官方博客精选 1-3 个<strong>实用技巧或使用场景</strong>，用大白话讲清楚——你能学到什么、怎么用、什么时候用。从新手到进阶，边用边学。
   </div>
 
+  <!-- ========== 2026-05-18 ========== -->
+  <div class="day-entry">
+    <div class="day-header">
+      <span class="day-tag">05月18日</span>
+      <span class="day-title">Teams 中 @Cursor 委托任务 · Grok Build Plan Mode 对比 Cursor · GLM-5.1 接入 Cursor 降本实战</span>
+      <span class="day-divider"></span>
+    </div>
+    <div class="tips-grid">
+
+      <!-- 技巧1: Teams 集成委托任务 -->
+      <div class="tip-card featured">
+        <div class="tip-top">
+          <div class="tip-icon">💬</div>
+          <div class="tip-title">在 Microsoft Teams 里直接 @Cursor 委托编程任务——让 AI 编程走出 IDE，进入协作中间件</div>
+        </div>
+        <div class="tags">
+          <span class="tag amber">Cursor × Teams · 2026-05</span>
+          <span class="tag green">云端 Agent</span>
+          <span class="tag">企业协作</span>
+          <span class="tag cyan">官方更新</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这个功能是什么？</strong><br>
+          Cursor 5 月 11 日推出 Microsoft Teams 原生集成。你可以直接在 Teams 频道里 <span class="code">@Cursor</span>，Cursor 会读取频道完整对话背景，自动选择合适的代码仓库和 AI 模型，把任务交给云端 Agent 执行——整个过程不需要打开 IDE。</p>
+          <p><strong>怎么用？</strong></p>
+          <ul>
+            <li>在 Teams 频道中发一条消息，例如：<span class="code">@Cursor 帮我修复 main 分支上的登录接口 500 错误</span></li>
+            <li>Cursor 会自动读取你们最近的讨论、理解背景，选择正确的仓库和模型开始工作</li>
+            <li>任务完成后你会在 Teams 中收到结果通知，可直接在 Cursor 中审查 PR</li>
+            <li>非技术人员（PM、QA）也可以在 Teams 中触发编程任务，不需要开代码编辑器</li>
+          </ul>
+          <p><strong>适合什么场景？</strong><br>
+          Bug 快速响应（PM 在 Teams 直接报 Bug → Cursor 自动修）、会议纪要中的技术 Action Item 立即变成 PR、跨团队沟通时无缝触发代码任务，让非技术同学也能直接调用 AI 编程能力。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor changelog 2026-05-11 · Microsoft Teams Integration</span>
+        </div>
+      </div>
+
+      <!-- 技巧2: Bugbot 审查力度设置 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🔍</div>
+          <div class="tip-title">Bugbot PR 审查力度三档可调——High 模式多发现 35% 缺陷，关键项目值得开</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Bugbot</span>
+          <span class="tag amber">PR 审查</span>
+          <span class="tag green">缺陷发现</span>
+          <span class="tag">Cursor 官方</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这个功能是什么？</strong><br>
+          Cursor Bugbot 是 AI 自动审查 PR 的工具，现在新增了三档审查力度：<span class="hl">Default / High / Max</span>。简单说，投入越高，Bugbot 分析越深入，发现的 Bug 就越多。</p>
+          <p><strong>怎么设？</strong></p>
+          <ul>
+            <li><span class="hl">Default</span>：日常 PR 快速审查，兼顾速度和覆盖率，适合频繁小改动</li>
+            <li><span class="hl">High</span>：深度分析代码逻辑、边界条件和潜在安全隐患，比 Default 多发现约 35% 缺陷</li>
+            <li><span class="hl">Max</span>：最全面审查，适合重大发版、核心功能上线前的最后防线</li>
+          </ul>
+          <p><strong>适合什么场景？</strong><br>
+          平时用 Default 保持节奏，重要功能上线、安全敏感模块改动、月度/季度大版本发布前换 High 或 Max。花同样的时间审查，High 模式能帮你抓到 Default 漏掉的近三分之一缺陷，值得在关键 PR 上打开。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Cursor changelog 2026-05 · Bugbot Effort Levels</span>
+        </div>
+      </div>
+
+      <!-- 技巧3: BYO 模型接入 GLM-5.1 -->
+      <div class="tip-card">
+        <div class="tip-top">
+          <div class="tip-icon">🔧</div>
+          <div class="tip-title">BYO 模型接入智谱 GLM-5.1——开源 Coding Agent 全球第一，接入 Cursor 降本 80%+ 实战可行</div>
+        </div>
+        <div class="tags">
+          <span class="tag cyan">BYO 模型</span>
+          <span class="tag">GLM-5.1</span>
+          <span class="tag green">开源第一</span>
+          <span class="tag amber">降本</span>
+        </div>
+        <div class="tip-body">
+          <p><strong>这个功能是什么？</strong><br>
+          Artificial Analysis 最新 Coding Agent 基准显示，<span class="hl">智谱 GLM-5.1 在 Claude Code 中运行</span>取得开源模型全球第一——这意味着"顶级 Agent 框架 + 国产开源模型"已是成熟可落地的组合。Cursor 支持通过 BYO（Bring Your Own）模式接入任意兼容 API 的模型，包括 GLM-5.1。</p>
+          <p><strong>怎么接入？</strong></p>
+          <ul>
+            <li>打开 Cursor 设置 → Models → 添加自定义模型，填入智谱开放平台的 API Key 和模型名称（<span class="code">glm-5.1</span>）</li>
+            <li>GLM-5.1 支持持续自主工作 <span class="hl">8 小时</span>，适合长程 Agent 任务（批量重构、测试生成）</li>
+            <li>与 Cursor 云端 Agent 配合：发起长任务时选择 GLM-5.1，成本可比 Claude Opus 4.7 低 80%+</li>
+          </ul>
+          <p><strong>适合什么场景？</strong><br>
+          团队预算有限但又要用 Agent 模式跑大量任务时，GLM-5.1 是性价比最高的开源选择。Artificial Analysis 新基准也印证了：Agent 能力 = 模型 + 框架，选对组合比单纯追最贵模型更重要。</p>
+        </div>
+        <div class="tip-footer">
+          <span>来源：Artificial Analysis Coding Agent Index 2026-05-12 · 智谱开放平台</span>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /day-entry 2026-05-18 -->
+
   <!-- ========== 2026-05-17 ========== -->
   <div class="day-entry">
     <div class="day-header">
